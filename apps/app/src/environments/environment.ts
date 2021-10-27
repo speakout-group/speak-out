@@ -4,6 +4,17 @@
 
 export const environment = {
   production: false,
+  api: 'http://localhost:3333',
+  socket: 'http://localhost:3333',
+  apps: {
+    facebook: '513024756601831',
+    google:
+      '331672215174-0hlpm8fhjphiou05ovsd82vglor401ct.apps.googleusercontent.com',
+    apple: {
+      clientId: 'nest-auth.ubbly.club',
+      redirectUri: 'https://nest-auth.ubbly.club/',
+    },
+  },
 };
 
 /*

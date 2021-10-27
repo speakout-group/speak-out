@@ -1,0 +1,77 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container">
+  <mat-card>
+    <h2 mat-card-title>Register</h2>
+    <p mat-card-subtitle>Register a new account</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <mat-form-field class="full-width">
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Type in your username"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Type in your password"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Type in your email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <a routerLink="/" mat-button mat-raised-button>Back</a>
+        <button mat-button mat-raised-button color="primary">Register</button>
+      </mat-card-actions>
+    </form>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithFacebook()"
+      class="mr"
+    >
+      Register with Facebook
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithGoogle()"
+      class="mr"
+    >
+      Register with Google
+    </button>
+
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="registerWithApple()"
+    >
+      Register with Apple
+    </button>
+  </mat-card>
+</div>

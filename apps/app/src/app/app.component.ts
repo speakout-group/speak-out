@@ -1,13 +1,34 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@speak-out/api-interfaces';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import {
+  ErrorDialogInterceptor,
+  HttpError,
+} from './core/interceptor/error-dialog.interceptor';
+import { MainSocket } from './core/socket/main-socket';
 
 @Component({
-  selector: 'speak-out-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  destroy$ = new Subject();
+
+  constructor(
+    private errorHandler: ErrorDialogInterceptor,
+    private socket: MainSocket,
+  ) {}
+
+  ngOnInit() {
+    this.socket
+      .fromEvent<HttpError>('exception')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(e => this.errorHandler.handleError(e));
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

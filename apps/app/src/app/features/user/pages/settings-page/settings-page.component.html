@@ -1,0 +1,89 @@
+<mat-spinner
+  class="position-absolute"
+  diameter="30"
+  *ngIf="loading"
+></mat-spinner>
+<div class="container">
+  <mat-card>
+    <h2 mat-card-title>Settings</h2>
+    <p mat-card-subtitle>Update your account</p>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updateUsername()">
+      <h3>Username</h3>
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Type in your username"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-button mat-raised-button color="primary">
+          Update username
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updateEmail()">
+      <h3>Email</h3>
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Type in your email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button mat-button mat-raised-button color="primary">
+          Update email
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <form [formGroup]="settingsForm" (ngSubmit)="updatePassword()">
+      <h3>Password</h3>
+      <mat-form-field class="full-width" *ngIf="!user.isSocial">
+        <mat-label>Current Password</mat-label>
+        <input
+          type="password"
+          formControlName="currentPassword"
+          placeholder="Type in your current password"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>New Password</mat-label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Type in your new password"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width mb-1">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your new password"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-card-actions align="end">
+        <a routerLink="/" mat-button mat-raised-button>Back</a>
+        <button mat-button mat-raised-button color="primary">
+          Update password
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
