@@ -1,7 +1,7 @@
 import { API_TOKEN } from '@speak-out/app/shared/data-access';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './auth.service';
+import { User } from '../interfaces/user';
 
 export interface UpdatePasswordBody {
   currentPassword?: string;
@@ -9,14 +9,12 @@ export interface UpdatePasswordBody {
   confirmPassword?: string;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(
     private http: HttpClient,
     @Inject(API_TOKEN) private api: string
-  ) {}
+  ) { }
 
   getUser(username: string) {
     return this.http.get<User>(`${this.api}/user/${username}`);

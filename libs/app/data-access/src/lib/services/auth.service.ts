@@ -1,35 +1,24 @@
+import { AuthTokenInterceptor, ErrorDialogInterceptor } from '../interceptors';
 import { AppleLoginProvider } from '../providers/apple-login.provider';
-import { API_TOKEN } from '@speak-out/app/shared/data-access';
+import { AppConfig, APP_CONFIG } from '../app-data-access.config';
+import { SubscriptionService } from './subscription.service';
 import { mergeMap, take, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { User } from '../interfaces';
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
 } from 'angularx-social-login';
 import Swal from 'sweetalert2';
-import { AuthTokenInterceptor } from '../interceptors/auth-token.interceptor';
-// import { ErrorDialogInterceptor } from '../../../core/interceptor/error-dialog.interceptor';
-import { SubscriptionService } from './subscription.service';
 
 export interface TokenResponse {
   access_token: string;
   refresh_token: string;
 }
-
-export interface User {
-  _id: string;
-  username: string;
-  password: string;
-  email: string;
-  online: boolean;
-  isSocial: boolean;
-}
-
-// const { api } = environment;
 
 @Injectable({
   providedIn: 'root',
@@ -47,15 +36,15 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private socialService: SocialAuthService,
     private router: Router,
-    @Inject(API_TOKEN) private api: string,
+    @Inject(APP_CONFIG) private config: AppConfig,
+    private socialService: SocialAuthService,
     private subscriptionService: SubscriptionService
   ) {}
 
   login(user: Partial<User>) {
     return this.http
-      .post<TokenResponse>(`${this.api}/auth/login`, user)
+      .post<TokenResponse>(`${this.config.api}/auth/login`, user)
       .pipe(mergeMap((response) => this.setTokens(response)));
   }
 
@@ -114,7 +103,7 @@ export class AuthService {
 
     return this.http
       .post<TokenResponse>(
-        `${this.api}/auth/${this.getProviderUri(providerId)}-login`,
+        `${this.config.api}/auth/${this.getProviderUri(providerId)}-login`,
         {
           name: user.name,
           accessToken: user.authToken,
@@ -143,13 +132,13 @@ export class AuthService {
 
   register(user: Partial<User>) {
     return this.http
-      .post<TokenResponse>(`${this.api}/auth/register`, user)
+      .post<TokenResponse>(`${this.config.api}/auth/register`, user)
       .pipe(mergeMap((response) => this.setTokens(response)));
   }
 
   getProfile() {
     return this.http
-      .get<User>(`${this.api}/auth/me`, {
+      .get<User>(`${this.config.api}/auth/me`, {
         headers: {
           [ErrorDialogInterceptor.skipHeader]: 'true',
         },
@@ -160,7 +149,7 @@ export class AuthService {
   loginWithRefreshToken() {
     return this.http
       .post<TokenResponse>(
-        `${this.api}/auth/refresh-token`,
+        `${this.config.api}/auth/refresh-token`,
         {
           refreshToken: this.getRefreshToken(),
         },
@@ -175,7 +164,7 @@ export class AuthService {
 
   logoutFromAllDevices() {
     return this.http
-      .delete<TokenResponse>(`${this.api}/auth/logout-from-all-devices`)
+      .delete<TokenResponse>(`${this.config.api}/auth/logout-from-all-devices`)
       .pipe(
         mergeMap((tokens) => this.setTokens(tokens)),
         tap(() => this.subscriptionService.requestSubscription())

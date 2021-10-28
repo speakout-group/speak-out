@@ -50,8 +50,8 @@ export class AppleLoginProvider extends BaseLoginProvider {
       photoUrl: '',
       lastName: '',
       idToken: '',
-      response: undefined,
-    };
+      response: undefined
+    }
     return new Promise((resolve) => resolve(user));
   }
 
