@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
   exports: [
     FormsModule,
     CommonModule,
-    RouterModule,
+    // RouterModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,

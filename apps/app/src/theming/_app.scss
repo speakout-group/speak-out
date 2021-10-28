@@ -1,0 +1,17 @@
+@include mat.core();
+
+$ma-primary: mat.define-palette(conf.$dark-palette);
+$ma-accent: mat.define-palette(conf.$orange-palette, A200, A100, A400);
+// $ma-primary: mat.define-palette(mat.$deep-orange-palette);
+// $ma-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+
+$ma-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ma-primary,
+      accent: $ma-accent,
+    ),
+  )
+);
+
+@include mat.all-component-themes($ma-theme);

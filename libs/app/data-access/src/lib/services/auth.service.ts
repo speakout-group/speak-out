@@ -35,11 +35,11 @@ export class AuthService {
   }
 
   constructor(
-    private http: HttpClient,
     private router: Router,
-    @Inject(APP_CONFIG) private config: AppConfig,
+    private http: HttpClient,
     private socialService: SocialAuthService,
-    private subscriptionService: SubscriptionService
+    private subscriptionService: SubscriptionService,
+    @Inject(APP_CONFIG) private config: AppConfig,
   ) {}
 
   login(user: Partial<User>) {
@@ -137,6 +137,8 @@ export class AuthService {
   }
 
   getProfile() {
+    console.log('profile');
+    
     return this.http
       .get<User>(`${this.config.api}/auth/me`, {
         headers: {

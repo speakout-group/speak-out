@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 import { AppleLoginProvider } from './providers';
 import { AuthService } from './services';
 import {
-  FacebookLoginProvider,
-  GoogleLoginProvider,
   SocialAuthService,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
   SocialAuthServiceConfig,
-  SocialLoginModule,
 } from 'angularx-social-login';
 
 @NgModule({
   imports: [CommonModule],
   providers: [
+    AuthService,
     SocialAuthService
   ]
 })
@@ -47,7 +47,6 @@ export class AppDataAccessModule {
     return {
       ngModule: AppDataAccessModule,
       providers: [
-        AuthService,
         {
           provide: APP_CONFIG,
           useValue: appConfig,

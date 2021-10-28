@@ -1,0 +1,73 @@
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(6, 6, 6, 0.6);
+}
+
+body {
+  .mat-dialog-container {
+    border-radius: 16px;
+  }
+
+  .mat-button-base:not(.mat-fab,.mat-mini-fab) {
+    border-radius: 8px;
+  }
+  .mat-card {
+    .mat-step {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+  }
+
+  .mat-menu-trigger.mat-button-base {
+    text-transform: capitalize;
+  }
+
+  .mat-button-base {
+    .mat-icon + span:not(:empty) {
+      margin-left: 8px;
+    }
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-toolbar {
+    transition: margin-top 1s ease-in-out;
+    &.is-hand-land {
+      margin-top: -56px;
+    }
+    &.is-hand-port {
+      position: sticky;
+      bottom: 0px;
+    }
+  }
+}
+
+.is-hand-port mat-toolbar > span.brand-name {
+  max-width: 100px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+.is-hand-port button > span.mat-button-wrapper > span {
+  max-width: 60px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
+// .is-hand-land .mat-toolbar:first-child {
+//   position: fixed;
+//   top: 0px;
+// }
+// .is-hand-port .mat-toolbar:first-child {
+//   position: fixed;
+//   bottom: 0px;
+// }
+
+// body .mat-expansion-panel {
+//   background-color: #212121;
+// }
+body .mat-expansion-panel-body {
+  padding: 0 12px;
+}
