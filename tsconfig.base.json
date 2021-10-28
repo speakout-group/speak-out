@@ -15,7 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@speak-out/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@speak-out/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@speak-out/app/auth/data-access": [
+        "libs/app/auth/data-access/src/index.ts"
+      ],
+      "@speak-out/app/chat/data-access": [
+        "libs/app/chat/data-access/src/index.ts"
+      ],
+      "@speak-out/app/chat/feature-messages": [
+        "libs/app/chat/feature-messages/src/index.ts"
+      ],
+      "@speak-out/app/shared/data-access": [
+        "libs/app/shared/data-access/src/index.ts"
+      ],
+      "@speak-out/app/shared/modules": ["libs/app/shared/modules/src/index.ts"],
+      "@speak-out/app/shared/ui-dialogs": [
+        "libs/app/shared/ui-dialogs/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

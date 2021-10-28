@@ -1,0 +1,53 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    environment:
+      - PORT=3000
+    deploy:
+      replicas: 1
+      restart_policy:
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        parallelism: 3
+        delay: 10s
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - type: bind
+        source: ./config/notification.config.json
+        target: /app/config/notification.config.json
+      - type: bind
+        source: ./config/firebase.config.json
+        target: /app/config/firebase.config.json
+    environment:
+      VAPID_SUBJECT: 'mailto:denzelcodedev@gmail.com'
+      VAPID_PRIVATE_KEY: ''
+      VAPID_PUBLIC_KEY: ''
+  nginx:
+    image: nginx
+    ports:
+      - '3000:80'
+    depends_on:
+      - app
+    environment:
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: '.conf'
+      API_HOST: app
+      API_PORT: 3000
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - ./docker/nginx/templates:/etc/nginx/templates/
+  mongo:
+    image: mongo
+    ports:
+      - '27018:27017'
+    volumes:
+      - ./docker/volumes/mongodb_data_container:/data/db
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'

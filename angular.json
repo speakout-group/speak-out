@@ -8,16 +8,12 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -26,8 +22,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
+                  "replace": "apps/api/src/environments/environments.ts",
+                  "with": "apps/api/src/environments/environments.prod.ts"
                 }
               ]
             }
@@ -41,20 +37,14 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/api"
-          ],
+          "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -70,13 +60,9 @@
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "libs/api-interfaces/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
           }
         }
       },
@@ -90,9 +76,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/app",
             "index": "apps/app/src/index.html",
@@ -105,9 +89,7 @@
               "apps/app/src/assets",
               "apps/app/src/manifest.webmanifest"
             ],
-            "styles": [
-              "apps/app/src/styles.scss"
-            ],
+            "styles": ["apps/app/src/styles.scss"],
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "apps/app/ngsw-config.json"
@@ -177,12 +159,136 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/app"
-          ],
+          "outputs": ["coverage/apps/app"],
           "options": {
             "jestConfig": "apps/app/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-auth-data-access": {
+      "projectType": "library",
+      "root": "libs/app/auth/data-access",
+      "sourceRoot": "libs/app/auth/data-access/src",
+      "prefix": "speak-out",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/auth/data-access"],
+          "options": {
+            "project": "libs/app/auth/data-access/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/auth/data-access/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/auth/data-access/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/auth/data-access"],
+          "options": {
+            "jestConfig": "libs/app/auth/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/auth/data-access/src/**/*.ts",
+              "libs/app/auth/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-chat-data-access": {
+      "projectType": "library",
+      "root": "libs/app/chat/data-access",
+      "sourceRoot": "libs/app/chat/data-access/src",
+      "prefix": "speak-out",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/chat/data-access"],
+          "options": {
+            "project": "libs/app/chat/data-access/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/chat/data-access/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/chat/data-access/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/chat/data-access"],
+          "options": {
+            "jestConfig": "libs/app/chat/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/chat/data-access/src/**/*.ts",
+              "libs/app/chat/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-chat-feature-messages": {
+      "projectType": "library",
+      "root": "libs/app/chat/feature-messages",
+      "sourceRoot": "libs/app/chat/feature-messages/src",
+      "prefix": "chat",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/chat/feature-messages"],
+          "options": {
+            "project": "libs/app/chat/feature-messages/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/chat/feature-messages/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/chat/feature-messages/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/chat/feature-messages"],
+          "options": {
+            "jestConfig": "libs/app/chat/feature-messages/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/chat/feature-messages/src/**/*.ts",
+              "libs/app/chat/feature-messages/src/**/*.html"
+            ]
           }
         }
       },
@@ -208,20 +314,140 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/app-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/app-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "app"
-      ]
+      "implicitDependencies": ["app"]
+    },
+    "app-shared-data-access": {
+      "projectType": "library",
+      "root": "libs/app/shared/data-access",
+      "sourceRoot": "libs/app/shared/data-access/src",
+      "prefix": "speak-out",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/shared/data-access"],
+          "options": {
+            "project": "libs/app/shared/data-access/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/shared/data-access/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/shared/data-access/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/shared/data-access"],
+          "options": {
+            "jestConfig": "libs/app/shared/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/shared/data-access/src/**/*.ts",
+              "libs/app/shared/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-shared-modules": {
+      "projectType": "library",
+      "root": "libs/app/shared/modules",
+      "sourceRoot": "libs/app/shared/modules/src",
+      "prefix": "shared",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/shared/modules"],
+          "options": {
+            "project": "libs/app/shared/modules/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/shared/modules/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/shared/modules/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/shared/modules"],
+          "options": {
+            "jestConfig": "libs/app/shared/modules/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/shared/modules/src/**/*.ts",
+              "libs/app/shared/modules/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-shared-ui-dialogs": {
+      "projectType": "library",
+      "root": "libs/app/shared/ui-dialogs",
+      "sourceRoot": "libs/app/shared/ui-dialogs/src",
+      "prefix": "dialog",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/shared/ui-dialogs"],
+          "options": {
+            "project": "libs/app/shared/ui-dialogs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/shared/ui-dialogs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/shared/ui-dialogs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/shared/ui-dialogs"],
+          "options": {
+            "jestConfig": "libs/app/shared/ui-dialogs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/shared/ui-dialogs/src/**/*.ts",
+              "libs/app/shared/ui-dialogs/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
