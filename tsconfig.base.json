@@ -16,15 +16,23 @@
     "baseUrl": ".",
     "paths": {
       "@speak-out/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@speak-out/app/auth/data-access": [
-        "libs/app/auth/data-access/src/index.ts"
-      ],
+      "@speak-out/app-data-access": ["libs/app/data-access/src/index.ts"],
       "@speak-out/app/chat/data-access": [
         "libs/app/chat/data-access/src/index.ts"
       ],
       "@speak-out/app/chat/feature-messages": [
         "libs/app/chat/feature-messages/src/index.ts"
       ],
+      "@speak-out/app/feature-auth": ["libs/app/feature-auth/src/index.ts"],
+      "@speak-out/app/feature-messages": [
+        "libs/app/feature-messages/src/index.ts"
+      ],
+      "@speak-out/app/feature-notification": [
+        "libs/app/feature-notification/src/index.ts"
+      ],
+      "@speak-out/app/feature-room": ["libs/app/feature-room/src/index.ts"],
+      "@speak-out/app/feature-shell": ["libs/app/feature-shell/src/index.ts"],
+      "@speak-out/app/feature-user": ["libs/app/feature-user/src/index.ts"],
       "@speak-out/app/shared/data-access": [
         "libs/app/shared/data-access/src/index.ts"
       ],

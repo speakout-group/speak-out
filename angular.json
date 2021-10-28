@@ -85,15 +85,9 @@
             "polyfills": "apps/app/src/polyfills.ts",
             "tsConfig": "apps/app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/app/src/favicon.ico",
-              "apps/app/src/assets",
-              "apps/app/src/manifest.webmanifest"
-            ],
+            "assets": ["apps/app/src/favicon.ico", "apps/app/src/assets"],
             "styles": ["apps/app/src/styles.scss"],
-            "scripts": [],
-            "serviceWorker": true,
-            "ngswConfigPath": "apps/app/ngsw-config.json"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -155,56 +149,6 @@
             "lintFilePatterns": [
               "apps/app/src/**/*.ts",
               "apps/app/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/app"],
-          "options": {
-            "jestConfig": "apps/app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
-    },
-    "app-auth-data-access": {
-      "projectType": "library",
-      "root": "libs/app/auth/data-access",
-      "sourceRoot": "libs/app/auth/data-access/src",
-      "prefix": "speak-out",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/app/auth/data-access"],
-          "options": {
-            "project": "libs/app/auth/data-access/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/app/auth/data-access/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/app/auth/data-access/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/auth/data-access"],
-          "options": {
-            "jestConfig": "libs/app/auth/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/auth/data-access/src/**/*.ts",
-              "libs/app/auth/data-access/src/**/*.html"
             ]
           }
         }
@@ -295,34 +239,203 @@
       },
       "tags": []
     },
-    "app-e2e": {
-      "root": "apps/app-e2e",
-      "sourceRoot": "apps/app-e2e/src",
-      "projectType": "application",
+    "app-data-access": {
+      "projectType": "library",
+      "root": "libs/app/data-access",
+      "sourceRoot": "libs/app/data-access/src",
+      "prefix": "speak-out",
       "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/data-access"],
           "options": {
-            "cypressConfig": "apps/app-e2e/cypress.json",
-            "devServerTarget": "app:serve:development",
-            "tsConfig": "apps/app-e2e/tsconfig.json"
+            "project": "libs/app/data-access/ng-package.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "app:serve:production"
+              "tsConfig": "libs/app/data-access/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/data-access/tsconfig.lib.json"
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/data-access"],
+          "options": {
+            "jestConfig": "libs/app/data-access/jest.config.js",
+            "passWithNoTests": true
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "libs/app/data-access/src/**/*.ts",
+              "libs/app/data-access/src/**/*.html"
+            ]
           }
         }
       },
-      "tags": [],
-      "implicitDependencies": ["app"]
+      "tags": []
+    },
+    "app-feature-auth": {
+      "projectType": "library",
+      "root": "libs/app/feature-auth",
+      "sourceRoot": "libs/app/feature-auth/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-auth"],
+          "options": {
+            "jestConfig": "libs/app/feature-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-auth/src/**/*.ts",
+              "libs/app/feature-auth/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-messages": {
+      "projectType": "library",
+      "root": "libs/app/feature-messages",
+      "sourceRoot": "libs/app/feature-messages/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-messages"],
+          "options": {
+            "jestConfig": "libs/app/feature-messages/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-messages/src/**/*.ts",
+              "libs/app/feature-messages/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-notification": {
+      "projectType": "library",
+      "root": "libs/app/feature-notification",
+      "sourceRoot": "libs/app/feature-notification/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-notification"],
+          "options": {
+            "jestConfig": "libs/app/feature-notification/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-notification/src/**/*.ts",
+              "libs/app/feature-notification/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-room": {
+      "projectType": "library",
+      "root": "libs/app/feature-room",
+      "sourceRoot": "libs/app/feature-room/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-room"],
+          "options": {
+            "jestConfig": "libs/app/feature-room/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-room/src/**/*.ts",
+              "libs/app/feature-room/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-shell": {
+      "projectType": "library",
+      "root": "libs/app/feature-shell",
+      "sourceRoot": "libs/app/feature-shell/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-shell"],
+          "options": {
+            "jestConfig": "libs/app/feature-shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-shell/src/**/*.ts",
+              "libs/app/feature-shell/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-user": {
+      "projectType": "library",
+      "root": "libs/app/feature-user",
+      "sourceRoot": "libs/app/feature-user/src",
+      "prefix": "shell",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-user"],
+          "options": {
+            "jestConfig": "libs/app/feature-user/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-user/src/**/*.ts",
+              "libs/app/feature-user/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     },
     "app-shared-data-access": {
       "projectType": "library",
