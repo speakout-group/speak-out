@@ -4,9 +4,9 @@ ENV PORT=3000
 ENV TZ=America/New_York
 
 WORKDIR /app
-COPY package.json /app/
+COPY ./dist/apps/api/package.json /app/
 RUN npm install
-COPY . /app/
+COPY ./dist/apps/api/ /app/
 COPY .docker.env /app/.env
-CMD ["npm", "run", "start"]
+CMD ["node", "main.js"]
 EXPOSE ${PORT}
