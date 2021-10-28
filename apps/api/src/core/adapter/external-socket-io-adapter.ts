@@ -46,7 +46,7 @@ export class ExternalSocketIoAdapter extends AbstractWsAdapter {
         },
         // Allow 1MB of data per request.
         maxHttpBufferSize: 1e6,
-      });
+      } as any);
 
       return s;
     }

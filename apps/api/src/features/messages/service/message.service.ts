@@ -61,7 +61,7 @@ export class MessageService {
   }
 
   async getRoomMessages(room: Room, limit?: number, before?: Date) {
-    const filter: FilterQuery<Room> = {
+    const filter: FilterQuery<Message> = {
       room: room._id,
       createdAt: { $lte: before },
     };
@@ -74,7 +74,7 @@ export class MessageService {
   }
 
   getDirectMessages(from: User, to: User, limit = 30, before?: Date) {
-    const filter: FilterQuery<Room> = {
+    const filter: FilterQuery<Message> = {
       ...this.getDirectMessageFilter(from, to),
       createdAt: { $lte: before },
     };
