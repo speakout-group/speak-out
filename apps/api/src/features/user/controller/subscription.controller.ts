@@ -23,27 +23,27 @@ export class SubscriptionController {
     return this.subscriptionService.sendNotification(user, {
       notification: {
         title: 'Testing',
-        body: 'Testing notification'
-      }
+        body: 'Testing notification',
+      },
     });
   }
 
   @Post('web')
   createWebSubscription(
     @Body('subscription') body: PushSubscriptionJSON,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.createSubscription(
       user,
       SubscriptionType.Web,
-      JSON.stringify(body),
+      JSON.stringify(body)
     );
   }
 
   @Post('mobile')
   createMobileSubscription(
     @Body('subscription') body: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.createSubscription(user, SubscriptionType.Mobile, body);
   }
@@ -51,7 +51,7 @@ export class SubscriptionController {
   private async createSubscription(
     user: User,
     type: SubscriptionType,
-    body: string,
+    body: string
   ) {
     if (!body) {
       throw new BadRequestException('Corpo de assinatura vazio');
@@ -65,19 +65,19 @@ export class SubscriptionController {
   @Delete('web')
   deleteWebSubscription(
     @Body('subscription') body: PushSubscriptionJSON,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.deleteSubscription(
       user,
       SubscriptionType.Web,
-      JSON.stringify(body),
+      JSON.stringify(body)
     );
   }
 
   @Delete('mobile')
   deleteMobileSubscription(
     @Body('subscription') body: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.deleteSubscription(user, SubscriptionType.Mobile, body);
   }
@@ -85,7 +85,7 @@ export class SubscriptionController {
   private async deleteSubscription(
     user: User,
     type: SubscriptionType,
-    body: string,
+    body: string
   ) {
     if (!body) {
       throw new BadRequestException('Corpo de assinatura vazio');

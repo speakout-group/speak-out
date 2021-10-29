@@ -43,11 +43,11 @@ export class RoomController {
   @Delete('delete/:id')
   async delete(
     @Param('id', ParseObjectIdPipe) id: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.roomService.delete(
       await this.roomService.validateRoomByIdAndOwner(id, user),
-      user,
+      user
     );
   }
 
@@ -60,19 +60,19 @@ export class RoomController {
   async update(
     @Param('id', ParseObjectIdPipe) id: string,
     @Body() body: RoomDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.roomService.update(
       await this.roomService.validateRoomByIdAndOwner(id, user),
       body,
-      user,
+      user
     );
   }
 
   @Post('join')
   async join(
     @Body('roomId', ParseObjectIdPipe) id: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.roomService.join(id, user);
   }
@@ -80,11 +80,11 @@ export class RoomController {
   @Delete('leave/:id')
   async leave(
     @Param('id', ParseObjectIdPipe) id: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.roomService.leave(
       user,
-      await this.roomService.validateRoom(id),
+      await this.roomService.validateRoom(id)
     );
   }
 }

@@ -27,7 +27,7 @@ export class RoomGateway implements OnGatewayDisconnect<Socket> {
   @WebSocketServer() server: Server;
 
   constructor(
-    @Inject(forwardRef(() => RoomService)) private roomService: RoomService,
+    @Inject(forwardRef(() => RoomService)) private roomService: RoomService
   ) {}
 
   handleDisconnect(socket: Socket) {
@@ -37,11 +37,11 @@ export class RoomGateway implements OnGatewayDisconnect<Socket> {
   @SubscribeMessage('room:subscribe')
   async subscribe(
     @ConnectedSocket() client: Socket,
-    @MessageBody() roomId: string,
+    @MessageBody() roomId: string
   ) {
     return this.roomService.subscribeSocket(
       client,
-      await this.roomService.validateRoom(roomId),
+      await this.roomService.validateRoom(roomId)
     );
   }
 }

@@ -14,7 +14,7 @@ export class UserService {
   constructor(
     private http: HttpClient,
     @Inject(API_TOKEN) private api: string
-  ) { }
+  ) {}
 
   getUser(username: string) {
     return this.http.get<User>(`${this.api}/user/${username}`);

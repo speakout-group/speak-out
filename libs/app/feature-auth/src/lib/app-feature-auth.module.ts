@@ -7,10 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [
-    LoginPageComponent,
-    RegisterPageComponent
-  ],
+  declarations: [LoginPageComponent, RegisterPageComponent],
   imports: [
     SocialLoginModule,
     AppDataAccessModule,
@@ -35,8 +32,6 @@ import { NgModule } from '@angular/core';
       },
     ]),
   ],
-  exports: [
-    SocialLoginModule
-  ]
+  exports: [SocialLoginModule],
 })
 export class AppFeatureAuthModule {}

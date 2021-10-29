@@ -1,4 +1,4 @@
-import { InjectionToken } from "@angular/core";
+import { InjectionToken } from '@angular/core';
 
 export interface AppConfig {
   api: string;
@@ -13,4 +13,4 @@ export interface AppConfig {
   };
 }
 
-export const APP_CONFIG = new InjectionToken<AppConfig>('app.config')
+export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');

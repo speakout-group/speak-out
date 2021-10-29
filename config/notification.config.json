@@ -1,10 +1,10 @@
 {
-	"vapid": {
-		"subject": "mailto:example@example.com",
-		"privateKey": "wme-sXHNKIr8JGq7Y5zg6DgIsNUAClJOSfQFfcHUauA",
-		"publicKey": "BP37FotarTQXvBIYWEJ_34bYnkpV3K1ystF0K9e_ZtnlpuqJxf_GRBkpRsnOeaxc-9wa7h86a4VYzkTpJ2bK9tU"
-	},
-	"subject": "mailto: <demoseekmail@gmail.com>",
-	"publicKey": "BILApbL8y8vZIDisbrEkRgmTWYboL23j_qpsDVCaWkBmfjb__VTGVlAU8G6xF4gZXgtb3WwE2FsGQSHLNAwoY5Q",
-	"privateKey": "qw8WiIuK5LCtF-fAdKZmrQb9XdE0szpv5k5Sgfcq2Ao"
+  "vapid": {
+    "subject": "mailto:example@example.com",
+    "privateKey": "wme-sXHNKIr8JGq7Y5zg6DgIsNUAClJOSfQFfcHUauA",
+    "publicKey": "BP37FotarTQXvBIYWEJ_34bYnkpV3K1ystF0K9e_ZtnlpuqJxf_GRBkpRsnOeaxc-9wa7h86a4VYzkTpJ2bK9tU"
+  },
+  "subject": "mailto: <demoseekmail@gmail.com>",
+  "publicKey": "BILApbL8y8vZIDisbrEkRgmTWYboL23j_qpsDVCaWkBmfjb__VTGVlAU8G6xF4gZXgtb3WwE2FsGQSHLNAwoY5Q",
+  "privateKey": "qw8WiIuK5LCtF-fAdKZmrQb9XdE0szpv5k5Sgfcq2Ao"
 }

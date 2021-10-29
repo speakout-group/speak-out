@@ -29,7 +29,7 @@ export class UserService {
   constructor(
     @InjectModel(User.name) private userModel: Model<User>,
     @Inject(forwardRef(() => UserGateway)) private userGateway: UserGateway,
-    private socketConnectionService: SocketConnectionService,
+    private socketConnectionService: SocketConnectionService
   ) {}
 
   getUserByName(name: string) {

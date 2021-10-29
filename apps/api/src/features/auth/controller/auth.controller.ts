@@ -33,13 +33,13 @@ export class AuthController {
     private facebookService: FacebookAuthService,
     private googleService: GoogleAuthService,
     // private appleService: AppleAuthService,
-    private subscriptionService: SubscriptionService,
+    private subscriptionService: SubscriptionService
   ) {}
 
   @Post('login')
   async login(@Body() body: LoginDto) {
     return this.authService.login(
-      await this.authService.validate(body.username, body.password),
+      await this.authService.validate(body.username, body.password)
     );
   }
 
@@ -52,15 +52,15 @@ export class AuthController {
         'name',
         'email',
         'first_name',
-        'last_name',
-      ),
+        'last_name'
+      )
     );
   }
 
   @Post('google-login')
   async googleLogin(@Body('accessToken') accessToken: string) {
     return this.authService.loginWithThirdParty('googleId', () =>
-      this.googleService.getUser(accessToken),
+      this.googleService.getUser(accessToken)
     );
   }
 

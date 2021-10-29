@@ -7,7 +7,7 @@ body {
     border-radius: 16px;
   }
 
-  .mat-button-base:not(.mat-fab,.mat-mini-fab) {
+  .mat-button-base:not(.mat-fab, .mat-mini-fab) {
     border-radius: 8px;
   }
   .mat-card {

@@ -38,14 +38,14 @@ export class AppleAuthService {
           clientSecret,
           clientID,
           redirectUri: auth[type].redirectUri,
-        },
+        }
       );
 
       if (!response?.id_token) {
         throw new UnauthorizedException(
           `Access token cannot be retrieved from Apple: ${JSON.stringify(
-            response,
-          )}`,
+            response
+          )}`
         );
       }
 

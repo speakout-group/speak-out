@@ -34,7 +34,7 @@ export class UpsertRoomDialogComponent {
     @Inject(MAT_DIALOG_DATA) data: UpsertDialogData,
     private roomService: RoomService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<UpsertRoomDialogComponent>,
+    private dialogRef: MatDialogRef<UpsertRoomDialogComponent>
   ) {
     this.type = data.type;
     this.room = data.room;
@@ -49,18 +49,18 @@ export class UpsertRoomDialogComponent {
 
     let request = this.roomService.createRoom(roomInput);
 
-    const roomId = this.room?._id
+    const roomId = this.room?._id;
 
     if (this.type === ActionType.Update && roomId) {
       request = this.roomService.updateRoom(roomId, roomInput);
     }
 
-    request.pipe(take(1)).subscribe(room =>
+    request.pipe(take(1)).subscribe((room) =>
       this.dialogRef.close({
         ...room,
         title: roomInput.title,
         isPublic: roomInput.isPublic,
-      }),
+      })
     );
   }
 }

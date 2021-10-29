@@ -1,4 +1,9 @@
-import { AuthService, Room, RoomService, User } from '@speak-out/app-data-access';
+import {
+  AuthService,
+  Room,
+  RoomService,
+  User,
+} from '@speak-out/app-data-access';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { take, takeUntil, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,7 +35,7 @@ export class RoomsPageComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private clipboard: Clipboard,
     private dialog: MatDialog,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,7 +57,7 @@ export class RoomsPageComponent implements OnInit, OnDestroy {
 
     this.authService.user$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(user => (this.user = user));
+      .subscribe((user) => (this.user = user));
   }
 
   ngOnDestroy() {

@@ -46,7 +46,7 @@ export class User extends Document {
 export const UserSchema = createSchemaForClassWithMethods(User);
 
 // Update password into a hashed one.
-UserSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function (next) {
   const user: User = this as any;
 
   if (!user.password || user.password.startsWith('$')) {

@@ -12,14 +12,14 @@ import { Server } from 'socket.io';
 export class ExternalSocketIoAdapter extends AbstractWsAdapter {
   constructor(
     app?: INestApplicationContext,
-    private readonly cors: string | string[] = '*',
+    private readonly cors: string | string[] = '*'
   ) {
     super(app);
   }
 
   public create(
     port: number,
-    options?: any & { namespace?: string; server?: any },
+    options?: any & { namespace?: string; server?: any }
   ): any {
     if (!options) {
       return this.createIOServer(port);
@@ -56,11 +56,11 @@ export class ExternalSocketIoAdapter extends AbstractWsAdapter {
   public bindMessageHandlers(
     client: any,
     handlers: MessageMappingProperties[],
-    transform: (data: any) => Observable<any>,
+    transform: (data: any) => Observable<any>
   ) {
     const disconnect$ = fromEvent(client, DISCONNECT_EVENT).pipe(
       share(),
-      first(),
+      first()
     );
 
     handlers.forEach(({ message, callback }) => {
@@ -69,10 +69,10 @@ export class ExternalSocketIoAdapter extends AbstractWsAdapter {
           const { data, ack } = this.mapPayload(payload);
           return transform(callback(data, ack)).pipe(
             filter((response: any) => !isNil(response)),
-            map((response: any) => [response, ack]),
+            map((response: any) => [response, ack])
           );
         }),
-        takeUntil(disconnect$),
+        takeUntil(disconnect$)
       );
       source$.subscribe(([response, ack]) => {
         if (response.event) {

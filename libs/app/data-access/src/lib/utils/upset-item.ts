@@ -1,7 +1,7 @@
 export const updateItem = <T>(
   arr: T[],
   predicate: (item: T) => boolean,
-  object: Partial<T>,
+  object: Partial<T>
 ) => {
   const item = arr.find(predicate);
 

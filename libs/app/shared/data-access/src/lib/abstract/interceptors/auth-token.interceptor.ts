@@ -5,13 +5,13 @@ import {
   HttpEvent,
   HttpRequest,
   HttpHandler,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 
 // @Injectable()
 export abstract class AuthTokenInterceptor implements HttpInterceptor {
   static skipHeader = 'skipTokenInterceptor';
-  
+
   constructor(private authService: AuthService) {}
 
   private skipRequest(request: HttpRequest<unknown>) {
@@ -33,7 +33,9 @@ export abstract class AuthTokenInterceptor implements HttpInterceptor {
 
     return request;
   }
-  
-  abstract intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>>;
 
+  abstract intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>>;
 }

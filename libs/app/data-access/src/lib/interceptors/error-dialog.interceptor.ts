@@ -13,14 +13,15 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-
 export interface HttpError {
   statusCode: number;
   message: string;
   error?: string;
 }
 
-export const ERROR_DIALOG = new InjectionToken<ComponentType<unknown>>('error.dialog')
+export const ERROR_DIALOG = new InjectionToken<ComponentType<unknown>>(
+  'error.dialog'
+);
 
 @Injectable()
 export class ErrorDialogInterceptor implements HttpInterceptor {
@@ -31,11 +32,11 @@ export class ErrorDialogInterceptor implements HttpInterceptor {
     private authService: AuthService,
     @Inject(ERROR_DIALOG)
     private errorDialog: ComponentType<unknown>
-  ) { }
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     if (request.headers.has(ErrorDialogInterceptor.skipHeader)) {
       return next.handle(request);
@@ -44,7 +45,7 @@ export class ErrorDialogInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap(
         () => null,
-        response => {
+        (response) => {
           if (response instanceof HttpErrorResponse) {
             if (
               response.status === 401 &&
@@ -56,8 +57,8 @@ export class ErrorDialogInterceptor implements HttpInterceptor {
 
             this.handleError(response.error);
           }
-        },
-      ),
+        }
+      )
     );
   }
 

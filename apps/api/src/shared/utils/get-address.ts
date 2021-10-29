@@ -18,7 +18,7 @@ export const getAddress = (client: Socket | Request): string => {
   if (client instanceof Socket) {
     return getAddressFrom(
       client.handshake.address,
-      client.handshake.headers as Dictionary,
+      client.handshake.headers as Dictionary
     );
   }
 

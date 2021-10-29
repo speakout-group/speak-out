@@ -27,7 +27,7 @@ export class SubscriptionService {
     private webNotificationService: WebNotificationService,
     private mobileNotificationService: MobileNotificationService,
     @InjectModel(Subscription.name)
-    private subscriptionModel: Model<Subscription>,
+    private subscriptionModel: Model<Subscription>
   ) {}
 
   getAll(user: User) {
@@ -73,7 +73,7 @@ export class SubscriptionService {
               notification: payload.notification,
               data: payload.webData,
             })
-            .catch(e => this.logger.debug(`${subscription.type} ${e}`));
+            .catch((e) => this.logger.debug(`${subscription.type} ${e}`));
           break;
         case SubscriptionType.Mobile:
           delete payload.webData;
@@ -83,7 +83,7 @@ export class SubscriptionService {
               notification: payload.notification,
               data: payload.mobileData,
             })
-            .catch(e => this.logger.debug(`${subscription.type} ${e}`));
+            .catch((e) => this.logger.debug(`${subscription.type} ${e}`));
           break;
         default:
           break;

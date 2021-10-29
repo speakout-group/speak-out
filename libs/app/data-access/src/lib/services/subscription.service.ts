@@ -19,7 +19,9 @@ export class SubscriptionService {
   requestSubscription() {
     return this.notificationService
       .requestSubscription()
-      .pipe(mergeMap(subscription => this.registerSubscription(subscription)));
+      .pipe(
+        mergeMap((subscription) => this.registerSubscription(subscription))
+      );
   }
 
   registerSubscription(subscription: PushSubscription) {

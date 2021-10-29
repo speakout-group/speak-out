@@ -30,27 +30,27 @@ export class DirectMessagePageComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private changeDetector: ChangeDetectorRef,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.route.params
       .pipe(
         takeUntil(this.destroy$),
-        mergeMap(params => {
+        mergeMap((params) => {
           this.toName = params.username;
 
           return this.userService.getUser(this.toName).pipe(take(1));
         }),
         catchError(() => this.router.navigate(['/'])),
-        filter<User>(user => typeof user !== 'boolean'),
-        tap(user => {
+        filter<User>((user) => typeof user !== 'boolean'),
+        tap((user) => {
           this.to = user;
 
           this.changeDetector.detectChanges();
 
           this.updateMessages$.next();
-        }),
+        })
       )
       .subscribe();
 
@@ -60,9 +60,9 @@ export class DirectMessagePageComponent implements OnInit, OnDestroy {
         filter(() => this.to != null),
         mergeMap(() => this.userService.getUser(this.toName).pipe(take(1))),
         tap(
-          user => (this.to = user),
-          () => this.router.navigate(['/rooms']),
-        ),
+          (user) => (this.to = user),
+          () => this.router.navigate(['/rooms'])
+        )
       )
       .subscribe();
   }

@@ -25,7 +25,7 @@ export class JwtAuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private jwtService: JwtService,
-    @Inject(forwardRef(() => UserService)) private userService: UserService,
+    @Inject(forwardRef(() => UserService)) private userService: UserService
   ) {
     this.reflector = new Reflector();
   }
@@ -62,7 +62,7 @@ export class JwtAuthGuard implements CanActivate {
 
       await this.jwtService.verifyAsync<Token>(
         token,
-        this.authService.getAccessTokenOptions(user),
+        this.authService.getAccessTokenOptions(user)
       );
 
       return user;
@@ -95,10 +95,7 @@ export class JwtAuthGuard implements CanActivate {
 
   throwException(ctx: ExecutionContext, message: string) {
     if (ctx.getType() === 'ws') {
-      ctx
-        .switchToWs()
-        .getClient<Socket>()
-        .disconnect(true);
+      ctx.switchToWs().getClient<Socket>().disconnect(true);
     }
 
     throw new UnauthorizedException(message);

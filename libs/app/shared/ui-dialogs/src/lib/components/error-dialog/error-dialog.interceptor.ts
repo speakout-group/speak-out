@@ -13,7 +13,10 @@ import {
   ErrorDialogComponent,
   ErrorDialogData,
 } from './error-dialog.component';
-import { AuthService, AuthTokenInterceptor } from '@speak-out/app/shared/data-access';
+import {
+  AuthService,
+  AuthTokenInterceptor,
+} from '@speak-out/app/shared/data-access';
 // import { AuthTokenInterceptor } from '../../features/auth/interceptor/auth-token.interceptor';
 
 export interface HttpError {

@@ -9,20 +9,21 @@ import { ConfMainContainer } from './containers/conf';
     RouterModule.forChild([
       {
         path: '',
-        redirectTo: 'conf/devpr2021'
+        redirectTo: 'conf/devpr2021',
       },
       {
         path: 'conf/:slug',
-        component: ConfMainContainer
+        component: ConfMainContainer,
       },
       {
         path: '',
-        loadChildren: () => import('@speak-out/app-feature-auth').then(m => m.AppFeatureAuthModule)
-      }
-    ])
+        loadChildren: () =>
+          import('@speak-out/app-feature-auth').then(
+            (m) => m.AppFeatureAuthModule
+          ),
+      },
+    ]),
   ],
-  declarations: [
-    ConfMainContainer
-  ],
+  declarations: [ConfMainContainer],
 })
 export class AppFeatureShellModule {}

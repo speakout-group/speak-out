@@ -17,7 +17,7 @@ export class MessageService {
   constructor(
     @InjectModel(Message.name) private messageModel: Model<Message>,
     @Inject(forwardRef(() => RoomService)) private roomService: RoomService,
-    private userService: UserService,
+    private userService: UserService
   ) {}
 
   getMessage(id: string) {
@@ -92,13 +92,13 @@ export class MessageService {
         .find(filter)
         .limit(limit)
         .sort({ createdAt: -1 })
-        .populate('from', this.userService.unpopulatedFields),
+        .populate('from', this.userService.unpopulatedFields)
     );
   }
 
   sortMessages(messages: Message[]) {
     return messages.sort(
-      (a, b) => a.createdAt.getTime() - b.createdAt.getTime(),
+      (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
     );
   }
 
@@ -157,13 +157,13 @@ export class MessageService {
     this.userService.sendMessage(
       message.from,
       'direct:delete_message',
-      message._id,
+      message._id
     );
 
     this.userService.sendMessage(
       message.to,
       'direct:delete_message',
-      message._id,
+      message._id
     );
 
     return this.messageModel.findOneAndDelete({

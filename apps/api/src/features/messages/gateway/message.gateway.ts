@@ -39,20 +39,20 @@ export class MessageGateway {
     private userService: UserService,
     private roomService: RoomService,
     private messageService: MessageService,
-    private subscriptionService: SubscriptionService,
+    private subscriptionService: SubscriptionService
   ) {}
 
   @SubscribeMessage('message:direct')
   async sendDirectMessage(
     @MessageBody() body: DirectMessageDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     const userTo = await this.userService.validateUserById(body.to);
 
     const message = await this.messageService.createDirectMessage(
       user,
       userTo,
-      body.message,
+      body.message
     );
 
     this.userService.sendMessage(user, 'message:direct', message);
@@ -90,26 +90,26 @@ export class MessageGateway {
   @SubscribeMessage('message:direct:typing')
   async sendDirectTyping(
     @MessageBody(new ParseObjectIdPipe()) userId: string,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     return this.userService.sendMessage(
       await this.userService.validateUserById(userId),
       'message:direct:typing',
-      { user: this.userService.filterUser(user) },
+      { user: this.userService.filterUser(user) }
     );
   }
 
   @SubscribeMessage('message:room')
   async sendRoomMessage(
     @MessageBody() body: RoomMessageDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     const room = await this.roomService.validateRoom(body.roomId);
 
     const message = await this.messageService.createRoomMessage(
       user,
       room,
-      body.message,
+      body.message
     );
 
     const url = environments.frontEndUrl;
@@ -148,7 +148,7 @@ export class MessageGateway {
   async sendRoomTyping(
     @MessageBody(new ParseObjectIdPipe()) roomId: string,
     @ConnectedSocket() socket: Socket,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     const room = await this.roomService.validateRoom(roomId);
 
@@ -156,7 +156,7 @@ export class MessageGateway {
       socket,
       room,
       'message:room:typing',
-      { room, user: this.userService.filterUser(user) },
+      { room, user: this.userService.filterUser(user) }
     );
   }
 }

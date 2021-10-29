@@ -6,7 +6,7 @@ import { fcm } from '../api/firebase';
 export class MobileNotificationService {
   async sendNotification(
     token: string | string[],
-    payload: messaging.MessagingPayload,
+    payload: messaging.MessagingPayload
   ) {
     return fcm.sendToDevice(token, {
       ...payload,

@@ -26,7 +26,7 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
   online = 0;
 
   constructor(
-    @Inject(forwardRef(() => UserService)) private userService: UserService,
+    @Inject(forwardRef(() => UserService)) private userService: UserService
   ) {}
 
   handleConnection() {
@@ -43,7 +43,9 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
     }
 
     this.logger.log(
-      `O usuário ${user.username} saiu do servidor ${hostname()}; ${this.online}`,
+      `O usuário ${user.username} saiu do servidor ${hostname()}; ${
+        this.online
+      }`
     );
 
     return this.userService.unsubscribeSocket(socket, user);
@@ -52,10 +54,12 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
   @SubscribeMessage('user:subscribe')
   async subscribe(
     @ConnectedSocket() client: Socket,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     this.logger.log(
-      `O usuário ${user.username} entrou no servidor ${hostname()}; ${this.online}`,
+      `O usuário ${user.username} entrou no servidor ${hostname()}; ${
+        this.online
+      }`
     );
 
     return this.userService.subscribeSocket(client, user);

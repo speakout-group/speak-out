@@ -18,7 +18,7 @@ export class RegisterPageComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   submit() {
@@ -37,7 +37,7 @@ export class RegisterPageComponent {
           this.registerForm.patchValue({
             password: '',
           });
-        },
+        }
       );
   }
 
@@ -50,7 +50,7 @@ export class RegisterPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithFacebook(),
+        this.authService.loginWithFacebook()
       );
     } finally {
       this.loading = false;
@@ -66,7 +66,7 @@ export class RegisterPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithGoogle(),
+        this.authService.loginWithGoogle()
       );
     } finally {
       this.loading = false;
@@ -82,7 +82,7 @@ export class RegisterPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithApple(),
+        this.authService.loginWithApple()
       );
     } finally {
       this.loading = false;

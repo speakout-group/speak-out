@@ -23,17 +23,23 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     AppDataAccessModule.forRoot(environment),
-    RouterModule.forRoot([
-      {
-        path: '',
-        loadChildren: () => import('@speak-out/app-feature-shell').then(m => m.AppFeatureShellModule)
-      }
-    ], { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          loadChildren: () =>
+            import('@speak-out/app-feature-shell').then(
+              (m) => m.AppFeatureShellModule
+            ),
+        },
+      ],
+      { initialNavigation: 'enabledBlocking' }
+    ),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   providers: [

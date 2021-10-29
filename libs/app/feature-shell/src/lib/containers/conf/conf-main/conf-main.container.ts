@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./conf-main.container.scss'],
 })
 export class ConfMainContainer implements OnInit, OnDestroy {
-  user$ = this.authService.user$
+  user$ = this.authService.user$;
   user: User | null = null;
 
   destroy$ = new Subject();

@@ -13,7 +13,7 @@ export class SocketConnectionService {
   constructor(
     @InjectModel(SocketConnection.name)
     private socketConnectionModel: Model<SocketConnection>,
-    @Inject(forwardRef(() => UserService)) private userService: UserService,
+    @Inject(forwardRef(() => UserService)) private userService: UserService
   ) {}
 
   async create(socket: Socket, user: User) {

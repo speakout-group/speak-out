@@ -36,14 +36,11 @@ export abstract class AuthService {
 
   abstract getProfile(): Observable<User>;
 
-  abstract loginWithRefreshToken(): Observable<TokenResponse>
-  
-  abstract logoutFromAllDevices(): Observable<TokenResponse>
-  
-  
-  abstract setTokens(response: TokenResponse): Promise<User>
-  abstract setAccessToken(token: string): Promise<User>
-  abstract getAccessToken(): string
+  abstract loginWithRefreshToken(): Observable<TokenResponse>;
 
+  abstract logoutFromAllDevices(): Observable<TokenResponse>;
 
+  abstract setTokens(response: TokenResponse): Promise<User>;
+  abstract setAccessToken(token: string): Promise<User>;
+  abstract getAccessToken(): string;
 }

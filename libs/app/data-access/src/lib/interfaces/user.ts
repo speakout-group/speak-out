@@ -6,4 +6,3 @@ export interface User {
   online: boolean;
   isSocial: boolean;
 }
-

@@ -13,7 +13,10 @@ import { boundMethod } from 'autobind-decorator';
 import { remove } from 'lodash';
 import { Subject, timer } from 'rxjs';
 import { filter, mergeMap, take, takeUntil, tap } from 'rxjs/operators';
-import { Sound, SoundService } from '../../../../../app/shared/services/sound.service';
+import {
+  Sound,
+  SoundService,
+} from '../../../../../app/shared/services/sound.service';
 import { HttpError } from '../../../../core/interceptor/error-dialog.interceptor';
 import { MainSocket } from '../../../../core/socket/main-socket';
 import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
@@ -76,7 +79,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     private soundService: SoundService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private changeDetector: ChangeDetectorRef,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   get partnerId() {
@@ -111,7 +114,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     this.authService.user$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(user => (this.user = user));
+      .subscribe((user) => (this.user = user));
 
     this.updateMessages$
       ?.pipe(takeUntil(this.destroy$))
@@ -122,12 +125,12 @@ export class MessagesComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$),
         filter(
-          message =>
+          (message) =>
             this.isCurrentSection(
               message.to !== this.user._id ? message.to : message.from._id,
-              message.room,
-            ) && !this.messages.some(msg => msg._id === message._id),
-        ),
+              message.room
+            ) && !this.messages.some((msg) => msg._id === message._id)
+        )
       )
       .subscribe(this.handleMessageEvent);
 
@@ -135,23 +138,23 @@ export class MessagesComponent implements OnInit, OnDestroy {
       .onDeleteMessagesEvent(this.type)
       .pipe(
         takeUntil(this.destroy$),
-        filter(id => this.isCurrentSection(id)),
+        filter((id) => this.isCurrentSection(id))
       )
       .subscribe(() => remove(this.messages, () => true));
 
     this.messageService
       .onDeleteMessageEvent(this.type)
       .pipe(takeUntil(this.destroy$))
-      .subscribe(messageId => {
+      .subscribe((messageId) => {
         if (messageId === this.firstMessage?._id) {
-          if (this.messages.some(message => message._id === messageId)) {
+          if (this.messages.some((message) => message._id === messageId)) {
             this.firstMessage = this.messages[1];
           } else {
             this.updateFirstMessage();
           }
         }
 
-        remove(this.messages, message => message._id === messageId);
+        remove(this.messages, (message) => message._id === messageId);
       });
 
     this.updateFirstMessage();
@@ -163,10 +166,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
         filter(
           ({ user, room }) =>
             this.isCurrentSection(user._id, room?._id) &&
-            this.user._id !== user._id,
+            this.user._id !== user._id
         ),
         tap(({ user }) => {
-          if (!this.typing.some(u => u._id === user._id)) {
+          if (!this.typing.some((u) => u._id === user._id)) {
             this.typing.push(user);
           }
 
@@ -183,13 +186,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
                   filter(
                     ({ user: typingUser, room }) =>
                       this.isCurrentSection(user._id, room?._id) &&
-                      user._id === typingUser._id,
-                  ),
-                ),
+                      user._id === typingUser._id
+                  )
+                )
             ),
-            tap(() => remove(this.typing, u => u._id === user._id)),
-          ),
-        ),
+            tap(() => remove(this.typing, (u) => u._id === user._id))
+          )
+        )
       )
       .subscribe();
   }
@@ -206,7 +209,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.messageService
       .getMessages(this.type, this.partnerId, this.limit)
       .pipe(take(1))
-      .subscribe(messages => {
+      .subscribe((messages) => {
         remove(this.messages, () => true);
         this.messages.push(...messages.map(this.convertToLocalMessage));
 
@@ -218,7 +221,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.messageService
       .getFirstMessage(this.type, this.partnerId)
       .pipe(take(1))
-      .subscribe(message => (this.firstMessage = message));
+      .subscribe((message) => (this.firstMessage = message));
   }
 
   getPreviousMessages() {
@@ -229,16 +232,16 @@ export class MessagesComponent implements OnInit, OnDestroy {
         this.type,
         this.partnerId,
         this.limit,
-        this.messages[0].createdAt,
+        this.messages[0].createdAt
       )
-      .subscribe(messages => {
+      .subscribe((messages) => {
         this.messages.splice(0, 0, ...messages.map(this.convertToLocalMessage));
 
         this.changeDetector.detectChanges();
 
         this.messagesElement.scrollTo(
           0,
-          this.messagesElement.scrollHeight - startingScrollHeight,
+          this.messagesElement.scrollHeight - startingScrollHeight
         );
       });
   }
@@ -251,7 +254,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     this.messages.push(this.convertToLocalMessage(message));
 
-    remove(this.typing, user => user._id === message.from._id);
+    remove(this.typing, (user) => user._id === message.from._id);
 
     if (message.from._id !== this.user._id) {
       this.soundService.playSound(Sound.Message);
@@ -264,10 +267,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   isCurrentSection(...objectIds: string[]) {
     return objectIds.some(
-      id =>
+      (id) =>
         (this.room && this.room._id === id) ||
         (this.to && this.to._id === id) ||
-        this.user._id === id,
+        this.user._id === id
     );
   }
 
@@ -322,7 +325,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.type,
       this.partnerId,
       message,
-      this.handleMessageCallback,
+      this.handleMessageCallback
     );
   }
 
@@ -356,7 +359,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     dialog
       .afterClosed()
       .pipe(take(1))
-      .subscribe(confirm => {
+      .subscribe((confirm) => {
         if (confirm) {
           this.deleteMessage(message);
         }

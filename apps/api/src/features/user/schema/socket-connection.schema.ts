@@ -19,6 +19,5 @@ export class SocketConnection extends Document {
   user: User;
 }
 
-export const SocketConnectionSchema = createSchemaForClassWithMethods(
-  SocketConnection,
-);
+export const SocketConnectionSchema =
+  createSchemaForClassWithMethods(SocketConnection);

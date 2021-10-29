@@ -12,10 +12,7 @@ import {
 
 @NgModule({
   imports: [CommonModule],
-  providers: [
-    AuthService,
-    SocialAuthService
-  ]
+  providers: [AuthService, SocialAuthService],
 })
 export class AppDataAccessModule {
   static forRoot(

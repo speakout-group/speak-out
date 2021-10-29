@@ -17,7 +17,7 @@ import { User } from '../../user/schema/user.schema';
 import {
   DeleteDirectMessageDto,
   DeleteRoomMessageDto,
-  FetchMessagesDto
+  FetchMessagesDto,
 } from '../dto';
 
 @UseGuards(JwtAuthGuard)
@@ -26,17 +26,17 @@ export class MessageController {
   constructor(
     private userService: UserService,
     private roomService: RoomService,
-    private messageService: MessageService,
+    private messageService: MessageService
   ) {}
 
   @Get('direct-first-message/:userId')
   async getFirstDirectMessage(
     @CurrentUser() user: User,
-    @Param('userId') to: string,
+    @Param('userId') to: string
   ) {
     return this.messageService.getFirstDirectMessage(
       user,
-      await this.userService.validateUserById(to),
+      await this.userService.validateUserById(to)
     );
   }
 
@@ -44,25 +44,25 @@ export class MessageController {
   async getDirectMessages(
     @CurrentUser() user: User,
     @Param('userId') to: string,
-    @Query() query: FetchMessagesDto,
+    @Query() query: FetchMessagesDto
   ) {
     return this.messageService.getDirectMessages(
       user,
       await this.userService.validateUserById(to),
       query.limit,
-      query.before,
+      query.before
     );
   }
 
   @Delete('direct')
   async deleteDirectMessage(
     @Body() body: DeleteDirectMessageDto,
-    @CurrentUser() from: User,
+    @CurrentUser() from: User
   ) {
     await this.userService.validateUserById(body.to);
 
     const message = await this.messageService.validatePopulatedMessage(
-      body.messageId,
+      body.messageId
     );
 
     if (message.from.id !== from.id && message.to.id !== from.id) {
@@ -75,7 +75,7 @@ export class MessageController {
   @Delete('direct/all')
   async deleteDirectMessages(
     @Body() body: DeleteDirectMessageDto,
-    @CurrentUser() from: User,
+    @CurrentUser() from: User
   ) {
     const to = await this.userService.validateUserById(body.to);
 
@@ -85,26 +85,26 @@ export class MessageController {
   @Get('room-first-message/:roomId')
   async getFirstRoomMessage(@Param('roomId') roomId: string) {
     return this.messageService.getFirstRoomMessage(
-      await this.roomService.validateRoom(roomId),
+      await this.roomService.validateRoom(roomId)
     );
   }
 
   @Get('room/:roomId')
   async getRoomMessages(
     @Param('roomId') roomId: string,
-    @Query() query: FetchMessagesDto,
+    @Query() query: FetchMessagesDto
   ) {
     return this.messageService.getRoomMessages(
       await this.roomService.validateRoom(roomId),
       query.limit,
-      query.before,
+      query.before
     );
   }
 
   @Delete('room')
   async deleteRoomMessage(
     @Body() body: DeleteRoomMessageDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     const room = await this.roomService.validateRoom(body.roomId);
 
@@ -120,7 +120,7 @@ export class MessageController {
   @Delete('room/all')
   async deleteRoomMessages(
     @Body() body: DeleteRoomMessageDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ) {
     const room = await this.roomService.validateRoom(body.roomId);
 

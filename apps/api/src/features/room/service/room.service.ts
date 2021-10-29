@@ -23,7 +23,7 @@ export class RoomService {
     private roomGateway: RoomGateway,
     private userService: UserService,
     @Inject(forwardRef(() => MessageService))
-    private messageService: MessageService,
+    private messageService: MessageService
   ) {}
 
   async create(room: RoomDto, user: User) {
@@ -138,7 +138,7 @@ export class RoomService {
   async join(roomId: string, user: User) {
     const room = await this.validateRoom(roomId);
 
-    if (!room.members.some(member => user.id === member.id)) {
+    if (!room.members.some((member) => user.id === member.id)) {
       room.members.push(user._id);
 
       this.handleJoinRoom(user, room);
@@ -156,7 +156,7 @@ export class RoomService {
   }
 
   async leave(user: User, room: Room) {
-    remove(room.members, member => member.id === user.id);
+    remove(room.members, (member) => member.id === user.id);
 
     this.handleLeaveRoom(user, room);
 

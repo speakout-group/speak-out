@@ -17,7 +17,7 @@ export class LoginPageComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   submit() {
@@ -40,7 +40,7 @@ export class LoginPageComponent {
           this.loginForm.patchValue({
             password: '',
           });
-        },
+        }
       );
   }
 
@@ -53,7 +53,7 @@ export class LoginPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithFacebook(),
+        this.authService.loginWithFacebook()
       );
     } finally {
       this.loading = false;
@@ -69,7 +69,7 @@ export class LoginPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithApple(),
+        this.authService.loginWithApple()
       );
     } finally {
       this.loading = false;
@@ -85,7 +85,7 @@ export class LoginPageComponent {
 
     try {
       await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithGoogle(),
+        this.authService.loginWithGoogle()
       );
     } finally {
       this.loading = false;

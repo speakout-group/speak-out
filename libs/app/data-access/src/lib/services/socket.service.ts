@@ -33,7 +33,7 @@ export class SocketService extends Socket {
 
     this.onConnect().subscribe(() => this.emit('user:subscribe'));
 
-    this.onDisconnect().subscribe(reason => {
+    this.onDisconnect().subscribe((reason) => {
       if (reason !== 'io server disconnect') {
         return;
       }

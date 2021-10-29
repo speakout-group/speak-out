@@ -6,14 +6,14 @@ import { PushSubscription, sendNotification } from 'web-push';
 export class WebNotificationService {
   sendNotification(
     subscription: PushSubscription,
-    payload: messaging.WebpushConfig,
+    payload: messaging.WebpushConfig
   ) {
     return sendNotification(
       subscription,
       JSON.stringify({
         ...payload,
         notification: { ...payload.notification, data: payload.data },
-      }),
+      })
     );
   }
 }

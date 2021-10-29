@@ -19,7 +19,7 @@ export class JoinRoomDialogComponent {
     private formBuilder: FormBuilder,
     private roomService: RoomService,
     private dialog: MatDialogRef<JoinRoomDialogComponent>,
-    private router: Router,
+    private router: Router
   ) {}
 
   submit() {
@@ -33,7 +33,7 @@ export class JoinRoomDialogComponent {
     this.roomService
       .getRoom(code)
       .pipe(take(1))
-      .subscribe(room => {
+      .subscribe((room) => {
         this.dialog.close();
 
         this.router.navigate(['/room', room._id]);

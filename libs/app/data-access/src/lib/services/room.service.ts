@@ -5,7 +5,6 @@ import { SocketService } from './socket.service';
 import { Room, User } from '../interfaces';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +13,7 @@ export class RoomService {
     private socket: SocketService,
     private http: HttpClient,
     @Inject(APP_CONFIG)
-    private appConfig: AppConfig,
+    private appConfig: AppConfig
   ) {}
 
   getRoom(roomId: string) {
@@ -81,7 +80,7 @@ export class RoomService {
 
   getRoomWithSortedMembers(room: Room) {
     room.members = room.members.sort((a: any, b: any) =>
-      a.online === b.online ? 0 : a.online ? -1 : b.online ? 1 : 0,
+      a.online === b.online ? 0 : a.online ? -1 : b.online ? 1 : 0
     );
 
     return room;

@@ -21,7 +21,7 @@ export class RecoverController {
   constructor(
     private userService: UserService,
     private recoverService: RecoverService,
-    private mailerService: MailerService,
+    private mailerService: MailerService
   ) {}
 
   @Get(':code')
@@ -51,13 +51,13 @@ export class RecoverController {
           url,
           code,
           expiration: Math.round(
-            (expiration.getTime() - Date.now()) / 1000 / 60 / 60,
+            (expiration.getTime() - Date.now()) / 1000 / 60 / 60
           ),
         },
       });
     } catch (e) {
       throw new InternalServerErrorException(
-        `An error occurred sending email: ${e.message}`,
+        `An error occurred sending email: ${e.message}`
       );
     }
   }
@@ -65,7 +65,7 @@ export class RecoverController {
   @Post(':code')
   async changePassword(
     @Param('code') code: Recover['code'],
-    @Body() body: UpdatePasswordDto,
+    @Body() body: UpdatePasswordDto
   ) {
     const recover = await this.validateCode(code);
 

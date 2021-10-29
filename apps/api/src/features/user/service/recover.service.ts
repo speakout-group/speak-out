@@ -9,7 +9,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class RecoverService {
   constructor(
-    @InjectModel(Recover.name) private recoveryModel: Model<Recover>,
+    @InjectModel(Recover.name) private recoveryModel: Model<Recover>
   ) {}
 
   async create(user: User) {
@@ -19,7 +19,7 @@ export class RecoverService {
       code: randomString(50),
       owner: user._id,
       expiration: new Date(
-        Date.now() + environments.recoverCodeExpiration * 1000,
+        Date.now() + environments.recoverCodeExpiration * 1000
       ),
     });
   }

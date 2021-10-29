@@ -8,16 +8,12 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ],
+            "assets": ["apps/api/src/assets"],
             "generatePackageJson": true
           },
           "configurations": {
@@ -42,42 +38,17 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/api"
-          ],
+          "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
-    },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "options": {
-            "lintFilePatterns": [
-              "libs/api-interfaces/**/*.ts"
-            ]
           }
         }
       },
@@ -91,9 +62,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/app",
             "index": "apps/app/src/index.html",
@@ -106,9 +75,7 @@
               "apps/app/src/assets",
               "apps/app/src/manifest.webmanifest"
             ],
-            "styles": [
-              "apps/app/src/styles.scss"
-            ],
+            "styles": ["apps/app/src/styles.scss"],
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "apps/app/ngsw-config.json"
@@ -187,9 +154,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/chat/data-access"
-          ],
+          "outputs": ["dist/libs/app/chat/data-access"],
           "options": {
             "project": "libs/app/chat/data-access/ng-package.json"
           },
@@ -205,9 +170,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/chat/data-access"
-          ],
+          "outputs": ["coverage/libs/app/chat/data-access"],
           "options": {
             "jestConfig": "libs/app/chat/data-access/jest.config.js",
             "passWithNoTests": true
@@ -233,9 +196,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/chat/feature-messages"
-          ],
+          "outputs": ["dist/libs/app/chat/feature-messages"],
           "options": {
             "project": "libs/app/chat/feature-messages/ng-package.json"
           },
@@ -251,9 +212,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/chat/feature-messages"
-          ],
+          "outputs": ["coverage/libs/app/chat/feature-messages"],
           "options": {
             "jestConfig": "libs/app/chat/feature-messages/jest.config.js",
             "passWithNoTests": true
@@ -279,9 +238,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/data-access"
-          ],
+          "outputs": ["dist/libs/app/data-access"],
           "options": {
             "project": "libs/app/data-access/ng-package.json"
           },
@@ -297,9 +254,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/data-access"
-          ],
+          "outputs": ["coverage/libs/app/data-access"],
           "options": {
             "jestConfig": "libs/app/data-access/jest.config.js",
             "passWithNoTests": true
@@ -325,9 +280,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-auth"
-          ],
+          "outputs": ["coverage/libs/app/feature-auth"],
           "options": {
             "jestConfig": "libs/app/feature-auth/jest.config.js",
             "passWithNoTests": true
@@ -353,9 +306,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-messages"
-          ],
+          "outputs": ["coverage/libs/app/feature-messages"],
           "options": {
             "jestConfig": "libs/app/feature-messages/jest.config.js",
             "passWithNoTests": true
@@ -381,9 +332,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-notification"
-          ],
+          "outputs": ["coverage/libs/app/feature-notification"],
           "options": {
             "jestConfig": "libs/app/feature-notification/jest.config.js",
             "passWithNoTests": true
@@ -409,9 +358,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-room"
-          ],
+          "outputs": ["coverage/libs/app/feature-room"],
           "options": {
             "jestConfig": "libs/app/feature-room/jest.config.js",
             "passWithNoTests": true
@@ -437,9 +384,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-shell"
-          ],
+          "outputs": ["coverage/libs/app/feature-shell"],
           "options": {
             "jestConfig": "libs/app/feature-shell/jest.config.js",
             "passWithNoTests": true
@@ -465,9 +410,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/feature-user"
-          ],
+          "outputs": ["coverage/libs/app/feature-user"],
           "options": {
             "jestConfig": "libs/app/feature-user/jest.config.js",
             "passWithNoTests": true
@@ -493,9 +436,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/shared/data-access"
-          ],
+          "outputs": ["dist/libs/app/shared/data-access"],
           "options": {
             "project": "libs/app/shared/data-access/ng-package.json"
           },
@@ -511,9 +452,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/shared/data-access"
-          ],
+          "outputs": ["coverage/libs/app/shared/data-access"],
           "options": {
             "jestConfig": "libs/app/shared/data-access/jest.config.js",
             "passWithNoTests": true
@@ -539,9 +478,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/shared/modules"
-          ],
+          "outputs": ["dist/libs/app/shared/modules"],
           "options": {
             "project": "libs/app/shared/modules/ng-package.json"
           },
@@ -557,9 +494,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/shared/modules"
-          ],
+          "outputs": ["coverage/libs/app/shared/modules"],
           "options": {
             "jestConfig": "libs/app/shared/modules/jest.config.js",
             "passWithNoTests": true
@@ -585,9 +520,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/app/shared/ui-dialogs"
-          ],
+          "outputs": ["dist/libs/app/shared/ui-dialogs"],
           "options": {
             "project": "libs/app/shared/ui-dialogs/ng-package.json"
           },
@@ -603,9 +536,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/app/shared/ui-dialogs"
-          ],
+          "outputs": ["coverage/libs/app/shared/ui-dialogs"],
           "options": {
             "jestConfig": "libs/app/shared/ui-dialogs/jest.config.js",
             "passWithNoTests": true

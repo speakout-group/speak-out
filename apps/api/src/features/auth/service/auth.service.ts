@@ -29,7 +29,7 @@ export type GetSocialUserHandler = () => Promise<Partial<SocialUser>>;
 export class AuthService {
   constructor(
     @Inject(forwardRef(() => UserService)) private userService: UserService,
-    private jwtService: JwtService,
+    private jwtService: JwtService
   ) {}
 
   async validate(username: string, password: string) {
@@ -57,14 +57,14 @@ export class AuthService {
     if (environments.accessTokenExpiration) {
       refresh_token = await this.jwtService.signAsync(
         payload,
-        this.getRefreshTokenOptions(user),
+        this.getRefreshTokenOptions(user)
       );
     }
 
     return {
       access_token: await this.jwtService.signAsync(
         payload,
-        this.getAccessTokenOptions(user),
+        this.getAccessTokenOptions(user)
       ),
       refresh_token,
     };
@@ -73,7 +73,7 @@ export class AuthService {
   async loginWithThirdParty(
     fieldId: keyof User,
     getSocialUser: GetSocialUserHandler,
-    customName?: string,
+    customName?: string
   ) {
     try {
       const { name, email, id } = await getSocialUser();
@@ -98,7 +98,7 @@ export class AuthService {
       }
 
       const username = await this.userService.generateUsername(
-        customName || name,
+        customName || name
       );
 
       const user = await this.userService.create({
@@ -129,7 +129,7 @@ export class AuthService {
 
       await this.jwtService.verifyAsync<Token>(
         refreshToken,
-        this.getRefreshTokenOptions(user),
+        this.getRefreshTokenOptions(user)
       );
 
       return this.login(user);

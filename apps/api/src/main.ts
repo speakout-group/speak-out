@@ -25,7 +25,7 @@ async function bootstrap() {
   const logger = new Logger('SpeakOut');
 
   await app.listen(port, () =>
-    logger.log(`Server initialized on port ${port}`),
+    logger.log(`Server initialized on port ${port}`)
   );
 }
 
