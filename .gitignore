@@ -40,5 +40,6 @@ Thumbs.db
 
 config/
 apps/api/src/config/
+docker/volumes/
 .docker.env
 .env
