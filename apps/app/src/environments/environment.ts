@@ -7,12 +7,12 @@ export const environment = {
   api: 'http://localhost:3333',
   socket: 'http://localhost:3333',
   apps: {
-    facebook: '513024756601831',
+    facebook: '',
     google:
-      '331672215174-0hlpm8fhjphiou05ovsd82vglor401ct.apps.googleusercontent.com',
+      '409454477116-ibv01n0c9q5enhumdb561jv7imgio10g.apps.googleusercontent.com',
     apple: {
-      clientId: 'nest-auth.ubbly.club',
-      redirectUri: 'https://nest-auth.ubbly.club/',
+      clientId: 'speakout.group',
+      redirectUri: 'https://speakout.group/',
     },
   },
 };

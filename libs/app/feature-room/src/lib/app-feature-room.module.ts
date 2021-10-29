@@ -1,5 +1,5 @@
-import { AppSharedUiDialogsModule } from '@speak-out/app/shared/ui-dialogs';
-import { AppSharedModulesModule } from '@speak-out/app/shared/modules';
+import { SharedUiDialogsModule } from '@speak-out/shared-ui-dialogs';
+import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { RoomsPageComponent, RoomPageComponent } from './pages';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -18,6 +18,6 @@ import {
     RoomItemComponent,
   ],
   exports: [RoomPageComponent, RoomsPageComponent],
-  imports: [CommonModule, AppSharedModulesModule, AppSharedUiDialogsModule],
+  imports: [CommonModule, SharedUiDialogsModule, SharedUiCommonModule],
 })
 export class AppFeatureRoomModule {}

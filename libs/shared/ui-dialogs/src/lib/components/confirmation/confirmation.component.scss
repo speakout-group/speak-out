@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  .mat-dialog-content {
+    user-select: none;
+    max-width: 300px;
+    .mat-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+    text-align: center;
+  }
+  .mat-dialog-actions {
+    justify-content: flex-end;
+
+    > * {
+      justify-self: flex-end;
+    }
+  }
+}

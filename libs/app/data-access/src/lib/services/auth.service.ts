@@ -100,7 +100,8 @@ export class AuthService {
 
   private async loginWith(providerId: string, options?: any) {
     const user = await this.socialService.signIn(providerId);
-
+    console.log(this.config.api);
+    
     return this.http
       .post<TokenResponse>(
         `${this.config.api}/auth/${this.getProviderUri(providerId)}-login`,
@@ -145,7 +146,10 @@ export class AuthService {
           [ErrorDialogInterceptor.skipHeader]: 'true',
         },
       })
-      .pipe(tap((user) => this.user$.next(user)));
+      .pipe(tap((user) => {
+        console.log(user);
+        this.user$.next(user)
+      }));
   }
 
   loginWithRefreshToken() {

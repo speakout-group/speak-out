@@ -17,13 +17,13 @@ services:
       - redis
     volumes:
       - type: bind
-        source: ./config/notification.config.json
+        source: ./apps/api/src/config/notification.config.json
         target: /app/config/notification.config.json
       - type: bind
-        source: ./config/firebase.config.json
+        source: ./apps/api/src/config/firebase.config.json
         target: /app/config/firebase.config.json
     environment:
-      VAPID_SUBJECT: 'mailto:denzelcodedev@gmail.com'
+      VAPID_SUBJECT: 'mailto:email@guiseek.dev'
       VAPID_PRIVATE_KEY: ''
       VAPID_PUBLIC_KEY: ''
   nginx:

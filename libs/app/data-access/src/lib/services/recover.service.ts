@@ -1,4 +1,4 @@
-import { API_TOKEN } from '@speak-out/app/shared/data-access';
+import { AppConfig, APP_CONFIG } from '../app-data-access.config';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,18 +13,19 @@ export interface ChangePasswordBody {
 export class RecoverService {
   constructor(
     private http: HttpClient,
-    @Inject(API_TOKEN) private api: string
+    @Inject(APP_CONFIG)
+    private appConfig: AppConfig
   ) {}
 
   recoverPassword(email: string) {
-    return this.http.post(`${this.api}/recover`, { email });
+    return this.http.post(`${this.appConfig.api}/recover`, { email });
   }
 
   validateCode(code: string) {
-    return this.http.get(`${this.api}/recover/${code}`);
+    return this.http.get(`${this.appConfig.api}/recover/${code}`);
   }
 
   changePassword(code: string, body: ChangePasswordBody) {
-    return this.http.post(`${this.api}/recover/${code}`, body);
+    return this.http.post(`${this.appConfig.api}/recover/${code}`, body);
   }
 }

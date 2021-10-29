@@ -1,6 +1,5 @@
-import { AppSharedDataAccessModule } from '@speak-out/app/shared/data-access';
-import { AppSharedModulesModule } from '@speak-out/app/shared/modules';
 import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
+import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { LoginPageComponent, RegisterPageComponent } from './pages';
 import { SocialLoginModule } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';
@@ -11,8 +10,7 @@ import { NgModule } from '@angular/core';
   imports: [
     SocialLoginModule,
     AppDataAccessModule,
-    AppSharedModulesModule,
-    AppSharedDataAccessModule,
+    SharedUiCommonModule,
     RouterModule.forChild([
       {
         path: 'login',

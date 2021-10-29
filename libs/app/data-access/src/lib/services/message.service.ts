@@ -1,9 +1,9 @@
 import { User, Room, MessageType, Message } from '../interfaces';
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SocketService } from './socket.service';
+import { AuthTokenInterceptor } from '../interceptors';
 import { Inject, Injectable } from '@angular/core';
-import { AuthTokenInterceptor } from '@speak-out/app-data-access';
+import { SocketService } from './socket.service';
 
 export interface TypingResponse {
   room?: Room;

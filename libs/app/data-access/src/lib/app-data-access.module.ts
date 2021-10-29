@@ -1,7 +1,8 @@
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppleLoginProvider } from './providers';
+import { CommonModule } from '@angular/common';
 import { AuthService } from './services';
 import {
   SocialAuthService,
@@ -11,7 +12,7 @@ import {
 } from 'angularx-social-login';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, MatDialogModule],
   providers: [AuthService, SocialAuthService],
 })
 export class AppDataAccessModule {

@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 config/
+apps/api/src/config/
+.docker.env
+.env

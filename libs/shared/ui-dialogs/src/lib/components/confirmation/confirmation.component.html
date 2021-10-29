@@ -1,0 +1,13 @@
+<h3 mat-dialog-title *ngIf="data?.label">{{ data?.label }}</h3>
+<mat-dialog-content>
+  <mat-icon> {{ data?.icon ?? 'escalator_warning' }} </mat-icon>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="data?.cancel" mat-stroked-button (click)="select(false)">
+    Cancelar
+  </button>
+  <button mat-flat-button color="primary" (click)="select(true)">
+    Confirmar
+  </button>
+</mat-dialog-actions>

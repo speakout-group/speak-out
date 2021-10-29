@@ -1,16 +1,16 @@
-import { Clipboard } from '@angular/cdk/clipboard';
+import { ConfirmDialogComponent } from '@speak-out/shared-ui-dialogs';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { Router } from '@angular/router';
 import {
   Room,
+  User,
   RoomService,
   updateItem,
-  User,
 } from '@speak-out/app-data-access';
-import { ConfirmDialogComponent } from '@speak-out/app/shared/ui-dialogs';
-import { remove } from 'lodash';
 import { take, tap } from 'rxjs/operators';
+import { remove } from 'lodash';
 import {
   ActionType,
   UpsertRoomDialogComponent,

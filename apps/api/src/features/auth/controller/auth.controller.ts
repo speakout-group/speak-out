@@ -15,15 +15,15 @@ import { AuthService } from '../service/auth.service';
 import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 import { RegisterDto } from '../dto/register.dto';
 import { LoginDto } from '../dto/login.dto';
+import { SubscriptionService } from '../../user/service/subscription.service';
 import { FacebookAuthService } from 'facebook-auth-nestjs';
 import { GoogleAuthService } from '../service/google-auth.service';
-import { AppleAuthService } from '../service/apple-auth.service';
-import { AppleLoginDto } from '../dto/apple-login.dto';
+// import { AppleAuthService } from '../service/apple-auth.service';
+// import { AppleLoginDto } from '../dto/apple-login.dto';
 import { Dictionary } from 'code-config';
 import { Response } from 'express';
 import { authConfig } from '../config/auth.config';
 import { stringify } from 'qs';
-import { SubscriptionService } from '../../user/service/subscription.service';
 
 @Controller('auth')
 export class AuthController {
@@ -115,6 +115,7 @@ export class AuthController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   me(@CurrentUser() user: User) {
+    console.log(user);
     return this.userService.filterUser(user, ['email']);
   }
 }

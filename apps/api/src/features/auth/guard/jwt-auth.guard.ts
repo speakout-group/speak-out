@@ -54,7 +54,7 @@ export class JwtAuthGuard implements CanActivate {
     const decoded = this.jwtService.decode(token) as Token;
 
     if (!decoded) {
-      this.throwException(ctx, 'Unable to decode token');
+      this.throwException(ctx, 'Incapaz de decodificar o token');
     }
 
     try {
@@ -79,15 +79,15 @@ export class JwtAuthGuard implements CanActivate {
     const authorization = client.headers.authorization?.split(' ');
 
     if (!authorization) {
-      this.throwException(ctx, 'Token not found');
+      this.throwException(ctx, 'Token não encontrado');
     }
 
     if (authorization[0].toLowerCase() !== 'bearer') {
-      this.throwException(ctx, 'Authorization type not valid');
+      this.throwException(ctx, 'Tipo de autorização inválida');
     }
 
     if (!authorization[1]) {
-      this.throwException(ctx, 'Token not provided');
+      this.throwException(ctx, 'Token não fornecido');
     }
 
     return authorization[1];

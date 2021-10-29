@@ -33,7 +33,10 @@ export class LoginPageComponent {
       .login(user)
       .pipe(take(1))
       .subscribe(
-        () => this.authService.redirectToCallback(),
+        (user) => {
+          console.log('success: ', user);
+          this.authService.redirectToCallback()
+        },
         () => {
           this.loading = false;
 

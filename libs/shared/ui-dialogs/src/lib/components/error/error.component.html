@@ -1,0 +1,13 @@
+<h3 mat-dialog-title *ngIf="data?.title">{{ data?.title }}</h3>
+<mat-dialog-content>
+  <mat-icon color="warn"> {{ data?.icon ?? 'warning_amber' }} </mat-icon>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="data?.close" mat-stroked-button (click)="select(false)">
+    Cancelar
+  </button>
+  <button mat-flat-button (click)="select(true)">
+    Confirmar
+  </button>
+</mat-dialog-actions>

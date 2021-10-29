@@ -13,6 +13,8 @@ import {
   ErrorDialogInterceptor,
 } from '@speak-out/app-data-access';
 
+console.log(AuthService);
+
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
@@ -20,8 +22,8 @@ import { environment } from '../environments/environment';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     AppDataAccessModule.forRoot(environment),
     RouterModule.forRoot(
       [
