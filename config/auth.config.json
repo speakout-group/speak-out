@@ -11,16 +11,16 @@
 		"ios": {
 			"clientId": "com.code.auth",
 			"packageId": "com.code.auth",
-			"redirectUri": "https://nest-auth.ubbly.club/"
+			"redirectUri": "https://speakout.group/"
 		},
 		"android": {
-			"clientId": "nest-auth.ubbly.club",
+			"clientId": "speakout.group",
 			"packageId": "com.code.auth",
-			"redirectUri": "https://nest-auth.ubbly.club/api/auth/apple-callback"
+			"redirectUri": "https://speakout.group/api/auth/apple-callback"
 		},
 		"web": {
-			"clientId": "nest-auth.ubbly.club",
-			"redirectUri": "https://nest-auth.ubbly.club/"
+			"clientId": "speakout.group",
+			"redirectUri": "https://speakout.group/"
 		},
 		"teamId": "",
 		"keyIdentifier": ""

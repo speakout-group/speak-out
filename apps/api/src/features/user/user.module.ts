@@ -1,27 +1,27 @@
-import { UserController } from './controller/user.controller';
+import { Subscription, SubscriptionSchema } from './schema/subscription.schema';
+import { SubscriptionController } from './controller/subscription.controller';
+import { NotificationModule } from '../notification/notification.module';
 import { SettingsController } from './controller/settings.controller';
-import {
-  forwardRef,
-  Module,
-  OnModuleDestroy,
-  OnModuleInit,
-} from '@nestjs/common';
-import { AuthModule } from '../auth/auth.module';
+import { SubscriptionService } from './service/subscription.service';
+import { UserController } from './controller/user.controller';
+import { User, UserSchema } from './schema/user.schema';
 import { UserService } from './service/user.service';
 import { UserGateway } from './gateway/user.gateway';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './schema/user.schema';
-import { SubscriptionService } from './service/subscription.service';
-import { Subscription, SubscriptionSchema } from './schema/subscription.schema';
-import { NotificationModule } from '../notification/notification.module';
-import { SubscriptionController } from './controller/subscription.controller';
+import { AuthModule } from '../auth/auth.module';
+import {
+  Module,
+  forwardRef,
+  OnModuleInit,
+  OnModuleDestroy,
+} from '@nestjs/common';
 import {
   SocketConnection,
   SocketConnectionSchema,
 } from './schema/socket-connection.schema';
 import { SocketConnectionService } from './service/socket-connection.service';
-import { Recover, RecoverSchema } from './schema/recover.schema';
 import { RecoverController } from './controller/recover.controller';
+import { Recover, RecoverSchema } from './schema/recover.schema';
 import { RecoverService } from './service/recover.service';
 
 @Module({

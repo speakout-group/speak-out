@@ -1,20 +1,20 @@
-import { MailerService } from '@nestjs-modules/mailer';
 import {
-  BadRequestException,
-  Body,
-  Controller,
   Get,
-  InternalServerErrorException,
-  NotFoundException,
-  Param,
   Post,
+  Body,
+  Param,
+  Controller,
+  NotFoundException,
+  BadRequestException,
+  InternalServerErrorException,
 } from '@nestjs/common';
-import { UserService } from '../service/user.service';
-import { Recover } from '../schema/recover.schema';
-import { RecoverService } from '../service/recover.service';
+import { environments } from '../../../environments/environments';
 import { RecoverPasswordDto } from '../dto/recover-password.dto';
 import { UpdatePasswordDto } from '../dto/update-password.dto';
-import { environments } from '../../../environments/environments';
+import { RecoverService } from '../service/recover.service';
+import { MailerService } from '@nestjs-modules/mailer';
+import { UserService } from '../service/user.service';
+import { Recover } from '../schema/recover.schema';
 
 @Controller('recover')
 export class RecoverController {

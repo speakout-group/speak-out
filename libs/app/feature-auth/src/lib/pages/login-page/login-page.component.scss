@@ -1,3 +1,14 @@
 .mr {
   margin-right: 1rem;
 }
+:host {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -1,14 +1,8 @@
-import { ConfigFactory } from 'code-config';
+import { environments } from '../../../environments/environments';
 import { credential, initializeApp, messaging } from 'firebase-admin';
-import { join } from 'path';
-import { PATHS } from '../../../shared/constants/paths';
-
-const config = ConfigFactory.getConfig(
-  join(PATHS.config, 'firebase.config.json'),
-).init();
 
 initializeApp({
-  credential: credential.cert(config.toObject()),
+  credential: credential.cert(environments.firebaseConfig),
 });
 
 export const fcm = messaging();

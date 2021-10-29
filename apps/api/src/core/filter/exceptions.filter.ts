@@ -1,13 +1,13 @@
 import {
-  ExceptionFilter,
   Catch,
-  ArgumentsHost,
-  HttpException,
   HttpStatus,
+  HttpException,
+  ArgumentsHost,
+  ExceptionFilter,
 } from '@nestjs/common';
+import { getRequest } from '../../shared/utils/get-request';
 import { WsException } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
-import { getRequest } from '../../shared/utils/get-request';
 import { Request } from 'express';
 
 export type Exceptions = HttpException | WsException;
@@ -39,15 +39,12 @@ export class ExceptionsFilter implements ExceptionFilter {
     }
 
     switch (host.getType()) {
-      case 'http':
-        host
-          .switchToHttp()
-          .getResponse()
-          .status(statusCode)
-          .json(response);
+      case 'http': {
+        host.switchToHttp().getResponse().status(statusCode).json(response);
         break;
+      }
 
-      case 'ws':
+      case 'ws': {
         const callback = host.getArgByIndex(2);
 
         if (typeof callback === 'function') {
@@ -56,6 +53,7 @@ export class ExceptionsFilter implements ExceptionFilter {
 
         request.emit('exception', response);
         break;
+      }
 
       default:
         break;

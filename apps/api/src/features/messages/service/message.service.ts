@@ -1,16 +1,16 @@
 import {
-  forwardRef,
   Inject,
   Injectable,
+  forwardRef,
   NotFoundException,
 } from '@nestjs/common';
+import { RoomService } from '../../room/service/room.service';
+import { UserService } from '../../user/service/user.service';
+import { Room } from '../../room/schema/room.schema';
+import { User } from '../../user/schema/user.schema';
+import { Message } from '../schema/message.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-import { Room } from '../../room/schema/room.schema';
-import { RoomService } from '../../room/service/room.service';
-import { User } from '../../user/schema/user.schema';
-import { UserService } from '../../user/service/user.service';
-import { Message } from '../schema/message.schema';
 
 @Injectable()
 export class MessageService {
@@ -30,7 +30,7 @@ export class MessageService {
     const message = await this.getMessage(id);
 
     if (!message) {
-      throw new NotFoundException('Message not found');
+      throw new NotFoundException('Messagem não encontrada');
     }
 
     return message;
@@ -48,7 +48,7 @@ export class MessageService {
     const message = await this.getPopulatedMessage(id);
 
     if (!message) {
-      throw new NotFoundException('Message not found');
+      throw new NotFoundException('Messagem não encontrada');
     }
 
     return message;

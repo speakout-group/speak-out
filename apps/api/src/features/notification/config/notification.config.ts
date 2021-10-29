@@ -1,10 +1,10 @@
-import { ConfigFactory } from 'code-config/dist';
-import { join } from 'path';
 import { PATHS } from '../../../shared/constants/paths';
+import { ConfigFactory } from 'code-config';
+import { join } from 'path';
 
 const defaultValue = {
   vapid: {
-    subject: 'mailto:example@example.com',
+    subject: 'mailto:contact@speakout.group',
     privateKey: '',
     publicKey: '',
   },

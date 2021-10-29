@@ -1,20 +1,20 @@
 import {
-  forwardRef,
   Inject,
   Injectable,
+  forwardRef,
   NotFoundException,
 } from '@nestjs/common';
+import { getSocketClient } from '../../../shared/utils/get-socket-client';
+import { MessageService } from '../../messages/service/message.service';
+import { UserService } from '../../user/service/user.service';
+import { RoomGateway } from '../gateway/room.gateway';
+import { remove } from '../../../shared/utils/remove';
+import { User } from '../../user/schema/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, UpdateQuery } from 'mongoose';
-import { Socket } from 'socket.io';
-import { getSocketClient } from '../../../shared/utils/get-socket-client';
-import { remove } from '../../../shared/utils/remove';
-import { MessageService } from '../../messages/service/message.service';
-import { User } from '../../user/schema/user.schema';
-import { UserService } from '../../user/service/user.service';
-import { RoomDto } from '../dto/room.dto';
-import { RoomGateway } from '../gateway/room.gateway';
 import { Room } from '../schema/room.schema';
+import { RoomDto } from '../dto/room.dto';
+import { Socket } from 'socket.io';
 
 @Injectable()
 export class RoomService {

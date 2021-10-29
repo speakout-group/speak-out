@@ -43,7 +43,7 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
     }
 
     this.logger.log(
-      `User ${user.username} left the server ${hostname()}; ${this.online}`,
+      `O usuário ${user.username} saiu do servidor ${hostname()}; ${this.online}`,
     );
 
     return this.userService.unsubscribeSocket(socket, user);
@@ -55,7 +55,7 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
     @CurrentUser() user: User,
   ) {
     this.logger.log(
-      `User ${user.username} joined the server ${hostname()}; ${this.online}`,
+      `O usuário ${user.username} entrou no servidor ${hostname()}; ${this.online}`,
     );
 
     return this.userService.subscribeSocket(client, user);

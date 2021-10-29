@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { randomString } from '../../../shared/utils/random-string';
-import { User } from '../schema/user.schema';
-import { Recover } from '../schema/recover.schema';
 import { environments } from '../../../environments/environments';
+import { Recover } from '../schema/recover.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { User } from '../schema/user.schema';
+import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class RecoverService {

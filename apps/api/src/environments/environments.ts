@@ -9,6 +9,7 @@ export const environments = {
   mongoUri: env.MONGO_URI,
   proxyEnabled: env.PROXY_ENABLED === 'true',
   frontEndUrl: env.FRONTEND_URL,
+  firebaseConfig: JSON.parse(env.FIREBASE_CONFIG),
   accessTokenSecret: env.ACCESS_TOKEN_SECRET,
   accessTokenExpiration: env.ACCESS_TOKEN_EXPIRATION,
   refreshTokenSecret: env.REFRESH_TOKEN_SECRET,

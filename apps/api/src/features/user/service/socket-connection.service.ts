@@ -1,12 +1,12 @@
+import { SocketConnection } from '../schema/socket-connection.schema';
+import { environments } from '../../../environments/environments';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { UserService } from './user.service';
+import { User } from '../schema/user.schema';
+import { Socket } from 'socket.io';
 import { Model } from 'mongoose';
 import { hostname } from 'os';
-import { Socket } from 'socket.io';
-import { environments } from '../../../environments/environments';
-import { SocketConnection } from '../schema/socket-connection.schema';
-import { User } from '../schema/user.schema';
-import { UserService } from './user.service';
 
 @Injectable()
 export class SocketConnectionService {

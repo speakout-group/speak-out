@@ -1,9 +1,9 @@
-import { Prop, Schema } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
 import { createSchemaForClassWithMethods } from '../../../shared/mongoose/create-schema';
 import { ObjectId } from '../../../shared/mongoose/object-id';
 import { Room } from '../../room/schema/room.schema';
 import { User } from '../../user/schema/user.schema';
+import { Prop, Schema } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 @Schema()
 export class Message extends Document {

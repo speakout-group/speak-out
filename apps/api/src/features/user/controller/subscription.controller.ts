@@ -1,17 +1,17 @@
 import {
-  BadRequestException,
   Body,
-  Controller,
-  Delete,
   Get,
   Post,
+  Delete,
   UseGuards,
+  Controller,
+  BadRequestException,
 } from '@nestjs/common';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
-import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
-import { SubscriptionType } from '../schema/subscription.schema';
-import { User } from '../schema/user.schema';
 import { SubscriptionService } from '../service/subscription.service';
+import { SubscriptionType } from '../schema/subscription.schema';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { User } from '../schema/user.schema';
 
 @UseGuards(JwtAuthGuard)
 @Controller('subscription')
@@ -22,11 +22,9 @@ export class SubscriptionController {
   sendTestingNotification(@CurrentUser() user: User) {
     return this.subscriptionService.sendNotification(user, {
       notification: {
-        title: 'Tesing',
+        title: 'Testing',
         body: 'Testing notification'
       }
-      // title: 'Testing',
-      // body: 'Testing notification',
     });
   }
 
@@ -56,7 +54,7 @@ export class SubscriptionController {
     body: string,
   ) {
     if (!body) {
-      throw new BadRequestException('Subscription body empty');
+      throw new BadRequestException('Corpo de assinatura vazio');
     }
 
     const subscription = await this.subscriptionService.get(user, type, body);
@@ -90,7 +88,7 @@ export class SubscriptionController {
     body: string,
   ) {
     if (!body) {
-      throw new BadRequestException('Subscription body empty');
+      throw new BadRequestException('Corpo de assinatura vazio');
     }
 
     return this.subscriptionService.delete(user, type, body);

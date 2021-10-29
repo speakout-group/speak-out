@@ -1,16 +1,16 @@
 import {
-  BadRequestException,
-  Body,
-  Controller,
   Put,
+  Body,
   UseGuards,
+  Controller,
+  BadRequestException,
 } from '@nestjs/common';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
-import { UpdateEmailDto } from '../dto/update-email.dto';
 import { UpdatePasswordDto } from '../dto/update-password.dto';
-import { User } from '../schema/user.schema';
+import { UpdateEmailDto } from '../dto/update-email.dto';
 import { UserService } from '../service/user.service';
+import { User } from '../schema/user.schema';
 
 @Controller('settings')
 @UseGuards(JwtAuthGuard)
@@ -25,7 +25,7 @@ export class SettingsController {
     const usernameUser = await this.userService.getUserByName(username);
 
     if (usernameUser) {
-      throw new BadRequestException('Username already exists');
+      throw new BadRequestException('Nome de usuário já existe');
     }
 
     user.username = username;
@@ -38,7 +38,7 @@ export class SettingsController {
     const emailUser = await this.userService.getUserByEmail(body.email);
 
     if (emailUser) {
-      throw new BadRequestException('Email already exists');
+      throw new BadRequestException('Endereço de email já existe');
     }
 
     user.email = body.email;
@@ -55,15 +55,15 @@ export class SettingsController {
       !user.isSocial &&
       !(await user.validatePassword(body.currentPassword))
     ) {
-      throw new BadRequestException('Current password does not match');
+      throw new BadRequestException('A senha atual incorreta');
     }
 
     if (body.password !== body.confirmPassword) {
-      throw new BadRequestException('Passwords does not match');
+      throw new BadRequestException('As senhas não coincidem');
     }
 
     if (await user.validatePassword(body.password)) {
-      throw new BadRequestException('Do not use your current password');
+      throw new BadRequestException('Não use sua senha atual');
     }
 
     user.password = body.password;

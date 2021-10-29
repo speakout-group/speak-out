@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -26,6 +27,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatDividerModule,
     MatListModule,
     MatIconModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSlideToggleModule,
