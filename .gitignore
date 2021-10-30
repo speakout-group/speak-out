@@ -38,8 +38,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-config/
-apps/api/src/config/
-docker/volumes/
+/config/
+/docker/volumes
 .docker.env
 .env
