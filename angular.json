@@ -152,22 +152,6 @@
       "sourceRoot": "libs/app/data-access/src",
       "prefix": "speak-out",
       "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/app/data-access"],
-          "options": {
-            "project": "libs/app/data-access/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/app/data-access/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/app/data-access/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/app/data-access"],
@@ -208,6 +192,32 @@
             "lintFilePatterns": [
               "libs/app/feature-auth/src/**/*.ts",
               "libs/app/feature-auth/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-conf": {
+      "projectType": "library",
+      "root": "libs/app/feature-conf",
+      "sourceRoot": "libs/app/feature-conf/src",
+      "prefix": "conf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-conf"],
+          "options": {
+            "jestConfig": "libs/app/feature-conf/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-conf/src/**/*.ts",
+              "libs/app/feature-conf/src/**/*.html"
             ]
           }
         }

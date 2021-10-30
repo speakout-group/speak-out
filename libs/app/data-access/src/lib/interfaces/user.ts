@@ -6,3 +6,5 @@ export interface User {
   online: boolean;
   isSocial: boolean;
 }
+
+export type UserInfo = Omit<User, 'password' | 'isSocial'>

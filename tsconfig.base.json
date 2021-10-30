@@ -26,6 +26,7 @@
       "@speak-out/app-feature-room": ["libs/app/feature-room/src/index.ts"],
       "@speak-out/app-feature-shell": ["libs/app/feature-shell/src/index.ts"],
       "@speak-out/app-feature-user": ["libs/app/feature-user/src/index.ts"],
+      "@speak-out/app-feature-conf": ["libs/app/feature-conf/src/index.ts"],
       "@speak-out/shared-ui-common": ["libs/shared/ui-common/src/index.ts"],
       "@speak-out/shared-ui-dialogs": ["libs/shared/ui-dialogs/src/index.ts"],
       "@speak-out/shared-util-storage": [

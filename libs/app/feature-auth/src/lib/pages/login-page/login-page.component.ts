@@ -1,4 +1,4 @@
-import { AuthService } from '@speak-out/app-data-access';
+import { AuthFacade, AuthService } from '@speak-out/app-data-access';
 import { FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
 import { take } from 'rxjs/operators';
@@ -17,6 +17,7 @@ export class LoginPageComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private facade: AuthFacade,
     private authService: AuthService
   ) {}
 

@@ -13,16 +13,16 @@ import {
   ErrorDialogInterceptor,
 } from '@speak-out/app-data-access';
 
-console.log(AuthService);
-
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     AppDataAccessModule.forRoot(environment),
     RouterModule.forRoot(

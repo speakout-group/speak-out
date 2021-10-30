@@ -3,6 +3,7 @@ import { AuthModule } from './auth/auth.module';
 import { MessagesModule } from './messages/messages.module';
 import { NotificationModule } from './notification/notification.module';
 import { RoomModule } from './room/room.module';
+import { ConfModule } from './conf/conf.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -10,6 +11,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     UserModule,
     RoomModule,
+    ConfModule,
     MessagesModule,
     NotificationModule,
   ],

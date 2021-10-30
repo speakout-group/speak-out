@@ -16,7 +16,7 @@ const getOptions = (authService: AuthService) => ({
   autoConnect: false,
 });
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SocketService extends Socket {
   constructor(
     private authService: AuthService,

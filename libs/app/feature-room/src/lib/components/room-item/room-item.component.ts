@@ -1,4 +1,5 @@
-import { ConfirmDialogComponent } from '@speak-out/shared-ui-dialogs';
+// import { ConfirmDialogComponent } from '@speak-out/shared-ui-dialogs';
+import { ConfirmationService } from '@speak-out/shared-ui-dialogs';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -36,6 +37,7 @@ export class RoomItemComponent implements OnInit {
   }
 
   constructor(
+    private confirmationService: ConfirmationService,
     private roomService: RoomService,
     private dialog: MatDialog,
     private clipboard: Clipboard,
@@ -75,9 +77,10 @@ export class RoomItemComponent implements OnInit {
   }
 
   confirmDelete() {
-    const dialog = this.dialog.open(ConfirmDialogComponent);
+    const ref = this.confirmationService.open({})
+    // const dialog = this.dialog.open(ConfirmDialogComponent);
 
-    dialog
+    ref
       .afterClosed()
       .pipe(take(1))
       .subscribe((confirm) => {
@@ -118,9 +121,10 @@ export class RoomItemComponent implements OnInit {
   }
 
   confirmLeaveRoom() {
-    const dialog = this.dialog.open(ConfirmDialogComponent);
+    // const dialog = this.dialog.open(ConfirmDialogComponent);
+    const ref = this.confirmationService.open({})
 
-    dialog
+    ref
       .afterClosed()
       .pipe(take(1))
       .subscribe((confirm) => {

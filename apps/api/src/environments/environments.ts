@@ -26,5 +26,3 @@ export const environments = {
     subject: env.VAPID_SUBJECT,
   },
 };
-
-console.log(environments)

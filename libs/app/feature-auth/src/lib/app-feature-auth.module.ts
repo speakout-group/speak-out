@@ -13,9 +13,13 @@ import { NgModule } from '@angular/core';
     SharedUiCommonModule,
     RouterModule.forChild([
       {
+        path: '',
+        redirectTo: 'login'
+      },
+      {
         path: 'login',
         component: LoginPageComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: {
           requireAuth: false,
         },
@@ -23,7 +27,7 @@ import { NgModule } from '@angular/core';
       {
         path: 'register',
         component: RegisterPageComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: {
           requireAuth: false,
         },

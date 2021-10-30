@@ -1,0 +1,26 @@
+<mat-list-item>
+  <mat-icon matListIcon>person</mat-icon>
+  <h4 matLine>{{ conf.title }} ({{ conf.members.length }})</h4>
+  <a
+    matLine
+    class="description"
+    *ngIf="!isOwner && !isString(conf.owner)"
+    [routerLink]="['/direct-message', $any(conf.owner).username]"
+  >
+    {{ $any(conf.owner).username }}
+  </a>
+  <button mat-button class="text-primary" (click)="joinConf()">Join</button>
+</mat-list-item>
+
+<div class="mb-2 d-flex">
+  <button mat-button (click)="copyUrl()">Copy</button>
+  <div *ngIf="isOwner">
+    <button mat-button (click)="openUpdateDialog()">Edit</button>
+    <button mat-button (click)="confirmDelete()">Delete</button>
+  </div>
+  <div *ngIf="isMember">
+    <button mat-button (click)="confirmLeaveConf()" class="text-danger">
+      Leave
+    </button>
+  </div>
+</div>

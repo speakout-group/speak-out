@@ -3,7 +3,7 @@ import { ConfirmationComponent } from '../components'
 import { ConfirmationConfig } from '../interfaces'
 import { Injectable } from '@angular/core'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ConfirmationService {
   constructor(private _dialog: MatDialog) {}
 

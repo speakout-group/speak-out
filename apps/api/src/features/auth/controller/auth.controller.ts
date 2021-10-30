@@ -1,28 +1,26 @@
 import {
-  BadRequestException,
-  Body,
-  Controller,
-  Delete,
   Get,
-  Post,
   Res,
+  Body,
+  Post,
+  Delete,
   UseGuards,
+  Controller,
+  BadRequestException,
 } from '@nestjs/common';
-import { User } from '../../user/schema/user.schema';
-import { UserService } from '../../user/service/user.service';
+import { SubscriptionService } from '../../user/service/subscription.service';
 import { CurrentUser } from '../decorators/current-user.decorator';
-import { AuthService } from '../service/auth.service';
+import { GoogleAuthService } from '../service/google-auth.service';
+import { UserService } from '../../user/service/user.service';
+import { FacebookAuthService } from 'facebook-auth-nestjs';
 import { JwtAuthGuard } from '../guard/jwt-auth.guard';
+import { AuthService } from '../service/auth.service';
+import { User } from '../../user/schema/user.schema';
+import { authConfig } from '../config/auth.config';
 import { RegisterDto } from '../dto/register.dto';
 import { LoginDto } from '../dto/login.dto';
-import { SubscriptionService } from '../../user/service/subscription.service';
-import { FacebookAuthService } from 'facebook-auth-nestjs';
-import { GoogleAuthService } from '../service/google-auth.service';
-// import { AppleAuthService } from '../service/apple-auth.service';
-// import { AppleLoginDto } from '../dto/apple-login.dto';
 import { Dictionary } from 'code-config';
 import { Response } from 'express';
-import { authConfig } from '../config/auth.config';
 import { stringify } from 'qs';
 
 @Controller('auth')
@@ -32,7 +30,6 @@ export class AuthController {
     private userService: UserService,
     private facebookService: FacebookAuthService,
     private googleService: GoogleAuthService,
-    // private appleService: AppleAuthService,
     private subscriptionService: SubscriptionService
   ) {}
 
@@ -63,13 +60,6 @@ export class AuthController {
       this.googleService.getUser(accessToken)
     );
   }
-
-  // @Post('apple-login')
-  // async appleLogin(@Body() body: AppleLoginDto) {
-  //   return this.authService.loginWithThirdParty('appleId', () =>
-  //     this.appleService.getUser(body),
-  //   );
-  // }
 
   @Post('refresh-token')
   async refreshToken(@Body('refreshToken') refreshToken: string) {
@@ -115,7 +105,6 @@ export class AuthController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   me(@CurrentUser() user: User) {
-    console.log(user);
     return this.userService.filterUser(user, ['email']);
   }
 }

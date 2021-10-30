@@ -1,7 +1,8 @@
 import { SharedUiDialogsModule } from '@speak-out/shared-ui-dialogs';
+import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { RoomsPageComponent, RoomPageComponent } from './pages';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {
   RoomItemComponent,
@@ -18,6 +19,22 @@ import {
     RoomItemComponent,
   ],
   exports: [RoomPageComponent, RoomsPageComponent],
-  imports: [CommonModule, SharedUiDialogsModule, SharedUiCommonModule],
+  imports: [
+    AppDataAccessModule,
+    SharedUiCommonModule,
+    SharedUiDialogsModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: RoomsPageComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id',
+        component: RoomPageComponent,
+        canActivate: [AuthGuard],
+      },
+    ]),
+  ],
 })
 export class AppFeatureRoomModule {}

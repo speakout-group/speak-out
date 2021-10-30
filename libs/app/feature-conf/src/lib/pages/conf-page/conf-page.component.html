@@ -1,0 +1,64 @@
+<div *ngIf="conf" class="d-flex flex-grow-1">
+  <div
+    class="members bg-white d-flex flex-column position-relative flex-grow-1"
+    [ngClass]="{ hide: !areMembersShown }"
+  >
+    <div
+      class="top-header d-flex align-items-center overflow-hidden"
+      role="button"
+      (click)="showTotalMembers = !showTotalMembers"
+    >
+      <span class="m-0 px-4 text-nowrap"
+        >{{ showTotalMembers ? 'All' : 'Online' }} members ({{
+          (showTotalMembers ? conf.members : onlineMembers).length
+        }})</span
+      >
+    </div>
+    <div class="position-relative d-flex flex-grow-1">
+      <div class="position-absolute scroll w-100">
+        <a
+          matRipple
+          *ngFor="let member of showTotalMembers ? conf.members : onlineMembers"
+          class="
+            w-100
+            px-4
+            py-3
+            d-flex
+            align-items-center
+            justify-content-between
+          "
+          [routerLink]="['/direct-message', member.username]"
+        >
+          <span>{{ member.username }}</span>
+          <div
+            class="circle"
+            [ngClass]="member.online ? 'online' : 'offline'"
+          ></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column w-100">
+    <mat-toolbar class="toolbar" color="primary">
+      <button
+        mat-icon-button
+        class="me-2"
+        aria-label="Members menu"
+        (click)="areMembersShown = !areMembersShown"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{ conf.title }}</span>
+      <span class="spacer"></span>
+      <a mat-button routerLink="/confs">
+        <mat-icon class="text-white">logout</mat-icon>
+      </a>
+    </mat-toolbar>
+    <app-messages
+      [type]="MessageType.Conf"
+      [conf]="conf"
+      [messages]="messages"
+      [updateMessages$]="updateMessages$"
+    ></app-messages>
+  </div>
+</div>

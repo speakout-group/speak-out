@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+
+  figure {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #004357;
+    img {
+      margin: 0 auto;
+      width: 1920px;
+    }
+  }
+
+  .container {
+    margin: 0 auto;
+    width: calc(100vw - 50px);
+    max-width: 1920px;
+    flex-direction: row;
+    display: flex;
+    padding: 25px;
+    gap: 25px;
+  }
+}

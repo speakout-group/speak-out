@@ -1,8 +1,6 @@
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
-import { AppleLoginProvider } from './providers';
-import { CommonModule } from '@angular/common';
+import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthService } from './services';
 import {
   SocialAuthService,
@@ -10,17 +8,17 @@ import {
   FacebookLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
+import { AuthFacade, ConfFacade } from './+state';
 
 @NgModule({
-  imports: [CommonModule, MatDialogModule],
-  providers: [AuthService, SocialAuthService],
+  providers: [AuthService, StorageData, AuthFacade, ConfFacade, SocialAuthService],
 })
 export class AppDataAccessModule {
   static forRoot(
     appConfig: AppConfig
   ): ModuleWithProviders<AppDataAccessModule> {
     const providers = [];
-    const { google, facebook, apple } = appConfig.apps;
+    const { google, facebook } = appConfig.apps;
     if (google) {
       providers.push({
         id: GoogleLoginProvider.PROVIDER_ID,
@@ -35,19 +33,12 @@ export class AppDataAccessModule {
       });
     }
 
-    if (apple) {
-      providers.push({
-        id: AppleLoginProvider.PROVIDER_ID,
-        provider: new AppleLoginProvider(apple),
-      });
-    }
-
     return {
       ngModule: AppDataAccessModule,
       providers: [
         {
           provide: APP_CONFIG,
-          useValue: appConfig,
+          useValue: appConfig ?? {},
         },
         {
           provide: 'SocialAuthServiceConfig',
@@ -61,10 +52,6 @@ export class AppDataAccessModule {
               {
                 id: FacebookLoginProvider.PROVIDER_ID,
                 provider: new FacebookLoginProvider(facebook),
-              },
-              {
-                id: AppleLoginProvider.PROVIDER_ID,
-                provider: new AppleLoginProvider(apple),
               },
             ],
           } as SocialAuthServiceConfig,

@@ -31,8 +31,27 @@ body {
     width: 100%;
   }
 
+  .mat-menu-panel {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .mat-menu-content {
+      padding-top: 0;
+    }
+  }
+
   .mat-toolbar {
+    .mat-button {
+      height: 100%;
+    }
+
+    .brand-name {
+      width: 32px;
+      max-height: 32px;
+    }
+
     transition: margin-top 1s ease-in-out;
+    
     &.is-hand-land {
       margin-top: -56px;
     }

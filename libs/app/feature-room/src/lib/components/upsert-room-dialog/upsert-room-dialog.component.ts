@@ -21,9 +21,9 @@ export interface UpsertDialogData {
 })
 export class UpsertRoomDialogComponent {
   type: ActionType;
-  upsertForm = this.formBuilder.group({
+  upsertForm = this.fb.group({
     title: '',
-    isPublic: false,
+    isPublic: [false],
   });
 
   room?: Room;
@@ -33,7 +33,7 @@ export class UpsertRoomDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) data: UpsertDialogData,
     private roomService: RoomService,
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private dialogRef: MatDialogRef<UpsertRoomDialogComponent>
   ) {
     this.type = data.type;

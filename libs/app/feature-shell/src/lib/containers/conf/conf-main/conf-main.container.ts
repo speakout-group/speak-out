@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class ConfMainContainer implements OnInit, OnDestroy {
   user$ = this.authService.user$;
-  user: User | null = null;
+  user?: User
 
   destroy$ = new Subject();
 
@@ -18,7 +18,12 @@ export class ConfMainContainer implements OnInit, OnDestroy {
   ngOnInit() {
     this.authService.user$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((user) => (this.user = user));
+      .subscribe((user) => {
+        console.log(user)
+        if (user) {
+          this.user = user
+        }
+      });
   }
 
   ngOnDestroy() {

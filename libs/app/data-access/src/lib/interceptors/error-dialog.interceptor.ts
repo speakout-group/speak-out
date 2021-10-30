@@ -1,6 +1,5 @@
 import { AuthTokenInterceptor } from './auth-token.interceptor';
 import { ErrorService } from '@speak-out/shared-ui-dialogs';
-import { MatDialog } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services';
 import { tap } from 'rxjs/operators';
@@ -24,7 +23,6 @@ export class ErrorDialogInterceptor implements HttpInterceptor {
   static skipHeader = 'errorDialog';
 
   constructor(
-    private dialog: MatDialog,
     private authService: AuthService,
     private errorService: ErrorService
   ) {}

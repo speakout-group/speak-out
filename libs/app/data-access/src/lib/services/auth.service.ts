@@ -2,7 +2,7 @@ import { AuthTokenInterceptor, ErrorDialogInterceptor } from '../interceptors';
 import { AppleLoginProvider } from '../providers/apple-login.provider';
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
 import { SubscriptionService } from './subscription.service';
-import { mergeMap, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, mergeMap, take, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -24,10 +24,13 @@ export interface TokenResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  user$ = new BehaviorSubject<User | null>(null);
+  _user = new BehaviorSubject<User | null>(null);
+  user$ = this._user.asObservable().pipe(
+    distinctUntilChanged((x, y) => x !== y)
+  )
 
   get user(): User | null {
-    return this.user$.getValue();
+    return this._user.getValue();
   }
 
   get isAuthenticated(): boolean {
@@ -40,7 +43,7 @@ export class AuthService {
     private socialService: SocialAuthService,
     private subscriptionService: SubscriptionService,
     @Inject(APP_CONFIG) private config: AppConfig
-  ) {}
+  ) { }
 
   login(user: Partial<User>) {
     return this.http
@@ -101,7 +104,7 @@ export class AuthService {
   private async loginWith(providerId: string, options?: any) {
     const user = await this.socialService.signIn(providerId);
     console.log(this.config.api);
-    
+
     return this.http
       .post<TokenResponse>(
         `${this.config.api}/auth/${this.getProviderUri(providerId)}-login`,
@@ -138,8 +141,6 @@ export class AuthService {
   }
 
   getProfile() {
-    console.log('profile');
-
     return this.http
       .get<User>(`${this.config.api}/auth/me`, {
         headers: {
@@ -148,7 +149,7 @@ export class AuthService {
       })
       .pipe(tap((user) => {
         console.log(user);
-        this.user$.next(user)
+        this._user.next(user)
       }));
   }
 
@@ -225,7 +226,7 @@ export class AuthService {
 
       localStorage.clear();
 
-      this.user$.next(null);
+      this._user.next(null);
     };
 
     this.subscriptionService
