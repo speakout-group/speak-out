@@ -70,7 +70,7 @@ export class ConfService {
     const conf = await this.getConfByIdAndOwner(confId, owner);
 
     if (!conf) {
-      throw new NotFoundException('Conf not found');
+      throw new NotFoundException('Conf não encontrada');
     }
 
     return conf;
@@ -87,7 +87,7 @@ export class ConfService {
     const conf = await this.getConf(confId);
 
     if (!conf) {
-      throw new NotFoundException('Conf not found');
+      throw new NotFoundException('Conf não encontrada');
     }
 
     return conf;

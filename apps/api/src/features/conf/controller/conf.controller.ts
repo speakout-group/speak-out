@@ -1,19 +1,19 @@
 import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
   Put,
+  Body,
+  Get,
+  Post,
+  Param,
+  Delete,
   UseGuards,
+  Controller,
 } from '@nestjs/common';
 import { ParseObjectIdPipe } from '../../../shared/pipe/parse-object-id.pipe';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../../user/schema/user.schema';
-import { ConfDto } from '../dto/conf.dto';
 import { ConfService } from '../service/conf.service';
+import { ConfDto } from '../dto/conf.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('conf')
