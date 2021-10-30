@@ -9,18 +9,28 @@ export class Sponsor extends Document {
   @Prop({
     required: true,
   })
-  title: string;
+  name: string
+  
+  @Prop()
+  description: string
+  
+  @Prop()
+  slug: string
+  
+  @Prop()
+  color: string
+  
+  @Prop()
+  website: string
+  
+  @Prop()
+  youtube: string
 
   @Prop({ type: [{ type: ObjectId, ref: User.name }] })
   members: User[];
 
   @Prop({ type: ObjectId, ref: User.name })
   owner: User;
-
-  @Prop({
-    required: true,
-  })
-  isPublic: boolean;
 }
 
 export const SponsorSchema = createSchemaForClassWithMethods(Sponsor);

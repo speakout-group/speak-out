@@ -1,3 +1,4 @@
+import { AuthFacade, SponsorFacade, ConfFacade } from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StorageData } from '@speak-out/shared-util-storage';
@@ -8,10 +9,16 @@ import {
   FacebookLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
-import { AuthFacade, ConfFacade } from './+state';
 
 @NgModule({
-  providers: [AuthService, StorageData, AuthFacade, ConfFacade, SocialAuthService],
+  providers: [
+    AuthService,
+    StorageData,
+    AuthFacade,
+    ConfFacade,
+    SponsorFacade,
+    SocialAuthService,
+  ],
 })
 export class AppDataAccessModule {
   static forRoot(

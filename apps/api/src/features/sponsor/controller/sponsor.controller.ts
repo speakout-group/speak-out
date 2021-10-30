@@ -14,18 +14,21 @@ import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../../user/schema/user.schema';
 import { SponsorService } from '../service/sponsor.service';
 import { SponsorDto } from '../dto/sponsor.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @Controller('sponsor')
 export class SponsorController {
-  constructor(private sponsorService: SponsorService) {}
+  constructor(private sponsorService: SponsorService) { }
 
   @Get()
+  @ApiBearerAuth('access-token')
   getUserSponsors(@CurrentUser() user: User) {
     return this.sponsorService.getSponsorsByOwner(user);
   }
 
   @Get('id/:id')
+  @ApiBearerAuth('access-token')
   get(@Param('id', ParseObjectIdPipe) id: string) {
     return this.sponsorService.getSponsor(id);
   }
@@ -36,11 +39,13 @@ export class SponsorController {
   }
 
   @Get('member')
+  @ApiBearerAuth('access-token')
   getSponsorsByMember(@CurrentUser() user: User) {
     return this.sponsorService.getSponsorsByMember(user);
   }
 
   @Delete('delete/:id')
+  @ApiBearerAuth('access-token')
   async delete(
     @Param('id', ParseObjectIdPipe) id: string,
     @CurrentUser() user: User
@@ -52,11 +57,13 @@ export class SponsorController {
   }
 
   @Post()
+  @ApiBearerAuth('access-token')
   async create(@Body() sponsor: SponsorDto, @CurrentUser() user: User) {
     return this.sponsorService.create(sponsor, user);
   }
 
   @Put(':id')
+  @ApiBearerAuth('access-token')
   async update(
     @Param('id', ParseObjectIdPipe) id: string,
     @Body() body: SponsorDto,
@@ -70,6 +77,7 @@ export class SponsorController {
   }
 
   @Post('join')
+  @ApiBearerAuth('access-token')
   async join(
     @Body('sponsorId', ParseObjectIdPipe) id: string,
     @CurrentUser() user: User
@@ -78,6 +86,7 @@ export class SponsorController {
   }
 
   @Delete('leave/:id')
+  @ApiBearerAuth('access-token')
   async leave(
     @Param('id', ParseObjectIdPipe) id: string,
     @CurrentUser() user: User

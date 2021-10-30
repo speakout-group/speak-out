@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from '@speak-out/shared-ui-dialogs';
+import { SponsorFacade } from '@speak-out/app-data-access';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './home.page.html',
@@ -7,10 +8,13 @@ import { ConfirmationService } from '@speak-out/shared-ui-dialogs';
 })
 export class HomePage implements OnInit {
 
-  constructor(private confirmation: ConfirmationService) { }
+  constructor(
+    private confirmation: ConfirmationService,
+    readonly facade: SponsorFacade
+  ) { }
 
   ngOnInit(): void {
-    console.log('oi');
+    this.facade.loadSponsors()
   }
 
   onClick(sponsor: string) {

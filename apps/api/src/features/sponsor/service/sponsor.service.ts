@@ -51,7 +51,6 @@ export class SponsorService {
 
     return Promise.all([
       this.sponsorModel.findOneAndDelete({ _id: sponsor._id, owner: user._id }),
-      this.messageService.deleteRoomMessages(sponsor),
     ]);
   }
 
@@ -100,8 +99,7 @@ export class SponsorService {
   }
 
   getPublicSponsors() {
-    return this.sponsorModel
-      .find({ isPublic: true })
+    return this.sponsorModel.find()
       .populate('owner', this.userService.unpopulatedFields);
   }
 
