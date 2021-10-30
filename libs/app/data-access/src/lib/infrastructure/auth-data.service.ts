@@ -17,7 +17,7 @@ export class AuthDataService {
     private http: HttpClient,
     private socialService: SocialAuthService,
     @Inject(APP_CONFIG) private config: AppConfig
-  ) { }
+  ) {}
 
   login(user: Partial<User>) {
     return this.http.post<TokenResponse>(`${this.config.api}/auth/login`, user);

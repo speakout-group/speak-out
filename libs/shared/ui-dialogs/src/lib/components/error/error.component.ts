@@ -1,10 +1,10 @@
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { ErrorData, ErrorResult } from '../../interfaces'
-import { Component, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ErrorData, ErrorResult } from '../../interfaces';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  styleUrls: ['./error.component.scss'],
 })
 export class ErrorComponent {
   constructor(
@@ -16,7 +16,7 @@ export class ErrorComponent {
     const result: ErrorResult = {
       timestamp: new Date(),
       selected,
-    }
-    this.dialogRef.close(result)
+    };
+    this.dialogRef.close(result);
   }
 }

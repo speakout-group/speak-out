@@ -43,6 +43,8 @@ body {
   .mat-toolbar {
     .mat-button {
       height: 100%;
+      display: flex;
+      align-items: center;
     }
 
     .brand-name {
@@ -51,7 +53,7 @@ body {
     }
 
     transition: margin-top 1s ease-in-out;
-    
+
     &.is-hand-land {
       margin-top: -56px;
     }

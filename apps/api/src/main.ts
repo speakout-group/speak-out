@@ -22,7 +22,7 @@ async function bootstrap() {
         type: 'http',
         bearerFormat: 'Bearer',
         scheme: 'Bearer',
-        in: 'Header'
+        in: 'Header',
       },
       'access-token'
     )

@@ -2,10 +2,10 @@ import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AccountContainer, MainContainer } from './containers';
 import { ConfMainContainer } from './containers/conf';
+import { HomePage } from './pages/home/home.page';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomePage } from './pages/home/home.page';
 
 @NgModule({
   declarations: [ConfMainContainer, MainContainer, HomePage, AccountContainer],
@@ -39,7 +39,7 @@ import { HomePage } from './pages/home/home.page';
       },
       {
         path: 'confs',
-        component: ConfMainContainer,
+        component: MainContainer,
         children: [
           {
             path: '',
@@ -56,14 +56,6 @@ import { HomePage } from './pages/home/home.page';
         loadChildren: () =>
           import('@speak-out/app-feature-auth').then(
             (m) => m.AppFeatureAuthModule
-          ),
-      },
-      {
-        path: 'rooms',
-        canActivate: [AuthGuard],
-        loadChildren: () =>
-          import('@speak-out/app-feature-room').then(
-            (m) => m.AppFeatureRoomModule
           ),
       },
     ]),

@@ -6,9 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Sponsor, User } from '../interfaces';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SponsorDataService {
   constructor(
@@ -16,7 +15,7 @@ export class SponsorDataService {
     private http: HttpClient,
     @Inject(APP_CONFIG)
     private config: AppConfig
-  ) { }
+  ) {}
 
   getSponsor(sponsorId: string) {
     return this.http
@@ -39,16 +38,16 @@ export class SponsorDataService {
     return this.http.get<Sponsor[]>(`${this.config.api}/sponsor`);
   }
 
-  createSponsor(conf: Partial<Sponsor>) {
-    return this.http.post<Sponsor>(`${this.config.api}/sponsor`, conf);
+  createSponsor(sponsor: Partial<Sponsor>) {
+    return this.http.post<Sponsor>(`${this.config.api}/sponsor`, sponsor);
   }
 
-  deleteSponsor(conf: Sponsor) {
-    return this.http.delete(`${this.config.api}/sponsor/delete/${conf._id}`);
+  deleteSponsor(sponsor: Sponsor) {
+    return this.http.delete(`${this.config.api}/sponsor/delete/${sponsor._id}`);
   }
 
-  updateSponsor(id: string, conf: Sponsor) {
-    return this.http.put<Sponsor>(`${this.config.api}/sponsor/${id}`, conf);
+  updateSponsor(id: string, sponsor: Sponsor) {
+    return this.http.put<Sponsor>(`${this.config.api}/sponsor/${id}`, sponsor);
   }
 
   joinSponsor(sponsorId: string) {
@@ -58,28 +57,30 @@ export class SponsorDataService {
   }
 
   leaveSponsor(sponsorId: string) {
-    return this.http.delete<Sponsor>(`${this.config.api}/sponsor/leave/${sponsorId}`);
+    return this.http.delete<Sponsor>(
+      `${this.config.api}/sponsor/leave/${sponsorId}`
+    );
   }
 
-  subscribeSponsor(conf: Sponsor) {
-    this.socket.emit('conf:subscribe', conf._id);
+  subscribeSponsor(sponsor: Sponsor) {
+    return this.socket.emit('sponsor:subscribe', sponsor._id);
   }
 
   onLeaveEvent() {
-    return this.socket.fromEvent<User>('conf:leave');
+    return this.socket.fromEvent<User>('sponsor:leave');
   }
 
   onJoinEvent() {
-    return this.socket.fromEvent<User>('conf:join');
+    return this.socket.fromEvent<User>('sponsor:join');
   }
 
   onUpdateEvent() {
     return this.socket
-      .fromEvent<Sponsor>('conf:update')
+      .fromEvent<Sponsor>('sponsor:update')
       .pipe(map(getEntityWithSortedMembers));
   }
 
   onDeleteEvent() {
-    return this.socket.fromEvent<Sponsor>('conf:delete');
+    return this.socket.fromEvent<Sponsor>('sponsor:delete');
   }
 }

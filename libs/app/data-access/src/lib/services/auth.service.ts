@@ -25,9 +25,9 @@ export interface TokenResponse {
 })
 export class AuthService {
   _user = new BehaviorSubject<User | null>(null);
-  user$ = this._user.asObservable().pipe(
-    distinctUntilChanged((x, y) => x !== y)
-  )
+  user$ = this._user
+    .asObservable()
+    .pipe(distinctUntilChanged((x, y) => x !== y));
 
   get user(): User | null {
     return this._user.getValue();
@@ -43,7 +43,7 @@ export class AuthService {
     private socialService: SocialAuthService,
     private subscriptionService: SubscriptionService,
     @Inject(APP_CONFIG) private config: AppConfig
-  ) { }
+  ) {}
 
   login(user: Partial<User>) {
     return this.http
@@ -147,10 +147,12 @@ export class AuthService {
           [ErrorDialogInterceptor.skipHeader]: 'true',
         },
       })
-      .pipe(tap((user) => {
-        console.log(user);
-        this._user.next(user)
-      }));
+      .pipe(
+        tap((user) => {
+          console.log(user);
+          this._user.next(user);
+        })
+      );
   }
 
   loginWithRefreshToken() {

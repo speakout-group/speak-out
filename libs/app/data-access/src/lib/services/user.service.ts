@@ -22,7 +22,9 @@ export class UserService {
   }
 
   updateUsername(username: string) {
-    return this.http.put(`${this.appConfig.api}/settings/username`, { username });
+    return this.http.put(`${this.appConfig.api}/settings/username`, {
+      username,
+    });
   }
 
   updateEmail(email: string) {

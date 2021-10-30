@@ -1,6 +1,6 @@
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { ConfirmationData, ConfirmationResult } from '../../interfaces'
-import { Component, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConfirmationData, ConfirmationResult } from '../../interfaces';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   templateUrl: './confirmation.component.html',
@@ -16,7 +16,7 @@ export class ConfirmationComponent {
     const result: ConfirmationResult = {
       timestamp: new Date(),
       selected,
-    }
-    this.dialogRef.close(result)
+    };
+    this.dialogRef.close(result);
   }
 }

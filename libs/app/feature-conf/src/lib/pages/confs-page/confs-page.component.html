@@ -23,6 +23,7 @@
     <mat-list-item *ngFor="let conf of facade.userConfs$ | async">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
+      <a [routerLink]="conf._id" mat-button>Acessar</a>
     </mat-list-item>
   </mat-list>
 

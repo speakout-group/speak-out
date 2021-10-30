@@ -14,7 +14,7 @@ import { NgModule } from '@angular/core';
     RouterModule.forChild([
       {
         path: '',
-        redirectTo: 'login'
+        redirectTo: 'login',
       },
       {
         path: 'login',

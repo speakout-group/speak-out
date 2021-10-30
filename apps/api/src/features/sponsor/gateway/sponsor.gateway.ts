@@ -27,7 +27,8 @@ export class SponsorGateway implements OnGatewayDisconnect<Socket> {
   @WebSocketServer() server: Server;
 
   constructor(
-    @Inject(forwardRef(() => SponsorService)) private sponsorService: SponsorService
+    @Inject(forwardRef(() => SponsorService))
+    private sponsorService: SponsorService
   ) {}
 
   handleDisconnect(socket: Socket) {

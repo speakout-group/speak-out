@@ -22,7 +22,7 @@ import {
     RouterModule.forChild([
       {
         path: '',
-        redirectTo: 'settings'
+        redirectTo: 'settings',
       },
       {
         path: 'recover',

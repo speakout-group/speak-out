@@ -1,7 +1,7 @@
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
-import { ConfirmationComponent } from '../components'
-import { ConfirmationConfig } from '../interfaces'
-import { Injectable } from '@angular/core'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmationComponent } from '../components';
+import { ConfirmationConfig } from '../interfaces';
+import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ConfirmationService {
@@ -10,6 +10,6 @@ export class ConfirmationService {
   open(
     config: ConfirmationConfig
   ): MatDialogRef<ConfirmationComponent, boolean> {
-    return this._dialog.open(ConfirmationComponent, config)
+    return this._dialog.open(ConfirmationComponent, config);
   }
 }

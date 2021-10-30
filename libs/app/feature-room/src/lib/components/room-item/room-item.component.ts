@@ -77,7 +77,7 @@ export class RoomItemComponent implements OnInit {
   }
 
   confirmDelete() {
-    const ref = this.confirmationService.open({})
+    const ref = this.confirmationService.open({});
     // const dialog = this.dialog.open(ConfirmDialogComponent);
 
     ref
@@ -122,7 +122,7 @@ export class RoomItemComponent implements OnInit {
 
   confirmLeaveRoom() {
     // const dialog = this.dialog.open(ConfirmDialogComponent);
-    const ref = this.confirmationService.open({})
+    const ref = this.confirmationService.open({});
 
     ref
       .afterClosed()

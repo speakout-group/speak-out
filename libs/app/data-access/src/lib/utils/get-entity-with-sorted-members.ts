@@ -1,5 +1,5 @@
-import { User, UserInfo } from '@speak-out/app-data-access';
 import { WithMembers } from '../types/with-members';
+import { User, UserInfo } from '../interfaces';
 
 export const getEntityWithSortedMembers = <T extends WithMembers>(
   entity: T

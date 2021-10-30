@@ -1,6 +1,5 @@
 # SpeakOut
 
-
 ![Speak Out](assets/speak-out.svg)
 
 ---

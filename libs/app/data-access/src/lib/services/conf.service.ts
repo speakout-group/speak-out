@@ -1,14 +1,13 @@
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
-import { getConfWithSortedMembers } from '../utils';
+import { getConfWithSortedMembers, slugify } from '../utils';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SocketService } from './socket.service';
 import { Conf, User } from '../interfaces';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConfService {
   constructor(
@@ -16,7 +15,7 @@ export class ConfService {
     private http: HttpClient,
     @Inject(APP_CONFIG)
     private config: AppConfig
-  ) { }
+  ) {}
 
   getConf(confId: string) {
     return this.http
@@ -36,7 +35,8 @@ export class ConfService {
     return this.http.get<Conf[]>(`${this.config.api}/conf`);
   }
 
-  createConf(conf: Partial<Conf>) {
+  createConf(conf: Exclude<Conf, 'members' | 'owner' | '_id' | 'slug'>) {
+    conf.slug = slugify(conf.title);
     return this.http.post<Conf>(`${this.config.api}/conf`, conf);
   }
 

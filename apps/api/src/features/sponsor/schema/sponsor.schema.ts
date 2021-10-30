@@ -9,22 +9,25 @@ export class Sponsor extends Document {
   @Prop({
     required: true,
   })
-  name: string
-  
+  name: string;
+
   @Prop()
-  description: string
-  
+  description: string;
+
   @Prop()
-  slug: string
-  
+  logo: string;
+
   @Prop()
-  color: string
-  
+  slug: string;
+
   @Prop()
-  website: string
-  
+  color: string;
+
   @Prop()
-  youtube: string
+  website: string;
+
+  @Prop()
+  youtube: string;
 
   @Prop({ type: [{ type: ObjectId, ref: User.name }] })
   members: User[];

@@ -8,28 +8,47 @@ export interface ConfState {
   publicConfs: Conf[];
   memberConfs: Conf[];
   userConfs: Conf[];
+  conf: Conf | null;
 }
 
 @Injectable()
 export class ConfFacade extends BaseState<ConfState> {
-  loading$ = this.select((state) => state.loading)
-  
-  publicConfs$ = this.select((state) => state.publicConfs)
-  memberConfs$ = this.select((state) => state.memberConfs)
-  userConfs$ = this.select((state) => state.userConfs)
+  loading$ = this.select((state) => state.loading);
 
-  constructor(private _service: ConfService) {
+  publicConfs$ = this.select((state) => state.publicConfs);
+  memberConfs$ = this.select((state) => state.memberConfs);
+  userConfs$ = this.select((state) => state.userConfs);
+  conf$ = this.select((state) => state.conf);
+
+  constructor(private service: ConfService) {
     super({
       loading: false,
       publicConfs: [],
       memberConfs: [],
       userConfs: [],
+      conf: null
+    });
+  }
+
+  loadConf(id: string) {
+    this.setState({ loading: true });
+    this.service.getConf(id).subscribe((conf) => {
+      this.setState({ conf });
+      this.setState({ loading: false });
+    });
+  }
+
+  joinConf(id: string) {
+    this.setState({ loading: true });
+    this.service.joinConf(id).subscribe((conf) => {
+      this.setState({ conf });
+      this.setState({ loading: false });
     });
   }
 
   loadUserConfs() {
     this.setState({ loading: true });
-    this._service.getUserConfs().subscribe((userConfs) => {
+    this.service.getUserConfs().subscribe((userConfs) => {
       this.setState({ userConfs });
       this.setState({ loading: false });
     });
@@ -37,7 +56,7 @@ export class ConfFacade extends BaseState<ConfState> {
 
   loadPublicConfs() {
     this.setState({ loading: true });
-    this._service.getPublicConfs().subscribe((publicConfs) => {
+    this.service.getPublicConfs().subscribe((publicConfs) => {
       this.setState({ publicConfs });
       this.setState({ loading: false });
     });
@@ -45,7 +64,7 @@ export class ConfFacade extends BaseState<ConfState> {
 
   loadMemberConfs() {
     this.setState({ loading: true });
-    this._service.getConfsByMember().subscribe((memberConfs) => {
+    this.service.getConfsByMember().subscribe((memberConfs) => {
       this.setState({ memberConfs });
       this.setState({ loading: false });
     });

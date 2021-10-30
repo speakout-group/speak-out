@@ -78,7 +78,7 @@ export class ConfItemComponent implements OnInit {
 
   confirmDelete() {
     // const dialog = this.dialog.open(ConfirmDialogComponent);
-    const ref = this.confirmationService.open({})
+    const ref = this.confirmationService.open({});
     ref
       .afterClosed()
       .pipe(take(1))

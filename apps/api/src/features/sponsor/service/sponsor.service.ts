@@ -27,7 +27,10 @@ export class SponsorService {
   ) {}
 
   async create(sponsor: SponsorDto, user: User) {
-    const object = await this.sponsorModel.create({ ...sponsor, owner: user._id });
+    const object = await this.sponsorModel.create({
+      ...sponsor,
+      owner: user._id,
+    });
 
     return object
       .populate('owner', this.userService.unpopulatedFields)
@@ -99,7 +102,8 @@ export class SponsorService {
   }
 
   getPublicSponsors() {
-    return this.sponsorModel.find()
+    return this.sponsorModel
+      .find()
       .populate('owner', this.userService.unpopulatedFields);
   }
 
@@ -126,10 +130,17 @@ export class SponsorService {
   }
 
   sendMessage<T>(sponsor: Sponsor, event: string, message?: T) {
-    return this.sponsorGateway.server.to(`sponsor_${sponsor._id}`).emit(event, message);
+    return this.sponsorGateway.server
+      .to(`sponsor_${sponsor._id}`)
+      .emit(event, message);
   }
 
-  sendMessageExcept<T>(except: Socket, sponsor: Sponsor, event: string, message: T) {
+  sendMessageExcept<T>(
+    except: Socket,
+    sponsor: Sponsor,
+    event: string,
+    message: T
+  ) {
     return except.broadcast.to(`sponsor_${sponsor._id}`).emit(event, message);
   }
 
@@ -150,7 +161,11 @@ export class SponsorService {
   }
 
   handleJoinSponsor(user: User, sponsor: Sponsor) {
-    this.sendMessage(sponsor, 'sponsor:join', this.userService.filterUser(user));
+    this.sendMessage(
+      sponsor,
+      'sponsor:join',
+      this.userService.filterUser(user)
+    );
   }
 
   async leave(user: User, sponsor: Sponsor) {
@@ -162,6 +177,10 @@ export class SponsorService {
   }
 
   handleLeaveSponsor(user: User, sponsor: Sponsor) {
-    this.sendMessage(sponsor, 'sponsor:leave', this.userService.filterUser(user));
+    this.sendMessage(
+      sponsor,
+      'sponsor:leave',
+      this.userService.filterUser(user)
+    );
   }
 }

@@ -1,2 +1,2 @@
-export * from './confirmation'
-export * from './error'
+export * from './confirmation';
+export * from './error';

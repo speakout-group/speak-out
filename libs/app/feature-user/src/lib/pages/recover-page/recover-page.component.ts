@@ -17,7 +17,7 @@ export class RecoverPageComponent {
 
   constructor(
     private recoverService: RecoverService,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {}
 
   submit() {
@@ -41,7 +41,7 @@ export class RecoverPageComponent {
           title: 'Good job!',
           text: 'Check your email and change your password!',
           icon: 'success',
-        }),
+        })
       );
   }
 }

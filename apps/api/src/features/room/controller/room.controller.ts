@@ -12,8 +12,9 @@ import { ParseObjectIdPipe } from '../../../shared/pipe/parse-object-id.pipe';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../../user/schema/user.schema';
-import { RoomDto } from '../dto/room.dto';
 import { RoomService } from '../service/room.service';
+import { ApiBearerAuth } from '@nestjs/swagger'
+import { RoomDto } from '../dto/room.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('room')
@@ -21,6 +22,7 @@ export class RoomController {
   constructor(private roomService: RoomService) {}
 
   @Get()
+  @ApiBearerAuth('access-token')
   getUserRooms(@CurrentUser() user: User) {
     return this.roomService.getRoomsByOwner(user);
   }
@@ -31,6 +33,7 @@ export class RoomController {
   }
 
   @Get('public')
+  @ApiBearerAuth('access-token')
   getPublicRooms() {
     return this.roomService.getPublicRooms();
   }

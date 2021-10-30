@@ -3,6 +3,9 @@
     <img src="assets/logo.svg" alt="Speak Out" />
   </a>
   <span class="spacer"></span>
+
+  <a routerLink="/sponsors" mat-button> Patrocinadores </a>
+
   <ng-container *ngIf="auth.user$ | async as user">
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>

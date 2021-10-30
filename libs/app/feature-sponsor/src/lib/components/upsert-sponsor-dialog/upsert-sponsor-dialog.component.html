@@ -1,0 +1,28 @@
+<form [formGroup]="upsertForm" (ngSubmit)="submit()">
+  <div>
+    <h3 *ngIf="type === ActionType.Create">Create Sponsor</h3>
+    <mat-form-field class="full-width">
+      <mat-label>Nome da sala</mat-label>
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="Digite o nome da sala"
+        matInput
+      />
+    </mat-form-field>
+
+    <footer mat-dialog-actions class="flex-row-between">
+      <mat-slide-toggle color="primary" formControlName="isPublic">
+        Public
+      </mat-slide-toggle>
+      <span class="spacer"></span>
+      <button mat-raised-button color="primary">
+        {{ type === ActionType.Create ? 'Criar' : 'Alterar' }}
+      </button>
+    </footer>
+  </div>
+</form>
+
+<ng-template #update>
+  <h3>Alterar sala {{ sponsor?.title }}</h3>
+</ng-template>

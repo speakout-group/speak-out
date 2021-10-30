@@ -1,4 +1,5 @@
-<div *ngIf="conf" class="d-flex flex-grow-1">
+<pre>{{ facade.conf$ | async | json }}</pre>
+<!-- <div *ngIf="conf" class="d-flex flex-grow-1">
   <div
     class="members bg-white d-flex flex-column position-relative flex-grow-1"
     [ngClass]="{ hide: !areMembersShown }"
@@ -61,4 +62,4 @@
       [updateMessages$]="updateMessages$"
     ></app-messages>
   </div>
-</div>
+</div> -->

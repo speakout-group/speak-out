@@ -36,7 +36,7 @@ export class LoginPageComponent {
       .subscribe(
         (user) => {
           console.log('success: ', user);
-          this.authService.redirectToCallback()
+          this.authService.redirectToCallback();
         },
         () => {
           this.loading = false;

@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <a mat-icon-button routerLink="/">
+    <mat-icon>chevron_left</mat-icon>
+  </a>
+  
+  <h2>Conferências</h2>
+  
+  <span class="spacer"></span>
+  
+  <button mat-button (click)="openCreateDialog()">Cadastrar patrocinador</button>
+  <button mat-button (click)="openJoinSponsorDialog()">Participar</button>
+</mat-toolbar>
+
+<mat-progress-bar
+  class="position-absolute"
+  diameter="30"
+  *ngIf="facade.loading$ | async"
+></mat-progress-bar>
+
+<main>
+  <pre>{{ facade.sponsor$ | async | json }}</pre>
+</main>

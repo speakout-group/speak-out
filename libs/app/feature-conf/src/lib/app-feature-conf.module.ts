@@ -26,12 +26,33 @@ import { AppDataAccessModule } from '@speak-out/app-data-access';
     RouterModule.forChild([
       {
         path: '',
-        component: ConfsPageComponent
+        component: ConfsPageComponent,
       },
       {
         path: ':id',
-        component: ConfPageComponent
-      }
+        component: ConfPageComponent,
+      },
+      {
+        path: ':id/salas',
+        loadChildren: () =>
+          import('@speak-out/app-feature-room').then(
+            (m) => m.AppFeatureRoomModule
+          ),
+      },
+      {
+        path: ':id/patrocinadores',
+        loadChildren: () =>
+          import('@speak-out/app-feature-sponsor').then(
+            (module) => module.AppFeatureSponsorModule
+          ),
+      },
+      {
+        path: ':id/palestrantes',
+        loadChildren: () =>
+          import('@speak-out/app-feature-speaker').then(
+            (module) => module.AppFeatureSpeakerModule
+          ),
+      },
     ]),
   ],
 })

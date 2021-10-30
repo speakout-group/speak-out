@@ -43,6 +43,6 @@ export class AuthFacade extends BaseState<AuthState> {
 
   logout() {
     this.service.logout();
-    this.setState({ user: null })
+    this.setState({ user: null });
   }
 }

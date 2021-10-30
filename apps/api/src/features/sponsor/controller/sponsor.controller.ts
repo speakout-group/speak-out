@@ -19,7 +19,7 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 @UseGuards(JwtAuthGuard)
 @Controller('sponsor')
 export class SponsorController {
-  constructor(private sponsorService: SponsorService) { }
+  constructor(private sponsorService: SponsorService) {}
 
   @Get()
   @ApiBearerAuth('access-token')

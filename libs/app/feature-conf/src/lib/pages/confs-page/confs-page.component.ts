@@ -1,4 +1,9 @@
-import { Conf, User, AuthService, ConfFacade } from '@speak-out/app-data-access';
+import {
+  Conf,
+  User,
+  AuthService,
+  ConfFacade,
+} from '@speak-out/app-data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';

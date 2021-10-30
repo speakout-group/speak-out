@@ -7,4 +7,3 @@ export const getConfWithSortedMembers = (conf: Conf) => {
 
   return conf;
 };
-

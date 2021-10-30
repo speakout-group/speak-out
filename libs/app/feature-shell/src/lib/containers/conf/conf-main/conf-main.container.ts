@@ -9,21 +9,19 @@ import { Subject } from 'rxjs';
 })
 export class ConfMainContainer implements OnInit, OnDestroy {
   user$ = this.authService.user$;
-  user?: User
+  user?: User;
 
   destroy$ = new Subject();
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.user$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((user) => {
-        console.log(user)
-        if (user) {
-          this.user = user
-        }
-      });
+    this.authService.user$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
+      console.log(user);
+      if (user) {
+        this.user = user;
+      }
+    });
   }
 
   ngOnDestroy() {
