@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  figure {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #004357;
+    overflow: hidden;
+    img {
+      width: 1920px;
+      max-width: 150vw;
+    }
+  }
+
+  .container {
+    max-width: 100vw;
+
+    &.sponsors {
+      margin: 20px;
+    }
+  }
+}

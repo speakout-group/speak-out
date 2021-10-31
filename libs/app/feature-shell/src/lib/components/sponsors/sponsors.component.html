@@ -1,0 +1,7 @@
+<h1 class="mat-h1">Patrocinadores</h1>
+
+<section class="flex-row gap-24">
+  <figure *ngFor="let card of sponsors" class="flex-2">
+    <img mat-card-image [src]="card.logo" [alt]="card.title" />
+  </figure>
+</section>

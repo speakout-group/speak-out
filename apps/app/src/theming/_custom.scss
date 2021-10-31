@@ -30,6 +30,9 @@ body {
     .mat-icon + span:not(:empty) {
       margin-left: 8px;
     }
+    span:not(:empty) + .mat-icon {
+      margin-left: 8px;
+    }
   }
 
   .mat-form-field {
@@ -37,8 +40,8 @@ body {
   }
 
   .mat-menu-panel {
-    // border-top-left-radius: 0;
-    // border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     .mat-menu-content {
       padding-top: 0;

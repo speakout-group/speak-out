@@ -1,3 +1,22 @@
+// Colors
+:root {
+  --color-green: #3dd642;
+  --color-yellow: #FFC107;
+  --color-muted: #9E9E9E;
+}
+
+.color {
+  &-green {
+    color: var(--color-green);
+  }
+  &-yellow {
+    color: var(--color-yellow);
+  }
+  &-muted {
+    color: var(--color-muted);
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
 }

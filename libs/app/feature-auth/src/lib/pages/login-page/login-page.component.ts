@@ -1,25 +1,30 @@
 import { AuthFacade, AuthService } from '@speak-out/app-data-access';
-import { FormBuilder } from '@angular/forms';
+import { LoginPageForm } from './login-page.form';
 import { Component } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  loginForm = this.formBuilder.group({
-    username: '',
-    password: '',
-  });
+  // loginForm = this.formBuilder.group({
+  //   username: '',
+  //   password: '',
+  // });
 
   loading = false;
 
+  loginForm: LoginPageForm;
+
   constructor(
-    private formBuilder: FormBuilder,
-    private facade: AuthFacade,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private facade: AuthFacade
+  ) {
+    this.loginForm = new LoginPageForm(this.route.snapshot.params.email);
+  }
 
   submit() {
     if (this.loading) {
