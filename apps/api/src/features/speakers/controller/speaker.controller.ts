@@ -16,6 +16,7 @@ import { UserService } from '../../user/service/user.service';
 import { SpeakerService } from '../service/speaker.service';
 import { User } from '../../user/schema/user.schema';
 import { DeleteConfSpeakerDto, FetchSpeakersDto } from '../dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @Controller('speaker')
@@ -24,9 +25,10 @@ export class SpeakerController {
     private userService: UserService,
     private confService: ConfService,
     private speakerService: SpeakerService
-  ) {}
+  ) { }
 
   @Get('conf-next-speaker/:confId')
+  @ApiBearerAuth('access-token')
   async getFirstConfSpeaker(@Param('confId') confId: string) {
     return this.speakerService.getNextConfSpeakers(
       await this.confService.validateConf(confId)
@@ -34,6 +36,7 @@ export class SpeakerController {
   }
 
   @Get('conf/:confId')
+  @ApiBearerAuth('access-token')
   async getConfSpeakers(
     @Param('confId') confId: string,
     @Query() query: FetchSpeakersDto
@@ -56,6 +59,7 @@ export class SpeakerController {
   // }
 
   @Delete('conf')
+  @ApiBearerAuth('access-token')
   async deleteConfSpeaker(
     @Body() body: DeleteConfSpeakerDto,
     @CurrentUser() user: User

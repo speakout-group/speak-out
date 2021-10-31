@@ -7,8 +7,8 @@
 
   <span class="spacer"></span>
 
-  <button mat-button (click)="openCreateDialog()">Criar sua conferência</button>
-  <button mat-button (click)="openJoinConfDialog()">Participar</button>
+  <button mat-stroked-button (click)="openCreateDialog()">Criar sua conferência</button>
+  <button mat-button (click)="openJoinConfDialog()">Usar código</button>
 </mat-toolbar>
 
 <mat-progress-bar
@@ -19,7 +19,7 @@
 
 <main>
   <mat-list>
-    <h3 matSubheader>Conferências que você administra</h3>
+    <h3 matSubheader>Eventos que você organiza</h3>
     <mat-list-item *ngFor="let conf of facade.userConfs$ | async">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
@@ -30,20 +30,24 @@
   <mat-divider></mat-divider>
 
   <mat-list>
-    <h3 matSubheader>Conferências que você confirmou</h3>
+    <h3 matSubheader>Eventos que você participa</h3>
     <mat-list-item *ngFor="let conf of facade.memberConfs$ | async">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
+      <a [routerLink]="conf._id" mat-button>Acessar</a>
     </mat-list-item>
   </mat-list>
 
   <mat-divider></mat-divider>
 
   <mat-list>
-    <h3 matSubheader>Conferências</h3>
+    <h3 matSubheader>Eventos da plataforma</h3>
     <mat-list-item *ngFor="let conf of facade.publicConfs$ | async">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
+      <button (click)="joinConf(conf)" mat-flat-button color="primary">
+        Participar
+      </button>
     </mat-list-item>
   </mat-list>
 </main>

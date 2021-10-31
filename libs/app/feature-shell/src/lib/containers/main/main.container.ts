@@ -1,10 +1,12 @@
 import { AuthFacade } from '@speak-out/app-data-access';
+import { mainTransition } from './main-transition';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './main.container.html',
   styleUrls: ['./main.container.scss'],
+  animations: [mainTransition],
 })
 export class MainContainer implements OnInit {
   constructor(readonly auth: AuthFacade, private router: Router) {}

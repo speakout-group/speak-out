@@ -7,6 +7,7 @@ import {
   AuthService,
   UserService,
   UpdatePasswordBody,
+  AuthFacade,
 } from '@speak-out/app-data-access';
 
 @Component({
@@ -29,11 +30,14 @@ export class SettingsPageComponent implements OnInit {
   }
 
   constructor(
+    readonly facade: AuthFacade,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private authService: AuthService,
     private confirmation: ConfirmationService
-  ) {}
+  ) {
+    this.facade.loadUser()
+  }
 
   ngOnInit() {
     if (this.authService.user) {
@@ -67,8 +71,8 @@ export class SettingsPageComponent implements OnInit {
           this.loading = false;
 
           Swal.fire({
-            title: 'Good job!',
-            text: 'Your username was sucessfully updated!',
+            title: 'Boa!',
+            text: 'Seu usuário foi alterado!',
             icon: 'success',
           });
         },

@@ -52,6 +52,20 @@ import { NgModule } from '@angular/core';
         canActivate: [AuthGuard],
       },
       {
+        path: 'sponsors',
+        component: MainContainer,
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('@speak-out/app-feature-sponsor').then(
+                (m) => m.AppFeatureSponsorModule
+              ),
+          },
+        ],
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'auth',
         loadChildren: () =>
           import('@speak-out/app-feature-auth').then(

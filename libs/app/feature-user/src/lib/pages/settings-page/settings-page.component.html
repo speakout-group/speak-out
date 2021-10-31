@@ -1,89 +1,107 @@
-<mat-progress-bar
-  class="position-absolute"
-  diameter="30"
-  *ngIf="loading"
-></mat-progress-bar>
-<div class="container">
+<section class="container">
   <mat-card>
-    <h2 mat-card-title>Settings</h2>
-    <p mat-card-subtitle>Update your account</p>
+    <header>
+      <h2 mat-card-title>Configurações</h2>
+      <p mat-card-subtitle>Altere informações da sua conta se necessário</p>
 
-    <form [formGroup]="settingsForm" (ngSubmit)="updateUsername()">
-      <h3>Username</h3>
-      <mat-form-field class="full-width mb-1">
-        <mat-label>Username</mat-label>
-        <input
-          type="text"
-          formControlName="username"
-          placeholder="Type in your username"
-          matInput
-        />
-      </mat-form-field>
+    </header>
 
-      <mat-card-actions align="end">
-        <button mat-button mat-raised-button color="primary">
-          Update username
-        </button>
-      </mat-card-actions>
-    </form>
+    <mat-progress-bar
+      mode="indeterminate"
+      [uiVisibility]="facade.loading$ | async"
+    ></mat-progress-bar>
 
-    <form [formGroup]="settingsForm" (ngSubmit)="updateEmail()">
-      <h3>Email</h3>
-      <mat-form-field class="full-width mb-1">
-        <mat-label>Email</mat-label>
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Type in your email"
-          matInput
-        />
-      </mat-form-field>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Conta </mat-panel-title>
+        </mat-expansion-panel-header>
 
-      <mat-card-actions align="end">
-        <button mat-button mat-raised-button color="primary">
-          Update email
-        </button>
-      </mat-card-actions>
-    </form>
+        <form [formGroup]="settingsForm" (ngSubmit)="updateUsername()">
+          <mat-form-field class="full-width mb-1">
+            <mat-label>Usuário</mat-label>
+            <input
+              type="text"
+              formControlName="username"
+              placeholder="Digite seu usuário"
+              matInput
+            />
+          </mat-form-field>
 
-    <form [formGroup]="settingsForm" (ngSubmit)="updatePassword()">
-      <h3>Password</h3>
-      <mat-form-field class="full-width" *ngIf="!user?.isSocial">
-        <mat-label>Current Password</mat-label>
-        <input
-          type="password"
-          formControlName="currentPassword"
-          placeholder="Type in your current password"
-          matInput
-        />
-      </mat-form-field>
+          <mat-card-actions align="end">
+            <button mat-button mat-flat-button color="primary">
+              Alterar nome de usuário
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Contato </mat-panel-title>
+        </mat-expansion-panel-header>
 
-      <mat-form-field class="full-width">
-        <mat-label>New Password</mat-label>
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Type in your new password"
-          matInput
-        />
-      </mat-form-field>
+        <form [formGroup]="settingsForm" (ngSubmit)="updateEmail()">
+          <mat-form-field class="full-width mb-1">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Digite seu email"
+              matInput
+            />
+          </mat-form-field>
 
-      <mat-form-field class="full-width mb-1">
-        <mat-label>Confirm Password</mat-label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          placeholder="Confirm your new password"
-          matInput
-        />
-      </mat-form-field>
+          <mat-card-actions align="end">
+            <button mat-button mat-raised-button color="primary">
+              Alterar email
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Segurança </mat-panel-title>
+          <!-- <mat-panel-description> Currently I am </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <form [formGroup]="settingsForm" (ngSubmit)="updatePassword()">
+          <mat-form-field *ngIf="!(facade.user$ | async)?.isSocial">
+            <mat-label>Senha atual</mat-label>
+            <input
+              type="password"
+              formControlName="currentPassword"
+              placeholder="Digite sua senha atual"
+              matInput
+            />
+          </mat-form-field>
 
-      <mat-card-actions align="end">
-        <a routerLink="/" mat-button mat-raised-button>Back</a>
-        <button mat-button mat-raised-button color="primary">
-          Update password
-        </button>
-      </mat-card-actions>
-    </form>
+          <mat-form-field>
+            <mat-label>Nova senha</mat-label>
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="Digite sua nova senha"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Confirmar senha</mat-label>
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              placeholder="Confirmar sua nova senha"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-card-actions align="end">
+            <a routerLink="/" mat-button mat-raised-button>Voltar</a>
+            <button mat-button mat-raised-button color="primary">
+              Alterar senha
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card>
-</div>
+</section>

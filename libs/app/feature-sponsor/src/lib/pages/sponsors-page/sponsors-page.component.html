@@ -18,5 +18,8 @@
 ></mat-progress-bar>
 
 <main>
+  <pre>{{ facade.publicSponsors$| async | json }}</pre>
+  <pre>{{ facade.memberSponsors$ | async | json }}</pre>
+  <pre>{{ facade.userSponsors$ | async | json }}</pre>
   <pre>{{ facade.sponsor$ | async | json }}</pre>
 </main>

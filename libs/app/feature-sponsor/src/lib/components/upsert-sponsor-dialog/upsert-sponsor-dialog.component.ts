@@ -22,8 +22,14 @@ export interface UpsertDialogData {
 export class UpsertSponsorDialogComponent {
   type: ActionType;
   upsertForm = this.fb.group({
-    title: '',
-    isPublic: [false],
+    name: [''],
+    logo: [''],
+    slug: [''],
+    color: [''],
+    website: [''],
+    description: [''],
+    youtube: [''],
+    conf: []
   });
 
   sponsor?: Sponsor;
@@ -31,10 +37,10 @@ export class UpsertSponsorDialogComponent {
   ActionType = ActionType;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: UpsertDialogData,
-    private sponsorFacade: SponsorFacade,
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<UpsertSponsorDialogComponent>
+    private sponsorFacade: SponsorFacade,
+    @Inject(MAT_DIALOG_DATA)
+    readonly data: UpsertDialogData,
   ) {
     this.type = data.type;
     this.sponsor = data.sponsor;

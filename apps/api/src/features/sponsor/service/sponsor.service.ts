@@ -15,15 +15,26 @@ import { Model, UpdateQuery } from 'mongoose';
 import { Sponsor } from '../schema/sponsor.schema';
 import { SponsorDto } from '../dto/sponsor.dto';
 import { Socket } from 'socket.io';
+import { Conf } from '../../conf/schema/conf.schema';
+import { ConfService } from '../../conf/service/conf.service';
 
 @Injectable()
 export class SponsorService {
+  private blockedFields: (keyof Sponsor)[] = [
+    'members',
+    'owner',
+    'conf',
+  ];
+
+  unpopulatedFields = '-' + this.blockedFields.join(' -');
+
   constructor(
     @InjectModel(Sponsor.name) private sponsorModel: Model<Sponsor>,
+    // private confService: ConfService,
     private sponsorGateway: SponsorGateway,
     private userService: UserService,
     @Inject(forwardRef(() => MessageService))
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {}
 
   async create(sponsor: SponsorDto, user: User) {
@@ -82,7 +93,8 @@ export class SponsorService {
     return this.sponsorModel
       .findById(sponsorId)
       .populate('members', this.userService.unpopulatedFields)
-      .populate('owner', this.userService.unpopulatedFields);
+      .populate('owner', this.userService.unpopulatedFields)
+      // .populate('conf', this.confService.unpopulatedFields);
   }
 
   async validateSponsor(sponsorId: string) {

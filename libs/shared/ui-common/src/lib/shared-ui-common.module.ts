@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -14,29 +15,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { VisibilityDirective } from './directives/visibility.directive';
 
 @NgModule({
-  imports: [
-    FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatListModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    MatProgressBarModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-  ],
   exports: [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     MatInputModule,
     MatMenuModule,
     MatButtonModule,
@@ -49,6 +35,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatProgressBarModule,
     MatFormFieldModule,
     MatToolbarModule,
+    VisibilityDirective,
+  ],
+  declarations: [
+    VisibilityDirective
   ],
 })
 export class SharedUiCommonModule {}

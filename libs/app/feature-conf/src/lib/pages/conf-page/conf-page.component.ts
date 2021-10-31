@@ -20,6 +20,11 @@ export class ConfPageComponent implements OnInit, OnDestroy {
     if (id) this.facade.loadConf(id);
   }
 
+  /**
+   * Dijkstra Stream
+   * Ritchie Stream
+   * Berners-Lee Stream
+   */
   ngOnInit() {
     this.route.params.pipe(takeUntil(this.destroy)).subscribe(({ id }) => {
       if (id) {

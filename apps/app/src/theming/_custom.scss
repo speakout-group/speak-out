@@ -3,6 +3,11 @@
 }
 
 body {
+
+  input[type="color"] {
+    height: 18px;
+  }
+
   .mat-dialog-container {
     border-radius: 16px;
   }
@@ -41,6 +46,8 @@ body {
   }
 
   .mat-toolbar {
+    min-height: 64px;
+    
     .mat-button {
       height: 100%;
       display: flex;
@@ -48,8 +55,9 @@ body {
     }
 
     .brand-name {
+      display: flex;
       width: 32px;
-      max-height: 32px;
+      height: 32px;
     }
 
     transition: margin-top 1s ease-in-out;

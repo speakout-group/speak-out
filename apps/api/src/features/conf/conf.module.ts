@@ -8,10 +8,12 @@ import { AuthModule } from '../auth/auth.module';
 import { ConfGateway } from './gateway/conf.gateway';
 import { MessagesModule } from '../messages/messages.module';
 import { SharedModule } from '../../shared/shared.module';
+import { SponsorModule } from '../sponsor/sponsor.module';
 
 @Module({
   imports: [
     AuthModule,
+    forwardRef(() => SponsorModule),
     forwardRef(() => MessagesModule),
     MongooseModule.forFeature([
       {

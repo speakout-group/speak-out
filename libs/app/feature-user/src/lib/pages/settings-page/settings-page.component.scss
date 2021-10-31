@@ -1,8 +1,14 @@
-h3 {
-  font-weight: 600;
-  margin-bottom: 0.2rem;
+:host {
+  .mat-card {
+    header {
+      padding: 16px 16px 0;
+    }
+    margin: 12px;
+    padding: 0;
+
+    &-actions {
+      margin-right: 0;
+    }
+  }
 }
 
-.mb-1 {
-  margin-bottom: 1rem !important;
-}

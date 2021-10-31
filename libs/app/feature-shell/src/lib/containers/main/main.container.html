@@ -2,9 +2,15 @@
   <a routerLink="/" class="brand-name">
     <img src="assets/logo.svg" alt="Speak Out" />
   </a>
+  <h1>Speak Out</h1>
+
   <span class="spacer"></span>
 
-  <a routerLink="/sponsors" mat-button> Patrocinadores </a>
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Meu projeto</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <a routerLink="/confs" mat-menu-item>Conferências</a>
+    <a routerLink="/sponsors" mat-menu-item>Patrocinadores</a>
+  </mat-menu>
 
   <ng-container *ngIf="auth.user$ | async as user">
     <button mat-button [matMenuTriggerFor]="menu">
@@ -20,6 +26,9 @@
   </ng-container>
 </mat-toolbar>
 
-<main>
-  <router-outlet></router-outlet>
+<main
+  class="container"
+  [@mainTransition]="o.isActivated && o.activatedRoute.routeConfig?.path"
+>
+  <router-outlet #o="outlet"></router-outlet>
 </main>

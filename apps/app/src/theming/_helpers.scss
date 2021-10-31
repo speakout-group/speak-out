@@ -2,6 +2,14 @@
   flex: 1 1 auto;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .grid {
   display: grid;
 }

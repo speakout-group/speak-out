@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { getSocketClient } from '../../../shared/utils/get-socket-client';
 import { MessageService } from '../../messages/service/message.service';
+import { SponsorService } from '../../sponsor/service/sponsor.service';
 import { UserService } from '../../user/service/user.service';
 import { ConfGateway } from '../gateway/conf.gateway';
 import { remove } from '../../../shared/utils/remove';
@@ -18,13 +19,21 @@ import { Socket } from 'socket.io';
 
 @Injectable()
 export class ConfService {
+  private blockedFields: (keyof Conf)[] = [
+    'members',
+    'owner',
+  ];
+
+  unpopulatedFields = '-' + this.blockedFields.join(' -');
+
   constructor(
     @InjectModel(Conf.name) private confModel: Model<Conf>,
     private confGateway: ConfGateway,
     private userService: UserService,
+    private sponsorService: SponsorService,
     @Inject(forwardRef(() => MessageService))
     private messageService: MessageService
-  ) {}
+  ) { }
 
   async create(conf: ConfDto, user: User) {
     const object = await this.confModel.create({ ...conf, owner: user._id });
@@ -63,6 +72,7 @@ export class ConfService {
     return this.confModel
       .findOne({ _id: confId, owner: owner._id })
       .populate('members', this.userService.unpopulatedFields)
+      .populate('sponsors', this.sponsorService.unpopulatedFields)
       .populate('owner', this.userService.unpopulatedFields);
   }
 
@@ -80,6 +90,7 @@ export class ConfService {
     return this.confModel
       .findById(confId)
       .populate('members', this.userService.unpopulatedFields)
+      .populate('sponsors', this.sponsorService.unpopulatedFields)
       .populate('owner', this.userService.unpopulatedFields);
   }
 
@@ -96,6 +107,13 @@ export class ConfService {
   getConfsByMember(user: User) {
     return this.confModel
       .find({ members: { $in: user._id } })
+      .populate('owner', this.userService.unpopulatedFields);
+  }
+
+  getConfsBySponsor(sponsorId: string) {
+    return this.confModel
+      .find({ sponsors: { $in: sponsorId } })
+      .populate('sponsors', this.sponsorService.unpopulatedFields)
       .populate('owner', this.userService.unpopulatedFields);
   }
 
