@@ -1,4 +1,5 @@
 import { ConfService } from '../services/conf.service';
+import { slugify } from '../utils/slugify';
 import { Injectable } from '@angular/core';
 import { BaseState } from './base.state';
 import { Conf } from '../interfaces';
@@ -26,7 +27,7 @@ export class ConfFacade extends BaseState<ConfState> {
       publicConfs: [],
       memberConfs: [],
       userConfs: [],
-      conf: null
+      conf: null,
     });
   }
 
@@ -34,6 +35,17 @@ export class ConfFacade extends BaseState<ConfState> {
     this.setState({ loading: true });
     this.service.getConf(id).subscribe((conf) => {
       this.setState({ conf });
+      this.setState({ loading: false });
+    });
+  }
+
+  createConf(conf: Exclude<Conf, '_id' | 'members' | 'owner' | 'slug'>) {
+    this.setState({ loading: true });
+    conf.slug = slugify(conf.title);
+    this.service.createConf(conf).subscribe((response) => {
+      console.log(response);
+      
+      // this.setState({ conf });
       this.setState({ loading: false });
     });
   }

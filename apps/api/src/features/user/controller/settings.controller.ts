@@ -11,9 +11,11 @@ import { UpdatePasswordDto } from '../dto/update-password.dto';
 import { UpdateEmailDto } from '../dto/update-email.dto';
 import { UserService } from '../service/user.service';
 import { User } from '../schema/user.schema';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('settings')
 @UseGuards(JwtAuthGuard)
+@Controller('settings')
+@ApiTags('settings')
 export class SettingsController {
   constructor(private userService: UserService) {}
 

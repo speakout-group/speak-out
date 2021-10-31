@@ -1,7 +1,7 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Conf, ConfService } from '@speak-out/app-data-access';
+import { Conf, ConfFacade, ConfService } from '@speak-out/app-data-access';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 
 export enum ActionType {
@@ -22,8 +22,11 @@ export interface UpsertDialogData {
 export class UpsertConfDialogComponent {
   type: ActionType;
   upsertForm = this.formBuilder.group({
-    title: '',
-    isPublic: false,
+    title: [''],
+    description: [''],
+    start: ['', [Validators.required]],
+    end: ['', [Validators.required]],
+    isPublic: [true, Validators.requiredTrue],
   });
 
   conf?: Conf;
@@ -32,9 +35,10 @@ export class UpsertConfDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: UpsertDialogData,
+    private dialogRef: MatDialogRef<UpsertConfDialogComponent>,
     private confService: ConfService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<UpsertConfDialogComponent>
+    private facade: ConfFacade,
   ) {
     this.type = data.type;
     this.conf = data.conf;
@@ -42,6 +46,12 @@ export class UpsertConfDialogComponent {
     this.upsertForm.patchValue({
       ...this.conf,
     });
+  }
+
+  onSubmit() {
+    if (this.upsertForm.valid) {
+      this.facade.createConf(this.upsertForm.value)
+    }
   }
 
   submit() {

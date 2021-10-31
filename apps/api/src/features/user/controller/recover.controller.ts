@@ -15,8 +15,10 @@ import { RecoverService } from '../service/recover.service';
 import { MailerService } from '@nestjs-modules/mailer';
 import { UserService } from '../service/user.service';
 import { Recover } from '../schema/recover.schema';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('recover')
+@ApiTags('recover')
 export class RecoverController {
   constructor(
     private userService: UserService,

@@ -19,11 +19,13 @@ import { User } from '../../user/schema/user.schema';
 import { authConfig } from '../config/auth.config';
 import { RegisterDto } from '../dto/register.dto';
 import { LoginDto } from '../dto/login.dto';
+import { ApiTags } from '@nestjs/swagger';
 import { Dictionary } from 'code-config';
 import { Response } from 'express';
 import { stringify } from 'qs';
 
 @Controller('auth')
+@ApiTags('conf')
 export class AuthController {
   constructor(
     private authService: AuthService,

@@ -2,6 +2,9 @@
   <a routerLink="/" class="brand-name">
     <img src="assets/logo.svg" alt="Speak Out" />
   </a>
+  <a routerLink="/" mat-icon-button>
+    <mat-icon>hive</mat-icon>
+  </a>
   <h1>Speak Out</h1>
 
   <span class="spacer"></span>
@@ -13,12 +16,13 @@
   </mat-menu>
 
   <ng-container *ngIf="auth.user$ | async as user">
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>
-      <span> {{ user?.username }} </span>
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
-      <a routerLink="/rooms" mat-menu-item>Salas</a>
+      <a routerLink="/confs" mat-menu-item>Conferências</a>
+      <a routerLink="/sponsors" mat-menu-item>Patrocinadores</a>
+      <mat-divider></mat-divider>
       <a routerLink="/account/settings" mat-menu-item>Configurações</a>
       <mat-divider></mat-divider>
       <button (click)="logout()" mat-menu-item>Sair</button>

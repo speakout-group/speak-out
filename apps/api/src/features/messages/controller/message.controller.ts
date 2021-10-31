@@ -13,6 +13,7 @@ import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { RoomService } from '../../room/service/room.service';
 import { UserService } from '../../user/service/user.service';
 import { MessageService } from '../service/message.service';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { User } from '../../user/schema/user.schema';
 import {
   DeleteDirectMessageDto,
@@ -22,6 +23,7 @@ import {
 
 @UseGuards(JwtAuthGuard)
 @Controller('message')
+@ApiTags('message')
 export class MessageController {
   constructor(
     private userService: UserService,
@@ -30,6 +32,7 @@ export class MessageController {
   ) {}
 
   @Get('direct-first-message/:userId')
+  @ApiBearerAuth('access-token')
   async getFirstDirectMessage(
     @CurrentUser() user: User,
     @Param('userId') to: string
@@ -41,6 +44,7 @@ export class MessageController {
   }
 
   @Get('direct/:userId')
+  @ApiBearerAuth('access-token')
   async getDirectMessages(
     @CurrentUser() user: User,
     @Param('userId') to: string,
@@ -55,6 +59,7 @@ export class MessageController {
   }
 
   @Delete('direct')
+  @ApiBearerAuth('access-token')
   async deleteDirectMessage(
     @Body() body: DeleteDirectMessageDto,
     @CurrentUser() from: User
@@ -73,6 +78,7 @@ export class MessageController {
   }
 
   @Delete('direct/all')
+  @ApiBearerAuth('access-token')
   async deleteDirectMessages(
     @Body() body: DeleteDirectMessageDto,
     @CurrentUser() from: User
@@ -83,6 +89,7 @@ export class MessageController {
   }
 
   @Get('room-first-message/:roomId')
+  @ApiBearerAuth('access-token')
   async getFirstRoomMessage(@Param('roomId') roomId: string) {
     return this.messageService.getFirstRoomMessage(
       await this.roomService.validateRoom(roomId)
@@ -90,6 +97,7 @@ export class MessageController {
   }
 
   @Get('room/:roomId')
+  @ApiBearerAuth('access-token')
   async getRoomMessages(
     @Param('roomId') roomId: string,
     @Query() query: FetchMessagesDto
@@ -102,6 +110,7 @@ export class MessageController {
   }
 
   @Delete('room')
+  @ApiBearerAuth('access-token')
   async deleteRoomMessage(
     @Body() body: DeleteRoomMessageDto,
     @CurrentUser() user: User
@@ -118,6 +127,7 @@ export class MessageController {
   }
 
   @Delete('room/all')
+  @ApiBearerAuth('access-token')
   async deleteRoomMessages(
     @Body() body: DeleteRoomMessageDto,
     @CurrentUser() user: User

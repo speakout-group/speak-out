@@ -16,10 +16,11 @@ import { UserService } from '../../user/service/user.service';
 import { SpeakerService } from '../service/speaker.service';
 import { User } from '../../user/schema/user.schema';
 import { DeleteConfSpeakerDto, FetchSpeakersDto } from '../dto';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @Controller('speaker')
+@ApiTags('speaker')
 export class SpeakerController {
   constructor(
     private userService: UserService,

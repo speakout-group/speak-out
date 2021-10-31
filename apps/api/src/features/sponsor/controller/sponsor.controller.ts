@@ -14,10 +14,11 @@ import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../../user/schema/user.schema';
 import { SponsorService } from '../service/sponsor.service';
 import { SponsorDto } from '../dto/sponsor.dto';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @Controller('sponsor')
+@ApiTags('sponsor')
 export class SponsorController {
   constructor(private sponsorService: SponsorService) {}
 

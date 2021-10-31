@@ -1,10 +1,12 @@
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { SubscribeEventDto } from '../dto/subscribe-event.dto';
 import { UserService } from '../service/user.service';
 import { User } from '../../user/schema/user.schema';
-import { SubscribeEventDto } from '../dto/subscribe-event.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('user')
+@ApiTags('user')
 export class UserController {
   constructor(private userService: UserService) {}
 

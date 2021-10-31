@@ -12,9 +12,11 @@ import { SubscriptionService } from '../service/subscription.service';
 import { SubscriptionType } from '../schema/subscription.schema';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../schema/user.schema';
+import { ApiTags } from '@nestjs/swagger';
 
 @UseGuards(JwtAuthGuard)
 @Controller('subscription')
+@ApiTags('subscription')
 export class SubscriptionController {
   constructor(private subscriptionService: SubscriptionService) {}
 
