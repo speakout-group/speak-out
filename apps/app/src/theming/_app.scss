@@ -1,7 +1,7 @@
 @include mat.core();
 
-$ma-primary: mat.define-palette(conf.$light-palette);
-$ma-accent: mat.define-palette(conf.$dark-palette);
+$ma-primary: mat.define-palette(conf.$dark-palette);
+$ma-accent: mat.define-palette(conf.$light-palette, A200, A100, A400);
 // $ma-primary: mat.define-palette(mat.$deep-orange-palette);
 // $ma-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 

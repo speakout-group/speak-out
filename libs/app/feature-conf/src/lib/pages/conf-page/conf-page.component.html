@@ -1,3 +1,20 @@
+<ng-container *ngIf="facade.conf$ | async as conf">
+  <mat-toolbar color="primary">
+    <h2>Conferências</h2>
+
+    <span class="spacer"></span>
+
+    <button type="button" mat-fab (click)="openUpdateDialog(conf)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-progress-bar
+    diameter="30"
+    *ngIf="facade.loading$ | async"
+  ></mat-progress-bar>
+</ng-container>
+
 <pre>{{ facade.conf$ | async | json }}</pre>
 <!-- <div *ngIf="conf" class="d-flex flex-grow-1">
   <div

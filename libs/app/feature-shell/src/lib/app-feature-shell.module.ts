@@ -1,10 +1,11 @@
-import { AccountContainer, HomeContainer, MainContainer } from './containers';
 import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+
+import { HomeContainer, MainContainer } from './containers';
 import { SponsorsComponent } from './components';
 import { HomePageComponent } from './pages';
 
@@ -12,13 +13,12 @@ import { HomePageComponent } from './pages';
   declarations: [
     MainContainer,
     HomeContainer,
-    AccountContainer,
     SponsorsComponent,
     HomePageComponent,
   ],
   imports: [
     CommonModule,
-    MatGridListModule,
+    AppUiLayoutModule,
     AppDataAccessModule,
     SharedUiCommonModule,
     RouterModule.forChild([
@@ -41,7 +41,7 @@ import { HomePageComponent } from './pages';
       },
       {
         path: 'account',
-        component: AccountContainer,
+        component: MainContainer,
         canActivate: [AuthGuard],
         children: [
           {

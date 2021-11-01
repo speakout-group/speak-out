@@ -1,7 +1,7 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Conf, ConfFacade, ConfService } from '@speak-out/app-data-access';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 
 export enum ActionType {
@@ -14,6 +14,32 @@ export interface UpsertDialogData {
   conf?: Conf;
 }
 
+export class ConfForm extends FormGroup {
+  constructor(value: Partial<Conf> = {}) {
+    super({
+      title: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      start: new FormControl('', [Validators.required]),
+      end: new FormControl('', [Validators.required]),
+      isPublic: new FormControl(false, [Validators.requiredTrue]),
+    });
+
+    this.patchValue(value);
+  }
+
+  get start() {
+    return this.get('start')
+  }
+
+  get end() {
+    return this.get('end')
+  }
+  
+  get isPublic() {
+    return this.get('isPublic')
+  }
+}
+
 @Component({
   selector: 'conf-upsert-conf-dialog',
   templateUrl: './upsert-conf-dialog.component.html',
@@ -21,20 +47,23 @@ export interface UpsertDialogData {
 })
 export class UpsertConfDialogComponent {
   type: ActionType;
+  ActionType = ActionType;
+
+  form: ConfForm
+
   upsertForm = this.formBuilder.group({
     title: [''],
     description: [''],
     start: ['', [Validators.required]],
     end: ['', [Validators.required]],
-    isPublic: [true, Validators.requiredTrue],
+    isPublic: [false, Validators.requiredTrue],
   });
 
   conf?: Conf;
 
-  ActionType = ActionType;
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: UpsertDialogData,
+    @Inject(MAT_DIALOG_DATA)
+    readonly data: UpsertDialogData,
     private dialogRef: MatDialogRef<UpsertConfDialogComponent>,
     private confService: ConfService,
     private formBuilder: FormBuilder,
@@ -42,6 +71,7 @@ export class UpsertConfDialogComponent {
   ) {
     this.type = data.type;
     this.conf = data.conf;
+    this.form = new ConfForm(data.conf);
 
     this.upsertForm.patchValue({
       ...this.conf,

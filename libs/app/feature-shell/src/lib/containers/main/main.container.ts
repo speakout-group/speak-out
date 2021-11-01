@@ -20,6 +20,10 @@ export class MainContainer implements OnInit {
     });
   }
 
+  onNavigate(route: string[]) {
+    this.router.navigate(route);
+  }
+
   logout() {
     this.auth.logout();
     this.router.navigate(['/']);

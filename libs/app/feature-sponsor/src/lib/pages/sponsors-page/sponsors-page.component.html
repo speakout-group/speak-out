@@ -1,25 +1,52 @@
 <mat-toolbar color="primary">
-  <a mat-icon-button routerLink="/">
-    <mat-icon>chevron_left</mat-icon>
-  </a>
-  
-  <h2>Conferências</h2>
-  
+  <h2>Patrocinadores</h2>
+
   <span class="spacer"></span>
-  
-  <button mat-button (click)="openCreateDialog()">Cadastrar patrocinador</button>
-  <button mat-button (click)="openJoinSponsorDialog()">Participar</button>
+
+  <button type="button" mat-fab (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-progress-bar
-  class="position-absolute"
   diameter="30"
   *ngIf="facade.loading$ | async"
 ></mat-progress-bar>
 
 <main>
-  <pre>{{ facade.publicSponsors$| async | json }}</pre>
-  <pre>{{ facade.memberSponsors$ | async | json }}</pre>
-  <pre>{{ facade.userSponsors$ | async | json }}</pre>
-  <pre>{{ facade.sponsor$ | async | json }}</pre>
+  <mat-nav-list>
+    <h3 matSubheader>Seus patrocínios</h3>
+    <a
+      mat-list-item
+      *ngFor="let sponsor of facade.userSponsors$ | async"
+      [routerLink]="sponsor._id"
+    >
+      <h3 mat-line>{{ sponsor.name }}</h3>
+      <p mat-line>{{ sponsor.members.length }} membro(s)</p>
+    </a>
+  </mat-nav-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h3 matSubheader>Eventos que você participa</h3>
+    <mat-list-item *ngFor="let sponsor of facade.memberSponsors$ | async">
+      <h3 mat-line>{{ sponsor.name }}</h3>
+      <p mat-line>{{ sponsor.members.length }} membro(s)</p>
+      <a [routerLink]="sponsor._id" mat-button>Acessar</a>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-list>
+    <h3 matSubheader>Eventos da plataforma</h3>
+    <mat-list-item *ngFor="let sponsor of facade.publicSponsors$ | async">
+      <h3 mat-line>{{ sponsor.name }}</h3>
+      <p mat-line>{{ sponsor.members.length }} membro(s)</p>
+      <button (click)="joinSponsor(sponsor)" mat-flat-button color="primary">
+        Participar
+      </button>
+    </mat-list-item>
+  </mat-list>
 </main>

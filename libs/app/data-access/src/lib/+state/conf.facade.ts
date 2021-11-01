@@ -3,6 +3,7 @@ import { slugify } from '../utils/slugify';
 import { Injectable } from '@angular/core';
 import { BaseState } from './base.state';
 import { Conf } from '../interfaces';
+import { take } from 'rxjs/operators';
 
 export interface ConfState {
   loading: boolean;
@@ -51,6 +52,14 @@ export class ConfFacade extends BaseState<ConfState> {
       // this.setState({ conf });
       this.setState({ loading: false });
     });
+  }
+  
+  updateConf(id: string, conf: Conf) {
+    this.setState({ loading: true });
+    conf.slug = slugify(conf.title);
+    return this.service.updateConf(id, conf).pipe(take(1)).subscribe(() => {
+      this.setState({ loading: false });
+    })
   }
 
   joinConf(id: string) {

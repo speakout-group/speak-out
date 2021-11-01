@@ -406,6 +406,48 @@
       },
       "tags": []
     },
+    "app-ui-layout": {
+      "projectType": "library",
+      "root": "libs/app/ui-layout",
+      "sourceRoot": "libs/app/ui-layout/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/ui-layout"],
+          "options": {
+            "project": "libs/app/ui-layout/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/ui-layout/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/ui-layout/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/ui-layout"],
+          "options": {
+            "jestConfig": "libs/app/ui-layout/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/ui-layout/src/**/*.ts",
+              "libs/app/ui-layout/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "shared-ui-common": {
       "projectType": "library",
       "root": "libs/shared/ui-common",

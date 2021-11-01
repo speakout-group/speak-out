@@ -1,34 +1,7 @@
-<mat-toolbar color="primary">
-  <a routerLink="/" class="brand-name">
-    <img src="assets/logo.svg" alt="Speak Out" />
-  </a>
-  <h1>Speak Out</h1>
-
-  <span class="spacer"></span>
-
-  <ng-container *ngIf="auth.user$ | async as user">
-    <button mat-icon-button [matMenuTriggerFor]="userMenu">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #userMenu="matMenu" xPosition="before">
-      <h3 class="menu-subheader">Conta</h3>
-      <div mat-menu-item disabled>{{ user.email }}</div>
-
-      <mat-divider></mat-divider>
-
-      <a routerLink="/confs" mat-menu-item>Conferências</a>
-      <a routerLink="/sponsors" mat-menu-item>Patrocinadores</a>
-
-      <mat-divider></mat-divider>
-
-      <a routerLink="/account/settings" mat-menu-item>Configurações</a>
-
-      <mat-divider></mat-divider>
-
-      <button (click)="logout()" mat-menu-item>Sair</button>
-    </mat-menu>
-  </ng-container>
-</mat-toolbar>
+<app-main-toolbar
+  [user]="auth.user$ | async"
+  (nav)="onNavigate($event)"
+></app-main-toolbar>
 
 <main
   class="container"

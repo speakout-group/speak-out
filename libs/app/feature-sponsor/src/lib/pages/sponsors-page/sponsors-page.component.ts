@@ -1,13 +1,10 @@
-import { SponsorFacade } from '@speak-out/app-data-access';
+import { ActionType, UpsertSponsorDialogComponent } from '../../components';
+import { Sponsor, SponsorFacade } from '@speak-out/app-data-access';
+import { ConfirmationService } from '@speak-out/shared-ui-dialogs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { take } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {
-  ActionType,
-  JoinSponsorDialogComponent,
-  UpsertSponsorDialogComponent,
-} from '../../components';
 
 @Component({
   templateUrl: './sponsors-page.component.html',
@@ -19,8 +16,9 @@ export class SponsorsPageComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
 
   constructor(
+    private confirmation: ConfirmationService,
     readonly facade: SponsorFacade,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -51,7 +49,18 @@ export class SponsorsPageComponent implements OnInit, OnDestroy {
     // });
   }
 
-  openJoinSponsorDialog() {
-    this.dialog.open(JoinSponsorDialogComponent);
+  joinSponsor(sponsor: Sponsor) {
+    const data = {
+      label: sponsor.name,
+      icon: 'gift',
+      message: `concorrer ao prêmio deste patrocinador?`,
+      cancel: true,
+    };
+
+    const ref = this.confirmation.open({ data }).afterClosed();
+
+    ref.pipe(take(1)).subscribe((response) => {
+      if (response) this.facade.joinSponsor(sponsor._id);
+    });
   }
 }
