@@ -1,88 +1,48 @@
 import { AuthFacade, AuthService } from '@speak-out/app-data-access';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginPageForm } from './login-page.form';
-import { Component } from '@angular/core';
-import { take } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent {
-  // loginForm = this.formBuilder.group({
-  //   username: '',
-  //   password: '',
-  // });
+export class LoginPageComponent implements OnInit, OnDestroy {
+  destroy = new Subject<void>();
 
   loading = false;
 
-  loginForm: LoginPageForm;
+  loginForm = new LoginPageForm();
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private facade: AuthFacade
-  ) {
-    this.loginForm = new LoginPageForm(this.route.snapshot.params.email);
+    readonly facade: AuthFacade,
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+    this.prepareRedirect(this.route);
   }
 
-  submit() {
-    if (this.loading) {
-      return;
-    }
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.facade.login(this.loginForm.value);
+      this.facade.redirect$
+        .pipe(takeUntil(this.destroy))
+        .subscribe((redirectUrl) => {
+          console.log('redirectUrl', redirectUrl);
 
-    this.loading = true;
-
-    const user = this.loginForm.value;
-
-    this.authService
-      .login(user)
-      .pipe(take(1))
-      .subscribe(
-        (user) => {
-          console.log('success: ', user);
-          this.authService.redirectToCallback();
-        },
-        () => {
-          this.loading = false;
-
-          this.loginForm.patchValue({
-            password: '',
-          });
-        }
-      );
-  }
-
-  async loginWithFacebook() {
-    if (this.loading) {
-      return;
-    }
-
-    this.loading = true;
-
-    try {
-      await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithFacebook()
-      );
-    } finally {
-      this.loading = false;
+          this.router.navigateByUrl(redirectUrl);
+        });
     }
   }
 
-  async loginWithApple() {
-    if (this.loading) {
-      return;
-    }
-
-    this.loading = true;
-
-    try {
-      await this.authService.handleSocialLogin(() =>
-        this.authService.loginWithApple()
-      );
-    } finally {
-      this.loading = false;
-    }
+  prepareRedirect({ snapshot }: ActivatedRoute) {
+    const url = snapshot.queryParams.returnUrl;
+    this.facade.setRedirect(url ?? '/confs');
   }
 
   async loginWithGoogle() {
@@ -99,5 +59,10 @@ export class LoginPageComponent {
     } finally {
       this.loading = false;
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

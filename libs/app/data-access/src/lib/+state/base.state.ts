@@ -3,7 +3,9 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
 
 export abstract class BaseState<T> {
   protected destroy = new Subject<void>();
+  
   private state$: BehaviorSubject<T>;
+
   protected get state(): T {
     return this.state$.getValue();
   }

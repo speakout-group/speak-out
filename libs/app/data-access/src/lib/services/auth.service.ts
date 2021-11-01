@@ -1,24 +1,19 @@
 import { AuthTokenInterceptor, ErrorDialogInterceptor } from '../interceptors';
+import { distinctUntilChanged, mergeMap, take, tap } from 'rxjs/operators';
 import { AppleLoginProvider } from '../providers/apple-login.provider';
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
 import { SubscriptionService } from './subscription.service';
-import { distinctUntilChanged, mergeMap, take, tap } from 'rxjs/operators';
+import { User, TokenResponse } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { User } from '../interfaces';
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
 } from 'angularx-social-login';
 import Swal from 'sweetalert2';
-
-export interface TokenResponse {
-  access_token: string;
-  refresh_token: string;
-}
 
 @Injectable({
   providedIn: 'root',

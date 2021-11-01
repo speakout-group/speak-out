@@ -1,0 +1,44 @@
+@use 'libs/styles/mixins' as mixin;
+
+.display {
+  &-none {
+    display: none;
+  }
+  &-flex {
+    display: flex;
+  }
+  &-block {
+    display: flex;
+  }
+  &-inline-flex {
+    display: inline-flex;
+  }
+  @include mixin.media(mobile) {
+    &-none {
+      display: none;
+    }
+    &-flex {
+      display: flex;
+    }
+    &-block {
+      display: flex;
+    }
+    &-inline-flex {
+      display: inline-flex;
+    }
+  }
+  @include mixin.media(tablet) {
+    &-none {
+      display: none;
+    }
+    &-flex {
+      display: flex;
+    }
+    &-block {
+      display: flex;
+    }
+    &-inline-flex {
+      display: inline-flex;
+    }
+  }
+}

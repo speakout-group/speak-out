@@ -1,18 +1,17 @@
+import { AccountContainer, HomeContainer, MainContainer } from './containers';
 import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { AccountContainer, MainContainer } from './containers';
-import { ConfMainContainer } from './containers/conf';
-import { HomePageComponent } from './pages';
-import { SponsorsComponent } from './components';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { SponsorsComponent } from './components';
+import { HomePageComponent } from './pages';
 
 @NgModule({
   declarations: [
     MainContainer,
-    ConfMainContainer,
+    HomeContainer,
     AccountContainer,
     SponsorsComponent,
     HomePageComponent,
@@ -25,17 +24,25 @@ import { NgModule } from '@angular/core';
     RouterModule.forChild([
       {
         path: '',
-        component: MainContainer,
+        component: HomeContainer,
         children: [
           {
             path: '',
             component: HomePageComponent,
+          },
+          {
+            path: 'auth',
+            loadChildren: () =>
+              import('@speak-out/app-feature-auth').then(
+                (m) => m.AppFeatureAuthModule
+              ),
           },
         ],
       },
       {
         path: 'account',
         component: AccountContainer,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -49,6 +56,7 @@ import { NgModule } from '@angular/core';
       {
         path: 'confs',
         component: MainContainer,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -57,12 +65,12 @@ import { NgModule } from '@angular/core';
                 (m) => m.AppFeatureConfModule
               ),
           },
-        ],
-        canActivate: [AuthGuard],
+        ]
       },
       {
         path: 'sponsors',
         component: MainContainer,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -72,15 +80,7 @@ import { NgModule } from '@angular/core';
               ),
           },
         ],
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'auth',
-        loadChildren: () =>
-          import('@speak-out/app-feature-auth').then(
-            (m) => m.AppFeatureAuthModule
-          ),
-      },
+      }
     ]),
   ],
 })

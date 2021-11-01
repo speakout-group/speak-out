@@ -3,9 +3,27 @@
 }
 
 body {
+  speak-out-root {
+    & > router-outlet + ng-component {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
 
-  input[type="color"] {
+      main {
+        flex: 1;
+      }
+    }
+  }
+
+  input[type='color'] {
     height: 18px;
+  }
+
+  .menu-subheader {
+    opacity: 0.5;
+    display: flex;
+    font-size: 80%;
+    margin: 16px 16px 0;
   }
 
   .mat-dialog-container {
@@ -50,7 +68,7 @@ body {
 
   .mat-toolbar {
     min-height: 64px;
-    
+
     .mat-button {
       height: 100%;
       display: flex;
@@ -61,6 +79,9 @@ body {
       display: flex;
       width: 32px;
       height: 32px;
+      & + h1 {
+        margin-left: 12px;
+      }
     }
 
     transition: margin-top 1s ease-in-out;

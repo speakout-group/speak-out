@@ -1,6 +1,6 @@
-import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
-import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { LoginPageComponent, RegisterPageComponent } from './pages';
+import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
+import { AppDataAccessModule } from '@speak-out/app-data-access';
 import { SocialLoginModule } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -13,13 +13,8 @@ import { NgModule } from '@angular/core';
     SharedUiCommonModule,
     RouterModule.forChild([
       {
-        path: '',
-        redirectTo: 'login',
-      },
-      {
         path: 'login',
         component: LoginPageComponent,
-        // canActivate: [AuthGuard],
         data: {
           requireAuth: false,
         },
@@ -27,7 +22,6 @@ import { NgModule } from '@angular/core';
       {
         path: 'register',
         component: RegisterPageComponent,
-        // canActivate: [AuthGuard],
         data: {
           requireAuth: false,
         },

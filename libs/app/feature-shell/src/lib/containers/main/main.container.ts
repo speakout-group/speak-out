@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './main.container.html',
-  styleUrls: ['./main.container.scss'],
   animations: [mainTransition],
 })
 export class MainContainer implements OnInit {

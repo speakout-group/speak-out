@@ -2,8 +2,16 @@
   display: flex;
   flex-direction: column;
 
-  .mat-toolbar .mat-icon-button {
-    margin-right: 18px;
+  .mat-toolbar {
+    position: sticky;
+    top: 0;
+    .mat-fab {
+      margin-bottom: -48px;
+    }
+
+    .mat-icon-button {
+      margin-right: 18px;
+    }
   }
 
   section {

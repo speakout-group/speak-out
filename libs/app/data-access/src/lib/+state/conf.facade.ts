@@ -17,8 +17,11 @@ export class ConfFacade extends BaseState<ConfState> {
   loading$ = this.select((state) => state.loading);
 
   publicConfs$ = this.select((state) => state.publicConfs);
+
   memberConfs$ = this.select((state) => state.memberConfs);
+  
   userConfs$ = this.select((state) => state.userConfs);
+  
   conf$ = this.select((state) => state.conf);
 
   constructor(private service: ConfService) {

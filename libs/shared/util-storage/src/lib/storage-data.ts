@@ -8,9 +8,9 @@ export class StorageData {
   }
 
   get<T = string>(key: string) {
-    const value = this._storage.getItem(key);
+    const value = this._storage.getItem(key) ?? '';
     const isStr = typeof value === 'string';
-    return (!!value && isStr ? JSON.parse(value) : value) as T | null;
+    return (!isStr ? JSON.parse(value) : value) as T | null;
   }
 
   remove(key: string) {

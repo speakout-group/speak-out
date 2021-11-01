@@ -1,22 +1,20 @@
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
+import { StorageData } from '@speak-out/shared-util-storage';
+import { User, TokenResponse } from '../interfaces';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../interfaces';
-
-export interface TokenResponse {
-  access_token: string;
-  refresh_token: string;
-}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthDataService {
   constructor(
+    @Inject(APP_CONFIG)
+    private config: AppConfig,
     private http: HttpClient,
-    private socialService: SocialAuthService,
-    @Inject(APP_CONFIG) private config: AppConfig
+    private storage: StorageData,
+    private social: SocialAuthService,
   ) {}
 
   login(user: Partial<User>) {
@@ -29,9 +27,8 @@ export class AuthDataService {
     });
   }
 
-  private async loginWith(providerId: string, options?: any) {
-    const user = await this.socialService.signIn(providerId);
-    console.log(this.config.api);
+  private async loginWith(providerId: string, options?: unknown) {
+    const user = await this.social.signIn(providerId);
 
     return this.http.post<TokenResponse>(
       `${this.config.api}/auth/google-login`,
@@ -62,40 +59,43 @@ export class AuthDataService {
     );
   }
 
-  async setTokens(response: TokenResponse) {
-    this.setRefreshToken(response.refresh_token);
+  async setTokens({ refresh_token, access_token }: TokenResponse) {
+    this.setRefreshToken(refresh_token);
 
-    return this.setAccessToken(response.access_token);
+    return this.setAccessToken(access_token);
+  }
+  
+  handleTokens({ refresh_token, access_token }: TokenResponse) {
+    this.setRefreshToken(refresh_token);
+    this.setAccessToken(access_token);
+    return this.getProfile();
   }
 
   getAccessToken() {
-    return localStorage.getItem('accessToken');
+    return this.storage.get('accessToken');
   }
 
   async setAccessToken(token: string) {
-    localStorage.setItem('accessToken', token);
-
-    return this.getProfile().toPromise();
+    this.storage.set('accessToken', token);
   }
 
   getRefreshToken() {
-    return localStorage.getItem('refreshToken');
+    return this.storage.get('refreshToken');
   }
-
+  
   setRefreshToken(token: string) {
-    localStorage.setItem('refreshToken', token);
+    this.storage.set('refreshToken', token);
   }
-
+  
   getLoginCallbackUrl() {
-    return localStorage.getItem('loginCallbackUrl');
+    return this.storage.get('loginCallbackUrl') ?? '/';
   }
 
   setLoginCallbackUrl(url: string) {
-    localStorage.setItem('loginCallbackUrl', url);
+    this.storage.set('loginCallbackUrl', url);
   }
 
   logout() {
-    sessionStorage.clear();
-    localStorage.clear();
+    this.storage.clear();
   }
 }

@@ -1,28 +1,30 @@
-import { StorageData } from '@speak-out/shared-util-storage';
-import { AuthService } from '../services/auth.service';
 import { AuthDataService } from '../infrastructure';
+import { User, TokenResponse } from '../interfaces';
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { BaseState } from './base.state';
-import { User } from '../interfaces';
+import { Login } from '../types';
 
 export interface AuthState {
   loading: boolean;
   user: User | null;
+  redirect: string;
 }
 
 @Injectable()
 export class AuthFacade extends BaseState<AuthState> {
   loading$ = this.select((state) => state.loading);
 
+  redirect$ = this.select((state) => state.redirect);
+
   user$ = this.select((state) => state.user);
 
-  constructor(private service: AuthDataService, private storage: StorageData) {
+  constructor(private service: AuthDataService) {
     super({
       loading: false,
+      redirect: '/',
       user: null,
     });
-
-    console.log(storage);
   }
 
   loadUser() {
@@ -33,8 +35,24 @@ export class AuthFacade extends BaseState<AuthState> {
     });
   }
 
-  login({ username, password }: Pick<User, 'username' | 'password'>) {
-    this.service.login({ username, password });
+  login({ username, password }: Login) {
+    this.setState({ loading: true });
+    this.service
+      .login({ username, password })
+      .pipe(switchMap((res) => this.handleLogin(res)))
+      .subscribe((user) => {
+        const redirect = this.service.getLoginCallbackUrl();
+        const state = { user, redirect, loading: false };
+        this.setState(state);
+      });
+  }
+
+  handleLogin(response: TokenResponse) {
+    return this.service.handleTokens(response);
+  }
+
+  setRedirect(url: string) {
+    this.service.setLoginCallbackUrl(url);
   }
 
   withGoogle() {

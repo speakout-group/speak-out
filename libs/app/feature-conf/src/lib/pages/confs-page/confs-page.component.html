@@ -1,14 +1,11 @@
-<mat-toolbar color="primary">
-  <a mat-icon-button routerLink="/">
-    <mat-icon>chevron_left</mat-icon>
-  </a>
-
+<mat-toolbar color="accent">
   <h2>Conferências</h2>
 
   <span class="spacer"></span>
 
-  <button mat-stroked-button (click)="openCreateDialog()">Criar sua conferência</button>
-  <button mat-button (click)="openJoinConfDialog()">Usar código</button>
+  <button type="button" mat-fab (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-progress-bar
@@ -18,14 +15,17 @@
 ></mat-progress-bar>
 
 <main>
-  <mat-list>
+  <mat-nav-list>
     <h3 matSubheader>Eventos que você organiza</h3>
-    <mat-list-item *ngFor="let conf of facade.userConfs$ | async">
+    <a
+      mat-list-item
+      *ngFor="let conf of facade.userConfs$ | async"
+      [routerLink]="conf._id"
+    >
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
-      <a [routerLink]="conf._id" mat-button>Acessar</a>
-    </mat-list-item>
-  </mat-list>
+    </a>
+  </mat-nav-list>
 
   <mat-divider></mat-divider>
 
