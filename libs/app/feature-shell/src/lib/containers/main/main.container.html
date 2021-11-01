@@ -6,40 +6,28 @@
 
   <span class="spacer"></span>
 
-  <ng-container *ngIf="auth.user$ | async as user; else loginMenuTmpl">
+  <ng-container *ngIf="auth.user$ | async as user">
     <button mat-icon-button [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu" xPosition="before">
       <h3 class="menu-subheader">Conta</h3>
-      <div mat-menu-item disabled>
-        {{ user.email }}
-      </div>
+      <div mat-menu-item disabled>{{ user.email }}</div>
 
       <mat-divider></mat-divider>
-      
+
       <a routerLink="/confs" mat-menu-item>Conferências</a>
       <a routerLink="/sponsors" mat-menu-item>Patrocinadores</a>
-      
+
       <mat-divider></mat-divider>
-      
+
       <a routerLink="/account/settings" mat-menu-item>Configurações</a>
-      
+
       <mat-divider></mat-divider>
-      
+
       <button (click)="logout()" mat-menu-item>Sair</button>
     </mat-menu>
   </ng-container>
-  <ng-template #loginMenuTmpl>
-    <button mat-button [matMenuTriggerFor]="loginMenu">
-      <span>Acessar</span>
-      <mat-icon class="color-muted">account_circle</mat-icon>
-    </button>
-    <mat-menu #loginMenu="matMenu" xPosition="before">
-      <a routerLink="/auth/login" mat-menu-item>Login</a>
-      <a routerLink="/auth/register" mat-menu-item>Criar conta</a>
-    </mat-menu>
-  </ng-template>
 </mat-toolbar>
 
 <main

@@ -1,7 +1,7 @@
 import { AuthFacade } from '@speak-out/app-data-access';
+import { NavigationEnd, Router } from '@angular/router';
 import { mainTransition } from './main-transition';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './main.container.html',
@@ -12,6 +12,12 @@ export class MainContainer implements OnInit {
 
   ngOnInit(): void {
     this.auth.loadUser();
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.auth.setRedirect(event.url);
+      }
+    });
   }
 
   logout() {

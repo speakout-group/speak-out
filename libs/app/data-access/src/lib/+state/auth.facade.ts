@@ -52,6 +52,7 @@ export class AuthFacade extends BaseState<AuthState> {
   }
 
   setRedirect(url: string) {
+    this.setState({ redirect: url });
     this.service.setLoginCallbackUrl(url);
   }
 
