@@ -19,7 +19,7 @@ export class ConfService {
 
   getConf(confId: string) {
     return this.http
-      .get<Conf>(`${this.config.api}/conf/id/${confId}`)
+      .get<Conf>(`${this.config.api}/conf/${confId}`)
       .pipe(map(getConfWithSortedMembers));
   }
 

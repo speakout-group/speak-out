@@ -1,4 +1,4 @@
-import { AuthFacade, SponsorFacade, ConfFacade } from './+state';
+import { AuthFacade, SponsorFacade, ConfFacade, RoomFacade } from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StorageData } from '@speak-out/shared-util-storage';
@@ -15,6 +15,7 @@ import {
     AuthService,
     StorageData,
     AuthFacade,
+    RoomFacade,
     ConfFacade,
     SponsorFacade,
     SocialAuthService,
@@ -25,18 +26,11 @@ export class AppDataAccessModule {
     appConfig: AppConfig
   ): ModuleWithProviders<AppDataAccessModule> {
     const providers = [];
-    const { google, facebook } = appConfig.apps;
+    const { google } = appConfig.apps;
     if (google) {
       providers.push({
         id: GoogleLoginProvider.PROVIDER_ID,
         provider: new GoogleLoginProvider(google),
-      });
-    }
-
-    if (facebook) {
-      providers.push({
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider(facebook),
       });
     }
 
@@ -55,10 +49,6 @@ export class AppDataAccessModule {
               {
                 id: GoogleLoginProvider.PROVIDER_ID,
                 provider: new GoogleLoginProvider(google),
-              },
-              {
-                id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider(facebook),
               },
             ],
           } as SocialAuthServiceConfig,

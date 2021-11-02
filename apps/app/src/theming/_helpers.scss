@@ -38,12 +38,20 @@
   justify-content: center;
 }
 
+.full {
+  width: 100%;
+}
+
 .flex {
   display: flex;
 
   &-row {
     display: flex;
     flex-direction: row;
+  }
+
+  &-row-wrap {
+    flex-flow: row wrap;
   }
 
   &-col {

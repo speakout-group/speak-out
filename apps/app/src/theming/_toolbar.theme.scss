@@ -1,0 +1,17 @@
+@use '~@angular/material' as mat;
+
+app-ui-toolbar {
+  $tb-primary: mat.define-palette(conf.$dark-palette);
+  $tb-accent: mat.define-palette(conf.$light-palette);
+
+  $tb-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $tb-primary,
+        accent: $tb-accent,
+      ),
+    )
+  );
+
+  @include mat.toolbar-color($tb-theme);
+}

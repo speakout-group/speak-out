@@ -10,6 +10,7 @@
       required
       matInput
     />
+    <mat-error>Obrigatório</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -44,6 +45,8 @@
         [for]="campaignOnePicker"
       ></mat-datepicker-toggle>
       <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+
+      <mat-error>Data inicial obrigatória</mat-error>
     </mat-form-field>
   </section>
 

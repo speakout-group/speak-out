@@ -11,7 +11,6 @@ import {
   AuthService,
   AppDataAccessModule,
   AuthTokenInterceptor,
-  ErrorDialogInterceptor,
 } from '@speak-out/app-data-access';
 
 import { AppComponent } from './app.component';
@@ -65,11 +64,6 @@ import { environment } from '../environments/environment';
       useClass: AuthTokenInterceptor,
       multi: true,
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ErrorDialogInterceptor,
-    //   multi: true,
-    // },
   ],
   bootstrap: [AppComponent],
 })

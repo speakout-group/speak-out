@@ -14,13 +14,9 @@
 ></mat-progress-bar>
 
 <main>
-  <mat-nav-list>
+  <mat-nav-list *ngIf="facade.userConfs$ | async as userConfs">
     <h3 matSubheader>Eventos que você organiza</h3>
-    <a
-      mat-list-item
-      *ngFor="let conf of facade.userConfs$ | async"
-      [routerLink]="conf._id"
-    >
+    <a mat-list-item *ngFor="let conf of userConfs" [routerLink]="conf._id">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
     </a>
@@ -28,9 +24,9 @@
 
   <mat-divider></mat-divider>
 
-  <mat-list>
+  <mat-list *ngIf="facade.memberConfs$ | async as memberConfs">
     <h3 matSubheader>Eventos que você participa</h3>
-    <mat-list-item *ngFor="let conf of facade.memberConfs$ | async">
+    <mat-list-item *ngFor="let conf of memberConfs">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
       <a [routerLink]="conf._id" mat-button>Acessar</a>
@@ -39,9 +35,9 @@
 
   <mat-divider></mat-divider>
 
-  <mat-list>
+  <mat-list *ngIf="facade.publicConfs$ | async as publicConfs">
     <h3 matSubheader>Eventos da plataforma</h3>
-    <mat-list-item *ngFor="let conf of facade.publicConfs$ | async">
+    <mat-list-item *ngFor="let conf of publicConfs">
       <h3 mat-line>{{ conf.title }}</h3>
       <p mat-line>{{ conf.members.length }} membro(s)</p>
       <button (click)="joinConf(conf)" mat-flat-button color="primary">

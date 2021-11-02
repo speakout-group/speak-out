@@ -1,6 +1,7 @@
 <app-main-toolbar
   [user]="auth.user$ | async"
   (nav)="onNavigate($event)"
+  (logout)="logout()"
 ></app-main-toolbar>
 
 <main

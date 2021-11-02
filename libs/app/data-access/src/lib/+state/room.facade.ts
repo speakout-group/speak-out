@@ -46,6 +46,15 @@ export class RoomFacade extends BaseState<RoomState> {
     });
   }
 
+  loadRoomsByConf(confId: string) {
+    this.setState({ loading: true });
+
+    this.service.joinRoom(confId).subscribe((room) => {
+      this.setState({ room });
+      this.setState({ loading: false });
+    });
+  }
+
   loadUserRooms() {
     this.setState({ loading: true });
     this.service.getUserRooms().subscribe((userRooms) => {

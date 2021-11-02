@@ -1,14 +1,9 @@
 export const environment = {
   production: true,
-  api: 'https://speakout.group/api',
-  socket: 'https://speakout.group/',
+  api: 'https://api.speakout.group',
+  socket: 'https://speakout.group',
   apps: {
-    facebook: '535472397651204',
     google:
-      '331672215174-0hlpm8fhjphiou05ovsd82vglor401ct.apps.googleusercontent.com',
-    apple: {
-      clientId: 'speakout.group',
-      redirectUri: 'https://speakout.group/',
-    },
+    '409454477116-ibv01n0c9q5enhumdb561jv7imgio10g.apps.googleusercontent.com',
   },
 };

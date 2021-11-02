@@ -406,6 +406,48 @@
       },
       "tags": []
     },
+    "app-ui-dialogs": {
+      "projectType": "library",
+      "root": "libs/app/ui-dialogs",
+      "sourceRoot": "libs/app/ui-dialogs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/app/ui-dialogs"],
+          "options": {
+            "project": "libs/app/ui-dialogs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app/ui-dialogs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/app/ui-dialogs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/ui-dialogs"],
+          "options": {
+            "jestConfig": "libs/app/ui-dialogs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/ui-dialogs/src/**/*.ts",
+              "libs/app/ui-dialogs/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "app-ui-layout": {
       "projectType": "library",
       "root": "libs/app/ui-layout",

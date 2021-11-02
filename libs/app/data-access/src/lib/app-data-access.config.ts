@@ -4,12 +4,7 @@ export interface AppConfig {
   api: string;
   socket: string;
   apps: {
-    facebook: string;
     google: string;
-    apple: {
-      clientId: string;
-      redirectUri: string;
-    };
   };
 }
 

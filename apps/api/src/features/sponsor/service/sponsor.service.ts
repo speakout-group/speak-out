@@ -11,7 +11,7 @@ import { SponsorGateway } from '../gateway/sponsor.gateway';
 import { remove } from '../../../shared/utils/remove';
 import { User } from '../../user/schema/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, UpdateQuery } from 'mongoose';
+import { Model, ObjectId, UpdateQuery } from 'mongoose';
 import { Sponsor } from '../schema/sponsor.schema';
 import { SponsorDto } from '../dto/sponsor.dto';
 import { Socket } from 'socket.io';
@@ -94,6 +94,11 @@ export class SponsorService {
       .findById(sponsorId)
       .populate('members', this.userService.unpopulatedFields)
       .populate('owner', this.userService.unpopulatedFields)
+      // .populate('conf', this.confService.unpopulatedFields);
+  }
+
+  getSponsorsByConf(conf: Conf) {
+    return this.sponsorModel.findOne({ conf: conf._id })
       // .populate('conf', this.confService.unpopulatedFields);
   }
 

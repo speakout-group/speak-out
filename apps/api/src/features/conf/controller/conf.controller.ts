@@ -15,23 +15,21 @@ import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { ConfService } from '../service/conf.service';
 import { User } from '../../user/schema/user.schema';
 import { ConfDto } from '../dto/conf.dto';
+import { SponsorService } from '../../sponsor/service/sponsor.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('conf')
 @ApiTags('conf')
 export class ConfController {
-  constructor(private confService: ConfService) { }
+  constructor(
+    private confService: ConfService,
+    private sponsorSrvice: SponsorService,
+  ) { }
 
   @Get()
   @ApiBearerAuth('access-token')
   getUserConfs(@CurrentUser() user: User) {
     return this.confService.getConfsByOwner(user);
-  }
-
-  @Get('id/:id')
-  @ApiBearerAuth('access-token')
-  get(@Param('id', ParseObjectIdPipe) id: string) {
-    return this.confService.getConf(id);
   }
 
   @Get('public')
@@ -45,6 +43,19 @@ export class ConfController {
   getConfsByMember(@CurrentUser() user: User) {
     return this.confService.getConfsByMember(user);
   }
+
+  @Get(':id')
+  @ApiBearerAuth('access-token')
+  get(@Param('id', ParseObjectIdPipe) id: string) {
+    return this.confService.getConf(id);
+  }
+
+  @Get(':id/sponsors')
+  @ApiBearerAuth('access-token')
+  getSponsorsByConf(@Param('id', ParseObjectIdPipe) id: string) {
+    // return this.confService.getSp .getConfsBySponsor(id);
+  }
+
 
   @Get('sponsor/:id')
   @ApiBearerAuth('access-token')

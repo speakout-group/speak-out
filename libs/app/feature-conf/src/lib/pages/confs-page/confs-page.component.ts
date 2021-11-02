@@ -42,20 +42,13 @@ export class ConfsPageComponent implements OnInit, OnDestroy {
   }
 
   openCreateDialog() {
-    const data = { type: ActionType.Create };
-    const dialog = this.dialog.open(UpsertConfDialogComponent, { data });
-
-    dialog
+    this.dialog
+      .open(UpsertConfDialogComponent, { data: { type: ActionType.Create } })
       .afterClosed()
       .pipe(take(1))
-      .subscribe((conf: Conf) => {
-        if (conf.isPublic) {
-          this.facade.loadPublicConfs();
-          // this.publicConfs.push(conf);
-        }
-
+      .subscribe(() => {
+        this.facade.loadPublicConfs();
         this.facade.loadUserConfs();
-        // this.userConfs.push(conf);
       });
   }
 

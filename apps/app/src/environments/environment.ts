@@ -7,13 +7,8 @@ export const environment = {
   api: 'http://localhost:3333',
   socket: 'http://localhost:3333',
   apps: {
-    facebook: '',
     google:
       '409454477116-ibv01n0c9q5enhumdb561jv7imgio10g.apps.googleusercontent.com',
-    apple: {
-      clientId: 'speakout.group',
-      redirectUri: 'https://speakout.group/',
-    },
   },
 };
 

@@ -1,8 +1,11 @@
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Sponsor, SponsorFacade } from '@speak-out/app-data-access';
+import {
+  AutocompleteForm,
+  AutocompleteFormService,
+} from '@speak-out/app-ui-dialogs';
+import { Conf, Sponsor, SponsorFacade } from '@speak-out/app-data-access';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { take } from 'rxjs/operators';
+import { FormBuilder, Validators } from '@angular/forms';
 
 export enum ActionType {
   Update,
@@ -22,31 +25,67 @@ export interface UpsertDialogData {
 export class UpsertSponsorDialogComponent {
   type: ActionType;
   upsertForm = this.fb.group({
-    name: [''],
+    name: ['', [Validators.required]],
     logo: [''],
     slug: [''],
     color: [''],
     website: [''],
     description: [''],
     youtube: [''],
-    conf: []
+    conf: ['', [Validators.required]],
   });
 
   sponsor?: Sponsor;
 
   ActionType = ActionType;
 
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+
   constructor(
     private fb: FormBuilder,
+    private autocompleteForm: AutocompleteFormService,
     private sponsorFacade: SponsorFacade,
     @Inject(MAT_DIALOG_DATA)
-    readonly data: UpsertDialogData,
+    readonly data: UpsertDialogData
   ) {
     this.type = data.type;
     this.sponsor = data.sponsor;
 
     this.upsertForm.patchValue({
       ...this.sponsor,
+    });
+  }
+
+  openSearchConf() {
+    const form = new AutocompleteForm<Partial<Conf>>(
+      [
+        {
+          title: 'nome',
+        },
+      ],
+      (options, value) => {
+        const filterValue = value.toLowerCase();
+
+        return options.filter((option) =>
+          option.title?.toLowerCase().includes(filterValue)
+        );
+      }
+    );
+
+    this.autocompleteForm.open({
+      data: { label: 'Buscar conferência', form },
     });
   }
 

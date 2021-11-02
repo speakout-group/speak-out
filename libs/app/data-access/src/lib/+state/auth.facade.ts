@@ -47,6 +47,10 @@ export class AuthFacade extends BaseState<AuthState> {
       });
   }
 
+  register(user: Partial<User>) {
+    return this.service.register(user)
+  }
+
   handleLogin(response: TokenResponse) {
     return this.service.handleTokens(response);
   }
@@ -57,7 +61,7 @@ export class AuthFacade extends BaseState<AuthState> {
   }
 
   withGoogle() {
-    this.service.loginWithGoogle();
+    return this.service.loginWithGoogle();
   }
 
   logout() {

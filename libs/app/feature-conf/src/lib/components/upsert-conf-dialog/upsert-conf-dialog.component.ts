@@ -1,7 +1,12 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Conf, ConfFacade, ConfService } from '@speak-out/app-data-access';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { take } from 'rxjs/operators';
 
 export enum ActionType {
@@ -18,25 +23,25 @@ export class ConfForm extends FormGroup {
   constructor(value: Partial<Conf> = {}) {
     super({
       title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      description: new FormControl(''),
       start: new FormControl('', [Validators.required]),
-      end: new FormControl('', [Validators.required]),
-      isPublic: new FormControl(false, [Validators.requiredTrue]),
+      end: new FormControl('', []),
+      isPublic: new FormControl(true),
     });
 
     this.patchValue(value);
   }
 
   get start() {
-    return this.get('start')
+    return this.get('start');
   }
 
   get end() {
-    return this.get('end')
+    return this.get('end');
   }
-  
+
   get isPublic() {
-    return this.get('isPublic')
+    return this.get('isPublic');
   }
 }
 
@@ -49,16 +54,7 @@ export class UpsertConfDialogComponent {
   type: ActionType;
   ActionType = ActionType;
 
-  form: ConfForm
-
-  upsertForm = this.formBuilder.group({
-    title: [''],
-    description: [''],
-    start: ['', [Validators.required]],
-    end: ['', [Validators.required]],
-    isPublic: [false, Validators.requiredTrue],
-  });
-
+  form: ConfForm;
   conf?: Conf;
 
   constructor(
@@ -66,26 +62,26 @@ export class UpsertConfDialogComponent {
     readonly data: UpsertDialogData,
     private dialogRef: MatDialogRef<UpsertConfDialogComponent>,
     private confService: ConfService,
-    private formBuilder: FormBuilder,
-    private facade: ConfFacade,
+    private facade: ConfFacade
   ) {
     this.type = data.type;
     this.conf = data.conf;
     this.form = new ConfForm(data.conf);
 
-    this.upsertForm.patchValue({
-      ...this.conf,
-    });
+    // this.upsertForm.patchValue({
+    //   ...this.conf,
+    // });
   }
 
   onSubmit() {
-    if (this.upsertForm.valid) {
-      this.facade.createConf(this.upsertForm.value)
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      this.facade.createConf(this.form.value);
     }
   }
 
   submit() {
-    const confInput = this.upsertForm.value;
+    const confInput = this.form.value;
 
     let request = this.confService.createConf(confInput);
 

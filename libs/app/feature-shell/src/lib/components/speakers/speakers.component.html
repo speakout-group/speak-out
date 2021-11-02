@@ -1,0 +1,11 @@
+<section class="flex-row gap-24">
+  <shell-member class="sign-up-card"></shell-member>
+  
+  <mat-card *ngFor="let speaker of speakers" class="flex-2" (click)="open(speaker)">
+    <img mat-card-image [src]="speaker.photo" [alt]="speaker.title" />
+    <p>{{ speaker.title }}</p>
+    <mat-card-subtitle>
+      {{ speaker.name }}
+    </mat-card-subtitle>
+  </mat-card>
+</section>
