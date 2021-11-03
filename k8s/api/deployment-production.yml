@@ -51,7 +51,7 @@ spec:
             - name: RECOVER_CODE_EXPIRATION
               value: '86400'
             - name: REDIS_ENABLED
-              value: "true"
+              value: 'true'
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:
@@ -62,6 +62,11 @@ spec:
                 secretKeyRef:
                   name: speakout-redis
                   key: port
+            - name: FIREBASE_CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-firebase
+                  key: config
           resources:
             requests:
               cpu: 100m
