@@ -51,7 +51,7 @@ spec:
             - name: RECOVER_CODE_EXPIRATION
               value: '86400'
             - name: REDIS_ENABLED
-              value: "true"
+              value: 'true'
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:
@@ -62,6 +62,11 @@ spec:
                 secretKeyRef:
                   name: speakout-redis
                   key: port
+            - name: FIREBASE_CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-firebase
+                  key: config
           resources:
             requests:
               cpu: 100m
@@ -72,11 +77,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: speakout-api-service
-  # annotations:
-  #   service.beta.kubernetes.io/do-loadbalancer-protocol: 'https'
-  #   service.beta.kubernetes.io/do-loadbalancer-tls-ports: '443'
-  #   service.beta.kubernetes.io/do-loadbalancer-certificate-id: '2eff3cba-7cc7-4a03-99be-f7caaae2a941'
-  #   service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: 'true'
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: 'https'
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: '443'
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: 'dfb119a3-4134-4095-bead-e25b7bf849b5'
+    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: 'true'
 spec:
   type: LoadBalancer
   ports:
