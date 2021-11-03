@@ -10,6 +10,7 @@ export class ScheduleComponent implements OnInit {
   constructor(readonly facade: ScheduleFacade) {}
 
   ngOnInit() {
+    this.facade.schedule$.subscribe(console.log)
     this.facade.loadSchedule()
   }
 }

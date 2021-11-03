@@ -1,13 +1,39 @@
 :host {
-  p {
-    margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+
+  section {
+    margin-top: 20px;
     display: flex;
-    white-space: break-spaces;
+    gap: 10px;
+  }
+
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    figcaption {
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
     img {
       margin: 0 10px 0 0;
       border: 2px solid #ccc;
       padding: 4px;
-      border-radius: 3px;
+      border-radius: 10px;
+      display: inline-flex;
+      float: left;
+      shape-outside: ellipse();
     }
+  }
+
+  p {
+    margin: 0;
+    display: flex;
+    white-space: pre-line;
   }
 }

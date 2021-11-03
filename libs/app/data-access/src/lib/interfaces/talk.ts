@@ -1,8 +1,9 @@
 export interface Talk {
-  id:          string;
-  photo:       string;
-  title:       string;
+  id: string;
+  photo: string;
+  title: string;
   description: string;
-  name:        string;
-  bio?:        string;
+  name: string;
+  bio: string;
+  group: string;
 }

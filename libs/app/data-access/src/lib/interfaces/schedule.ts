@@ -5,7 +5,7 @@ export interface Schedule {
   conf: string;
   start: string;
   end: string;
-  speaker: string;
+  link: string;
 }
 
 export interface Agenda extends Schedule {
