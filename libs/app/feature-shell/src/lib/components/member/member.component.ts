@@ -1,16 +1,33 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SubscribeSuccessService } from '@speak-out/app-ui-dialogs';
 import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthFacade } from '@speak-out/app-data-access';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export class MemberForm extends FormGroup {
   constructor() {
     super({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9]*$/),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
     });
+  }
+
+  get username() {
+    return this.get('username')
+  }
+
+  get password() {
+    return this.get('password')
+  }
+
+  get email() {
+    return this.get('email')
   }
 }
 
@@ -19,34 +36,32 @@ export class MemberForm extends FormGroup {
   templateUrl: './member.component.html',
   styleUrls: ['./member.component.scss'],
 })
-export class MemberComponent {
+export class MemberComponent implements OnInit {
   form = new MemberForm();
 
-  constructor(
-    private subscribe: SubscribeSuccessService,
-    readonly storage: StorageData,
-    readonly facade: AuthFacade,
-  ) { }
+  username: string | null = null;
+
+  constructor(readonly storage: StorageData, readonly facade: AuthFacade) {}
+
+  ngOnInit() {
+    this.username = this.storage.get('username');
+  }
 
   onSubmit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.facade.register(this.form.value).subscribe((response) => {
-        console.log(response);
-        this.storage.set('subscribed', this.form.value.email)
-        const value = this.form.value;
-        this.subscribe.open({
-          data: {
-            message: `${value.name}, sua vaga está garantida!`
-          }
-        })
+      const value = this.form.value;
+      this.facade.register(value).subscribe(() => {
+        this.storage.set('username', value.username);
+        this.username = value.username;
+        this.form.reset({});
       });
     }
   }
-  
+
   onGoogle() {
     this.facade.withGoogle().then((auth) => {
-      this.storage.set('subscribed', this.form.value.email ?? true)
-    })
+      this.storage.set('subscribed', this.form.value.email ?? true);
+    });
   }
 }

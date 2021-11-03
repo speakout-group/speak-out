@@ -1,14 +1,5 @@
 [
   {
-    "id": "1",
-    "photo": "assets/palestrantes/galvao.jpg",
-    "title": "APIs do jeito certo*",
-    "description": "APIs HTTP são a mais nova e quente tendência de mercado. Nesta palestra explico os motivos pelos quais o mercado está migrando massivamente para esta tendência e detalho as melhores práticas, conceitos e ferramentas para que você e sua empresa começem a trabalhar com isso do jeito certo e sem dores de cabeça.APIs do jeito certo*",
-    "name": "Galvão",
-    "bio": "Engenheiro de Software Sênior na UOL EdTech; \n Presidente da ABRAPHP – Associação Brasileira de Profissionais PHP; \n Diretor da ConFLOSS e da PHP Conference Brasil; \n Evangelista e Contribuidor para a Linguagem PHP; \n Evangelista Laminas Project; \n Embaixador Fedora LATAM; \n Professor Convidado (Especialista) de Pós-Graduação (PR e SC); \n 25+ anos desenvolvendo sistemas com interface web sendo mais de 20 destes com PHP e mais de 12 com Zend Framework / Laminas Project; \n Palestrante em eventos nacionais e internacionais; \n Professor de cursos presenciais e a distância.",
-    "group": "Ingá.PHP"
-  },
-  {
     "id": "2",
     "photo": "assets/palestrantes/vinicius-sanger.jpg",
     "title": "Internet das Coisas e Inteligência Artificial na prática",
@@ -18,6 +9,24 @@
     "group": "DevOps Maringá"
   },
   {
+    "id": "1",
+    "photo": "assets/palestrantes/galvao.jpg",
+    "title": "APIs do jeito certo*",
+    "description": "APIs HTTP são a mais nova e quente tendência de mercado. Nesta palestra explico os motivos pelos quais o mercado está migrando massivamente para esta tendência e detalho as melhores práticas, conceitos e ferramentas para que você e sua empresa começem a trabalhar com isso do jeito certo e sem dores de cabeça.APIs do jeito certo*",
+    "name": "Galvão",
+    "bio": "Engenheiro de Software Sênior na UOL EdTech; \n Presidente da ABRAPHP – Associação Brasileira de Profissionais PHP; \n Diretor da ConFLOSS e da PHP Conference Brasil; \n Evangelista e Contribuidor para a Linguagem PHP; \n Evangelista Laminas Project; \n Embaixador Fedora LATAM; \n Professor Convidado (Especialista) de Pós-Graduação (PR e SC); \n 25+ anos desenvolvendo sistemas com interface web sendo mais de 20 destes com PHP e mais de 12 com Zend Framework / Laminas Project; \n Palestrante em eventos nacionais e internacionais; \n Professor de cursos presenciais e a distância.",
+    "group": "Ingá.PHP"
+  },
+  {
+    "id": "7",
+    "photo": "assets/palestrantes/juliano-ribeiro.jpg",
+    "title": "A carreira do Coach Kanban, o início, o fim e o meio",
+    "description": "Nessa talk vou contar um pouco para você de como iniciar na carreira de Kanban Coach, os desafios iniciais, as boas referências, como superar as dificuldades e especialmente as heurísticas que nos levam muito além da agilidade.",
+    "name": "Juliano Ribeiro",
+    "bio": "Juliano Ribeiro, AKT, AKC - Accredited Kanban Trainer, Accredited Kanban Consultant, Certified Scrum Professional (CSP-SM&PO/ScrumAlliance), Certified Scrum Developer (CSD/ScrumAlliance), Tecnólogo em Sistemas para a Internet e Especialista em Programação Orientada à Objetos (UNICESUMAR). Trabalha com desenvolvimento de software desde 1994 e palestra no Brasil e no Exterior em eventos como Scrum Gathering, Agile Brazil, The Developer’s Conference, Agile Tour, Saturn e XP Conference. https://www.linkedin.com/in/julianopauloribeiro/",
+    "group": "Maringá Agile"
+  },
+  {
     "id": "3",
     "photo": "assets/palestrantes/padro-mazala.jpg",
     "title": "Observabilidade - dê-me visão além do alcance",
@@ -25,6 +34,15 @@
     "name": "Pedro Mazala",
     "bio": "desenvolvedor há 10+ anos atualmente atuando como Principal Software Engineer na Payaut. De Cataguases para Maringá e para o mundo. Ultimamente ajudo empresas a dar o próximo passo em relação ao aprimoramento de arquitetura e processos de desenvolvimento. Moro nos Países Baixos (que a maioria das pessoas chama de Holanda) há dois anos. Nas horas vagas gosto de fingir que sei treinar Jiu-Jitsu e tomar vários tipos de cafés.",
     "group": "BEMUG"
+  },
+  {
+    "id": "9",
+    "photo": "assets/palestrantes/juliana-e-tatiana.jpg",
+    "title": "O que aprendemos construindo nosso data lake",
+    "description": "Vamos abordar com uma apresentação de slides a nossa experiência ao construir um data lake, falando sobre tecnologias, frameworks, serviços e boas práticas que adotamos e que acreditamos tenham facilitado nossa jornada.",
+    "name": "Juliana Strieder Philippsen e Tatiana Mara",
+    "bio": "Tatiana Mara: Sou uma engenheira de dados na Rock Content, tenho 4 anos de experiência trabalhando com análise e engenharia de dados. No meu tempo livre gosto de assistir séries e jogos da NBA. Juliana Strieder Philippsen é engenheira de dados na Rock Content. Trabalha com ciência de dados e engenharia de dados desde 2018, quando fez uma transição de carreira da academia para a tecnologia. Em seu tempo livre, curte ler livros, viajar e praticar yoga.",
+    "group": "Afterdata"
   },
   {
     "id": "4",
@@ -45,6 +63,15 @@
     "group": "IxDA"
   },
   {
+    "id": "12",
+    "photo": "assets/palestrantes/igor-wiese.jpg",
+    "title": "Open-source, como começar? motivações e desafios!",
+    "description": "",
+    "bio": "Doutor em Ciência da Computação pelo IME-USP (2016). Professor efetivo da Universidade Tecnológica Federal do Paraná (UTFPR) Campus Campo Mourão, como Professor de Ensino Básico, Técnico e Tecnológico. Tem experiência na área de Ciência da Computação, tendo como principais linhas de pesquisa e interesse: Mineração de Repositórios de Software, Software Livre, Sistemas de Recomendação aplicados à Engenharia de Software e Aspectos humanos em Engenharia de Software. Realizou pós-doutorado na Northern Arizona University (2019/2020).\nSaiba mais: https://igorwiese.com/\nOpen-source, como começar? motivações e desafios!",
+    "name": "Igor Wiese",
+    "group": "DevParaná Campo Mourão"
+  },
+  {
     "id": "6",
     "photo": "assets/palestrantes/ruben-marcus.jpg",
     "title": "Escalando projetos com React e TS ",
@@ -52,33 +79,6 @@
     "name": "Ruben Marcus",
     "bio": "Ruben é um dev apaixonado por engenharia de software, UX/UI e código voltado a performance e escalabilidade. Com 10 anos de experiência, atualmente trabalha na Grover com React e Next.js,uma startup alemã que vem revolucionando o uso de eletrônicos permitido que as pessoas possam alugar eletrônicos que antes compravam. Também já atuou em diversas empresas como Zup, Centauro , Printi, e freelancer prestando serviços para clientes como Santander, Itaú, Panasonic, Samsung, Monsanto, Estadão, etc.  https://www.linkedin.com/in/rubenmarcus/",
     "group": "Front In Maringá"
-  },
-  {
-    "id": "7",
-    "photo": "assets/palestrantes/juliano-ribeiro.jpg",
-    "title": "A carreira do Coach Kanban, o início, o fim e o meio",
-    "description": "Nessa talk vou contar um pouco para você de como iniciar na carreira de Kanban Coach, os desafios iniciais, as boas referências, como superar as dificuldades e especialmente as heurísticas que nos levam muito além da agilidade.",
-    "name": "Juliano Ribeiro",
-    "bio": "Juliano Ribeiro, AKT, AKC - Accredited Kanban Trainer, Accredited Kanban Consultant, Certified Scrum Professional (CSP-SM&PO/ScrumAlliance), Certified Scrum Developer (CSD/ScrumAlliance), Tecnólogo em Sistemas para a Internet e Especialista em Programação Orientada à Objetos (UNICESUMAR). Trabalha com desenvolvimento de software desde 1994 e palestra no Brasil e no Exterior em eventos como Scrum Gathering, Agile Brazil, The Developer’s Conference, Agile Tour, Saturn e XP Conference. https://www.linkedin.com/in/julianopauloribeiro/",
-    "group": "Maringá Agile"
-  },
-  {
-    "id": "8",
-    "photo": "assets/palestrantes/kleber-reis.jpg",
-    "title": "Introdução ao API Gateway - KONG",
-    "description": "Descrição: Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
-    "name": "Kleber de Andrade Reis",
-    "bio": "Software Engineering na OLX. Vinte anos de experiência profissional na área de tecnologia. Experiência em sistemas de monitoramento e a produção de energia elétrica, sistemas de ensino a distância, criptografia, certificação digital, sistemas financeiros (empréstimos, garantias, internet bank e institucional), sistemas de varejo (venda, pós-venda, logística, backoffice) e telecom (OMS, URA, Catalogo Corporativo, CPQ, Billing, Charging). Entusiasta de Cloud Computing e desenvolvimento de software no geral.",
-    "group": "GDG Toledo"
-  },
-  {
-    "id": "9",
-    "photo": "assets/palestrantes/juliana-e-tatiana.jpg",
-    "title": "O que aprendemos construindo nosso data lake",
-    "description": "Vamos abordar com uma apresentação de slides a nossa experiência ao construir um data lake, falando sobre tecnologias, frameworks, serviços e boas práticas que adotamos e que acreditamos tenham facilitado nossa jornada.",
-    "name": "Juliana Strieder Philippsen e Tatiana Mara",
-    "bio": "Tatiana Mara: Sou uma engenheira de dados na Rock Content, tenho 4 anos de experiência trabalhando com análise e engenharia de dados. No meu tempo livre gosto de assistir séries e jogos da NBA. Juliana Strieder Philippsen é engenheira de dados na Rock Content. Trabalha com ciência de dados e engenharia de dados desde 2018, quando fez uma transição de carreira da academia para a tecnologia. Em seu tempo livre, curte ler livros, viajar e praticar yoga.",
-    "group": "Afterdata"
   },
   {
     "id": "10",
@@ -98,12 +98,12 @@
     "group": "Maringá Agile"
   },
   {
-    "id": "12",
-    "photo": "assets/palestrantes/igor-wiese.jpg",
-    "title": "Open-source, como começar? motivações e desafios!",
-    "description": "",
-    "bio": "Doutor em Ciência da Computação pelo IME-USP (2016). Professor efetivo da Universidade Tecnológica Federal do Paraná (UTFPR) Campus Campo Mourão, como Professor de Ensino Básico, Técnico e Tecnológico. Tem experiência na área de Ciência da Computação, tendo como principais linhas de pesquisa e interesse: Mineração de Repositórios de Software, Software Livre, Sistemas de Recomendação aplicados à Engenharia de Software e Aspectos humanos em Engenharia de Software. Realizou pós-doutorado na Northern Arizona University (2019/2020).\nSaiba mais: https://igorwiese.com/\nOpen-source, como começar? motivações e desafios!",
-    "name": "Igor Wiese",
-    "group": "DevParaná Campo Mourão"
+    "id": "8",
+    "photo": "assets/palestrantes/kleber-reis.jpg",
+    "title": "Introdução ao API Gateway - KONG",
+    "description": "Descrição: Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
+    "name": "Kleber de Andrade Reis",
+    "bio": "Software Engineering na OLX. Vinte anos de experiência profissional na área de tecnologia. Experiência em sistemas de monitoramento e a produção de energia elétrica, sistemas de ensino a distância, criptografia, certificação digital, sistemas financeiros (empréstimos, garantias, internet bank e institucional), sistemas de varejo (venda, pós-venda, logística, backoffice) e telecom (OMS, URA, Catalogo Corporativo, CPQ, Billing, Charging). Entusiasta de Cloud Computing e desenvolvimento de software no geral.",
+    "group": "GDG Toledo"
   }
 ]

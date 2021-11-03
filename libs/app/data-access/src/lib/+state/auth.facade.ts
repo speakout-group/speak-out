@@ -1,7 +1,7 @@
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
 import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { BaseState } from './base.state';
 import { Login } from '../types';
 
@@ -48,7 +48,12 @@ export class AuthFacade extends BaseState<AuthState> {
   }
 
   register(user: Partial<User>) {
-    return this.service.register(user)
+    this.setState({ loading: true });
+    return this.service.register(user).pipe(
+      tap(() => {
+        this.setState({ loading: false });
+      })
+    );
   }
 
   handleLogin(response: TokenResponse) {
