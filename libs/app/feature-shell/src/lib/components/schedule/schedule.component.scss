@@ -1,0 +1,24 @@
+@use 'libs/styles/mixins' as mixin;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  section {
+    flex-flow: row wrap;
+  }
+}
+
+.mat-list-item {
+  border-bottom: 1px dashed #eaeaea;
+}
+
+::ng-deep h3.mat-line {
+  max-width: 250px;
+  margin-bottom: 10px;
+  opacity: 0.6;
+  font-size: 90%;
+}

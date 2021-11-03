@@ -1,17 +1,17 @@
 import {
-  forwardRef,
   Inject,
+  forwardRef,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model, UpdateQuery } from 'mongoose';
-import { ObjectId } from 'mongodb';
-import { User } from '../schema/user.schema';
 import { randomString } from '../../../shared/utils/random-string';
-import { UserGateway } from '../gateway/user.gateway';
-import { Socket } from 'socket.io';
 import { SocketConnectionService } from './socket-connection.service';
+import { UserGateway } from '../gateway/user.gateway';
+import { User } from '../schema/user.schema';
+import { ObjectId } from 'mongodb';
+import { Socket } from 'socket.io';
 
 @Injectable()
 export class UserService {
@@ -42,7 +42,7 @@ export class UserService {
     const user = await this.getUserByName(username);
 
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
 
     return user;
@@ -58,7 +58,7 @@ export class UserService {
     const user = await this.getUserByEmail(email);
 
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
 
     return user;
@@ -80,7 +80,7 @@ export class UserService {
     const user = await this.getUserById(id);
 
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
 
     return user;

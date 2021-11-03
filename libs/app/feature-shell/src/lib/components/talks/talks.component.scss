@@ -7,28 +7,31 @@
   margin: 0 auto;
   max-width: 1200px;
 
+  figure {
+    margin: 0;
+  }
+
   section {
     flex-flow: row wrap;
   }
 
-  @include mixin.media(mobile) {
-    section {
-      flex-direction: column;
-    }
-  }
-
-  shell-talk {
+  shell-talk,
+  shell-member {
     cursor: pointer;
     min-width: calc(25% - 20px);
     max-width: calc(25% - 20px);
   }
-  .sign-up-card {
-    max-width: calc(25% - 21px);
-    // min-width: calc(50% - 12px);
-    // max-width: calc(50% - 12px);
+  
+  @include mixin.media(mobile) {
+    section {
+      flex-direction: column;
+    }
+    shell-talk,
+    shell-member {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
   }
 
-  figure {
-    margin: 0;
-  }
 }
