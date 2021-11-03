@@ -5,6 +5,15 @@
   --color-muted: #9E9E9E;
 }
 
+.pointer {
+  cursor: pointer;
+}
+.hover {
+  transition: background 100ms ease-in-out;
+  &:hover {
+    background: #00000010;
+  }
+}
 .color {
   &-green {
     color: var(--color-green);

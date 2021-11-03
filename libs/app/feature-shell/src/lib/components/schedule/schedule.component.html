@@ -3,87 +3,129 @@
   mode="indeterminate"
 ></mat-progress-bar>
 
-<h1 class="mat-h1">Cronograma</h1>
+<h2 class="mat-h1">Cronograma</h2>
 
 <section class="container flex-row-between">
   <mat-list>
     <div mat-subheader>Link X</div>
-    <mat-list-item *ngFor="let item of facade.linkX$ | async">
-      <img
-        mat-list-avatar
-        *ngIf="item.speaker"
-        [src]="item.speaker.photo"
-        [alt]="item.speaker.name"
-      />
-      <h3 mat-line>{{ item.speaker?.title || item.label }}</h3>
+    <ng-container *ngFor="let item of facade.linkX$ | async">
+      <ng-container *ngIf="item.speaker">
+        <mat-list-item (click)="open(item.speaker)" class="pointer hover">
+          <img
+            mat-list-avatar
+            [src]="item.speaker.photo"
+            [alt]="item.speaker.name"
+          />
+          <h3 mat-line>{{ item.speaker.title }}</h3>
 
-      <time mat-line [dateTime]="item.start | date">
-        {{ item.start | date: 'short' }}
-      </time>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+        </mat-list-item>
+      </ng-container>
+      <ng-container *ngIf="!item.speaker">
+        <mat-list-item>
+          <mat-icon mat-list-icon> schedule </mat-icon>
+          <h3 mat-line>{{ item.label }}</h3>
 
-      <button
-        type="button"
-        mat-icon-button
-        *ngIf="item.speaker"
-        (click)="open(item.speaker)"
-      >
-        <mat-icon>meeting_room</mat-icon>
-      </button>
-    </mat-list-item>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+
+          <button
+            type="button"
+            mat-icon-button
+            *ngIf="item.speaker"
+            matTooltip="Leia mais"
+            (click)="open(item.speaker)"
+          >
+            <mat-icon>meeting_room</mat-icon>
+          </button>
+        </mat-list-item>
+      </ng-container>
+    </ng-container>
   </mat-list>
 
   <mat-divider [vertical]="!mobileQuery.matches"></mat-divider>
   <mat-list>
     <div mat-subheader>Link Y</div>
-    <mat-list-item *ngFor="let item of facade.linkY$ | async">
-      <img
-        mat-list-avatar
-        *ngIf="item.speaker"
-        [src]="item.speaker.photo"
-        [alt]="item.speaker.name"
-      />
-      <h3 mat-line>{{ item.speaker?.title || item.label }}</h3>
+    <ng-container *ngFor="let item of facade.linkY$ | async">
+      <ng-container *ngIf="item.speaker">
+        <mat-list-item (click)="open(item.speaker)" class="pointer hover">
+          <img
+            mat-list-avatar
+            [src]="item.speaker.photo"
+            [alt]="item.speaker.name"
+          />
+          <h3 mat-line>{{ item.speaker.title }}</h3>
 
-      <time mat-line [dateTime]="item.start | date">
-        {{ item.start | date: 'short' }}
-      </time>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+        </mat-list-item>
+      </ng-container>
+      <ng-container *ngIf="!item.speaker">
+        <mat-list-item>
+          <mat-icon mat-list-icon> schedule </mat-icon>
+          <h3 mat-line>{{ item.label }}</h3>
 
-      <button
-        type="button"
-        mat-icon-button
-        *ngIf="item.speaker"
-        (click)="open(item.speaker)"
-      >
-        <mat-icon>meeting_room</mat-icon>
-      </button>
-    </mat-list-item>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+
+          <button
+            type="button"
+            mat-icon-button
+            *ngIf="item.speaker"
+            matTooltip="Leia mais"
+            (click)="open(item.speaker)"
+          >
+            <mat-icon>meeting_room</mat-icon>
+          </button>
+        </mat-list-item>
+      </ng-container>
+    </ng-container>
   </mat-list>
 
   <mat-divider [vertical]="!mobileQuery.matches"></mat-divider>
 
   <mat-list>
     <div mat-subheader>Link Z</div>
-    <mat-list-item *ngFor="let item of facade.linkZ$ | async">
-      <img
-        mat-list-avatar
-        *ngIf="item.speaker"
-        [src]="item.speaker.photo"
-        [alt]="item.speaker.name"
-      />
-      <h3 mat-line>{{ item.speaker?.title || item.label }}</h3>
+    <ng-container *ngFor="let item of facade.linkZ$ | async">
+      <ng-container *ngIf="item.speaker">
+        <mat-list-item (click)="open(item.speaker)" class="pointer hover">
+          <img
+            mat-list-avatar
+            [src]="item.speaker.photo"
+            [alt]="item.speaker.name"
+          />
+          <h3 mat-line>{{ item.speaker.title }}</h3>
 
-      <time mat-line [dateTime]="item.start | date">
-        {{ item.start | date: 'short' }}
-      </time>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+        </mat-list-item>
+      </ng-container>
+      <ng-container *ngIf="!item.speaker">
+        <mat-list-item>
+          <mat-icon mat-list-icon> schedule </mat-icon>
+          <h3 mat-line>{{ item.label }}</h3>
 
-      <button
-        type="button"
-        mat-icon-button
-        *ngIf="item.speaker"
-        (click)="open(item.speaker)"
-      >
-        <mat-icon>meeting_room</mat-icon>
-      </button>
-    </mat-list-item>
+          <time mat-line [dateTime]="item.start | date">
+            {{ item.start | date: 'short' }}
+          </time>
+
+          <button
+            type="button"
+            mat-icon-button
+            *ngIf="item.speaker"
+            matTooltip="Leia mais"
+            (click)="open(item.speaker)"
+          >
+            <mat-icon>meeting_room</mat-icon>
+          </button>
+        </mat-list-item>
+      </ng-container>
+    </ng-container>
   </mat-list>
 </section>

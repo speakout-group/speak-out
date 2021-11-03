@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -31,6 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatButtonModule,
     MatCardModule,
+    MatTooltipModule,
     MatDialogModule,
     MatDividerModule,
     MatListModule,
