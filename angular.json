@@ -27,6 +27,17 @@
                   "with": "apps/api/src/environments/environments.prod.ts"
                 }
               ]
+            },
+            "staging": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environments.ts",
+                  "with": "apps/api/src/environments/environments.staging.ts"
+                }
+              ]
             }
           }
         },
@@ -51,11 +62,28 @@
             "passWithNoTests": true
           }
         },
-        "cd": {
+        "cd-staging": {
           "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "echo oie"
+            "commands": [
+              "npx nx run api:build:staging",
+              "./scripts/deploy-staging.sh"
+            ],
+            "cwd": "",
+            "parallel": false
+          }
+        },
+        "cd-prod": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "npx nx run app:build:production",
+              "./scripts/deploy-prod.sh"
+            ],
+            "cwd": "",
+            "parallel": false
           }
         }
       },
@@ -171,11 +199,28 @@
             ]
           }
         },
-        "cd": {
+        "cd-staging": {
           "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "echo oie"
+            "commands": [
+              "npx nx run app:build:staging",
+              "./scripts/deploy-staging.sh"
+            ],
+            "cwd": "",
+            "parallel": false
+          }
+        },
+        "cd-prod": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "npx nx run app:build:production",
+              "./scripts/deploy-prod.sh"
+            ],
+            "cwd": "",
+            "parallel": false
           }
         }
       },
