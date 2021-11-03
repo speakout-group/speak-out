@@ -101,9 +101,18 @@
     "id": "8",
     "photo": "assets/palestrantes/kleber-reis.webp",
     "title": "Introdução ao API Gateway - KONG",
-    "description": "Descrição: Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
+    "description": "Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
     "name": "Kleber de Andrade Reis",
     "bio": "Software Engineering na OLX. Vinte anos de experiência profissional na área de tecnologia. Experiência em sistemas de monitoramento e a produção de energia elétrica, sistemas de ensino a distância, criptografia, certificação digital, sistemas financeiros (empréstimos, garantias, internet bank e institucional), sistemas de varejo (venda, pós-venda, logística, backoffice) e telecom (OMS, URA, Catalogo Corporativo, CPQ, Billing, Charging). Entusiasta de Cloud Computing e desenvolvimento de software no geral.",
     "group": "GDG Toledo"
+  },
+  {
+    "id": "13",
+    "photo": "assets/palestrantes/amanda-carneiro.webp",
+    "title": "Soft skills e a tecnologia",
+    "description": "O desenvolvimento de habilidades técnicas em tecnologia vem sendo valorizado cada vez mais ao passar do tempo. Desde desenvolvedores back-end, front-end, profissionais de Design até profissionais de metodologias ágeis, mas existe uma outra variedade de habilidades que também precisa ser desenvolvida para que os profissionais sejam cada vez mais completos e é este o assunto abordado nessa conversa.",
+    "name": "Amanda Carneiro",
+    "bio": "Engenheira da Computação e estudante de Segurança da Informação. Desenvolvedora backend C#.NET.\nApoiadora das minorias e lutadora pela igualdade de gênero.",
+    "group": "GDG Cascavel"
   }
 ]
