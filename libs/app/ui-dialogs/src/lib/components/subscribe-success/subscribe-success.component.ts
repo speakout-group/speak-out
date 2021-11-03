@@ -82,7 +82,7 @@ export class SubscribeSuccessComponent {
       date: new Date('11/20/21 16:00:00'),
     },
     {
-      name: 'Python Maringá',
+      name: 'Delphi Ingá',
       date: new Date('11/20/21 16:00:00'),
     },
     {

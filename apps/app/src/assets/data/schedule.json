@@ -54,6 +54,7 @@
     "label": "Agile MGA 2",
     "start": "11/20/21 11:00:00",
     "end": "11/20/21 12:00:00",
+    "conf": "devprconf2021",
     "link": "X",
     "talk": "7"
   },
@@ -188,12 +189,12 @@
     "talk": "0"
   },
   {
-    "label": "Python Maringá",
+    "label": "Delphi Ingá",
     "start": "11/20/21 16:00:00",
     "end": "11/20/21 17:00:00",
     "conf": "devprconf2021",
     "link": "Y",
-    "talk": "0"
+    "talk": "10"
   },
   {
     "label": "Afterdata",
