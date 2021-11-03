@@ -14,7 +14,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Speak Out')
-    .setDescription('The speakout API description')
+    .setDescription('The SpeakOut API description')
     .setVersion('1.0')
     .addBearerAuth(
       {
@@ -46,7 +46,7 @@ async function bootstrap() {
   const logger = new Logger('SpeakOut');
 
   await app.listen(port, () =>
-    logger.log(`Server initialized on port ${port}`)
+    logger.log(`Server listening on port ${port}`)
   );
 }
 
