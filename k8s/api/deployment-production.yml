@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speakout-api-deployment
+  labels:
+    app: speakout-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: speakout-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: speakout-api
+    spec:
+      containers:
+        - name: speakout-api
+          image: <IMAGE>
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-mongo
+                  key: connection_string
+            - name: PROXY_ENABLED
+              value: 'false'
+            - name: FRONTEND_URL
+              value: 'https://speakout.group'
+            - name: ACCESS_TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-tokens
+                  key: access_token
+            - name: ACCESS_TOKEN_EXPIRATION
+              value: '3600s'
+            - name: REFRESH_TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-tokens
+                  key: refresh_token
+            - name: REFRESH_TOKEN_EXPIRATION
+              value: '1y'
+            - name: RECOVER_CODE_EXPIRATION
+              value: '86400'
+            - name: REDIS_ENABLED
+              value: "true"
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-redis
+                  key: server
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: speakout-redis
+                  key: port
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: speakout-api-service
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: 'https'
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: '443'
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: '2eff3cba-7cc7-4a03-99be-f7caaae2a941'
+    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: 'true'
+spec:
+  type: LoadBalancer
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 3000
+  selector:
+    app: speakout-api
