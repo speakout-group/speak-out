@@ -25,8 +25,18 @@
   .mat-toolbar {
     display: flex;
     justify-content: center;
-    p {
+    align-items: center;
+    gap: 18px;
+    a {
+      display: inline-flex;
+    }
+    svg {
+      width: 24px;
+    }
+    span {
+      margin: 0;
       font-size: 16px;
+      line-height: 24px;
       font-weight: normal;
     }
   }

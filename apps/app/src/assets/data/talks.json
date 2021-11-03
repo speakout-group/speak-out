@@ -1,7 +1,7 @@
 [
   {
     "id": "2",
-    "photo": "assets/palestrantes/vinicius-sanger.jpg",
+    "photo": "assets/palestrantes/vinicius-sanger.webp",
     "title": "Internet das Coisas e Inteligência Artificial na prática",
     "description": "Nesta programação, Vini Senger apresentará dispositivos reais que utilizam Internet das Coisas e Inteligência Artificial, para que possamos observar a aplicação das tecnologias. Tudo que será apresentado por Vini já foi usado pela Amazon Web Services para desenvolver geladeiras inteligentes, carros conectados, robôs e muito mais.",
     "name": "Vinicius Senger",
@@ -10,7 +10,7 @@
   },
   {
     "id": "1",
-    "photo": "assets/palestrantes/galvao.jpg",
+    "photo": "assets/palestrantes/galvao.webp",
     "title": "APIs do jeito certo*",
     "description": "APIs HTTP são a mais nova e quente tendência de mercado. Nesta palestra explico os motivos pelos quais o mercado está migrando massivamente para esta tendência e detalho as melhores práticas, conceitos e ferramentas para que você e sua empresa começem a trabalhar com isso do jeito certo e sem dores de cabeça.APIs do jeito certo*",
     "name": "Galvão",
@@ -19,7 +19,7 @@
   },
   {
     "id": "7",
-    "photo": "assets/palestrantes/juliano-ribeiro.jpg",
+    "photo": "assets/palestrantes/juliano-ribeiro.webp",
     "title": "A carreira do Coach Kanban, o início, o fim e o meio",
     "description": "Nessa talk vou contar um pouco para você de como iniciar na carreira de Kanban Coach, os desafios iniciais, as boas referências, como superar as dificuldades e especialmente as heurísticas que nos levam muito além da agilidade.",
     "name": "Juliano Ribeiro",
@@ -28,7 +28,7 @@
   },
   {
     "id": "3",
-    "photo": "assets/palestrantes/padro-mazala.jpg",
+    "photo": "assets/palestrantes/padro-mazala.webp",
     "title": "Observabilidade - dê-me visão além do alcance",
     "description": "Observabilidade vem do latim observabilis… Brincadeira, esse não é esse tipo de talk. O objetivo aqui será discutir padrões de observabilidade e como essa palavra (um tanto quanto extensa) pode ajudar seu time a escalar aplicações e seguir para o caminho de múltiplos serviços.",
     "name": "Pedro Mazala",
@@ -37,7 +37,7 @@
   },
   {
     "id": "9",
-    "photo": "assets/palestrantes/juliana-e-tatiana.jpg",
+    "photo": "assets/palestrantes/juliana-e-tatiana.webp",
     "title": "O que aprendemos construindo nosso data lake",
     "description": "Vamos abordar com uma apresentação de slides a nossa experiência ao construir um data lake, falando sobre tecnologias, frameworks, serviços e boas práticas que adotamos e que acreditamos tenham facilitado nossa jornada.",
     "name": "Juliana Strieder Philippsen e Tatiana Mara",
@@ -46,7 +46,7 @@
   },
   {
     "id": "4",
-    "photo": "assets/palestrantes/otavio-e-karina.jpg",
+    "photo": "assets/palestrantes/otavio-e-karina.webp",
     "title": "As cinco Hard skills que você precisa dominar para ter destaque no meio técnico",
     "description": "A área da tecnologia vem crescendo de modo exponencial e trazendo consigo diversas oportunidades e especializações. Dentro dessas milhares de opções, temos a engenharia e arquitetura de software. Porém, com tantos conteúdos e fácil acesso a informação, como saber qual seria o melhor caminho para chegar ao objetivo que nos trará a almejada felicidade?",
     "name": "Otavio Santana, Karina Varela",
@@ -55,7 +55,7 @@
   },
   {
     "id": "5",
-    "photo": "assets/palestrantes/ana-medrado.jpg",
+    "photo": "assets/palestrantes/ana-medrado.webp",
     "title": "Idealização, planejamento e prototipação, o que vem antes das linhas de código?",
     "description": "A tecnologia evoluiu e seu processo de desenvolvimento também. Vamos falar sobre as etapas do processo de desenvolvimento e como sua execução influencia diretamente na produtividade e na entrega de valor feita ao final do projeto.",
     "name": "Ana Medrado",
@@ -64,7 +64,7 @@
   },
   {
     "id": "12",
-    "photo": "assets/palestrantes/igor-wiese.jpg",
+    "photo": "assets/palestrantes/igor-wiese.webp",
     "title": "Open-source, como começar? motivações e desafios!",
     "description": "",
     "bio": "Doutor em Ciência da Computação pelo IME-USP (2016). Professor efetivo da Universidade Tecnológica Federal do Paraná (UTFPR) Campus Campo Mourão, como Professor de Ensino Básico, Técnico e Tecnológico. Tem experiência na área de Ciência da Computação, tendo como principais linhas de pesquisa e interesse: Mineração de Repositórios de Software, Software Livre, Sistemas de Recomendação aplicados à Engenharia de Software e Aspectos humanos em Engenharia de Software. Realizou pós-doutorado na Northern Arizona University (2019/2020).\nSaiba mais: https://igorwiese.com/\nOpen-source, como começar? motivações e desafios!",
@@ -73,7 +73,7 @@
   },
   {
     "id": "6",
-    "photo": "assets/palestrantes/ruben-marcus.jpg",
+    "photo": "assets/palestrantes/ruben-marcus.webp",
     "title": "Escalando projetos com React e TS ",
     "description": "Porque usar? Quais as vantagens? Porque se tornou padrão de mercado? Nessa palestra vamos abordar como TypeScript evoluiu com o tempo e como a adoção dele no React virou um padrão no mercado, quais as vantagens e desvantagens de se usar TS, alguns casos de uso, conceitos mais avançados, últimas novidades",
     "name": "Ruben Marcus",
@@ -82,7 +82,7 @@
   },
   {
     "id": "10",
-    "photo": "assets/palestrantes/adriano-santos.jpg",
+    "photo": "assets/palestrantes/adriano-santos.webp",
     "title": "Construindo API REST em poucos minutos com Delphi, Horse e Boss",
     "description": "Nessa palestra, Adriano Santos, irá demonstrar como é possível construir API REST usando o framework minimalista Horse e o gerenciador de dependências Boss.",
     "name": "Adriano Santos",
@@ -91,7 +91,7 @@
   },
   {
     "id": "11",
-    "photo": "assets/palestrantes/luan-mileski.jpg",
+    "photo": "assets/palestrantes/luan-mileski.webp",
     "title": "PO e Dev - Um relacionamento de amor e ódio. Como melhorá-lo sem precisar de terapia de casal.",
     "description": "Tá aí um dos relacionamentos mais complicados do meio de desenvolvimento de software não é ? Nesta palestra irei trazer algumas dicas, ferramentas e táticas para fortalecer esse relacionamento e ambos de fato sentirem-se parte de um mesmo time.",
     "name": "Luan Mileski",
@@ -99,7 +99,7 @@
   },
   {
     "id": "8",
-    "photo": "assets/palestrantes/kleber-reis.jpg",
+    "photo": "assets/palestrantes/kleber-reis.webp",
     "title": "Introdução ao API Gateway - KONG",
     "description": "Descrição: Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
     "name": "Kleber de Andrade Reis",

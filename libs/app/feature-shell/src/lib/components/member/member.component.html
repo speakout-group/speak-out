@@ -9,7 +9,6 @@
         <mat-label>Usuário</mat-label>
         <input
           autofocus
-          tabindex="1"
           type="text"
           formControlName="username"
           placeholder="Digite seu usuário"
@@ -25,7 +24,6 @@
       <mat-form-field>
         <mat-label>Senha</mat-label>
         <input
-          tabindex="2"
           type="password"
           formControlName="password"
           placeholder="Digite sua senha"
@@ -42,7 +40,6 @@
         <mat-label>Email</mat-label>
         <input
           type="email"
-          tabindex="3"
           formControlName="email"
           placeholder="Digite seu email"
           matInput
@@ -61,7 +58,6 @@
 
       <mat-card-actions align="end">
         <!-- <button
-          tabindex="5"
           type="button"
           mat-stroked-button
           (click)="onGoogle()"
@@ -70,7 +66,7 @@
           <span>Google</span>
         </button> -->
         <span class="spacer"></span>
-        <button tabindex="4" mat-button mat-stroked-button>
+        <button mat-button mat-stroked-button>
           Enviar inscrição
         </button>
       </mat-card-actions>

@@ -14,6 +14,7 @@ import { MemberComponent } from './components/member/member.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { TalksComponent } from './components/talks/talks.component';
 import { TalkComponent } from './components/talk/talk.component';
+import { SponsorPageComponent } from './pages/sponsor-page/sponsor-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TalkComponent } from './components/talk/talk.component';
     ScheduleComponent,
     TalksComponent,
     TalkComponent,
+    SponsorPageComponent,
   ],
   imports: [
     CommonModule,
