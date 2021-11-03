@@ -2,10 +2,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
 export interface SpeakerData {
-  photo:       string;
-  title:       string;
+  photo: string;
+  title: string;
   description: string;
-  name:        string;
+  bio: string;
+  name: string;
 }
 
 
@@ -18,5 +19,5 @@ export class SpeakerComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     readonly data: SpeakerData
-  ) {}
+  ) { }
 }

@@ -1,4 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SubscribeSuccessService } from '@speak-out/app-ui-dialogs';
 import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthFacade } from '@speak-out/app-data-access';
 import { Component } from '@angular/core';
@@ -22,9 +23,10 @@ export class MemberComponent {
   form = new MemberForm();
 
   constructor(
+    private subscribe: SubscribeSuccessService,
+    readonly storage: StorageData,
     readonly facade: AuthFacade,
-    readonly storage: StorageData
-  ) {}
+  ) { }
 
   onSubmit() {
     this.form.markAllAsTouched();
@@ -32,6 +34,12 @@ export class MemberComponent {
       this.facade.register(this.form.value).subscribe((response) => {
         console.log(response);
         this.storage.set('subscribed', this.form.value.email)
+        const value = this.form.value;
+        this.subscribe.open({
+          data: {
+            message: `${value.name}, sua vaga está garantida!`
+          }
+        })
       });
     }
   }

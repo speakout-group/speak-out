@@ -1,3 +1,4 @@
+export * from './schedule.facade';
 export * from './sponsor.facade';
 export * from './auth.facade';
 export * from './base.state';

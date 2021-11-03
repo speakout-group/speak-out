@@ -1,4 +1,4 @@
-import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
+import { AppDataAccessModule } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { CommonModule } from '@angular/common';
@@ -9,9 +9,11 @@ import { HomeContainer, MainContainer } from './containers';
 import { SponsorsComponent } from './components';
 import { HomePageComponent } from './pages';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { SpeakersComponent } from './components/speakers/speakers.component';
 import { SpeakerComponent } from './components/speaker/speaker.component';
 import { MemberComponent } from './components/member/member.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { TalksComponent } from './components/talks/talks.component';
+import { TalkComponent } from './components/talk/talk.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { MemberComponent } from './components/member/member.component';
     SponsorsComponent,
     HomePageComponent,
     NotFoundPageComponent,
-    SpeakersComponent,
     SpeakerComponent,
     MemberComponent,
+    ScheduleComponent,
+    TalksComponent,
+    TalkComponent,
   ],
   imports: [
     CommonModule,

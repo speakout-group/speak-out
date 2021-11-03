@@ -1,6 +1,14 @@
 :host {
   display: flex;
 
+  .mat-card {
+    overflow: hidden;
+    background-image: url(/assets/logo.svg);
+    background-position-x: 100px;
+    background-position-y: 340px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   .mat-card-actions {
     display: flex;
     justify-content: space-around;

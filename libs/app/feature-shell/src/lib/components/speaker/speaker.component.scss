@@ -1,9 +1,13 @@
 :host {
   p {
-    margin: 0;
+    margin: 0 0 12px;
     display: flex;
+    white-space: break-spaces;
     img {
       margin: 0 10px 0 0;
+      border: 2px solid #ccc;
+      padding: 4px;
+      border-radius: 3px;
     }
   }
 }

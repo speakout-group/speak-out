@@ -1,9 +1,15 @@
 <h3 mat-dialog-title>{{ data?.title }}</h3>
 <mat-dialog-content>
   <p>
-    <img mat-card-md-image [src]="data.photo" [alt]="data.name" />
     {{ data.description }}
   </p>
+  <div>
+    <h4 class="mat-subheader">{{ data.name }}</h4>
+    <p>
+      <img mat-card-md-image [src]="data.photo" [alt]="data.name" />
+      {{ data.bio }}
+    </p>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-stroked-button mat-dialog-close>Fechar</button>

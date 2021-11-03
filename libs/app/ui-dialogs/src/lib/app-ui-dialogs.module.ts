@@ -1,14 +1,23 @@
-import { AutocompleteFormComponent, CodeFormComponent } from './components';
-import { AutocompleteFormService, CodeFormService } from './services';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  AutocompleteFormService,
+  CodeFormService,
+  SubscribeSuccessService,
+} from './services';
+import {
+  SubscribeSuccessComponent,
+  AutocompleteFormComponent,
+  CodeFormComponent,
+} from './components';
 
 @NgModule({
   imports: [
@@ -16,12 +25,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatInputModule,
+    MatListModule,
     MatIconModule,
   ],
-  declarations: [CodeFormComponent, AutocompleteFormComponent],
-  providers: [CodeFormService, AutocompleteFormService],
+  declarations: [
+    CodeFormComponent,
+    AutocompleteFormComponent,
+    SubscribeSuccessComponent,
+  ],
+  providers: [
+    CodeFormService,
+    SubscribeSuccessService,
+    AutocompleteFormService,
+  ],
 })
 export class AppUiDialogsModule {}

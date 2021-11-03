@@ -1,4 +1,10 @@
-import { AuthFacade, SponsorFacade, ConfFacade, RoomFacade } from './+state';
+import {
+  AuthFacade,
+  SponsorFacade,
+  ConfFacade,
+  RoomFacade,
+  ScheduleFacade,
+} from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StorageData } from '@speak-out/shared-util-storage';
@@ -6,9 +12,9 @@ import { AuthService } from './services';
 import {
   SocialAuthService,
   GoogleLoginProvider,
-  FacebookLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
+import { ScheduleDataService } from './infrastructure';
 
 @NgModule({
   providers: [
@@ -18,6 +24,8 @@ import {
     RoomFacade,
     ConfFacade,
     SponsorFacade,
+    ScheduleFacade,
+    ScheduleDataService,
     SocialAuthService,
   ],
 })

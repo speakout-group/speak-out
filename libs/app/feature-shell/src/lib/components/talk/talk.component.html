@@ -1,0 +1,7 @@
+<mat-card *ngIf="talk" (click)="openTalk.emit(talk)">
+  <img mat-card-image [src]="talk.photo" [alt]="talk.title" />
+  <p>{{ talk.title }}</p>
+  <mat-card-subtitle>
+    {{ talk.name }}
+  </mat-card-subtitle>
+</mat-card>

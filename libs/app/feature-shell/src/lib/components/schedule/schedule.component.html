@@ -1,0 +1,13 @@
+<mat-progress-bar
+  *ngIf="facade.loading$ | async"
+  mode="indeterminate"
+></mat-progress-bar>
+
+<mat-list>
+  <div mat-subheader>Dia 18/11</div>
+  <mat-list-item *ngFor="let item of facade.schedule$ | async">
+    <mat-icon mat-list-icon>schedule</mat-icon>
+    <div mat-line>{{item.conf}}</div>
+    <div mat-line> {{item.start | date: 'medium'}} </div>
+  </mat-list-item>
+</mat-list>
