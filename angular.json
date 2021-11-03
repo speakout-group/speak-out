@@ -68,7 +68,7 @@
           "options": {
             "commands": [
               "npx nx run api:build:staging",
-              "./scripts/deploy-staging.sh"
+              "./scripts/api-staging-deploy.sh"
             ],
             "cwd": "",
             "parallel": false
@@ -80,7 +80,7 @@
           "options": {
             "commands": [
               "npx nx run app:build:production",
-              "./scripts/deploy-prod.sh"
+              "./scripts/api-production-deploy.sh"
             ],
             "cwd": "",
             "parallel": false
@@ -205,7 +205,7 @@
           "options": {
             "commands": [
               "npx nx run app:build:staging",
-              "./scripts/deploy-staging.sh"
+              "./scripts/frontend-deploy-staging.sh"
             ],
             "cwd": "",
             "parallel": false
@@ -217,7 +217,7 @@
           "options": {
             "commands": [
               "npx nx run app:build:production",
-              "./scripts/deploy-prod.sh"
+              "./scripts/frontend-deploy-production.sh"
             ],
             "cwd": "",
             "parallel": false
