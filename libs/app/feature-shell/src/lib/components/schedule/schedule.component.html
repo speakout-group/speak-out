@@ -72,16 +72,6 @@
           <time mat-line [dateTime]="item.start | date">
             {{ item.start | date: 'medium' }}
           </time>
-
-          <button
-            type="button"
-            mat-icon-button
-            *ngIf="item.speaker"
-            matTooltip="Leia mais"
-            (click)="open(item.speaker)"
-          >
-            <mat-icon>meeting_room</mat-icon>
-          </button>
         </mat-list-item>
       </ng-container>
     </ng-container>
@@ -114,16 +104,6 @@
           <time mat-line [dateTime]="item.start | date">
             {{ item.start | date: 'medium' }}
           </time>
-
-          <button
-            type="button"
-            mat-icon-button
-            *ngIf="item.speaker"
-            matTooltip="Leia mais"
-            (click)="open(item.speaker)"
-          >
-            <mat-icon>meeting_room</mat-icon>
-          </button>
         </mat-list-item>
       </ng-container>
     </ng-container>

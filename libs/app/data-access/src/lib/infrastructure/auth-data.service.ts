@@ -4,18 +4,21 @@ import { StorageData } from '@speak-out/shared-util-storage';
 import { User, TokenResponse } from '../interfaces';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthDataService {
+export class AuthDataService extends BaseService {
   constructor(
     @Inject(APP_CONFIG)
     private config: AppConfig,
     private http: HttpClient,
     private storage: StorageData,
-    private social: SocialAuthService,
-  ) {}
+    private social: SocialAuthService
+  ) {
+    super();
+  }
 
   login(user: Partial<User>) {
     return this.http.post<TokenResponse>(`${this.config.api}/auth/login`, user);
@@ -42,10 +45,9 @@ export class AuthDataService {
   }
 
   register(user: Partial<User>) {
-    return this.http.post<TokenResponse>(
-      `${this.config.api}/auth/register`,
-      user
-    );
+    const url = `${this.config.api}/auth/register`;
+    const post = this.http.post<TokenResponse>(url, user)
+    return this.handlingError(post);
   }
 
   getProfile() {
@@ -64,7 +66,7 @@ export class AuthDataService {
 
     return this.setAccessToken(access_token);
   }
-  
+
   handleTokens({ refresh_token, access_token }: TokenResponse) {
     this.setRefreshToken(refresh_token);
     this.setAccessToken(access_token);
@@ -82,11 +84,11 @@ export class AuthDataService {
   getRefreshToken() {
     return this.storage.get('refreshToken');
   }
-  
+
   setRefreshToken(token: string) {
     this.storage.set('refreshToken', token);
   }
-  
+
   getLoginCallbackUrl() {
     return this.storage.get('loginCallbackUrl') ?? '/';
   }

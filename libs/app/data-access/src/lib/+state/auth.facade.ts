@@ -7,8 +7,8 @@ import { Login } from '../types';
 
 export interface AuthState {
   loading: boolean;
-  user: User | null;
   redirect: string;
+  user: User | null;
 }
 
 @Injectable()
@@ -18,6 +18,8 @@ export class AuthFacade extends BaseState<AuthState> {
   redirect$ = this.select((state) => state.redirect);
 
   user$ = this.select((state) => state.user);
+
+  // error$ = this.select((state) => state.error);
 
   constructor(private service: AuthDataService) {
     super({
@@ -48,12 +50,8 @@ export class AuthFacade extends BaseState<AuthState> {
   }
 
   register(user: Partial<User>) {
-    this.setState({ loading: true });
-    return this.service.register(user).pipe(
-      tap(() => {
-        this.setState({ loading: false });
-      })
-    );
+    // this.setState({ loading: true });
+    return this.intercept(this.service.register(user))
   }
 
   handleLogin(response: TokenResponse) {

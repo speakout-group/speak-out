@@ -52,9 +52,13 @@
       </mat-form-field>
 
       <mat-progress-bar
-        *ngIf="facade.loading$ | async"
+        *ngIf="facade.loader$ | async"
         mode="indeterminate"
       ></mat-progress-bar>
+
+      <mat-error>
+        {{ facade.error$ | async }}
+      </mat-error>
 
       <mat-card-actions align="end">
         <!-- <button

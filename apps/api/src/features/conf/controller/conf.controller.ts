@@ -9,13 +9,13 @@ import {
   Controller,
 } from '@nestjs/common';
 import { ParseObjectIdPipe } from '../../../shared/pipe/parse-object-id.pipe';
+import { SponsorService } from '../../sponsor/service/sponsor.service';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { ConfService } from '../service/conf.service';
 import { User } from '../../user/schema/user.schema';
 import { ConfDto } from '../dto/conf.dto';
-import { SponsorService } from '../../sponsor/service/sponsor.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('conf')
