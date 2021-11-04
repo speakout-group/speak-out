@@ -7,6 +7,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, Provider } from '@angular/core';
+import localeBrExtra from '@angular/common/locales/extra/br';
+import localeBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
+
+
+
 import {
   AuthService,
   AppDataAccessModule,
@@ -64,7 +73,9 @@ import { environment } from '../environments/environment';
       useClass: AuthTokenInterceptor,
       multi: true,
     },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
