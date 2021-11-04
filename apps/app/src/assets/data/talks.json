@@ -41,7 +41,7 @@
     "title": "O que aprendemos construindo nosso data lake",
     "description": "Vamos abordar com uma apresentação de slides a nossa experiência ao construir um data lake, falando sobre tecnologias, frameworks, serviços e boas práticas que adotamos e que acreditamos tenham facilitado nossa jornada.",
     "name": "Juliana Strieder Philippsen e Tatiana Mara",
-    "bio": "Tatiana Mara: Sou uma engenheira de dados na Rock Content, tenho 4 anos de experiência trabalhando com análise e engenharia de dados. No meu tempo livre gosto de assistir séries e jogos da NBA. Juliana Strieder Philippsen é engenheira de dados na Rock Content. Trabalha com ciência de dados e engenharia de dados desde 2018, quando fez uma transição de carreira da academia para a tecnologia. Em seu tempo livre, curte ler livros, viajar e praticar yoga.",
+    "bio": "Tatiana Mara:\n Sou uma engenheira de dados na Rock Content, tenho 4 anos de experiência trabalhando com análise e engenharia de dados. No meu tempo livre gosto de assistir séries e jogos da NBA.\n\n Juliana Strieder Philippsen:\n Engenheira de dados. Trabalha com ciência de dados e engenharia de dados desde 2018, quando fez uma transição de carreira da academia para a tecnologia. Em seu tempo livre, curte ler livros, viajar e praticar yoga.",
     "group": "Afterdata"
   },
   {
@@ -50,7 +50,7 @@
     "title": "As cinco Hard skills que você precisa dominar para ter destaque no meio técnico",
     "description": "A área da tecnologia vem crescendo de modo exponencial e trazendo consigo diversas oportunidades e especializações. Dentro dessas milhares de opções, temos a engenharia e arquitetura de software. Porém, com tantos conteúdos e fácil acesso a informação, como saber qual seria o melhor caminho para chegar ao objetivo que nos trará a almejada felicidade?",
     "name": "Otavio Santana, Karina Varela",
-    "bio": "Empowering developers worldwide to deliver better software faster, scalable in the Cloud. Otavio is a passionate software engineer focused on Cloud and Java technology. He has experience mainly in persistence polyglot and high-performance applications in finances, social media, and e-commerce. Otavio is a member of both Expert Groups and Expert Leader in several JSRs and JCP executive committee. He is working on several Apache and Eclipse Foundation projects such as Apache Tamaya, MicroProfile, Jakarta EE, where he is leading the first specification at Jakarta EE with Jakarta NoSQL. A JUG leader and global speaker at JavaOne and Devoxx conferences. Otavio has received recognition for his OSS contributions such as the JCP Outstanding Award, Member of the year and innovative JSR, Duke’s Choice Award, and Java Champion Award, to name a few. https://otaviojava.com/about/ \n\nTrabalho na área de T.I. desde 2009. Sou uma profissional experiente, flexível, versátil, pró ativa, autodidata, que gosta de aprender coisas novas e trabalha muito bem em equipe. Tive a oportunidade de atuar com desenvolvimento, análise de sistemas, modelagem de banco, consultoria middleware e como instrutora de cursos Red Hat. Neste percurso profissional, pude desenvolver, definir arquiteturas e aperfeiçoar softwares em ambientes Ruby e Java . Me especializei em middleware, em resolver problemas e propor as melhores soluções para cada cenário. Por ter prazer em absorver e compartilhar conhecimento, ministrar cursos oficiais da Red Hat é uma das minhas funções. Possuo também experiência com diversas metodologias de entrega de projeto, incluindo metodologias ágeis (Scrum e XP). https://www.linkedin.com/in/kmacedovarela/",
+    "bio": "Otavio Santana:\nEmpowering developers worldwide to deliver better software faster, scalable in the Cloud. Otavio is a passionate software engineer focused on Cloud and Java technology. He has experience mainly in persistence polyglot and high-performance applications in finances, social media, and e-commerce. Otavio is a member of both Expert Groups and Expert Leader in several JSRs and JCP executive committee. He is working on several Apache and Eclipse Foundation projects such as Apache Tamaya, MicroProfile, Jakarta EE, where he is leading the first specification at Jakarta EE with Jakarta NoSQL. A JUG leader and global speaker at JavaOne and Devoxx conferences. Otavio has received recognition for his OSS contributions such as the JCP Outstanding Award, Member of the year and innovative JSR, Duke’s Choice Award, and Java Champion Award, to name a few. https://otaviojava.com/about/ \n\nKarina Varela:\nTrabalho na área de T.I. desde 2009. Sou uma profissional experiente, flexível, versátil, pró ativa, autodidata, que gosta de aprender coisas novas e trabalha muito bem em equipe. Tive a oportunidade de atuar com desenvolvimento, análise de sistemas, modelagem de banco, consultoria middleware e como instrutora de cursos Red Hat. Neste percurso profissional, pude desenvolver, definir arquiteturas e aperfeiçoar softwares em ambientes Ruby e Java . Me especializei em middleware, em resolver problemas e propor as melhores soluções para cada cenário. Por ter prazer em absorver e compartilhar conhecimento, ministrar cursos oficiais da Red Hat é uma das minhas funções. Possuo também experiência com diversas metodologias de entrega de projeto, incluindo metodologias ágeis (Scrum e XP). https://www.linkedin.com/in/kmacedovarela/",
     "group": "DevCia"
   },
   {
@@ -101,9 +101,18 @@
     "id": "8",
     "photo": "assets/palestrantes/kleber-reis.webp",
     "title": "Introdução ao API Gateway - KONG",
-    "description": "Descrição: Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
+    "description": "Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
     "name": "Kleber de Andrade Reis",
     "bio": "Software Engineering na OLX. Vinte anos de experiência profissional na área de tecnologia. Experiência em sistemas de monitoramento e a produção de energia elétrica, sistemas de ensino a distância, criptografia, certificação digital, sistemas financeiros (empréstimos, garantias, internet bank e institucional), sistemas de varejo (venda, pós-venda, logística, backoffice) e telecom (OMS, URA, Catalogo Corporativo, CPQ, Billing, Charging). Entusiasta de Cloud Computing e desenvolvimento de software no geral.",
     "group": "GDG Toledo"
+  },
+  {
+    "id": "13",
+    "photo": "assets/palestrantes/amanda-carneiro.webp",
+    "title": "Soft skills e a tecnologia",
+    "description": "O desenvolvimento de habilidades técnicas em tecnologia vem sendo valorizado cada vez mais ao passar do tempo. Desde desenvolvedores back-end, front-end, profissionais de Design até profissionais de metodologias ágeis, mas existe uma outra variedade de habilidades que também precisa ser desenvolvida para que os profissionais sejam cada vez mais completos e é este o assunto abordado nessa conversa.",
+    "name": "Amanda Carneiro",
+    "bio": "Engenheira da Computação e estudante de Segurança da Informação. Desenvolvedora backend C#.NET.\nApoiadora das minorias e lutadora pela igualdade de gênero.",
+    "group": "GDG Cascavel"
   }
 ]

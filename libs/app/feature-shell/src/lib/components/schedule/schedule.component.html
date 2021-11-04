@@ -7,7 +7,7 @@
 
 <section class="container flex-row-between">
   <mat-list>
-    <div mat-subheader>Link X</div>
+    <div mat-subheader>Link 01</div>
     <ng-container *ngFor="let item of facade.linkX$ | async">
       <ng-container *ngIf="item.speaker">
         <mat-list-item (click)="open(item.speaker)" class="pointer hover">
@@ -48,7 +48,7 @@
 
   <mat-divider [vertical]="!mobileQuery.matches"></mat-divider>
   <mat-list>
-    <div mat-subheader>Link Y</div>
+    <div mat-subheader>Link 10</div>
     <ng-container *ngFor="let item of facade.linkY$ | async">
       <ng-container *ngIf="item.speaker">
         <mat-list-item (click)="open(item.speaker)" class="pointer hover">
@@ -90,7 +90,7 @@
   <mat-divider [vertical]="!mobileQuery.matches"></mat-divider>
 
   <mat-list>
-    <div mat-subheader>Link Z</div>
+    <div mat-subheader>Link 11</div>
     <ng-container *ngFor="let item of facade.linkZ$ | async">
       <ng-container *ngIf="item.speaker">
         <mat-list-item (click)="open(item.speaker)" class="pointer hover">
