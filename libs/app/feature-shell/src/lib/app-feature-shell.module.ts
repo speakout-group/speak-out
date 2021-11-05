@@ -11,6 +11,8 @@ import {
   SponsorPageComponent,
   ReadmePageComponent,
   HomePageComponent,
+  PrivacyComponent,
+  TermsComponent,
 } from './pages';
 import {
   SubscribeComponent,
@@ -37,6 +39,8 @@ import {
     ReadmePageComponent,
     ReadmeComponent,
     SubscribeComponent,
+    TermsComponent,
+    PrivacyComponent,
   ],
   imports: [
     CommonModule,
@@ -53,8 +57,22 @@ import {
             component: HomePageComponent,
           },
           {
+            path: 'devparana',
+            component: HomePageComponent,
+          },
+          {
             path: 'readme',
             component: ReadmePageComponent,
+            children: [
+              {
+                path: 'termos',
+                component: TermsComponent
+              },
+              {
+                path: 'privacidade',
+                component: PrivacyComponent
+              }
+            ]
           },
           {
             path: 'patrocinador/:id',
