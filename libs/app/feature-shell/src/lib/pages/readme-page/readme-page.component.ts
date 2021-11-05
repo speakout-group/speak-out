@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './readme-page.component.html',
-  styleUrls: ['./readme-page.component.scss']
+  styleUrls: ['./readme-page.component.scss'],
 })
-export class ReadmePageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class ReadmePageComponent {
+  constructor(readonly router: Router) {
+    console.log(router);
+    
   }
-
 }
