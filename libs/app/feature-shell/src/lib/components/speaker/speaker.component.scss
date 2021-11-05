@@ -1,11 +1,13 @@
+@use 'libs/styles/mixins' as mixin;
+
 :host {
   display: flex;
   flex-direction: column;
 
   section {
-    margin-top: 20px;
-    display: flex;
     gap: 10px;
+    display: flex;
+    margin-top: 20px;
   }
 
   figure {
@@ -18,6 +20,7 @@
       display: inline-flex;
       justify-content: center;
       margin-top: 10px;
+      font-weight: bold;
     }
 
     img {
@@ -31,9 +34,22 @@
     }
   }
 
+  @include mixin.media(mobile) {
+    section {
+      flex-direction: column;
+    }
+
+    figure {
+      img {
+        margin: 10px auto 0px;
+      }
+    }
+  }
+
   p {
     margin: 0;
     display: flex;
     white-space: pre-line;
+    line-height: 160%;
   }
 }

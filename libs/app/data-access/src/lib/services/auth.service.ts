@@ -98,7 +98,6 @@ export class AuthService {
 
   private async loginWith(providerId: string, options?: any) {
     const user = await this.socialService.signIn(providerId);
-    console.log(this.config.api);
 
     return this.http
       .post<TokenResponse>(
@@ -144,7 +143,6 @@ export class AuthService {
       })
       .pipe(
         tap((user) => {
-          console.log(user);
           this._user.next(user);
         })
       );

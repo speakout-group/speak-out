@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         .subscribe((redirectUrl) => {
           console.log('redirectUrl', redirectUrl);
 
-          this.router.navigateByUrl(redirectUrl);
+          this.router.navigateByUrl(redirectUrl as string);
         });
     }
   }

@@ -1,12 +1,15 @@
 import {
   AuthFacade,
-  SponsorFacade,
   ConfFacade,
   RoomFacade,
+  AwardFacade,
+  SponsorFacade,
   ScheduleFacade,
+  SubscribeFacade
 } from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { AwardDataService, AuthDataService, ScheduleDataService } from './infrastructure';
 import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthService } from './services';
 import {
@@ -14,7 +17,6 @@ import {
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
-import { ScheduleDataService } from './infrastructure';
 
 @NgModule({
   providers: [
@@ -23,8 +25,12 @@ import { ScheduleDataService } from './infrastructure';
     AuthFacade,
     RoomFacade,
     ConfFacade,
+    AwardFacade,
     SponsorFacade,
     ScheduleFacade,
+    SubscribeFacade,
+    AuthDataService,
+    AwardDataService,
     ScheduleDataService,
     SocialAuthService,
   ],

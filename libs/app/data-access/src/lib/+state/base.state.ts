@@ -1,15 +1,12 @@
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export abstract class BaseState<T> {
-  protected destroy = new Subject<void>();
-  
   private state$: BehaviorSubject<T>;
 
   protected get state(): T {
     return this.state$.getValue();
   }
-
   constructor(initialState: T) {
     this.state$ = new BehaviorSubject<T>(initialState);
   }

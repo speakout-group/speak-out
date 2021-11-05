@@ -19,7 +19,7 @@
           <h3 mat-line>{{ item.speaker.title }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
         </mat-list-item>
       </ng-container>
@@ -29,7 +29,7 @@
           <h3 mat-line>{{ item.label }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
 
           <button
@@ -60,7 +60,7 @@
           <h3 mat-line>{{ item.speaker.title }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
         </mat-list-item>
       </ng-container>
@@ -70,18 +70,8 @@
           <h3 mat-line>{{ item.label }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
-
-          <button
-            type="button"
-            mat-icon-button
-            *ngIf="item.speaker"
-            matTooltip="Leia mais"
-            (click)="open(item.speaker)"
-          >
-            <mat-icon>meeting_room</mat-icon>
-          </button>
         </mat-list-item>
       </ng-container>
     </ng-container>
@@ -102,7 +92,7 @@
           <h3 mat-line>{{ item.speaker.title }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
         </mat-list-item>
       </ng-container>
@@ -112,18 +102,8 @@
           <h3 mat-line>{{ item.label }}</h3>
 
           <time mat-line [dateTime]="item.start | date">
-            {{ item.start | date: 'short' }}
+            {{ item.start | date: 'medium' }}
           </time>
-
-          <button
-            type="button"
-            mat-icon-button
-            *ngIf="item.speaker"
-            matTooltip="Leia mais"
-            (click)="open(item.speaker)"
-          >
-            <mat-icon>meeting_room</mat-icon>
-          </button>
         </mat-list-item>
       </ng-container>
     </ng-container>

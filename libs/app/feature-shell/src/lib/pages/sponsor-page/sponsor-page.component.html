@@ -1,1 +1,18 @@
-<p>sponsor-page works!</p>
+<section class="flex-row-between flex-1">
+
+  <mat-card *ngIf="facade.supporter$ | async as supporter" class="flex-1">
+    <h2 mat-card-title>{{ supporter.name }}</h2>
+    <h2 mat-card-title>{{ supporter.website }}</h2>
+    
+    <img mat-card-image [src]="supporter.logo" [alt]="supporter.logo">
+
+    <p mat-card-content>
+      {{supporter.description}}
+    </p>
+  </mat-card>
+
+  <ng-container *ngIf="facade.embedUrl$ | async as embedUrl">
+    <iframe [src]="embedUrl" frameborder="0"></iframe>
+  </ng-container>
+
+</section>

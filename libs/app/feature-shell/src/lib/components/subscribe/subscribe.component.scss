@@ -1,6 +1,12 @@
 :host {
   display: flex;
 
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 30px;
+  }
+
   .mat-card {
     width: 100%;
     overflow: hidden;
@@ -9,12 +15,11 @@
     background-position-y: 358px;
     background-repeat: no-repeat;
     background-size: contain;
+    &.subscribe-card {
+      padding: 0;
+    }
   }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+ 
   .mat-display-1 {
     margin-bottom: 10px;
   }
@@ -24,5 +29,8 @@
   .mat-card-actions {
     display: flex;
     justify-content: space-around;
+  }
+  .mat-action-row.flex-row-reverse {
+    flex-direction: row-reverse;
   }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Ambev Tech",
+    "slug": "ambev-tech",
+    "logo": "assets/logos/ambev-tech.svg",
+    "embed": "",
+    "video": "",
+    "questions": []
+  },
+  {
+    "id": "2",
+    "name": "Tecno Speed",
+    "slug": "tecno-speed",
+    "logo": "assets/logos/tecno-speed.svg",
+    "embed": "",
+    "video": "",
+    "questions": []
+  },
+  {
+    "id": "3",
+    "name": "Ifood",
+    "slug": "ifood",
+    "logo": "assets/logos/ifood.svg",
+    "embed": "",
+    "video": "",
+    "questions": []
+  },
+  {
+    "id": "4",
+    "name": "Matera",
+    "slug": "matera",
+    "logo": "assets/logos/matera.svg",
+    "embed": "",
+    "video": "",
+    "questions": []
+  }
+]

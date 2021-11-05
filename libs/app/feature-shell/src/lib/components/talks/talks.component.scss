@@ -16,7 +16,7 @@
   }
 
   shell-talk,
-  shell-member {
+  shell-subscribe {
     cursor: pointer;
     min-width: calc(25% - 20px);
     max-width: calc(25% - 20px);
@@ -27,7 +27,7 @@
       flex-direction: column;
     }
     shell-talk,
-    shell-member {
+    shell-subscribe {
       width: 100%;
       min-width: 100%;
       max-width: 100%;
