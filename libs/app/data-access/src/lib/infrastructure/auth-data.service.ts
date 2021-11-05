@@ -6,9 +6,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthDataService extends BaseService {
   constructor(
     @Inject(APP_CONFIG)

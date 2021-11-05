@@ -1,57 +1,47 @@
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
 import { Injectable } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
-import { BaseState } from './base.state';
+import { switchMap } from 'rxjs/operators';
+import { HttpState } from './http.state';
 import { Login } from '../types';
 
 export interface AuthState {
-  loading: boolean;
-  redirect: string;
+  redirect: string | number | symbol;
   user: User | null;
 }
 
 @Injectable()
-export class AuthFacade extends BaseState<AuthState> {
-  loading$ = this.select((state) => state.loading);
-
+export class AuthFacade extends HttpState<AuthState> {
   redirect$ = this.select((state) => state.redirect);
 
   user$ = this.select((state) => state.user);
 
-  // error$ = this.select((state) => state.error);
-
   constructor(private service: AuthDataService) {
     super({
-      loading: false,
       redirect: '/',
       user: null,
     });
   }
 
   loadUser() {
-    this.setState({ loading: true });
-    this.service.getProfile().subscribe((user) => {
+    this.intercept(this.service.getProfile()).subscribe((user) => {
       this.setState({ user });
-      this.setState({ loading: false });
     });
   }
 
   login({ username, password }: Login) {
-    this.setState({ loading: true });
     this.service
       .login({ username, password })
       .pipe(switchMap((res) => this.handleLogin(res)))
       .subscribe((user) => {
         const redirect = this.service.getLoginCallbackUrl();
-        const state = { user, redirect, loading: false };
+        const state = { user, redirect };
         this.setState(state);
       });
   }
 
   register(user: Partial<User>) {
-    // this.setState({ loading: true });
-    return this.intercept(this.service.register(user))
+    return this.intercept(this.service.register(user));
   }
 
   handleLogin(response: TokenResponse) {

@@ -1,5 +1,6 @@
 export * from './lib/app-data-access.module';
 export * from './lib/app-data-access.config';
+export * from './lib/infrastructure';
 export * from './lib/interceptors';
 export * from './lib/interfaces';
 export * from './lib/services';
