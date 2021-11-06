@@ -4,14 +4,15 @@
       <mat-accordion class="example-headers-align">
         <mat-expansion-panel [expanded]="(facade.step$ | async) === 0" hideToggle>
           <mat-expansion-panel-header>
-            <mat-panel-title> Inscrição </mat-panel-title>
-            <mat-panel-description> Credenciais </mat-panel-description>
+            <mat-panel-title> Credenciais </mat-panel-title>
+            <mat-panel-description> Inscrição gratuita </mat-panel-description>
           </mat-expansion-panel-header>
 
           <section class="flex-col gap-8">
             <mat-form-field>
-              <mat-label>Usuário</mat-label>
-              <input autofocus type="text" formControlName="username" placeholder="Digite seu usuário" matInput />
+              <mat-label>Escolha seu nome de usuário</mat-label>
+              <input autofocus type="text" formControlName="username" placeholder="Ex.: adalovelace" matInput />
+              <mat-hint>Não use caracteres especiais, nem espaços</mat-hint>
               <mat-error>{{
                 form.username?.hasError('pattern')
                 ? 'Apenas caracteres alfanuméricos'
@@ -20,8 +21,9 @@
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Senha</mat-label>
-              <input type="password" formControlName="password" placeholder="Digite sua senha" matInput />
+              <mat-label>Defina uma senha</mat-label>
+              <input type="password" formControlName="password" matInput />
+              <mat-hint>Deve ter mais de 6 digitos</mat-hint>
               <mat-error>{{
                 form.password?.hasError('minlength')
                 ? 'Digite uma senha maior'
@@ -30,8 +32,9 @@
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Email</mat-label>
-              <input type="email" formControlName="email" placeholder="Digite seu email" matInput />
+              <mat-label>Digite seu melhor email</mat-label>
+              <input type="email" formControlName="email" placeholder="Ex.: ada@lovelace.dev" matInput />
+              <mat-hint>Usaremos ele caso você se esqueça da senha</mat-hint>
               <mat-error>{{
                 form.email?.hasError('email')
                 ? 'Endereço de email inválido'
@@ -41,7 +44,7 @@
 
           </section>
           <mat-action-row>
-            <button type="button" mat-button color="primary" [disabled]="!form.firstStepValid"
+            <button type="button" mat-raised-button color="primary" [disabled]="!form.firstStepValid"
               (click)="facade.nextStep()">
               Ir para conclusão
             </button>
@@ -78,9 +81,9 @@
             {{ facade.error$ | async }}
           </p>
 
-          <mat-action-row class="flex-row-reverse">
-            <button mat-button color="primary">Submeter</button>
-            <button type="button" mat-button color="warn" (click)="facade.prevStep()">
+          <mat-action-row class="complete">
+            <button mat-raised-button color="primary">Concluir</button>
+            <button type="button" mat-button (click)="facade.prevStep()">
               Alterar credenciais
             </button>
           </mat-action-row>
