@@ -30,7 +30,8 @@
     display: flex;
     justify-content: space-around;
   }
-  .mat-action-row.flex-row-reverse {
+  .mat-action-row.complete {
     flex-direction: row-reverse;
+    justify-content: space-between;
   }
 }
