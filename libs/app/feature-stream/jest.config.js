@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'app-feature-notification',
+  displayName: 'app-feature-stream',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/app/feature-notification',
+  coverageDirectory: '../../../coverage/libs/app/feature-stream',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

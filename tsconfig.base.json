@@ -32,6 +32,7 @@
       "@speak-out/app-feature-sponsor": [
         "libs/app/feature-sponsor/src/index.ts"
       ],
+      "@speak-out/app-feature-stream": ["libs/app/feature-stream/src/index.ts"],
       "@speak-out/app-feature-user": ["libs/app/feature-user/src/index.ts"],
       "@speak-out/app-ui-dialogs": ["libs/app/ui-dialogs/src/index.ts"],
       "@speak-out/app-ui-layout": ["libs/app/ui-layout/src/index.ts"],

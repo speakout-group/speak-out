@@ -1,0 +1,44 @@
+<app-main-toolbar [user]="auth.user$ | async" (logout)="onLogout()">
+</app-main-toolbar>
+
+<!-- Ajustar altura da toolbar para mobile -->
+<mat-toolbar
+  color="primary"
+  [ngClass]="{'is-handset': isHandset$ | async}"
+>
+  <ng-container *ngIf="(isHandset$ | async) === true; else oneRowTmpl">
+    <mat-toolbar-row>
+      <a schedule-toolbar-item [item]="stream.x$ | async"></a>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <a schedule-toolbar-item [item]="stream.y$ | async"></a>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <a schedule-toolbar-item [item]="stream.z$ | async"></a>
+    </mat-toolbar-row>
+  </ng-container>
+
+  <ng-template #oneRowTmpl>
+    <mat-toolbar-row>
+      <mat-icon>live_tv</mat-icon>
+
+      <span class="spacer"></span>
+
+      <a schedule-toolbar-item [item]="stream.x$ | async"></a>
+
+      <span class="spacer"></span>
+      <span class="color-yellow"> / </span>
+      <span class="spacer"></span>
+
+      <a schedule-toolbar-item [item]="stream.y$ | async"></a>
+
+      <span class="spacer"></span>
+      <span class="color-yellow"> / </span>
+      <span class="spacer"></span>
+
+      <a schedule-toolbar-item [item]="stream.z$ | async"></a>
+    </mat-toolbar-row>
+  </ng-template>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

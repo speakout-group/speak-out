@@ -330,32 +330,6 @@
       },
       "tags": []
     },
-    "app-feature-notification": {
-      "projectType": "library",
-      "root": "libs/app/feature-notification",
-      "sourceRoot": "libs/app/feature-notification/src",
-      "prefix": "shell",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-notification"],
-          "options": {
-            "jestConfig": "libs/app/feature-notification/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/feature-notification/src/**/*.ts",
-              "libs/app/feature-notification/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
     "app-feature-room": {
       "projectType": "library",
       "root": "libs/app/feature-room",
@@ -454,6 +428,32 @@
             "lintFilePatterns": [
               "libs/app/feature-sponsor/src/**/*.ts",
               "libs/app/feature-sponsor/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-feature-stream": {
+      "projectType": "library",
+      "root": "libs/app/feature-stream",
+      "sourceRoot": "libs/app/feature-stream/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-stream"],
+          "options": {
+            "jestConfig": "libs/app/feature-stream/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-stream/src/**/*.ts",
+              "libs/app/feature-stream/src/**/*.html"
             ]
           }
         }

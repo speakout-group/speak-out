@@ -15,16 +15,16 @@ import { NgModule } from '@angular/core';
       {
         path: 'login',
         component: LoginPageComponent,
-        data: {
-          requireAuth: false,
-        },
+        // data: {
+        //   requireAuth: false,
+        // },
       },
       {
         path: 'register',
         component: RegisterPageComponent,
-        data: {
-          requireAuth: false,
-        },
+        // data: {
+        //   requireAuth: false,
+        // },
       },
     ]),
   ],

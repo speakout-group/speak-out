@@ -16,7 +16,7 @@ export class MainToolbarComponent{
   
   @Input() brand = '';
 
-  @Input() user: UserLogged | null = null;
+  @Input() user: UserLogged | null | undefined = null;
 
   @Output() nav = new EventEmitter<string[]>()
   

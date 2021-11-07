@@ -1,0 +1,19 @@
+<ng-container *ngIf="facade.link$ | async as link">
+
+  <app-main-toolbar color="accent" [user]="auth.user$ | async"></app-main-toolbar>
+
+  <section class="video-wrapper" *ngIf="facade.link$ | async as stream">
+    <iframe [title]="stream.label" [src]="stream.ytid | streamUrl" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </section>
+
+  <mat-toolbar color="primary">
+    <span>Chat</span>
+    
+    <span class="spacer"></span>
+    
+    <h2>{{ link.label }}</h2>
+  </mat-toolbar>
+
+</ng-container>

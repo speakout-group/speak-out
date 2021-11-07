@@ -1,0 +1,27 @@
+<mat-stepper orientation="vertical">
+  <mat-step *ngFor="let item of items" [label]="item.label" state="schedule">
+    <ng-template matStepContent>
+      <blockquote *ngIf="item.speaker">
+        <h3 class="mat-h3">
+          {{ item.speaker.title }}
+        </h3>
+        <div class="flex-row-between">
+          <span class="mat-hint">{{ item.speaker.name }}</span>
+          <span>
+            <time class="mat-hint" [dateTime]="item.start | date">
+              {{ item.start | date: 'shortTime' }}
+            </time>
+            <span>~</span>
+            <time class="mat-hint" [dateTime]="item.end | date">
+              {{ item.end | date: 'shortTime' }}
+            </time>
+          </span>
+        </div>
+      </blockquote>
+    </ng-template>
+  </mat-step>
+  <!-- Icon overrides. -->
+  <ng-template matStepperIcon="schedule">
+    <mat-icon>schedule</mat-icon>
+  </ng-template>
+</mat-stepper>

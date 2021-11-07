@@ -11,7 +11,7 @@ export class MainContainer implements OnInit {
   constructor(readonly auth: AuthFacade, private router: Router) {}
 
   ngOnInit(): void {
-    this.auth.loadUser();
+    // this.auth.loadUser();
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

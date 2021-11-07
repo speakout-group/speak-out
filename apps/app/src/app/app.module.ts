@@ -1,3 +1,4 @@
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -14,12 +15,10 @@ import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
 
-
-
 import {
-  AuthDataService,
   AppDataAccessModule,
   AuthTokenInterceptor,
+  AuthFacade,
 } from '@speak-out/app-data-access';
 
 import { AppComponent } from './app.component';
@@ -56,16 +55,12 @@ import { environment } from '../environments/environment';
     { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,
-      useFactory: (authService: AuthDataService) => async () => {
-        if (authService.getAccessToken()) {
-          try {
-            await authService.getProfile().toPromise();
-          } catch (err) {
-            console.log(err);
-          }
+      useFactory: (authService: AuthFacade) => async () => {
+        if (authService.accesssToken) {
+          authService.loadUser();
         }
       },
-      deps: [AuthDataService],
+      deps: [AuthFacade],
       multi: true,
     },
     {

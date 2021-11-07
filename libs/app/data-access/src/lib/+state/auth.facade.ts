@@ -1,30 +1,45 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, switchMap } from 'rxjs/operators';
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
 import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
 import { HttpState } from './http.state';
 import { Login } from '../types';
 
 export interface AuthState {
   redirect: string | number | symbol;
-  user: User | null;
+  user?: User | null;
 }
 
 @Injectable()
 export class AuthFacade extends HttpState<AuthState> {
   redirect$ = this.select((state) => state.redirect);
 
-  user$ = this.select((state) => state.user);
+  user$ = this.select((state) => state.user)
+
+  get accesssToken() {
+    return this.service.getAccessToken()
+  }
+
+  get isAuthenticated() {
+    return !!this.state.user
+  }
 
   constructor(private service: AuthDataService) {
     super({
-      redirect: '/',
-      user: null,
+      redirect: '/'
     });
   }
 
   loadUser() {
-    this.intercept(this.service.getProfile()).subscribe((user) => {
+    this.service.getProfile().pipe(
+      catchError((err) => {
+        if (err instanceof HttpErrorResponse) {
+          this.setState({ user: null })
+        }
+        throw err;
+      })
+    ).subscribe((user) => {
       this.setState({ user });
     });
   }

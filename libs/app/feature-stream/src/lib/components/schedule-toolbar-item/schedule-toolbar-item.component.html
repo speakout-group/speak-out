@@ -1,0 +1,14 @@
+<ng-container *ngIf="item">
+  <span class="toolbar-avatar">
+    <ng-content select="img"></ng-content>
+  </span>
+  <span>{{ item.label }}</span>
+  <span class="color-muted"> / </span>
+  <span>{{ item.speaker?.name }}</span>
+  <span class="color-muted"> / </span>
+  <span>
+    {{ item.start | date:'shortTime' }}
+    ~
+    {{ item.end | date:'shortTime' }}
+  </span>
+</ng-container>

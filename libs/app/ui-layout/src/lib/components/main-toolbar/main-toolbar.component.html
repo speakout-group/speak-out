@@ -8,7 +8,8 @@
   <span class="spacer"></span>
 
   <ng-container *ngIf="user; else loginMenuTmpl">
-    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <span>{{ user.username }}</span>
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu" xPosition="before">
@@ -17,14 +18,9 @@
 
       <mat-divider></mat-divider>
 
-      <a (click)="nav.emit(['confs'])" mat-menu-item>Conferências</a>
-      <a (click)="nav.emit(['sponsors'])" mat-menu-item>Patrocinadores</a>
-
-      <mat-divider></mat-divider>
-
-      <button (click)="nav.emit(['/account', 'settings'])" mat-menu-item>
+      <!-- <button (click)="nav.emit(['/account', 'settings'])" mat-menu-item>
         Configurações
-      </button>
+      </button> -->
 
       <mat-divider></mat-divider>
 

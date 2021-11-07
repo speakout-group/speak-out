@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  gap: 4px;
+
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 36%;
+  }
+
+  .toolbar-avatar:not(:empty) {
+    display: inline-flex;
+    border-radius: 50%;
+    max-height: 100%;
+    overflow: hidden;
+    margin: 0 12px;
+    height: 32px;
+  }
+}
