@@ -7,7 +7,11 @@ export interface Supporter {
   slug: string;
   color?: string;
   website?: string;
-  youtube?: string;
+  linkedin: string;
+  instagram: string;
+  youtube: string;
+  facebook: string;
+  twitter: string;
   video?: string;
   questions?: any[];
 }

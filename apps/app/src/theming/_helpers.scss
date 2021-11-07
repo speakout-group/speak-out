@@ -103,6 +103,18 @@
     justify-content: space-between;
   }
 
+  &-col-around {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+  }
+
+  &-row-around {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   &-1 {
     flex: 1;
   }
