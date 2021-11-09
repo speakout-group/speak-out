@@ -114,5 +114,14 @@
     "name": "Amanda Carneiro",
     "bio": "Engenheira da Computação e estudante de Segurança da Informação. Desenvolvedora backend C#.NET.\nApoiadora das minorias e lutadora pela igualdade de gênero.",
     "group": "GDG Cascavel"
+  },
+  {
+    "id": "14",
+    "photo": "assets/palestrantes/devgirls.webp",
+    "title": "A coragem de Palestrar",
+    "description": "Será um palestra com algumas das organizadoras do DevGirls onde falaremos sobre como foi para cada o processo de realizar uma palestra, desde nunca de sentir pronta ou que o conteúdo é relevante, síndrome da impostora, vulnerabilidade, coragem e até palestrar como forma de aprendizado.",
+    "name": "Gisele Passuti e Kelly Garcia",
+    "bio": "Kelly Garcia atua como Agile Master na AmbevTech e como co-organizadora dos meetups DevGirls e Maringá Agile e sua missão de vida é compartilhar conhecimento e ajudar outras pessoas principalmente minorias. É formada em Engenharia de Produção com ênfase em Software pela UEM e pós graduanda em Liderança, Inovação e Gestão 4.0. Além disso, é apaixonada por agilidade, melhoria contínua, natureza e harry potter. \n\nGisele é Analista de Teste Jr na DB1, estudante de ADS e como co-organizadora comitê DevGirls. Sua paixão está em aprender e compartilhar.",
+    "group": "DevGirls"
   }
 ]
