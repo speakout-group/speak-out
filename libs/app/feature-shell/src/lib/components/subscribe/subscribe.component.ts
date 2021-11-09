@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ReadmeComponent } from '../readme/readme.component';
 import { SubscribeFacade } from '@speak-out/app-data-access';
+import { PixelService } from '@speak-out/shared-ui-common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
@@ -22,7 +23,11 @@ export class SubscribeComponent implements OnInit, OnDestroy {
 
   username: string | null = null;
 
-  constructor(readonly facade: SubscribeFacade, readonly dialog: MatDialog) {}
+  constructor(
+    readonly facade: SubscribeFacade,
+    readonly dialog: MatDialog,
+    private pixel: PixelService
+  ) {}
 
   ngOnInit() {
     this.facade.loadUser();
@@ -46,7 +51,10 @@ export class SubscribeComponent implements OnInit, OnDestroy {
       this.facade
         .subscribe(this.form.value)
         .pipe(takeUntil(this.destroy))
-        .subscribe(() => this.form.reset({}));
+        .subscribe(() => {
+          this.form.reset({});
+          this.pixel.track('Lead');
+        });
     }
   }
 
