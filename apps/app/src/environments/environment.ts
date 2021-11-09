@@ -12,6 +12,11 @@ export const environment = {
   },
 };
 
+export const facebook = {
+  pixelId: '244754419595080',
+  enabled: false
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

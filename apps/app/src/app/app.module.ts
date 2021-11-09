@@ -22,8 +22,9 @@ import {
   AuthTokenInterceptor,
 } from '@speak-out/app-data-access';
 
+import { environment, facebook } from '../environments/environment';
+import { PixelModule } from '@speak-out/shared-ui-common';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    PixelModule.forRoot(facebook),
     AppDataAccessModule.forRoot(environment),
     RouterModule.forRoot(
       [
