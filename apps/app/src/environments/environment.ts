@@ -14,7 +14,7 @@ export const environment = {
 
 export const facebook = {
   pixelId: '244754419595080',
-  enabled: false
+  enabled: true
 }
 
 /*

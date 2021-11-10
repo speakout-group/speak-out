@@ -17,7 +17,7 @@ import { Subject } from 'rxjs';
 export class SubscribeComponent implements OnInit, OnDestroy {
   destroy = new Subject<void>();
 
-  @ViewChild('terms') checkboxTerms!: MatCheckbox;
+  @ViewChild('terms') checkboxes!: MatCheckbox;
 
   form = new SubscribeForm();
 
@@ -40,9 +40,14 @@ export class SubscribeComponent implements OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy))
       .subscribe((readed) => {
-        if (readed) this.checkboxTerms.focus();
+        if (readed) this.onConsent();
         else if (button) button.focus();
       });
+  }
+
+  onConsent(): void {
+    this.checkboxes.focus();
+    this.pixel.initialize();
   }
 
   onSubmit() {
