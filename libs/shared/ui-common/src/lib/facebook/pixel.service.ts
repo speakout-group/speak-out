@@ -25,15 +25,17 @@ export class PixelService {
   private renderer: Renderer2;
 
   constructor(
-    @Inject('config') private config: PixelConfiguration,
-    @Inject(DOCUMENT) private injectedDocument: any,
-    @Optional() private router: Router,
-    private rendererFactory: RendererFactory2,
-    @Inject(PLATFORM_ID) private platformId: Record<string, string>
+    @Inject('config')
+    private config: PixelConfiguration,
+    @Inject(DOCUMENT) document: Document,
+    @Optional() router: Router,
+    @Inject(PLATFORM_ID)
+    private platformId: Record<string, string>,
+    rendererFactory: RendererFactory2,
   ) {
     // DOCUMENT cannot be injected directly as Document type, see https://github.com/angular/angular/issues/20351
     // It is therefore injected as any and then cast to Document
-    this.doc = injectedDocument as Document;
+    this.doc = document;
     this.renderer = rendererFactory.createRenderer(null, null);
 
     if (router) {
@@ -62,6 +64,7 @@ export class PixelService {
     }
     this.config.enabled = true;
     this.addPixelScript(pixelId);
+    this.addPixelNoScript(pixelId);
   }
 
   /** Remove the Pixel tracking script */
@@ -130,24 +133,39 @@ export class PixelService {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
-
+    
     const pixelCode = `
     var pixelCode = function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '${pixelId}');
-    fbq('track', 'PageView');`;
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '${pixelId}');
+      fbq('track', 'PageView');`;
+      
+      const scriptElement = this.renderer.createElement('script');
+      this.renderer.setAttribute(scriptElement, 'id', 'pixel-script');
+      this.renderer.setAttribute(scriptElement, 'type', 'text/javascript');
+      this.renderer.setProperty(scriptElement, 'innerHTML', pixelCode);
+      this.renderer.appendChild(this.doc.head, scriptElement);
+    }
 
-    const scriptElement = this.renderer.createElement('script');
-    this.renderer.setAttribute(scriptElement, 'id', 'pixel-script');
-    this.renderer.setAttribute(scriptElement, 'type', 'text/javascript');
-    this.renderer.setProperty(scriptElement, 'innerHTML', pixelCode);
-    this.renderer.appendChild(this.doc.head, scriptElement);
+  private addPixelNoScript(pixelId: string): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const noScriptElement = this.renderer.createElement('noscript');
+    const pixelElement = this.renderer.createElement('img');
+    this.renderer.setAttribute(pixelElement, 'height', '1');
+    this.renderer.setAttribute(pixelElement, 'width', '1');
+    this.renderer.setStyle(pixelElement, 'display', 'none');
+    this.renderer.setProperty(pixelElement, 'src', `https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`);
+    this.renderer.appendChild(noScriptElement, pixelElement);
+    this.renderer.appendChild(this.doc.head, noScriptElement);
   }
 
   /** Remove Facebook Pixel tracking script from the application */

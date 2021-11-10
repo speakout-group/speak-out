@@ -21,8 +21,12 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { VisibilityDirective } from './directives/visibility.directive';
 import { MatNativeDateModule } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
+  imports: [
+    RouterModule
+  ],
   exports: [
     FormsModule,
     CommonModule,
