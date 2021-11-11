@@ -94,27 +94,10 @@
 </ng-container>
 <ng-template #subscribedTmpl>
   <mat-card *ngIf="facade.user$ | async as user">
-    <!-- Facebook Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '244754419595080');
-      fbq('track', 'PageView');
-      fbq('track', 'Lead');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" 
-      src="https://www.facebook.com/tr?id=244754419595080&ev=PageView&noscript=1" /></noscript>
-    <!-- End Facebook Pixel Code -->
     <mat-card-title-group>
       <mat-card-title>Inscrição</mat-card-title>
       <mat-card-subtitle>DevParaná Conf 2021</mat-card-subtitle>
-      <img mat-card-sm-image class="speak-out-logo" src="assets/logo.svg" />
+      <img mat-card-sm-image class="speak-out-logo" alt="Speak Out Group Logo" src="assets/logo.svg" />
     </mat-card-title-group>
     <mat-card-content>
       <h1 class="mat-display-1">{{ user.username }},</h1>
