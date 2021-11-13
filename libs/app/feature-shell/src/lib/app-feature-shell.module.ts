@@ -24,7 +24,6 @@ import {
   TalkComponent,
 } from './components';
 
-
 @NgModule({
   declarations: [
     MainContainer,
@@ -80,7 +79,9 @@ import {
       {
         path: 'auth',
         loadChildren: () =>
-          import('@speak-out/app-feature-auth').then((m) => m.AppFeatureAuthModule),
+          import('@speak-out/app-feature-auth').then(
+            (m) => m.AppFeatureAuthModule
+          ),
       },
       {
         path: 'devparana',
@@ -91,9 +92,16 @@ import {
             (module) => module.AppFeatureStreamModule
           ),
       },
+      {
+        path: 'calendar',
+        loadChildren: () =>
+          import('@speak-out/app-feature-calendar').then(
+            (module) => module.AppFeatureCalendarModule
+          ),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: NotFoundPageComponent },
     ]),
   ],
 })
-export class AppFeatureShellModule {}
+export class AppFeatureShellModule { }

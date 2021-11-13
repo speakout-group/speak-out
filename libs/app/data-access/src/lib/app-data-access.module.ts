@@ -1,17 +1,23 @@
 import {
   AuthFacade,
   ConfFacade,
+  TalkFacade,
   RoomFacade,
   AwardFacade,
   SponsorFacade,
   ScheduleFacade,
-  SubscribeFacade
+  SubscribeFacade,
 } from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { AwardDataService, AuthDataService, ScheduleDataService } from './infrastructure';
 import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthService } from './services';
+import {
+  TalkDataService,
+  AuthDataService,
+  AwardDataService,
+  ScheduleDataService,
+} from './infrastructure';
 import {
   SocialAuthService,
   GoogleLoginProvider,
@@ -23,11 +29,13 @@ import {
     AuthService,
     StorageData,
     AuthFacade,
+    TalkFacade,
     RoomFacade,
     ConfFacade,
     AwardFacade,
     SponsorFacade,
     ScheduleFacade,
+    TalkDataService,
     SubscribeFacade,
     AuthDataService,
     AwardDataService,

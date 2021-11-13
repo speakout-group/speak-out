@@ -1,10 +1,14 @@
+
 /* You can add global styles to this file, and also import other style files */
 @use '~@angular/material' as mat;
 @use './theming/palette' as conf;
 
+@import "~angular-calendar/css/angular-calendar.css";
+
 @import './theming/app';
 @import './theming/custom';
 @import './theming/helpers';
+@import './theming/calendar';
 
 html,
 body {

@@ -1,6 +1,7 @@
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -28,8 +29,8 @@ import { environment } from '../environments/environment';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     MatDialogModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppDataAccessModule.forRoot(environment),
     RouterModule.forRoot(

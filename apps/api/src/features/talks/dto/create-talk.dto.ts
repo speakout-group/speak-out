@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateTalkDto {
@@ -15,15 +15,15 @@ export class CreateTalkDto {
     required: true,
   })
   @IsNotEmpty()
-  photo: string;
+  @IsString()
+  description: string;
 
   @ApiProperty({
     type: String,
     required: true,
   })
   @IsNotEmpty()
-  @IsString()
-  description: string;
+  cover: string;
 
   @ApiProperty({
     type: String,
@@ -38,8 +38,31 @@ export class CreateTalkDto {
     required: true,
   })
   @IsNotEmpty()
+  photo: string;
+
+  @ApiProperty({
+    type: String,
+    required: true,
+  })
+  @IsNotEmpty()
   @IsString()
   bio: string;
+
+  @ApiProperty({
+    type: Date,
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsDateString()
+  start: Date;
+
+  @ApiProperty({
+    type: Date,
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsDateString()
+  end: Date;
 
   @ApiProperty({
     type: String,
@@ -48,6 +71,14 @@ export class CreateTalkDto {
   @IsNotEmpty()
   @IsString()
   group: string;
+
+  @ApiProperty({
+    type: String,
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsString()
+  stage: string;
 
   @ApiProperty({
     type: String,

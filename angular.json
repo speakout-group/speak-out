@@ -278,6 +278,32 @@
       },
       "tags": []
     },
+    "app-feature-calendar": {
+      "projectType": "library",
+      "root": "libs/app/feature-calendar",
+      "sourceRoot": "libs/app/feature-calendar/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-calendar"],
+          "options": {
+            "jestConfig": "libs/app/feature-calendar/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-calendar/src/**/*.ts",
+              "libs/app/feature-calendar/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "app-feature-conf": {
       "projectType": "library",
       "root": "libs/app/feature-conf",

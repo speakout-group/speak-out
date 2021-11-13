@@ -7,3 +7,4 @@ export * from './base.state';
 export * from './http.state';
 export * from './conf.facade';
 export * from './room.facade';
+export * from './talk.facade';

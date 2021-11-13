@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IsLivePipe, WasPipe } from './pipes';
 import { NgModule } from '@angular/core';
+import { TalksPageComponent } from './pages/talks-page/talks-page.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { NgModule } from '@angular/core';
         component: LinksContainer,
         children: [
           { path: '', component: LinksPageComponent },
+          { path: 'talks', component: TalksPageComponent },
           // { path: ':id', component: LinkPageComponent },
         ],
       },
@@ -44,6 +46,7 @@ import { NgModule } from '@angular/core';
     StreamUrlPipe,
     IsLivePipe,
     WasPipe,
+    TalksPageComponent,
   ],
   exports: [
     StreamUrlPipe,
