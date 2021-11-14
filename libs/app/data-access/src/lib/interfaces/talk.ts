@@ -1,15 +1,23 @@
-export interface Talk {
-  id: string;
-  _id?: string;
+interface CommonTalk {
   title: string;
   description: string;
   cover: string;
   name: string;
   photo: string;
   bio: string;
-  start: Date | string;
-  end: Date | string;
   group: string;
   stage: string;
   ytid: string;
+}
+
+export interface RawTalk extends CommonTalk {
+  _id: string;
+  start: string;
+  end: string;
+}
+
+export interface Talk extends CommonTalk {
+  id: string;
+  start: Date;
+  end: Date;
 }

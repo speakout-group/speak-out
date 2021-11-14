@@ -83,15 +83,15 @@ import {
             (m) => m.AppFeatureAuthModule
           ),
       },
-      {
-        path: 'devparana',
-        canActivate: [StreamGuard],
-        canLoad: [StreamGuard],
-        loadChildren: () =>
-          import('@speak-out/app-feature-stream').then(
-            (module) => module.AppFeatureStreamModule
-          ),
-      },
+      // {
+      //   path: 'devparana',
+      //   canActivate: [StreamGuard],
+      //   canLoad: [StreamGuard],
+      //   loadChildren: () =>
+      //     import('@speak-out/app-feature-stream').then(
+      //       (module) => module.AppFeatureStreamModule
+      //     ),
+      // },
       {
         path: 'calendar',
         loadChildren: () =>
@@ -99,9 +99,16 @@ import {
             (module) => module.AppFeatureCalendarModule
           ),
       },
+      {
+        path: 'devparana',
+        loadChildren: () =>
+          import('@speak-out/app-feature-talks').then(
+            (module) => module.AppFeatureTalksModule
+          ),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: NotFoundPageComponent },
     ]),
   ],
 })
-export class AppFeatureShellModule { }
+export class AppFeatureShellModule {}

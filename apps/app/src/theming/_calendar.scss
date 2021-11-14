@@ -2,11 +2,12 @@
 
 .dark-theme {
   // First define some global color variables for your app, these are just for the demo, they can be anything you like
-  $bg-active: #d7d7d7;
+  $bg-active: #dadada;
   $text-color: #d5d6d7;
-  $bg-dark-primary: #1f262d;
-  $bg-dark-secondary: #394046;
-  $border-color: rgba(0, 0, 0, 0.6);
+  $bg-dark-primary: #666666;
+  $bg-dark-secondary: #fff;
+  $border-color: rgba(0, 0, 0, 0.2);
+  $accent-color: #ff3434;
 
   // Call the calendar mixin with a sass color map of your theme. Every property is optional.
   // For a list of all variables and how they are used,
@@ -14,13 +15,15 @@
   @include cal-theme(
     (
       // bg-primary: $bg-dark-primary,
-      // bg-secondary: $bg-dark-secondary,
+      bg-secondary: $bg-dark-secondary,
       // weekend-color: indianred,
-      bg-active: $bg-active,
+      // bg-active: $bg-active,
       border-color: $border-color,
       gray: $bg-dark-secondary,
       today-bg: $bg-dark-secondary,
-      event-color-primary: $bg-dark-secondary,
+      event-color-primary: $bg-dark-primary,
+      event-color-secondary: $bg-dark-secondary,
+      current-time-marker-color: $accent-color,
     )
   );
 
@@ -30,7 +33,7 @@
   }
 
   .cal-event {
-    background-color: #fff;
+    // background-color: #fff;
   }
 
   // // Everything else below is just themes the demo, it's probably not relevant to your app

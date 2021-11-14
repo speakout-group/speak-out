@@ -1,20 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
-import { Agenda, getOnlyLive, isLive, ScheduleFacade } from '@speak-out/app-data-access';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatStepperIntl } from '@angular/material/stepper';
+import { Agenda, isLive, ScheduleFacade } from '@speak-out/app-data-access';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'speak-out-links-page',
   templateUrl: './links-page.component.html',
-  styleUrls: ['./links-page.component.scss'],
-  providers: [
-    {
-      provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {displayDefaultIndicatorType: false},
-    },
-  ],
+  styleUrls: ['./links-page.component.scss']
 })
 export class LinksPageComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
@@ -24,7 +16,6 @@ export class LinksPageComponent implements OnInit, OnDestroy {
     private router: Router,
     readonly facade: ScheduleFacade,
     changeDetectorRef: ChangeDetectorRef,
-    private _matStepperIntl: MatStepperIntl,
     media: MediaMatcher,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');

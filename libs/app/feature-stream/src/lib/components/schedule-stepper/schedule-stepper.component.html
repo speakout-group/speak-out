@@ -1,5 +1,12 @@
-<mat-stepper orientation="vertical">
-  <mat-step *ngFor="let item of items" [label]="(item.start | date:'shortTime') + ' - ' + item.group" state="schedule">
+<mat-stepper #stepper orientation="vertical" linear>
+  <mat-step
+    *ngFor="let item of items"
+    #step="matStep"
+    [label]="(item.start | date: 'shortTime') + ' - ' + item.group"
+    [completed]="item.end | isPast"
+    [color]="(item | isLive) ? 'primary' : 'accent'"
+    state="schedule"
+  >
     <ng-template matStepContent>
       <blockquote>
         <h3 class="mat-h3">

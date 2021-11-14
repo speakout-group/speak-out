@@ -12,9 +12,9 @@ import { Subject } from 'rxjs';
 })
 export class CalendarPageComponent implements OnInit, OnDestroy {
   destroy = new Subject<void>();
-  
+
   refresh = new Subject<void>();
-  
+
   viewDate: Date = new Date('11-20-2021');
 
   events: CalendarEvent[] = [];
@@ -23,16 +23,16 @@ export class CalendarPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.facade.talks$.pipe(takeUntil(this.destroy)).subscribe((talks) => {
-      this.events = talks.map((talk) => {
+      this.events = talks.map(({ id, start, end, group, title }) => {
         return {
-          start: new Date(talk.start),
-          end: new Date(talk.end),
-          title: `${talk.group} - ${talk.title}`,
+          id,
+          end,
+          start,
+          title: `${group} - ${title}`,
           draggable: true,
           resizable: {
             afterEnd: true,
           },
-          id: talk._id,
         };
       });
 

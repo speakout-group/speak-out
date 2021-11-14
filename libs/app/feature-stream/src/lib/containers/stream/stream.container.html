@@ -1,9 +1,9 @@
-<ng-container *ngIf="facade.link$ | async as link">
+<ng-container *ngIf="facade.talk$ | async as talk">
 
   <app-main-toolbar color="accent" [user]="auth.user$ | async"></app-main-toolbar>
 
-  <section class="video-wrapper" *ngIf="facade.link$ | async as stream">
-    <iframe [title]="stream.label" [src]="stream.ytid | streamUrl" frameborder="0"
+  <section class="video-wrapper" *ngIf="talk.safeUrl">
+    <iframe [title]="talk.title" [src]="talk.safeUrl" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
   </section>
@@ -13,7 +13,7 @@
     
     <span class="spacer"></span>
     
-    <h2>{{ link.label }}</h2>
+    <h2>{{ talk.title }}</h2>
   </mat-toolbar>
 
 </ng-container>

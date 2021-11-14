@@ -3,7 +3,7 @@ import { Talk, TalkWithSafeUrl } from '@speak-out/app-data-access';
 
 export type TalkFormValue = Pick<
   Talk,
-  | '_id'
+  | 'id'
   | 'title'
   | 'description'
   | 'cover'
@@ -20,7 +20,7 @@ export class TalkForm extends FormGroup {
     const validator = !talk ? [Validators.required] : [];
 
     super({
-      _id: new FormControl(talk?.title, validator),
+      id: new FormControl(talk?.id, validator),
       title: new FormControl(talk?.title, validator),
       description: new FormControl(talk?.description, validator),
       cover: new FormControl(talk?.cover, validator),
@@ -39,7 +39,7 @@ export class TalkForm extends FormGroup {
 
   mapToValue(talk: Talk): TalkFormValue {
     return {
-      _id: talk?._id,
+      id: talk?.id,
       title: talk?.title,
       description: talk?.description,
       cover: talk?.cover,

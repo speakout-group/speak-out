@@ -9,14 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
-  AutocompleteFormService,
-  CodeFormService,
   SubscribeSuccessService,
 } from './services';
 import {
   SubscribeSuccessComponent,
-  AutocompleteFormComponent,
-  CodeFormComponent,
 } from './components';
 
 @NgModule({
@@ -32,14 +28,10 @@ import {
     MatIconModule,
   ],
   declarations: [
-    CodeFormComponent,
-    AutocompleteFormComponent,
     SubscribeSuccessComponent,
   ],
   providers: [
-    CodeFormService,
     SubscribeSuccessService,
-    AutocompleteFormService,
   ],
 })
 export class AppUiDialogsModule {}

@@ -486,6 +486,32 @@
       },
       "tags": []
     },
+    "app-feature-talks": {
+      "projectType": "library",
+      "root": "libs/app/feature-talks",
+      "sourceRoot": "libs/app/feature-talks/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-talks"],
+          "options": {
+            "jestConfig": "libs/app/feature-talks/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-talks/src/**/*.ts",
+              "libs/app/feature-talks/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "app-feature-user": {
       "projectType": "library",
       "root": "libs/app/feature-user",

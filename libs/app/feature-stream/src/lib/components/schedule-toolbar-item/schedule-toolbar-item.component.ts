@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Agenda, Nulled } from '@speak-out/app-data-access';
+import { Talk, Nulled } from '@speak-out/app-data-access';
 
 @Component({
   selector: 'speak-out-schedule-toolbar-item, a[schedule-toolbar-item]',
@@ -8,5 +8,5 @@ import { Agenda, Nulled } from '@speak-out/app-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScheduleToolbarItemComponent {
-  @Input() item: Agenda | Nulled
+  @Input() item: Talk | Nulled
 }

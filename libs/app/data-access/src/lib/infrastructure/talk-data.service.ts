@@ -1,7 +1,7 @@
 import { APP_CONFIG, AppConfig } from '../app-data-access.config';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Talk } from '../interfaces';
+import { RawTalk, Talk } from '../interfaces';
 
 @Injectable()
 export class TalkDataService {
@@ -12,22 +12,22 @@ export class TalkDataService {
   ) {}
 
   getTalk(id: string) {
-    return this.http.get<Talk>(`${this.config.api}/talks/${id}`);
+    return this.http.get<RawTalk>(`${this.config.api}/talks/${id}`);
   }
 
   getTalks() {
-    return this.http.get<Talk[]>(`${this.config.api}/talks`);
+    return this.http.get<RawTalk[]>(`${this.config.api}/talks`);
   }
 
   updateTalk(id: string, updateTalk: Partial<Talk>) {
-    return this.http.put<Talk>(`${this.config.api}/talks/${id}`, updateTalk);
+    return this.http.put<RawTalk>(`${this.config.api}/talks/${id}`, updateTalk);
   }
 
   createTalk(createTalk: Omit<Talk, '_id'>) {
-    return this.http.post<Talk>(`${this.config.api}/talks`, createTalk);
+    return this.http.post<RawTalk>(`${this.config.api}/talks`, createTalk);
   }
 
   removeTalk(id: string) {
-    return this.http.delete<Talk>(`${this.config.api}/talks/${id}`);
+    return this.http.delete<RawTalk>(`${this.config.api}/talks/${id}`);
   }
 }

@@ -1,3 +1,3 @@
+export * from './only-stage.pipe';
 export * from './is-live.pipe';
-export * from './stream-url.pipe';
-export * from './was.pipe';
+export * from './is-past.pipe';

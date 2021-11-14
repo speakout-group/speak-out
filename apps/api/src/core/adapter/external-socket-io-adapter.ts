@@ -58,6 +58,7 @@ export class ExternalSocketIoAdapter extends AbstractWsAdapter {
     handlers: MessageMappingProperties[],
     transform: (data: any) => Observable<any>
   ) {
+    console.log(client)
     const disconnect$ = fromEvent(client, DISCONNECT_EVENT).pipe(
       share(),
       first()

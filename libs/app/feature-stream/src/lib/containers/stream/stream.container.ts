@@ -1,5 +1,5 @@
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { ScheduleFacade, AuthFacade } from '@speak-out/app-data-access';
+import { TalkFacade, AuthFacade } from '@speak-out/app-data-access';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -12,20 +12,20 @@ export class StreamContainer implements OnInit {
 
 
   constructor(
-    readonly facade: ScheduleFacade,
+    readonly facade: TalkFacade,
     private route: ActivatedRoute,
     readonly auth: AuthFacade,
   ) { }
 
   ngOnInit(): void {
     this.auth.loadUser();
-    this.facade.loadSchedule();
+    this.facade.loadTalks();
     this.loadLink(this.route.snapshot);
   }
 
   loadLink({ params }: ActivatedRouteSnapshot) {
     if (params.id) {
-      this.facade.loadLink(params.id);
+      this.facade.loadTalk(params.id);
     }
   }
 }

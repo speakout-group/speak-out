@@ -1,12 +1,16 @@
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { TalkDataService } from '../infrastructure';
+import { map, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Talk } from '../interfaces';
+
+import { TalkMapper } from '../mappers/talk.mapper';
+import { TalkDataService } from '../infrastructure';
+import { getYoutubeEmbedUrl } from '../utils';
 import { BaseState } from './base.state';
+import { Talk } from '../interfaces';
 
 export type TalkWithSafeUrl = {
   [Key in keyof Talk]: Talk[Key];
-} & { safeUrl: SafeUrl }
+} & { safeUrl: SafeUrl };
 
 export interface TalkState {
   loading: boolean;
@@ -16,8 +20,10 @@ export interface TalkState {
 
 @Injectable()
 export class TalkFacade extends BaseState<TalkState> {
+  mapper = new TalkMapper();
+
   talks$ = this.select((state) => state.talks);
-  
+
   talk$ = this.select((state) => state.talk);
 
   loading$ = this.select((state) => state.loading);
@@ -34,24 +40,29 @@ export class TalkFacade extends BaseState<TalkState> {
 
   loadTalks() {
     this.setState({ loading: true });
-    this.dataService.getTalks().subscribe((talks) => {
-      this.setState({ talks, loading: false });
-    });
+    this.dataService
+      .getTalks()
+      .pipe(take(1), map((talks) => talks.map(this.mapper.mapTo)))
+      .subscribe((talks) => {
+        this.setState({ talks, loading: false });
+      });
   }
 
   updateTalk(id: string, talk: Partial<Talk>) {
     this.setState({ loading: true });
-    this.dataService.updateTalk(id, talk).subscribe((response) => {
+    this.dataService
+      .updateTalk(id, talk)
+      .pipe(take(1), map((talk) => this.mapper.mapTo(talk)))
+      .subscribe((response) => {
+        const talk = this.getTalkWithSafeUrl(response);
 
-      const talk = this.getTalkWithSafeUrl(response);
-
-      this.setState({ talk, loading: false });
-    });
+        this.setState({ talk, loading: false });
+      });
   }
 
   createTalk(talk: Omit<Talk, '_id'>) {
     this.setState({ loading: true });
-    this.dataService.createTalk(talk).subscribe(() => {
+    this.dataService.createTalk(talk).pipe(take(1)).subscribe(() => {
       this.setState({ loading: false });
       this.loadTalks();
     });
@@ -59,16 +70,20 @@ export class TalkFacade extends BaseState<TalkState> {
 
   loadTalk(id: string) {
     this.setState({ loading: true });
-    this.dataService.getTalk(id).subscribe((response) => {
+    this.dataService
+      .getTalk(id)
+      .pipe(take(1), map((talk) => this.mapper.mapTo(talk)))
+      .subscribe((response) => {
+        const talk = this.getTalkWithSafeUrl(response);
 
-      const talk = this.getTalkWithSafeUrl(response);
-
-      this.setState({ talk, loading: false });
-    });
+        this.setState({ talk, loading: false });
+      });
   }
 
-  getTalkWithSafeUrl(talk: Talk): TalkWithSafeUrl {
-    const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(talk.ytid);
-    return { ...talk, safeUrl }
+  private getTalkWithSafeUrl(talk: Talk): TalkWithSafeUrl {
+    const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      getYoutubeEmbedUrl(talk.ytid)
+    );
+    return { ...talk, safeUrl };
   }
 }

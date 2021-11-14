@@ -28,7 +28,7 @@
   },
   {
     "id": "3",
-    "photo": "assets/palestrantes/padro-mazala.webp",
+    "photo": "assets/palestrantes/pedro-mazala.webp",
     "title": "Observabilidade - dê-me visão além do alcance",
     "description": "Observabilidade vem do latim observabilis… Brincadeira, esse não é esse tipo de talk. O objetivo aqui será discutir padrões de observabilidade e como essa palavra (um tanto quanto extensa) pode ajudar seu time a escalar aplicações e seguir para o caminho de múltiplos serviços.",
     "name": "Pedro Mazala",
