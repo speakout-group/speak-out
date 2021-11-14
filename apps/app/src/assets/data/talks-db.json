@@ -2,7 +2,7 @@
   {
     "title": "APIs do jeito certo*",
     "description": "APIs HTTP são a mais nova e quente tendência de mercado. Nesta palestra explico os motivos pelos quais o mercado está migrando massivamente para esta tendência e detalho as melhores práticas, conceitos e ferramentas para que você e sua empresa começem a trabalhar com isso do jeito certo e sem dores de cabeça.APIs do jeito certo*",
-    "cover": "assets/palestrantes/galvao.webp",
+    "cover": "assets/palestrantes/cover/galvao.webp",
     "name": "Galvão",
     "photo": "assets/palestrantes/galvao.webp",
     "bio": "Engenheiro de Software Sênior na UOL EdTech; \n Presidente da ABRAPHP – Associação Brasileira de Profissionais PHP; \n Diretor da ConFLOSS e da PHP Conference Brasil; \n Evangelista e Contribuidor para a Linguagem PHP; \n Evangelista Laminas Project; \n Embaixador Fedora LATAM; \n Professor Convidado (Especialista) de Pós-Graduação (PR e SC); \n 25+ anos desenvolvendo sistemas com interface web sendo mais de 20 destes com PHP e mais de 12 com Zend Framework / Laminas Project; \n Palestrante em eventos nacionais e internacionais; \n Professor de cursos presenciais e a distância.",
@@ -15,7 +15,7 @@
   {
     "title": "Internet das Coisas e Inteligência Artificial na prática",
     "description": "Nesta programação, Vini Senger apresentará dispositivos reais que utilizam Internet das Coisas e Inteligência Artificial, para que possamos observar a aplicação das tecnologias. Tudo que será apresentado por Vini já foi usado pela Amazon Web Services para desenvolver geladeiras inteligentes, carros conectados, robôs e muito mais.",
-    "cover": "assets/palestrantes/vinicius-sanger.webp",
+    "cover": "assets/palestrantes/cover/vinicius-sanger.webp",
     "name": "Vinicius Senger",
     "photo": "assets/palestrantes/vinicius-sanger.webp",
     "bio": "Senior Developer Advocate na Amazon Web Services",
@@ -28,7 +28,7 @@
   {
     "title": "A carreira do Coach Kanban, o início, o fim e o meio",
     "description": "Nessa talk vou contar um pouco para você de como iniciar na carreira de Kanban Coach, os desafios iniciais, as boas referências, como superar as dificuldades e especialmente as heurísticas que nos levam muito além da agilidade.",
-    "cover": "assets/palestrantes/juliano-ribeiro.webp",
+    "cover": "assets/palestrantes/cover/juliano-ribeiro.webp",
     "name": "Juliano Ribeiro",
     "photo": "assets/palestrantes/juliano-ribeiro.webp",
     "bio": "Juliano Ribeiro, AKT, AKC - Accredited Kanban Trainer, Accredited Kanban Consultant, Certified Scrum Professional (CSP-SM&PO/ScrumAlliance), Certified Scrum Developer (CSD/ScrumAlliance), Tecnólogo em Sistemas para a Internet e Especialista em Programação Orientada à Objetos (UNICESUMAR). Trabalha com desenvolvimento de software desde 1994 e palestra no Brasil e no Exterior em eventos como Scrum Gathering, Agile Brazil, The Developer’s Conference, Agile Tour, Saturn e XP Conference. https://www.linkedin.com/in/julianopauloribeiro/",
@@ -41,9 +41,9 @@
   {
     "title": "Observabilidade - dê-me visão além do alcance",
     "description": "Observabilidade vem do latim observabilis… Brincadeira, esse não é esse tipo de talk. O objetivo aqui será discutir padrões de observabilidade e como essa palavra (um tanto quanto extensa) pode ajudar seu time a escalar aplicações e seguir para o caminho de múltiplos serviços.",
-    "cover": "assets/palestrantes/padro-mazala.webp",
+    "cover": "assets/palestrantes/cover/pedro-mazala.webp",
     "name": "Pedro Mazala",
-    "photo": "assets/palestrantes/padro-mazala.webp",
+    "photo": "assets/palestrantes/pedro-mazala.webp",
     "bio": "desenvolvedor há 10+ anos atualmente atuando como Principal Software Engineer na Payaut. De Cataguases para Maringá e para o mundo. Ultimamente ajudo empresas a dar o próximo passo em relação ao aprimoramento de arquitetura e processos de desenvolvimento. Moro nos Países Baixos (que a maioria das pessoas chama de Holanda) há dois anos. Nas horas vagas gosto de fingir que sei treinar Jiu-Jitsu e tomar vários tipos de cafés.",
     "start": "11-20-2021 10:00:00",
     "end": "11-20-2021 11:00:00",
@@ -54,7 +54,7 @@
   {
     "title": "O que aprendemos construindo nosso data lake",
     "description": "Vamos abordar com uma apresentação de slides a nossa experiência ao construir um data lake, falando sobre tecnologias, frameworks, serviços e boas práticas que adotamos e que acreditamos tenham facilitado nossa jornada.",
-    "cover": "assets/palestrantes/juliana-e-tatiana.webp",
+    "cover": "assets/palestrantes/cover/juliana-e-tatiana.webp",
     "name": "Juliana Strieder Philippsen e Tatiana Mara",
     "photo": "assets/palestrantes/juliana-e-tatiana.webp",
     "bio": "Tatiana Mara:\n Sou uma engenheira de dados na Rock Content, tenho 4 anos de experiência trabalhando com análise e engenharia de dados. No meu tempo livre gosto de assistir séries e jogos da NBA.\n\n Juliana Strieder Philippsen:\n Engenheira de dados. Trabalha com ciência de dados e engenharia de dados desde 2018, quando fez uma transição de carreira da academia para a tecnologia. Em seu tempo livre, curte ler livros, viajar e praticar yoga.",
@@ -67,7 +67,7 @@
   {
     "title": "As cinco Hard skills que você precisa dominar para ter destaque no meio técnico",
     "description": "A área da tecnologia vem crescendo de modo exponencial e trazendo consigo diversas oportunidades e especializações. Dentro dessas milhares de opções, temos a engenharia e arquitetura de software. Porém, com tantos conteúdos e fácil acesso a informação, como saber qual seria o melhor caminho para chegar ao objetivo que nos trará a almejada felicidade?",
-    "cover": "assets/palestrantes/otavio-e-karina.webp",
+    "cover": "assets/palestrantes/cover/otavio-e-karina.webp",
     "name": "Otavio Santana, Karina Varela",
     "photo": "assets/palestrantes/otavio-e-karina.webp",
     "bio": "Otavio Santana:\nEmpowering developers worldwide to deliver better software faster, scalable in the Cloud. Otavio is a passionate software engineer focused on Cloud and Java technology. He has experience mainly in persistence polyglot and high-performance applications in finances, social media, and e-commerce. Otavio is a member of both Expert Groups and Expert Leader in several JSRs and JCP executive committee. He is working on several Apache and Eclipse Foundation projects such as Apache Tamaya, MicroProfile, Jakarta EE, where he is leading the first specification at Jakarta EE with Jakarta NoSQL. A JUG leader and global speaker at JavaOne and Devoxx conferences. Otavio has received recognition for his OSS contributions such as the JCP Outstanding Award, Member of the year and innovative JSR, Duke’s Choice Award, and Java Champion Award, to name a few. https://otaviojava.com/about/ \n\nKarina Varela:\nTrabalho na área de T.I. desde 2009. Sou uma profissional experiente, flexível, versátil, pró ativa, autodidata, que gosta de aprender coisas novas e trabalha muito bem em equipe. Tive a oportunidade de atuar com desenvolvimento, análise de sistemas, modelagem de banco, consultoria middleware e como instrutora de cursos Red Hat. Neste percurso profissional, pude desenvolver, definir arquiteturas e aperfeiçoar softwares em ambientes Ruby e Java . Me especializei em middleware, em resolver problemas e propor as melhores soluções para cada cenário. Por ter prazer em absorver e compartilhar conhecimento, ministrar cursos oficiais da Red Hat é uma das minhas funções. Possuo também experiência com diversas metodologias de entrega de projeto, incluindo metodologias ágeis (Scrum e XP). https://www.linkedin.com/in/kmacedovarela/",
@@ -80,7 +80,7 @@
   {
     "title": "Idealização, planejamento e prototipação, o que vem antes das linhas de código?",
     "description": "A tecnologia evoluiu e seu processo de desenvolvimento também. Vamos falar sobre as etapas do processo de desenvolvimento e como sua execução influencia diretamente na produtividade e na entrega de valor feita ao final do projeto.",
-    "cover": "assets/palestrantes/ana-medrado.webp",
+    "cover": "assets/palestrantes/cover/ana-medrado.webp",
     "name": "Ana Medrado",
     "photo": "assets/palestrantes/ana-medrado.webp",
     "bio": "Apaixonada por tecnologia e arte. Um misto de design com linhas de código, bacharel em sistemas de informação, product designer na Arena.im e maker nas horas vagas.",
@@ -93,7 +93,7 @@
   {
     "title": "Open-source, como começar? motivações e desafios!",
     "description": "O que os projetos devem oferecer para guiar e atrair novos contribuidores? O que os contribuidores devem prestar atenção quando vão contribuir para um projeto novo? \n\nOs motivos pelos quais as pessoas contribuem para projetos de software livre têm sido um tópico de muito interesse na indústria e academia. No entanto, as pesquisas sobre esse assunto datam de 10 ou mais anos, e muita coisa mudou no mundo desde então. Essa apresentação vai discutir as percepções do nosso estudo recente que revisou antigos estudos de motivação e perguntou aos colaboradores de código aberto o que os motiva hoje. Além disso discutiremos desafios e cuidados que envolvem o processo de contribuição em software livre.\n\nEssas percepções podem ser usadas por gerentes de comunidades de software livre que desejam desenvolver uma comunidade, organizações que desejam entender como os membros da comunidade se comportam ou qualquer pessoa que trabalhe ou deseja contribuir para projetos.",
-    "cover": "assets/palestrantes/igor-wiese.webp",
+    "cover": "assets/palestrantes/cover/igor-wiese.webp",
     "bio": "Doutor em Ciência da Computação pelo IME-USP (2016). Professor efetivo da Universidade Tecnológica Federal do Paraná (UTFPR) Campus Campo Mourão, como Professor de Ensino Básico, Técnico e Tecnológico. Tem experiência na área de Ciência da Computação, tendo como principais linhas de pesquisa e interesse: Mineração de Repositórios de Software, Software Livre, Sistemas de Recomendação aplicados à Engenharia de Software e Aspectos humanos em Engenharia de Software. Realizou pós-doutorado na Northern Arizona University (2019/2020).\nSaiba mais: https://igorwiese.com/\nOpen-source, como começar? motivações e desafios!",
     "photo": "assets/palestrantes/igor-wiese.webp",
     "name": "Igor Wiese",
@@ -106,7 +106,7 @@
   {
     "title": "Escalando projetos com React e TS ",
     "description": "Porque usar? Quais as vantagens? Porque se tornou padrão de mercado? Nessa palestra vamos abordar como TypeScript evoluiu com o tempo e como a adoção dele no React virou um padrão no mercado, quais as vantagens e desvantagens de se usar TS, alguns casos de uso, conceitos mais avançados, últimas novidades",
-    "cover": "assets/palestrantes/ruben-marcus.webp",
+    "cover": "assets/palestrantes/cover/ruben-marcus.webp",
     "name": "Ruben Marcus",
     "photo": "assets/palestrantes/ruben-marcus.webp",
     "bio": "Ruben é um dev apaixonado por engenharia de software, UX/UI e código voltado a performance e escalabilidade. Com 10 anos de experiência, atualmente trabalha na Grover com React e Next.js,uma startup alemã que vem revolucionando o uso de eletrônicos permitido que as pessoas possam alugar eletrônicos que antes compravam. Também já atuou em diversas empresas como Zup, Centauro , Printi, e freelancer prestando serviços para clientes como Santander, Itaú, Panasonic, Samsung, Monsanto, Estadão, etc.  https://www.linkedin.com/in/rubenmarcus/",
@@ -119,7 +119,7 @@
   {
     "title": "Construindo API REST em poucos minutos com Delphi, Horse e Boss",
     "description": "Nessa palestra, Adriano Santos, irá demonstrar como é possível construir API REST usando o framework minimalista Horse e o gerenciador de dependências Boss.",
-    "cover": "assets/palestrantes/adriano-santos.webp",
+    "cover": "assets/palestrantes/cover/adriano-santos.webp",
     "name": "Adriano Santos",
     "photo": "assets/palestrantes/adriano-santos.webp",
     "bio": "Adriano Santos é membro sênior do programa Embarcadero MVP, especialista em desenvolvimento de software e Aplicativos Mobile, uma das maiores referências Delphi do país. CEO da empresa Adriano Santos Treinamentos e já atuou como editor chefe da Revista ClubeDelphi e Consultor Sênior na Embarcadero.",
@@ -132,7 +132,7 @@
   {
     "title": "Introdução ao API Gateway - KONG",
     "description": "Durante a aprensetação da iremos efetuar a instalação do KONG, criação de rotas para alguns serviços e instalação dos plugins disponíveis no KONG: Rate Limit; Proxy cache; Basic Authentication; JWT.",
-    "cover": "assets/palestrantes/kleber-reis.webp",
+    "cover": "assets/palestrantes/cover/kleber-reis.webp",
     "name": "Kleber de Andrade Reis",
     "photo": "assets/palestrantes/kleber-reis.webp",
     "bio": "Software Engineering na OLX. Vinte anos de experiência profissional na área de tecnologia. Experiência em sistemas de monitoramento e a produção de energia elétrica, sistemas de ensino a distância, criptografia, certificação digital, sistemas financeiros (empréstimos, garantias, internet bank e institucional), sistemas de varejo (venda, pós-venda, logística, backoffice) e telecom (OMS, URA, Catalogo Corporativo, CPQ, Billing, Charging). Entusiasta de Cloud Computing e desenvolvimento de software no geral.",
@@ -145,7 +145,7 @@
   {
     "title": "Soft skills e a tecnologia",
     "description": "O desenvolvimento de habilidades técnicas em tecnologia vem sendo valorizado cada vez mais ao passar do tempo. Desde desenvolvedores back-end, front-end, profissionais de Design até profissionais de metodologias ágeis, mas existe uma outra variedade de habilidades que também precisa ser desenvolvida para que os profissionais sejam cada vez mais completos e é este o assunto abordado nessa conversa.",
-    "cover": "assets/palestrantes/amanda-carneiro.webp",
+    "cover": "assets/palestrantes/cover/amanda-carneiro.webp",
     "name": "Amanda Carneiro",
     "photo": "assets/palestrantes/amanda-carneiro.webp",
     "bio": "Engenheira da Computação e estudante de Segurança da Informação. Desenvolvedora backend C#.NET.\nApoiadora das minorias e lutadora pela igualdade de gênero.",
@@ -158,7 +158,7 @@
   {
     "title": "PO e Dev - Um relacionamento de amor e ódio. Como melhorá-lo sem precisar de terapia de casal.",
     "description": " Tá aí um dos relacionamentos mais complicados do meio de desenvolvimento de software não é ? Nesta palestra irei trazer algumas dicas, ferramentas e táticas para fortalecer esse relacionamento e ambos de fato sentirem-se parte de um mesmo time. ",
-    "cover": "assets/palestrantes/luan-mileski.webp",
+    "cover": "assets/palestrantes/cover/luan-mileski.webp",
     "name": "Luan Mileski",
     "photo": "assets/palestrantes/luan-mileski.webp",
     "bio": "Há mais de 9 anos trabalhando no ecossistema de desenvolvimento de software, atuando em papéis como helpdesk, analista de negócios, gerente de projetos, scrum master, líder de equipe e product owner. Participei de vários projetos para os setores bancários, seguros, agropecuário, e-commerce e inovação.  Apaixonado por métodos ágeis desde 2013, certificado CSPO, SMSi, TKP, Management 3.0, Lean Inception e PBB, vive os valores e princípios do ágil no seu dia a dia profissional e pessoal. Adora fazer um baita churrasco e estar com amigos bebendo uma boa cerveja.",
@@ -171,7 +171,7 @@
   {
     "title": "A coragem de Palestrar",
     "description": "Será um palestra com algumas das organizadoras do DevGirls onde falaremos sobre como foi para cada o processo de realizar uma palestra, desde nunca de sentir pronta ou que o conteúdo é relevante, síndrome da impostora, vulnerabilidade, coragem e até palestrar como forma de aprendizado.",
-    "cover": "assets/palestrantes/gisele-kelly.webp",
+    "cover": "assets/palestrantes/cover/gisele-kelly.webp",
     "name": "Gisele Passuti e Kelly Garcia",
     "photo": "assets/palestrantes/gisele-kelly.webp",
     "bio": " Kelly Garcia atua como Agile Master na AmbevTech e como co-organizadora dos meetups DevGirls e Maringá Agile e sua missão de vida é compartilhar conhecimento e ajudar outras pessoas principalmente minorias. É formada em Engenharia de Produção com ênfase em Software pela UEM e pós graduanda em Liderança, Inovação e Gestão 4.0. Além disso, é apaixonada por agilidade, melhoria contínua, natureza e harry potter. \n\nGisele é Analista de Teste Jr na DB1, estudante de ADS e como co-organizadora comitê DevGirls. Sua paixão está em aprender e compartilhar.",
@@ -180,5 +180,57 @@
     "group": "DevGirls",
     "stage": "11",
     "ytid": "4AL0UXOI6h0"
+  },
+  {
+    "title": "DevParaná Talk Show",
+    "description": "Bate papo com os membros da comunidade DevParaná",
+    "cover": "assets/palestrantes/cover/talk-show.webp",
+    "name": "Membros do Devparaná",
+    "photo": "assets/palestrantes/gisele-kelly.webp",
+    "bio": " Conduzido por Guilherme Siquinelli",
+    "start": "11-19-2021 19:00:00",
+    "end": "11-19-2021 20:00:00",
+    "group": "talkshow",
+    "stage": "talkshow",
+    "ytid": "aPeirQasapA"
+  },
+  {
+    "title": "Keynote 1",
+    "description": "A definir",
+    "cover": "assets/palestrantes/cover/keynote.webp",
+    "name": "A definir",
+    "photo": "assets/palestrantes/keynote.webp",
+    "bio": "A definir",
+    "start": "11-20-2021 09:00:00",
+    "end": "11-20-2021 10:00:00",
+    "group": "keynote",
+    "stage": "keynote",
+    "ytid": "s1-8FyWD7OE"
+  },
+  {
+    "title": "Keynote 2",
+    "description": "A definir",
+    "cover": "assets/palestrantes/cover/keynote.webp",
+    "name": "A definir",
+    "photo": "assets/palestrantes/keynote.webp",
+    "bio": "A definir",
+    "start": "11-20-2021 17:00:00",
+    "end": "11-20-2021 18:00:00",
+    "group": "keynote",
+    "stage": "keynote",
+    "ytid": "w_cjKxfEjaU"
+  },
+  {
+    "title": "Expecting Professionalism",
+    "description": "",
+    "cover": "assets/palestrantes/cover/uncle-bob.webp",
+    "name": "Uncle Bob",
+    "photo": "assets/palestrantes/uncle-bob.webp",
+    "bio": "Engenheiro de software e autor de diversos livros na área",
+    "start": "11-18-2021 14:00:00",
+    "end": "11-18-2021 15:00:00",
+    "group": "opening",
+    "stage": "opening",
+    "ytid": "QFjOxCq8ac4"
   }
 ]
