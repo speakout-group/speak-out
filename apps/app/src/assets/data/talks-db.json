@@ -191,8 +191,8 @@
     "start": "11-19-2021 19:00:00",
     "end": "11-19-2021 20:00:00",
     "group": "talkshow",
-    "stage": "11",
-    "ytid": "4AL0UXOI6h0"
+    "stage": "talkshow",
+    "ytid": "aPeirQasapA"
   },
   {
     "title": "Keynote 1",
@@ -204,8 +204,8 @@
     "start": "11-20-2021 09:00:00",
     "end": "11-20-2021 10:00:00",
     "group": "keynote",
-    "stage": "11",
-    "ytid": "4AL0UXOI6h0"
+    "stage": "keynote",
+    "ytid": "s1-8FyWD7OE"
   },
   {
     "title": "Keynote 2",
@@ -217,7 +217,20 @@
     "start": "11-20-2021 17:00:00",
     "end": "11-20-2021 18:00:00",
     "group": "keynote",
-    "stage": "11",
-    "ytid": "4AL0UXOI6h0"
+    "stage": "keynote",
+    "ytid": "w_cjKxfEjaU"
+  },
+  {
+    "title": "Expecting Professionalism",
+    "description": "",
+    "cover": "assets/palestrantes/cover/uncle-bob.webp",
+    "name": "Uncle Bob",
+    "photo": "assets/palestrantes/uncle-bob.webp",
+    "bio": "Engenheiro de software e autor de diversos livros na área",
+    "start": "11-18-2021 14:00:00",
+    "end": "11-18-2021 15:00:00",
+    "group": "opening",
+    "stage": "opening",
+    "ytid": "QFjOxCq8ac4"
   }
 ]
