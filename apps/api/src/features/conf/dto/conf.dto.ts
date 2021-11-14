@@ -11,13 +11,11 @@ export class ConfDto {
   @IsString()
   title: string;
 
-
   @ApiProperty({
     type: String,
   })
   @IsString()
   description: string;
-
 
   @ApiProperty({
     type: String,
@@ -38,7 +36,6 @@ export class ConfDto {
   @IsDateString()
   start: Date;
 
-
   @ApiProperty({
     type: Date,
     required: true,
@@ -46,7 +43,6 @@ export class ConfDto {
   @IsDateString()
   end: Date;
 
-  
   @ApiProperty({
     type: Boolean,
     required: true,

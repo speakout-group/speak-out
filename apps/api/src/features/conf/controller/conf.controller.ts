@@ -23,8 +23,8 @@ import { ConfDto } from '../dto/conf.dto';
 export class ConfController {
   constructor(
     private confService: ConfService,
-    private sponsorSrvice: SponsorService,
-  ) { }
+    private sponsorSrvice: SponsorService
+  ) {}
 
   @Get()
   @ApiBearerAuth('access-token')
@@ -55,7 +55,6 @@ export class ConfController {
   getSponsorsByConf(@Param('id', ParseObjectIdPipe) id: string) {
     // return this.confService.getSp .getConfsBySponsor(id);
   }
-
 
   @Get('sponsor/:id')
   @ApiBearerAuth('access-token')

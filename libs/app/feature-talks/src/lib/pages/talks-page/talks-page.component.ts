@@ -1,4 +1,3 @@
-import { CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { TalkFacade } from '@speak-out/app-data-access';
@@ -8,7 +7,7 @@ import { Subject } from 'rxjs';
 
 @Component({
   templateUrl: './talks-page.component.html',
-  styleUrls: ['./talks-page.component.scss']
+  styleUrls: ['./talks-page.component.scss'],
 })
 export class TalksPageComponent implements OnInit, OnDestroy {
   destroy = new Subject<void>();
@@ -24,13 +23,13 @@ export class TalksPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.facade.talks$.pipe(takeUntil(this.destroy)).subscribe((talks) => {
       this.events = talks.map(({ id, start, end, title }) => {
-        const event: CalendarEvent = { id, end, start, title }
+        const event: CalendarEvent = { id, end, start, title };
 
         if (new Date() > start && new Date() < end) {
-          event.color = { primary: '#212121', secondary: '#f1f1f1' }
+          event.color = { primary: '#212121', secondary: '#f1f1f1' };
         }
 
-        return event
+        return event;
       });
 
       this.refresh.next();

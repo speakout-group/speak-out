@@ -13,7 +13,7 @@ import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { User } from '../../user/schema/user.schema';
 import { RoomService } from '../service/room.service';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { RoomDto } from '../dto/room.dto';
 
 @UseGuards(JwtAuthGuard)

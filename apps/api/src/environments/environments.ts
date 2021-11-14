@@ -1,3 +1,4 @@
+import { Environment } from './environment.type';
 import { config } from 'dotenv';
 
 config();
@@ -26,3 +27,5 @@ export const environments = {
     subject: env.VAPID_SUBJECT,
   },
 };
+
+export const environment: Environment = 'development';

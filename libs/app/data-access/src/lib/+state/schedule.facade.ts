@@ -64,7 +64,7 @@ export class ScheduleFacade extends BaseState<ScheduleState> {
       linkX: [],
       linkY: [],
       linkZ: [],
-      link: []
+      link: [],
     });
   }
 
@@ -74,20 +74,22 @@ export class ScheduleFacade extends BaseState<ScheduleState> {
     const talks$ = this.dataService.getTalks();
     const schedule$ = this.dataService.getByConf(this.state.conf);
 
-    forkJoin([talks$, links$, schedule$]).subscribe(([talks, links, schedule]) => {
-      const agenda: Agenda[] = schedule.map((item) => {
-        const speaker = talks.find((talk) => talk.id == item.talk);
-        const { ytid } = links.find((link) => link.id == item.link) ?? {};
-        return { ...item, ytid, speaker };
-      });
+    forkJoin([talks$, links$, schedule$]).subscribe(
+      ([talks, links, schedule]) => {
+        const agenda: Agenda[] = schedule.map((item) => {
+          const speaker = talks.find((talk) => talk.id == item.talk);
+          const { ytid } = links.find((link) => link.id == item.link) ?? {};
+          return { ...item, ytid, speaker };
+        });
 
-      const linkX = agenda.filter((talk) => talk.link === 'X');
-      const linkY = agenda.filter((talk) => talk.link === 'Y');
-      const linkZ = agenda.filter((talk) => talk.link === 'Z');
+        const linkX = agenda.filter((talk) => talk.link === 'X');
+        const linkY = agenda.filter((talk) => talk.link === 'Y');
+        const linkZ = agenda.filter((talk) => talk.link === 'Z');
 
-      this.setState({ schedule, talks, links, linkX, linkY, linkZ });
-      this.setState({ loading: false });
-    });
+        this.setState({ schedule, talks, links, linkX, linkY, linkZ });
+        this.setState({ loading: false });
+      }
+    );
   }
 
   loadTalks() {
@@ -112,16 +114,18 @@ export class ScheduleFacade extends BaseState<ScheduleState> {
     const talks$ = this.dataService.getTalks();
     const schedule$ = this.dataService.getByLink(linkId);
 
-    forkJoin([talks$, links$, schedule$]).subscribe(([talks, links, schedule]) => {
-      const agenda: Agenda[] = schedule.map((item) => {
-        const speaker = talks.find((talk) => talk.id == item.talk);
-        const { ytid } = links.find((link) => link.id == item.link) ?? {};
-        return { ...item, ytid, speaker };
-      });
+    forkJoin([talks$, links$, schedule$]).subscribe(
+      ([talks, links, schedule]) => {
+        const agenda: Agenda[] = schedule.map((item) => {
+          const speaker = talks.find((talk) => talk.id == item.talk);
+          const { ytid } = links.find((link) => link.id == item.link) ?? {};
+          return { ...item, ytid, speaker };
+        });
 
-      const link = agenda.filter((talk) => talk.link === linkId);
+        const link = agenda.filter((talk) => talk.link === linkId);
 
-      this.setState({ schedule, talks, links, link, loading: false });
-    });
+        this.setState({ schedule, talks, links, link, loading: false });
+      }
+    );
   }
 }

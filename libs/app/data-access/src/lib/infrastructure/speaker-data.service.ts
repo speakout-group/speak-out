@@ -18,8 +18,7 @@ export class SpeakerDataService {
   ) {}
 
   getSpeaker(speakerId: string) {
-    return this.http
-      .get<Speaker>(`${this.config.api}/speaker/id/${speakerId}`)
+    return this.http.get<Speaker>(`${this.config.api}/speaker/id/${speakerId}`);
   }
 
   getPublicSpeakers() {
@@ -50,8 +49,9 @@ export class SpeakerDataService {
   }
 
   joinSpeaker(speakerId: string) {
-    return this.http
-      .post<Speaker>(`${this.config.api}/speaker/join`, { speakerId })
+    return this.http.post<Speaker>(`${this.config.api}/speaker/join`, {
+      speakerId,
+    });
   }
 
   leaveSpeaker(speakerId: string) {
@@ -73,9 +73,8 @@ export class SpeakerDataService {
   }
 
   onUpdateEvent() {
-    return this.socket
-      .fromEvent<Speaker>('speaker:update')
-      // .pipe(map(getEntityWithSortedMembers));
+    return this.socket.fromEvent<Speaker>('speaker:update');
+    // .pipe(map(getEntityWithSortedMembers));
   }
 
   onDeleteEvent() {

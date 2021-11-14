@@ -1,11 +1,11 @@
 /* eslint-disable no-useless-escape */
 
-const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœṕŕßśșțùúüûǘẃẍÿź·/_,:;'
-const b = 'aaaaaaaaceeeeghiiiimnnnoooooprssstuuuuuwxyz------'
-const p = new RegExp(a.split('').join('|'), 'g')
+const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœṕŕßśșțùúüûǘẃẍÿź·/_,:;';
+const b = 'aaaaaaaaceeeeghiiiimnnnoooooprssstuuuuuwxyz------';
+const p = new RegExp(a.split('').join('|'), 'g');
 
 export function dropSpecialChars(str: string) {
-  return str.toString().replace(p, (c) => b.charAt(a.indexOf(c)))
+  return str.toString().replace(p, (c) => b.charAt(a.indexOf(c)));
 }
 
 export function slugify(string: string) {
@@ -18,5 +18,5 @@ export function slugify(string: string) {
     .replace(/[^\w\-]+/g, '')
     .replace(/\-\-+/g, '-')
     .replace(/^-+/, '')
-    .replace(/-+$/, '')
+    .replace(/-+$/, '');
 }

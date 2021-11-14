@@ -8,16 +8,9 @@ import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AppDataAccessModule } from '@speak-out/app-data-access';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { TalksContainer} from './containers';
-import { 
-  TalkPageComponent,
-  TalksPageComponent
-} from './pages';
-import {
-  CalendarDayViewComponent,
-  CalendarNavComponent,
-} from './components';
-
+import { TalksContainer } from './containers';
+import { TalkPageComponent, TalksPageComponent } from './pages';
+import { CalendarDayViewComponent, CalendarNavComponent } from './components';
 
 import { TalkViewComponent } from './components/talk-view/talk-view.component';
 
@@ -57,6 +50,6 @@ import { TalkViewComponent } from './components/talk-view/talk-view.component';
     TalkPageComponent,
     TalksPageComponent,
     TalkViewComponent,
-  ]
+  ],
 })
 export class AppFeatureTalksModule {}

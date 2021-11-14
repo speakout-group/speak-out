@@ -32,10 +32,12 @@ export class Sponsor extends Document {
   youtube: string;
 
   @Prop({
-    type: [{
-      type: ObjectId,
-      ref: User.name,
-    }],
+    type: [
+      {
+        type: ObjectId,
+        ref: User.name,
+      },
+    ],
   })
   members: User[];
 
@@ -48,7 +50,7 @@ export class Sponsor extends Document {
 
   @Prop({
     type: ObjectId,
-    ref: User.name
+    ref: User.name,
   })
   owner: User;
 }

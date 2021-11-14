@@ -11,10 +11,10 @@ import { Module } from '@nestjs/common';
         name: Talk.name,
         schema: TalkSchema,
       },
-    ])
+    ]),
   ],
   controllers: [TalksController],
   providers: [TalksService],
-  exports: [TalksService]
+  exports: [TalksService],
 })
 export class TalksModule {}

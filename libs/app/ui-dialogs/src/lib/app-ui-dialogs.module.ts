@@ -8,12 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-  SubscribeSuccessService,
-} from './services';
-import {
-  SubscribeSuccessComponent,
-} from './components';
+import { SubscribeSuccessService } from './services';
+import { SubscribeSuccessComponent } from './components';
 
 @NgModule({
   imports: [
@@ -27,11 +23,7 @@ import {
     MatListModule,
     MatIconModule,
   ],
-  declarations: [
-    SubscribeSuccessComponent,
-  ],
-  providers: [
-    SubscribeSuccessService,
-  ],
+  declarations: [SubscribeSuccessComponent],
+  providers: [SubscribeSuccessService],
 })
 export class AppUiDialogsModule {}

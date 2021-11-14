@@ -21,7 +21,7 @@
     min-width: calc(25% - 20px);
     max-width: calc(25% - 20px);
   }
-  
+
   @include mixin.media(mobile) {
     section {
       flex-direction: column;
@@ -33,5 +33,4 @@
       max-width: 100%;
     }
   }
-
 }

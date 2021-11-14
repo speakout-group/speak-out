@@ -13,7 +13,7 @@ import {
 })
 export class CalendarNavComponent {
   @Output() viewDateChange = new EventEmitter<Date>();
-  
+
   @Input() view: 'month' | 'week' | 'day' = 'week';
 
   @Input() viewDate: Date = new Date();

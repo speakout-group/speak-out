@@ -1,4 +1,3 @@
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -70,8 +69,8 @@ import { environment } from '../environments/environment';
       multi: true,
     },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

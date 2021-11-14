@@ -6,25 +6,25 @@ import { Document } from 'mongoose';
 export class Talk extends Document {
   @Prop()
   title: string;
-  
+
   @Prop()
   description: string;
-  
+
   @Prop()
   cover: string;
-  
+
   @Prop()
   name: string;
-  
+
   @Prop()
   photo: string;
 
   @Prop()
   bio: string;
-  
+
   @Prop()
   start: Date;
-  
+
   @Prop()
   end: Date;
 

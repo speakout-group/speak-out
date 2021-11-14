@@ -20,11 +20,7 @@ import { ConfService } from '../../conf/service/conf.service';
 
 @Injectable()
 export class SponsorService {
-  private blockedFields: (keyof Sponsor)[] = [
-    'members',
-    'owner',
-    'conf',
-  ];
+  private blockedFields: (keyof Sponsor)[] = ['members', 'owner', 'conf'];
 
   unpopulatedFields = '-' + this.blockedFields.join(' -');
 
@@ -34,7 +30,7 @@ export class SponsorService {
     private sponsorGateway: SponsorGateway,
     private userService: UserService,
     @Inject(forwardRef(() => MessageService))
-    private messageService: MessageService,
+    private messageService: MessageService
   ) {}
 
   async create(sponsor: SponsorDto, user: User) {
@@ -93,13 +89,13 @@ export class SponsorService {
     return this.sponsorModel
       .findById(sponsorId)
       .populate('members', this.userService.unpopulatedFields)
-      .populate('owner', this.userService.unpopulatedFields)
-      // .populate('conf', this.confService.unpopulatedFields);
+      .populate('owner', this.userService.unpopulatedFields);
+    // .populate('conf', this.confService.unpopulatedFields);
   }
 
   getSponsorsByConf(conf: Conf) {
-    return this.sponsorModel.findOne({ conf: conf._id })
-      // .populate('conf', this.confService.unpopulatedFields);
+    return this.sponsorModel.findOne({ conf: conf._id });
+    // .populate('conf', this.confService.unpopulatedFields);
   }
 
   async validateSponsor(sponsorId: string) {

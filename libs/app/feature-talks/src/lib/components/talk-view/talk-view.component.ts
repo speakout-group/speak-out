@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { TalkWithSafeUrl } from '@speak-out/app-data-access';
 import { Subject } from 'rxjs';
 
@@ -7,7 +12,7 @@ import { Subject } from 'rxjs';
   selector: 'speak-out-talk-view',
   templateUrl: './talk-view.component.html',
   styleUrls: ['./talk-view.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalkViewComponent {
   @Output() cancel = new EventEmitter<void>();

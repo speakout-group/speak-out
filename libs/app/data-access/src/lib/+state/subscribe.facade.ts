@@ -20,7 +20,10 @@ export class SubscribeFacade extends HttpState<SubscribeState> {
 
   step$ = this.select((state) => state.step);
 
-  constructor(private service: AuthDataService, readonly storage: StorageData<SubscribeState>) {
+  constructor(
+    private service: AuthDataService,
+    readonly storage: StorageData<SubscribeState>
+  ) {
     super({
       user: null,
       subscribed: false,
@@ -46,7 +49,7 @@ export class SubscribeFacade extends HttpState<SubscribeState> {
 
   loadUser() {
     this.service.getProfile().subscribe((user) => {
-      const subscribed = !!user
+      const subscribed = !!user;
       this.setState({ user, subscribed });
     });
   }

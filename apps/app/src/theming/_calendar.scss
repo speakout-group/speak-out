@@ -14,16 +14,16 @@
   // see https://github.com/mattlewis92/angular-calendar/tree/master/projects/angular-calendar/src/variables.scss
   @include cal-theme(
     (
-      // bg-primary: $bg-dark-primary,
+           // bg-primary: $b
       bg-secondary: $bg-dark-secondary,
-      // weekend-color: indianred,
-      // bg-active: $bg-active,
+           // weekend-c
+           // bg-acti
       border-color: $border-color,
       gray: $bg-dark-secondary,
       today-bg: $bg-dark-secondary,
       event-color-primary: $bg-dark-primary,
       event-color-secondary: $bg-dark-secondary,
-      current-time-marker-color: $accent-color,
+      current-time-marker-color: $accent-color
     )
   );
 

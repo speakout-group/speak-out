@@ -5,6 +5,6 @@ export class LoginPageForm extends FormGroup {
     super({
       username: new FormControl(username, [Validators.required]),
       password: new FormControl('', [Validators.required]),
-    })
+    });
   }
 }

@@ -17,7 +17,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     readonly facade: ScheduleFacade,
     changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher,
+    media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -29,7 +29,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   open(data: Talk) {
-    this.dialog.open(SpeakerComponent, { data, maxWidth: '800px' })
+    this.dialog.open(SpeakerComponent, { data, maxWidth: '800px' });
   }
 
   ngOnDestroy(): void {

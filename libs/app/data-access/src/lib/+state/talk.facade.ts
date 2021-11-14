@@ -42,7 +42,10 @@ export class TalkFacade extends BaseState<TalkState> {
     this.setState({ loading: true });
     this.dataService
       .getTalks()
-      .pipe(take(1), map((talks) => talks.map(this.mapper.mapTo)))
+      .pipe(
+        take(1),
+        map((talks) => talks.map(this.mapper.mapTo))
+      )
       .subscribe((talks) => {
         this.setState({ talks, loading: false });
       });
@@ -52,7 +55,10 @@ export class TalkFacade extends BaseState<TalkState> {
     this.setState({ loading: true });
     this.dataService
       .updateTalk(id, talk)
-      .pipe(take(1), map((talk) => this.mapper.mapTo(talk)))
+      .pipe(
+        take(1),
+        map((talk) => this.mapper.mapTo(talk))
+      )
       .subscribe((response) => {
         const talk = this.getTalkWithSafeUrl(response);
 
@@ -62,17 +68,23 @@ export class TalkFacade extends BaseState<TalkState> {
 
   createTalk(talk: Omit<Talk, '_id'>) {
     this.setState({ loading: true });
-    this.dataService.createTalk(talk).pipe(take(1)).subscribe(() => {
-      this.setState({ loading: false });
-      this.loadTalks();
-    });
+    this.dataService
+      .createTalk(talk)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.setState({ loading: false });
+        this.loadTalks();
+      });
   }
 
   loadTalk(id: string) {
     this.setState({ loading: true });
     this.dataService
       .getTalk(id)
-      .pipe(take(1), map((talk) => this.mapper.mapTo(talk)))
+      .pipe(
+        take(1),
+        map((talk) => this.mapper.mapTo(talk))
+      )
       .subscribe((response) => {
         const talk = this.getTalkWithSafeUrl(response);
 

@@ -1,5 +1,5 @@
+import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
-import { AppDataAccessModule, StreamGuard } from '@speak-out/app-data-access';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -83,17 +83,9 @@ import {
             (m) => m.AppFeatureAuthModule
           ),
       },
-      // {
-      //   path: 'devparana',
-      //   canActivate: [StreamGuard],
-      //   canLoad: [StreamGuard],
-      //   loadChildren: () =>
-      //     import('@speak-out/app-feature-stream').then(
-      //       (module) => module.AppFeatureStreamModule
-      //     ),
-      // },
       {
         path: 'calendar',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('@speak-out/app-feature-calendar').then(
             (module) => module.AppFeatureCalendarModule
@@ -101,6 +93,7 @@ import {
       },
       {
         path: 'devparana',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('@speak-out/app-feature-talks').then(
             (module) => module.AppFeatureTalksModule

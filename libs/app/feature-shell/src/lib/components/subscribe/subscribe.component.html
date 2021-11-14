@@ -1,8 +1,13 @@
-<ng-container *ngIf="(facade.subscribed$ | async) === false; else subscribedTmpl">
+<ng-container
+  *ngIf="(facade.subscribed$ | async) === false; else subscribedTmpl"
+>
   <mat-card class="subscribe-card" color="accent">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-accordion class="example-headers-align">
-        <mat-expansion-panel [expanded]="(facade.step$ | async) === 0" hideToggle>
+        <mat-expansion-panel
+          [expanded]="(facade.step$ | async) === 0"
+          hideToggle
+        >
           <mat-expansion-panel-header>
             <mat-panel-title> Credenciais </mat-panel-title>
             <mat-panel-description> Inscrição gratuita </mat-panel-description>
@@ -11,13 +16,19 @@
           <section class="flex-col gap-8">
             <mat-form-field>
               <mat-label>Escolha seu nome de usuário</mat-label>
-              <input autofocus type="text" formControlName="username" placeholder="Ex.: adalovelace" matInput />
+              <input
+                autofocus
+                type="text"
+                formControlName="username"
+                placeholder="Ex.: adalovelace"
+                matInput
+              />
               <mat-hint>Não use caracteres especiais, nem espaços</mat-hint>
               <mat-error>{{
                 form.username?.hasError('pattern')
-                ? 'Apenas caracteres alfanuméricos'
-                : 'Usuário obrigatório'
-                }}</mat-error>
+                  ? 'Apenas caracteres alfanuméricos'
+                  : 'Usuário obrigatório'
+              }}</mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -26,39 +37,58 @@
               <mat-hint>Deve ter mais de 6 digitos</mat-hint>
               <mat-error>{{
                 form.password?.hasError('minlength')
-                ? 'Digite uma senha maior'
-                : 'Sua senha ainda é necessária'
-                }}</mat-error>
+                  ? 'Digite uma senha maior'
+                  : 'Sua senha ainda é necessária'
+              }}</mat-error>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Digite seu melhor email</mat-label>
-              <input type="email" formControlName="email" placeholder="Ex.: ada@lovelace.dev" matInput />
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="Ex.: ada@lovelace.dev"
+                matInput
+              />
               <mat-hint>Usaremos ele caso você se esqueça da senha</mat-hint>
               <mat-error>{{
                 form.email?.hasError('email')
-                ? 'Endereço de email inválido'
-                : 'Por segurança, seu e-mail é necessário'
-                }}</mat-error>
+                  ? 'Endereço de email inválido'
+                  : 'Por segurança, seu e-mail é necessário'
+              }}</mat-error>
             </mat-form-field>
-
           </section>
           <mat-action-row>
-            <button type="button" mat-raised-button color="primary" [disabled]="!form.firstStepValid"
-              (click)="facade.nextStep()">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              [disabled]="!form.firstStepValid"
+              (click)="facade.nextStep()"
+            >
               Ir para conclusão
             </button>
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [disabled]="!form.firstStepValid" [expanded]="(facade.step$ | async) === 1"
-          (afterExpand)="readmeButton.focus()" (opened)="facade.setStep(1)" hideToggle>
+        <mat-expansion-panel
+          [disabled]="!form.firstStepValid"
+          [expanded]="(facade.step$ | async) === 1"
+          (afterExpand)="readmeButton.focus()"
+          (opened)="facade.setStep(1)"
+          hideToggle
+        >
           <mat-expansion-panel-header>
             <mat-panel-title> Conclusão </mat-panel-title>
           </mat-expansion-panel-header>
 
           <section class="mb-16">
-            <button type="button" mat-button #readmeButton (click)="openReadme()">
+            <button
+              type="button"
+              mat-button
+              #readmeButton
+              (click)="openReadme()"
+            >
               <code>README.md</code>
             </button>
           </section>
@@ -75,7 +105,10 @@
             </mat-checkbox>
           </fieldset>
 
-          <mat-progress-bar *ngIf="facade.loader$ | async" mode="indeterminate"></mat-progress-bar>
+          <mat-progress-bar
+            *ngIf="facade.loader$ | async"
+            mode="indeterminate"
+          ></mat-progress-bar>
 
           <p class="color-warn align-center">
             {{ facade.error$ | async }}
@@ -102,7 +135,11 @@
     <mat-card-content>
       <h1 class="mat-display-1">{{ user.username }},</h1>
       <h2 class="mat-display-2">ingresso garantido!</h2>
-      <button type="button" mat-stroked-button (click)="facade.clearSubscription()">
+      <button
+        type="button"
+        mat-stroked-button
+        (click)="facade.clearSubscription()"
+      >
         Fazer outra inscrição
       </button>
     </mat-card-content>

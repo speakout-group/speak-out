@@ -15,12 +15,12 @@ export const getOnlyLive = (agenda: Agenda[]) => {
 
 export const isLive = (agenda: Agenda) => {
   return lt(agenda.end) && gt(agenda.start);
-}
+};
 
 export const was = (agenda: Agenda) => {
   return lt(agenda.end);
-}
+};
 
 export const will = (agenda: Agenda) => {
   return gt(agenda.start);
-}
+};

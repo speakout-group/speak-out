@@ -30,7 +30,6 @@ export class TalksService {
     return this.talkModel.findByIdAndUpdate(talk._id, data);
   }
 
-
   async validateTalkById(talkId: ObjectId | string) {
     const room = await this.getTalkById(talkId);
 
@@ -40,7 +39,6 @@ export class TalksService {
 
     return room;
   }
-
 
   filterTalk(talk: Talk, allowedFields: (keyof Talk)[] = []) {
     const talkObject = talk.toObject({ virtuals: true });

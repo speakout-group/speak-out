@@ -5,7 +5,7 @@ import { AwardFacade } from '@speak-out/app-data-access';
   selector: 'shell-sponsors',
   templateUrl: './sponsors.component.html',
   styleUrls: ['./sponsors.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SponsorsComponent implements OnInit {
   constructor(readonly facade: AwardFacade) {}
@@ -14,10 +14,10 @@ export class SponsorsComponent implements OnInit {
     { title: 'Ambev Tech', logo: 'assets/logos/ambev-tech.svg' },
     { title: 'Tecno Speed', logo: 'assets/logos/tecno-speed.svg' },
     { title: 'Ifood', logo: 'assets/logos/ifood.svg' },
-    { title: 'Matera', logo: 'assets/logos/matera.svg'  }
-  ]
+    { title: 'Matera', logo: 'assets/logos/matera.svg' },
+  ];
 
   ngOnInit() {
-    this.facade.loadSupporters()
+    this.facade.loadSupporters();
   }
 }

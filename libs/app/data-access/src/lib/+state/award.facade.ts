@@ -52,7 +52,9 @@ export class AwardFacade extends BaseState<AwardState> {
       let embedUrl = null;
 
       if (supporter.embed) {
-        embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(supporter.embed);
+        embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          supporter.embed
+        );
       }
 
       this.setState({ supporter, embedUrl, loading: false });
@@ -65,9 +67,11 @@ export class AwardFacade extends BaseState<AwardState> {
         let embedUrl = null;
 
         if (supporter.embed) {
-          embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(supporter.embed);
+          embedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+            supporter.embed
+          );
         }
-  
+
         this.setState({ supporter, embedUrl, loading: false });
       });
     }

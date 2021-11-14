@@ -10,5 +10,4 @@ export class HomeContainer {
   onNavigate(route: string[]) {
     this.router.navigate(route);
   }
-
 }

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Talk, TalkWithSafeUrl } from '@speak-out/app-data-access';
 import { TalkForm } from './talk.form';
 
@@ -7,7 +12,7 @@ import { TalkForm } from './talk.form';
   selector: 'speak-out-talk-form',
   templateUrl: './talk-form.component.html',
   styleUrls: ['./talk-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalkFormComponent {
   form = new TalkForm();

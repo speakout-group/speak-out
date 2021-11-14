@@ -22,8 +22,7 @@ export class CalendarDayViewComponent {
   @Input() refresh = new Subject<void>();
 
   @Output() eventClicked = new EventEmitter<CalendarEvent>();
-  
-  
+
   onEventClicked(data: CalendarEvent) {
     this.eventClicked.emit(data);
   }

@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class UpdateEmailDto {
   @ApiProperty({
     type: String,
-    required: true
+    required: true,
   })
   @IsNotEmpty()
   @IsEmail()

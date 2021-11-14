@@ -9,7 +9,7 @@ export interface Section {
 
 @Component({
   templateUrl: './subscribe-success.component.html',
-  styleUrls: ['./subscribe-success.component.scss']
+  styleUrls: ['./subscribe-success.component.scss'],
 })
 export class SubscribeSuccessComponent {
   constructor(

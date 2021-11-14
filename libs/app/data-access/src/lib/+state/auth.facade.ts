@@ -15,33 +15,36 @@ export interface AuthState {
 export class AuthFacade extends HttpState<AuthState> {
   redirect$ = this.select((state) => state.redirect);
 
-  user$ = this.select((state) => state.user)
+  user$ = this.select((state) => state.user);
 
   get accesssToken() {
-    return this.service.getAccessToken()
+    return this.service.getAccessToken();
   }
 
   get isAuthenticated() {
-    return !!this.state.user
+    return !!this.state.user;
   }
 
   constructor(private service: AuthDataService) {
     super({
-      redirect: '/'
+      redirect: '/',
     });
   }
 
   loadUser() {
-    this.service.getProfile().pipe(
-      catchError((err) => {
-        if (err instanceof HttpErrorResponse) {
-          this.setState({ user: null })
-        }
-        throw err;
-      })
-    ).subscribe((user) => {
-      this.setState({ user });
-    });
+    this.service
+      .getProfile()
+      .pipe(
+        catchError((err) => {
+          if (err instanceof HttpErrorResponse) {
+            this.setState({ user: null });
+          }
+          throw err;
+        })
+      )
+      .subscribe((user) => {
+        this.setState({ user });
+      });
   }
 
   login({ username, password }: Login) {

@@ -6,7 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { VisibilityDirective } from './directives/visibility.directive';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -49,14 +52,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     VisibilityDirective,
   ],
-  declarations: [
-    VisibilityDirective
-  ],
+  declarations: [VisibilityDirective],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'fill' }
-    }
-  ]
+      useValue: { appearance: 'fill' },
+    },
+  ],
 })
 export class SharedUiCommonModule {}

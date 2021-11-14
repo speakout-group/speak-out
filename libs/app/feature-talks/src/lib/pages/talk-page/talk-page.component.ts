@@ -4,15 +4,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './talk-page.component.html',
-  styleUrls: ['./talk-page.component.scss']
+  styleUrls: ['./talk-page.component.scss'],
 })
 export class TalkPageComponent implements OnInit {
-
   constructor(
     readonly auth: AuthFacade,
     readonly facade: TalkFacade,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.auth.loadUser();

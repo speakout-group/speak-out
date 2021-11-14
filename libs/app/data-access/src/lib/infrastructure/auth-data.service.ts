@@ -44,7 +44,7 @@ export class AuthDataService extends BaseService {
 
   register(user: Partial<User>) {
     const url = `${this.config.api}/auth/register`;
-    const post = this.http.post<TokenResponse>(url, user)
+    const post = this.http.post<TokenResponse>(url, user);
     return this.handlingError(post);
   }
 

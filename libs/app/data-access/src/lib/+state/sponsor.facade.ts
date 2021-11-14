@@ -26,7 +26,7 @@ export class SponsorFacade extends BaseState<SponsorState> {
       publicSponsors: [],
       memberSponsors: [],
       userSponsors: [],
-      sponsor: null
+      sponsor: null,
     });
   }
 

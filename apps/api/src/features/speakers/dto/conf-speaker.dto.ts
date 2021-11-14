@@ -17,36 +17,32 @@ export class ConfSpeakerDto {
   @IsString()
   name: string;
 
-  
   @ApiProperty({
     type: String,
-    maxLength: 2000
+    maxLength: 2000,
   })
   @IsString()
   @MaxLength(2000)
   bio: string;
 
-
   @ApiProperty({
     type: Date,
-    required: true
+    required: true,
   })
   @IsDateString()
   @IsNotEmpty()
   start: Date;
 
-
   @ApiProperty({
     type: Date,
-    required: false
+    required: false,
   })
   @IsDateString()
   end: Date;
 
-
   @ApiProperty({
     type: ObjectId,
-    required: true
+    required: true,
   })
   @IsNotEmpty()
   @IsMongoId()

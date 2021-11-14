@@ -22,7 +22,7 @@ export class SpeakerComponent implements OnInit, OnDestroy {
     readonly elRef: ElementRef<HTMLElement>,
     @Inject(MAT_DIALOG_DATA)
     readonly data: Talk
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.timeout = setTimeout(() => {
