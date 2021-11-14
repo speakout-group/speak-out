@@ -10,7 +10,7 @@
     "end": "11-20-2021 15:30:00",
     "group": "Ingá.PHP",
     "stage": "01",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "YxSk_U4tvsI"
   },
   {
     "title": "Internet das Coisas e Inteligência Artificial na prática",
@@ -23,7 +23,7 @@
     "end": "11-20-2021 14:30:00",
     "group": "DevOps Maringá",
     "stage": "01",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "CQ9K1ez1dQg"
   },
   {
     "title": "A carreira do Coach Kanban, o início, o fim e o meio",
@@ -36,7 +36,7 @@
     "end": "11-20-2021 12:00:00",
     "group": "Maringá Agile",
     "stage": "01",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "g6Jw8E8cjjM"
   },
   {
     "title": "Observabilidade - dê-me visão além do alcance",
@@ -49,7 +49,7 @@
     "end": "11-20-2021 11:00:00",
     "group": "BEMUG",
     "stage": "01",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "aG1a-KNbK4w"
   },
   {
     "title": "O que aprendemos construindo nosso data lake",
@@ -62,7 +62,7 @@
     "end": "11-20-2021 17:00:00",
     "group": "Afterdata",
     "stage": "11",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "adGVmDDVkxI"
   },
   {
     "title": "As cinco Hard skills que você precisa dominar para ter destaque no meio técnico",
@@ -75,7 +75,7 @@
     "end": "11-20-2021 14:30:00",
     "group": "DevCia",
     "stage": "11",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "zH62tkKsyzI"
   },
   {
     "title": "Idealização, planejamento e prototipação, o que vem antes das linhas de código?",
@@ -88,7 +88,7 @@
     "end": "11-20-2021 11:00:00",
     "group": "IxDA",
     "stage": "11",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "iAZAnThfJO4"
   },
   {
     "title": "Open-source, como começar? motivações e desafios!",
@@ -101,7 +101,7 @@
     "end": "11-20-2021 12:00:00",
     "group": "DevParaná Campo Mourão",
     "stage": "10",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "SIgjK7B58Ns"
   },
   {
     "title": "Escalando projetos com React e TS ",
@@ -114,7 +114,7 @@
     "end": "11-20-2021 14:30:00",
     "group": "Front In Maringá",
     "stage": "10",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "hAk30uinGWQ"
   },
   {
     "title": "Construindo API REST em poucos minutos com Delphi, Horse e Boss",
@@ -127,7 +127,7 @@
     "end": "11-20-2021 17:00:00",
     "group": "Delphi Ingá",
     "stage": "10",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "r8S5ga8N5sA"
   },
   {
     "title": "Introdução ao API Gateway - KONG",
@@ -140,7 +140,7 @@
     "end": "11-20-2021 15:30:00",
     "group": "GDG Toledo",
     "stage": "11",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "X0fZEGBkdvM"
   },
   {
     "title": "Soft skills e a tecnologia",
@@ -153,6 +153,32 @@
     "end": "11-20-2021 15:30:00",
     "group": "GDG Cascavel",
     "stage": "10",
-    "ytid": "QFjOxCq8ac4"
+    "ytid": "fiKr-WwaS20"
+  },
+  {
+    "title": "PO e Dev - Um relacionamento de amor e ódio. Como melhorá-lo sem precisar de terapia de casal.",
+    "description": " Tá aí um dos relacionamentos mais complicados do meio de desenvolvimento de software não é ? Nesta palestra irei trazer algumas dicas, ferramentas e táticas para fortalecer esse relacionamento e ambos de fato sentirem-se parte de um mesmo time. ",
+    "cover": "assets/palestrantes/luan-mileski.webp",
+    "name": "Luan Mileski",
+    "photo": "assets/palestrantes/luan-mileski.webp",
+    "bio": "Há mais de 9 anos trabalhando no ecossistema de desenvolvimento de software, atuando em papéis como helpdesk, analista de negócios, gerente de projetos, scrum master, líder de equipe e product owner. Participei de vários projetos para os setores bancários, seguros, agropecuário, e-commerce e inovação.  Apaixonado por métodos ágeis desde 2013, certificado CSPO, SMSi, TKP, Management 3.0, Lean Inception e PBB, vive os valores e princípios do ágil no seu dia a dia profissional e pessoal. Adora fazer um baita churrasco e estar com amigos bebendo uma boa cerveja.",
+    "start": "11-20-2021 10:00:00",
+    "end": "11-20-2021 11:00:00",
+    "group": "Agile Maringa",
+    "stage": "10",
+    "ytid": "oaeVYUlFX3c"
+  },
+  {
+    "title": "A coragem de Palestrar",
+    "description": "Será um palestra com algumas das organizadoras do DevGirls onde falaremos sobre como foi para cada o processo de realizar uma palestra, desde nunca de sentir pronta ou que o conteúdo é relevante, síndrome da impostora, vulnerabilidade, coragem e até palestrar como forma de aprendizado.",
+    "cover": "assets/palestrantes/gisele-kelly.webp",
+    "name": "Gisele Passuti e Kelly Garcia",
+    "photo": "assets/palestrantes/gisele-kelly.webp",
+    "bio": " Kelly Garcia atua como Agile Master na AmbevTech e como co-organizadora dos meetups DevGirls e Maringá Agile e sua missão de vida é compartilhar conhecimento e ajudar outras pessoas principalmente minorias. É formada em Engenharia de Produção com ênfase em Software pela UEM e pós graduanda em Liderança, Inovação e Gestão 4.0. Além disso, é apaixonada por agilidade, melhoria contínua, natureza e harry potter. \n\nGisele é Analista de Teste Jr na DB1, estudante de ADS e como co-organizadora comitê DevGirls. Sua paixão está em aprender e compartilhar.",
+    "start": "11-20-2021 11:00:00",
+    "end": "11-20-2021 12:00:00",
+    "group": "DevGirls",
+    "stage": "11",
+    "ytid": "4AL0UXOI6h0"
   }
 ]
