@@ -180,5 +180,44 @@
     "group": "DevGirls",
     "stage": "11",
     "ytid": "4AL0UXOI6h0"
+  },
+  {
+    "title": "DevParaná Talk Show",
+    "description": "Bate papo com os membros da comunidade DevParaná",
+    "cover": "assets/palestrantes/cover/talk-show.webp",
+    "name": "Membros do Devparaná",
+    "photo": "assets/palestrantes/gisele-kelly.webp",
+    "bio": " Conduzido por Guilherme Siquinelli",
+    "start": "11-19-2021 19:00:00",
+    "end": "11-19-2021 20:00:00",
+    "group": "talkshow",
+    "stage": "11",
+    "ytid": "4AL0UXOI6h0"
+  },
+  {
+    "title": "Keynote 1",
+    "description": "A definir",
+    "cover": "assets/palestrantes/cover/keynote.webp",
+    "name": "A definir",
+    "photo": "assets/palestrantes/keynote.webp",
+    "bio": "A definir",
+    "start": "11-20-2021 09:00:00",
+    "end": "11-20-2021 10:00:00",
+    "group": "keynote",
+    "stage": "11",
+    "ytid": "4AL0UXOI6h0"
+  },
+  {
+    "title": "Keynote 2",
+    "description": "A definir",
+    "cover": "assets/palestrantes/cover/keynote.webp",
+    "name": "A definir",
+    "photo": "assets/palestrantes/keynote.webp",
+    "bio": "A definir",
+    "start": "11-20-2021 17:00:00",
+    "end": "11-20-2021 18:00:00",
+    "group": "keynote",
+    "stage": "11",
+    "ytid": "4AL0UXOI6h0"
   }
 ]
