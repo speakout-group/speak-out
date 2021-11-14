@@ -1,22 +1,11 @@
 <mat-stepper orientation="vertical">
-  <mat-step *ngFor="let item of items" [label]="item.label" state="schedule">
+  <mat-step *ngFor="let item of items" [label]="(item.start | date:'shortTime') + ' - ' + item.group" state="schedule">
     <ng-template matStepContent>
-      <blockquote *ngIf="item.speaker">
+      <blockquote>
         <h3 class="mat-h3">
-          {{ item.speaker.title }}
+          {{ item.title }}
         </h3>
-        <div class="flex-row-between">
-          <span class="mat-hint">{{ item.speaker.name }}</span>
-          <span>
-            <time class="mat-hint" [dateTime]="item.start | date">
-              {{ item.start | date: 'shortTime' }}
-            </time>
-            <span>~</span>
-            <time class="mat-hint" [dateTime]="item.end | date">
-              {{ item.end | date: 'shortTime' }}
-            </time>
-          </span>
-        </div>
+        <span class="mat-hint">{{ item.name }}</span>
       </blockquote>
     </ng-template>
   </mat-step>

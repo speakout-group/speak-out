@@ -1,8 +1,7 @@
-import { CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CalendarEventTimesChangedEvent } from 'angular-calendar';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { TalkFacade } from '@speak-out/app-data-access';
-import { CalendarSegmentClicked } from '../../+state';
 import { CalendarEvent } from 'calendar-utils';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -12,15 +11,13 @@ import { Subject } from 'rxjs';
   styleUrls: ['./calendar-page.component.scss'],
 })
 export class CalendarPageComponent implements OnInit, OnDestroy {
-  @Input() view: CalendarView = CalendarView.Month;
-
+  destroy = new Subject<void>();
+  
+  refresh = new Subject<void>();
+  
   viewDate: Date = new Date('11-20-2021');
 
-  @Input() events: CalendarEvent[] = [];
-
-  destroy = new Subject<void>();
-
-  refresh = new Subject<void>();
+  events: CalendarEvent[] = [];
 
   constructor(readonly facade: TalkFacade) {}
 
@@ -30,7 +27,7 @@ export class CalendarPageComponent implements OnInit, OnDestroy {
         return {
           start: new Date(talk.start),
           end: new Date(talk.end),
-          title: talk.title,
+          title: `${talk.group} - ${talk.title}`,
           draggable: true,
           resizable: {
             afterEnd: true,
@@ -44,7 +41,6 @@ export class CalendarPageComponent implements OnInit, OnDestroy {
   }
 
   onViewDateChange(date: Date) {
-    console.log(date);
     this.viewDate = date;
   }
 
@@ -56,17 +52,11 @@ export class CalendarPageComponent implements OnInit, OnDestroy {
     event.start = newStart;
     event.end = newEnd;
 
-    const eventId = event.id;
-
-    if (typeof eventId === 'string') {
-      this.facade.updateTalk(eventId, { start: newStart, end: newEnd });
+    if (typeof event.id === 'string') {
+      this.facade.updateTalk(event.id, { start: newStart, end: newEnd });
     }
 
     this.refresh.next();
-  }
-
-  onSegmentClicked(segment: CalendarSegmentClicked) {
-    console.log(segment);
   }
 
   onEventClicked(event: CalendarEvent) {

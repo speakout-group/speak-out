@@ -15,7 +15,7 @@ export class TalksPageComponent implements OnInit {
     this.facade.loadTalks();
 
     this.facade.talks$.subscribe((talks) => {
-      console.log(JSON.stringify(talks));
+      // console.log(JSON.stringify(talks));
       
       interval(1000)
         .pipe(take(talks.length))

@@ -1,7 +1,23 @@
-<pre>
-  {{ facade.talk$ | async | json }}
-</pre>
-
+<section *ngIf="facade.talks$ | async as talks" class="flex-row-between gap-16">
+  <mat-card class="flex-1">
+    <mat-card-header>
+      <h2 mat-card-title>Link 01</h2>
+    </mat-card-header>
+    <speak-out-schedule-stepper [items]="talks | onlyStage:'01'"></speak-out-schedule-stepper>
+  </mat-card>
+  <mat-card class="flex-1">
+    <mat-card-header>
+      <h2 mat-card-title>Link 10</h2>
+    </mat-card-header>
+    <speak-out-schedule-stepper [items]="talks | onlyStage:'10'"></speak-out-schedule-stepper>
+  </mat-card>
+  <mat-card class="flex-1">
+    <mat-card-header>
+      <h2 mat-card-title>Link 11</h2>
+    </mat-card-header>
+    <speak-out-schedule-stepper [items]="talks | onlyStage:'11'"></speak-out-schedule-stepper>
+  </mat-card>
+</section>
 <pre>
   {{ facade.talks$ | async | json }}
 </pre>

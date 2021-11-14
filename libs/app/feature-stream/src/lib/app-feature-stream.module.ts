@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { IsLivePipe, WasPipe } from './pipes';
 import { NgModule } from '@angular/core';
 import { TalksPageComponent } from './pages/talks-page/talks-page.component';
+import { OnlyStagePipe } from './pipes/only-stage.pipe';
 
 @NgModule({
   imports: [
@@ -47,11 +48,13 @@ import { TalksPageComponent } from './pages/talks-page/talks-page.component';
     IsLivePipe,
     WasPipe,
     TalksPageComponent,
+    OnlyStagePipe,
   ],
   exports: [
     StreamUrlPipe,
     IsLivePipe,
-    WasPipe
+    WasPipe,
+    OnlyStagePipe
   ],
 })
 export class AppFeatureStreamModule {}

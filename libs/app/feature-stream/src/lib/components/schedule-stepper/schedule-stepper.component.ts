@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Agenda } from '@speak-out/app-data-access';
+import { Talk } from '@speak-out/app-data-access';
 
 @Component({
   selector: 'speak-out-schedule-stepper',
@@ -7,5 +7,5 @@ import { Agenda } from '@speak-out/app-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScheduleStepperComponent {
-  @Input() items: null | Agenda[] = []
+  @Input() items: null | Talk[] = []
 }
