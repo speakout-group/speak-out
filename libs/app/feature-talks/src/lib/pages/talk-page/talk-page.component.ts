@@ -18,6 +18,7 @@ export class TalkPageComponent implements OnInit {
     this.auth.loadUser();
     this.sidenav.close();
     this.loadTalk(this.route.snapshot);
+    this.facade.talk$.subscribe(console.log);
   }
 
   loadTalk({ params }: ActivatedRouteSnapshot) {

@@ -104,6 +104,23 @@ export class TalkFacade extends BaseState<TalkState> {
       });
   }
 
+  joinTalk(id: string) {
+    this.setState({ loading: true });
+    this.dataService
+      .joinTalk(id)
+      .pipe(
+        take(1),
+        map((talk) => this.mapper.mapTo(talk))
+      )
+      .subscribe((response) => {
+        console.log(response);
+        
+        const talk = this.getTalkWithSafeUrl(response);
+
+        this.setState({ talk, loading: false });
+      });
+  }
+
   private getTalkWithSafeUrl(talk: Talk): TalkWithSafeUrl {
     const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       getYoutubeEmbedUrl(talk.ytid)

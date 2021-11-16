@@ -4,6 +4,7 @@ import { AppDataAccessModule, TalksGuard } from '@speak-out/app-data-access';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
+import { AppUiTalksModule } from '@speak-out/app-ui-talks';
 import { MatSelectModule } from '@angular/material/select';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,7 @@ import { TalkUsersComponent } from './components/talk-users/talk-users.component
     LayoutModule,
     MatSelectModule,
     MatSidenavModule,
+    AppUiTalksModule,
     AppUiLayoutModule,
     AppDataAccessModule,
     SharedUiCommonModule,

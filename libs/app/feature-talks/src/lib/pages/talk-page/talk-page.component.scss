@@ -7,8 +7,15 @@
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
+    
+    background-repeat: no-repeat;
+    background-size: contain;
 
-    &::after {
+    button {
+      transform: scale(2);
+    }
+
+    &.layer::after {
       position: absolute;
       top: 0;
       left: 0;
@@ -17,6 +24,12 @@
       content: ' ';
     }
   }
+  .video-wrapper > div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .video-wrapper > div,
   .video-wrapper iframe {
     position: absolute;
     top: 0;

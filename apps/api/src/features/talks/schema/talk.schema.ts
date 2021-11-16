@@ -1,4 +1,6 @@
 import { createSchemaForClassWithMethods } from '../../../shared/mongoose/create-schema';
+import { ObjectId } from '../../../shared/mongoose/object-id';
+import { User } from '../../user/schema/user.schema';
 import { Prop, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
@@ -36,6 +38,10 @@ export class Talk extends Document {
 
   @Prop()
   ytid: string;
+
+  @Prop({ type: [{ type: ObjectId, ref: User.name }] })
+  members: User[];
+
 }
 
 export const TalkSchema = createSchemaForClassWithMethods(Talk);
