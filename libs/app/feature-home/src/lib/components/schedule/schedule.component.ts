@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SpeakerComponent } from '../speaker/speaker.component';
 
 @Component({
-  selector: 'shell-schedule',
+  selector: 'speak-out-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss'],
 })
@@ -15,6 +15,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialog: MatDialog,
+    // readonly facade: TalksFacade,
     readonly facade: ScheduleFacade,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher

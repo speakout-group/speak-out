@@ -1,22 +1,11 @@
 <div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
-  <mat-toolbar color="accent" class="calendar-toolbar">
-    <a routerLink="/" class="brand-name">
-      <img src="assets/logo.svg" alt="Speak Out" />
-    </a>
+  <app-main-toolbar
+    [user]="auth.user$ | async"
+    (nav)="onNavigate($event)"
+    (logout)="onLogout()"
+  ></app-main-toolbar>
 
-    <h1>Speak Out</h1>
-
-    <span class="spacer"></span>
-
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
-
-  <mat-sidenav-container
-    class="calendar-sidenav-container"
-    [style.marginTop.px]="mq.matches ? 56 : 0"
-  >
+  <mat-sidenav-container class="calendar-sidenav-container">
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>

@@ -1,46 +1,15 @@
-import { AppDataAccessModule, AuthGuard } from '@speak-out/app-data-access';
+import { AppDataAccessModule, AuthGuard, TalksGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
+import { NotFoundPageComponent } from './pages';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MainContainer } from './containers';
 import { NgModule } from '@angular/core';
-
-import { HomeContainer, MainContainer } from './containers';
-import {
-  NotFoundPageComponent,
-  SponsorPageComponent,
-  ReadmePageComponent,
-  HomePageComponent,
-  PrivacyComponent,
-  TermsComponent,
-} from './pages';
-import {
-  SubscribeComponent,
-  SponsorsComponent,
-  ScheduleComponent,
-  SpeakerComponent,
-  ReadmeComponent,
-  TalksComponent,
-  TalkComponent,
-} from './components';
 
 @NgModule({
   declarations: [
     MainContainer,
-    HomeContainer,
-    SponsorsComponent,
-    HomePageComponent,
-    NotFoundPageComponent,
-    SpeakerComponent,
-    ScheduleComponent,
-    TalksComponent,
-    TalkComponent,
-    SponsorPageComponent,
-    ReadmePageComponent,
-    ReadmeComponent,
-    SubscribeComponent,
-    TermsComponent,
-    PrivacyComponent,
   ],
   imports: [
     CommonModule,
@@ -50,31 +19,10 @@ import {
     RouterModule.forChild([
       {
         path: 'home',
-        component: HomeContainer,
-        children: [
-          {
-            path: '',
-            component: HomePageComponent,
-          },
-          {
-            path: 'readme',
-            component: ReadmePageComponent,
-            children: [
-              {
-                path: 'termos',
-                component: TermsComponent,
-              },
-              {
-                path: 'privacidade',
-                component: PrivacyComponent,
-              },
-            ],
-          },
-          {
-            path: 'patrocinador/:id',
-            component: SponsorPageComponent,
-          },
-        ],
+        loadChildren: () =>
+          import('@speak-out/app-feature-home').then(
+            (module) => module.AppFeatureHomeModule
+          ),
       },
       {
         path: 'auth',
@@ -85,7 +33,7 @@ import {
       },
       {
         path: 'calendar',
-        canActivate: [AuthGuard],
+        canActivate: [TalksGuard],
         loadChildren: () =>
           import('@speak-out/app-feature-calendar').then(
             (module) => module.AppFeatureCalendarModule
@@ -93,7 +41,7 @@ import {
       },
       {
         path: 'devparana',
-        canActivate: [AuthGuard],
+        // canActivate: [TalksGuard],
         loadChildren: () =>
           import('@speak-out/app-feature-talks').then(
             (module) => module.AppFeatureTalksModule

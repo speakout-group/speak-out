@@ -304,6 +304,32 @@
       },
       "tags": []
     },
+    "app-feature-home": {
+      "projectType": "library",
+      "root": "libs/app/feature-home",
+      "sourceRoot": "libs/app/feature-home/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-home"],
+          "options": {
+            "jestConfig": "libs/app/feature-home/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-home/src/**/*.ts",
+              "libs/app/feature-home/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "app-feature-room": {
       "projectType": "library",
       "root": "libs/app/feature-room",
@@ -486,6 +512,32 @@
             "lintFilePatterns": [
               "libs/app/ui-layout/src/**/*.ts",
               "libs/app/ui-layout/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-ui-talks": {
+      "projectType": "library",
+      "root": "libs/app/ui-talks",
+      "sourceRoot": "libs/app/ui-talks/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/ui-talks"],
+          "options": {
+            "jestConfig": "libs/app/ui-talks/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/ui-talks/src/**/*.ts",
+              "libs/app/ui-talks/src/**/*.html"
             ]
           }
         }

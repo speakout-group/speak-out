@@ -9,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'shell-subscribe',
+  selector: 'speak-out-subscribe',
   templateUrl: './subscribe.component.html',
   styleUrls: ['./subscribe.component.scss'],
 })

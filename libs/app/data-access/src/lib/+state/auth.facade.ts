@@ -1,7 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { catchError, switchMap } from 'rxjs/operators';
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
+import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpState } from './http.state';
 import { Login } from '../types';
@@ -27,23 +26,18 @@ export class AuthFacade extends HttpState<AuthState> {
 
   constructor(private service: AuthDataService) {
     super({
-      redirect: '/',
+      redirect: '/'
     });
   }
 
   loadUser() {
     this.service
       .getProfile()
-      .pipe(
-        catchError((err) => {
-          if (err instanceof HttpErrorResponse) {
-            this.setState({ user: null });
-          }
-          throw err;
-        })
-      )
       .subscribe((user) => {
-        this.setState({ user });
+        // debugger
+        if (user) {
+          this.setState({ user });
+        }
       });
   }
 
@@ -52,9 +46,12 @@ export class AuthFacade extends HttpState<AuthState> {
       .login({ username, password })
       .pipe(switchMap((res) => this.handleLogin(res)))
       .subscribe((user) => {
-        const redirect = this.service.getLoginCallbackUrl();
-        const state = { user, redirect };
-        this.setState(state);
+        if (user) {
+          const redirect = this.service.getLoginCallbackUrl();
+          this.service.setUserObject(user);
+          const state = { user, redirect };
+          this.setState(state);
+        }
       });
   }
 
@@ -64,6 +61,18 @@ export class AuthFacade extends HttpState<AuthState> {
 
   handleLogin(response: TokenResponse) {
     return this.service.handleTokens(response);
+  }
+
+  loginWithRefreshToken() {
+    return this.service.loginWithRefreshToken();
+  }
+
+  getRefreshToken() {
+    return this.service.getRefreshToken();
+  }
+
+  getUserObject() {
+    return this.service.getUserObject();
   }
 
   setRedirect(url: string) {

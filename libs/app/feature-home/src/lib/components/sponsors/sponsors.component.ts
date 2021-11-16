@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AwardFacade } from '@speak-out/app-data-access';
 
 @Component({
-  selector: 'shell-sponsors',
+  selector: 'speak-out-sponsors',
   templateUrl: './sponsors.component.html',
   styleUrls: ['./sponsors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

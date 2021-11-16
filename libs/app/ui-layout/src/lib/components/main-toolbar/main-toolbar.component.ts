@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 export interface UserLogged {
   username: string;
@@ -14,6 +15,10 @@ export class MainToolbarComponent {
   @Input() image = '';
 
   @Input() brand = '';
+
+  @Input() shown: Observable<boolean> = of(true);
+  
+  @Input() hidden: boolean | null = false;
 
   @Input() user: UserLogged | null | undefined = null;
 

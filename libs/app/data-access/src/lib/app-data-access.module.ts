@@ -23,9 +23,13 @@ import {
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
+import {
+  TalksGuard
+} from './guards';
 
 @NgModule({
   providers: [
+    TalksGuard,
     AuthService,
     StorageData,
     AuthFacade,

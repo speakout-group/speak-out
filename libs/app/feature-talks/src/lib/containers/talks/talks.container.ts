@@ -6,11 +6,12 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { TalkFacade } from '@speak-out/app-data-access';
+import { AuthFacade, TalkFacade } from '@speak-out/app-data-access';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TalkViewComponent } from '../../components';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -30,6 +31,8 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     readonly facade: TalkFacade,
+    readonly auth: AuthFacade,
+    readonly router: Router,
     media: MediaMatcher
   ) {
     this.mq = media.matchMedia('(max-width: 600px)');
@@ -38,9 +41,10 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.auth.loadUser();
     this.facade.loadTalks();
   }
-
+  
   ngAfterViewInit() {
     this.facade.talk$.pipe(takeUntil(this.destroy)).subscribe((talk) => {
       console.log(talk);
@@ -52,6 +56,16 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     });
+  }
+
+  onNavigate(route: string[]) {
+    console.log(route);
+  }
+
+  onLogout() {
+    this.auth.logout();
+    console.log('logout');
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy() {

@@ -15,8 +15,8 @@
     flex-flow: row wrap;
   }
 
-  shell-talk,
-  shell-subscribe {
+  speak-out-talk,
+  speak-out-subscribe {
     cursor: pointer;
     min-width: calc(25% - 20px);
     max-width: calc(25% - 20px);
@@ -26,8 +26,8 @@
     section {
       flex-direction: column;
     }
-    shell-talk,
-    shell-subscribe {
+    speak-out-talk,
+    speak-out-subscribe {
       width: 100%;
       min-width: 100%;
       max-width: 100%;

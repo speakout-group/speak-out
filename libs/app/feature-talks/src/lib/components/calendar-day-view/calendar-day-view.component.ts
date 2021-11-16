@@ -5,6 +5,8 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { CustomEventTitleFormatter } from './calendar-title-formatter';
+import { CalendarEventTitleFormatter } from 'angular-calendar';
 import { CalendarEvent } from 'calendar-utils';
 import { Subject } from 'rxjs';
 
@@ -13,6 +15,12 @@ import { Subject } from 'rxjs';
   templateUrl: './calendar-day-view.component.html',
   styleUrls: ['./calendar-day-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: CalendarEventTitleFormatter,
+      useClass: CustomEventTitleFormatter,
+    },
+  ],
 })
 export class CalendarDayViewComponent {
   @Input() viewDate: Date = new Date();

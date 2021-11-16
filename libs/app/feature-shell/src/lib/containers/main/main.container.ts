@@ -15,7 +15,7 @@ export class MainContainer implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const url = event.url ? event.url : '/confs';
+        const url = event.url ? event.url : '/devparana';
 
         this.auth.setRedirect(url);
       }

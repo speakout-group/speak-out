@@ -14,6 +14,7 @@ export type TalkWithSafeUrl = {
 
 export interface TalkState {
   loading: boolean;
+  toolbar: boolean;
   talks: Talk[];
   talk?: TalkWithSafeUrl;
 }
@@ -28,12 +29,15 @@ export class TalkFacade extends BaseState<TalkState> {
 
   loading$ = this.select((state) => state.loading);
 
+  toolbar$ = this.select((state) => state.toolbar);
+
   constructor(
     private dataService: TalkDataService,
     private sanitizer: DomSanitizer
   ) {
     super({
       loading: false,
+      toolbar: false,
       talks: [],
     });
   }
@@ -49,6 +53,14 @@ export class TalkFacade extends BaseState<TalkState> {
       .subscribe((talks) => {
         this.setState({ talks, loading: false });
       });
+  }
+
+  hideToolbar() {
+    this.setState({ toolbar: true });
+  }
+
+  showToolbar() {
+    this.setState({ toolbar: false });
   }
 
   updateTalk(id: string, talk: Partial<Talk>) {

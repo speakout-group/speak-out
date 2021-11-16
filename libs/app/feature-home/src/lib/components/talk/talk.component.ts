@@ -8,7 +8,7 @@ import {
 import { Talk } from '@speak-out/app-data-access';
 
 @Component({
-  selector: 'shell-talk',
+  selector: 'speak-out-talk',
   templateUrl: './talk.component.html',
   styleUrls: ['./talk.component.scss'],
 })

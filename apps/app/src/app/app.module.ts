@@ -55,10 +55,11 @@ import { environment } from '../environments/environment';
     { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,
-      useFactory: (authService: AuthFacade) => async () => {
-        if (authService.accesssToken) {
-          authService.loadUser();
+      useFactory: (authFacade: AuthFacade) => async () => {
+        if (authFacade.isAuthenticated) {
+          authFacade.loadUser()
         }
+        // return authFacade.user$.toPromise()
       },
       deps: [AuthFacade],
       multi: true,
