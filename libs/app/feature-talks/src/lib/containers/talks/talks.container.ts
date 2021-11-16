@@ -6,7 +6,11 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { AuthFacade, TalkFacade } from '@speak-out/app-data-access';
+import {
+  TalkFacade,
+  AuthFacade,
+  SidenavFacade,
+} from '@speak-out/app-data-access';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TalkViewComponent } from '../../components';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -30,6 +34,7 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
+    readonly sidenav: SidenavFacade,
     readonly facade: TalkFacade,
     readonly auth: AuthFacade,
     readonly router: Router,
@@ -44,27 +49,26 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
     this.auth.loadUser();
     this.facade.loadTalks();
   }
-  
+
   ngAfterViewInit() {
-    this.facade.talk$.pipe(takeUntil(this.destroy)).subscribe((talk) => {
-      console.log(talk);
-      if (talk) {
-        this.talk.setValue(talk);
-
-        if (!this.snav.opened) {
-          this.snav.open();
-        }
-      }
+    this.snav.openedChange.pipe(takeUntil(this.destroy)).subscribe((opened) => {
+      if (opened) this.sidenav.open();
+      else this.sidenav.close();
     });
-  }
 
-  onNavigate(route: string[]) {
-    console.log(route);
+    this.sidenav.opened$.pipe(takeUntil(this.destroy)).subscribe((opened) => {
+      if (opened && !this.snav.opened) this.snav.open();
+
+      if (!opened && this.snav.opened) this.snav.close();
+    });
+
+    this.facade.talk$.pipe(takeUntil(this.destroy)).subscribe((talk) => {
+      if (talk) this.talk.setValue(talk);
+    });
   }
 
   onLogout() {
     this.auth.logout();
-    console.log('logout');
     this.router.navigate(['/']);
   }
 

@@ -14,6 +14,7 @@ import { TalkPageComponent, TalksPageComponent } from './pages';
 import { CalendarDayViewComponent, CalendarNavComponent } from './components';
 
 import { TalkViewComponent } from './components/talk-view/talk-view.component';
+import { TalkUsersComponent } from './components/talk-users/talk-users.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { TalkViewComponent } from './components/talk-view/talk-view.component';
     TalkPageComponent,
     TalksPageComponent,
     TalkViewComponent,
+    TalkUsersComponent,
   ],
 })
 export class AppFeatureTalksModule {}

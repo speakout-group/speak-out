@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { TalkFacade } from '@speak-out/app-data-access';
+import { SidenavFacade, TalkFacade } from '@speak-out/app-data-access';
 import { CalendarEvent } from 'calendar-utils';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -18,7 +18,10 @@ export class TalksPageComponent implements OnInit, OnDestroy {
 
   events: CalendarEvent[] = [];
 
-  constructor(readonly facade: TalkFacade) {}
+  constructor(
+    readonly sidenav: SidenavFacade,
+    readonly facade: TalkFacade
+  ) {}
 
   ngOnInit(): void {
     this.facade.talks$.pipe(takeUntil(this.destroy)).subscribe((talks) => {
@@ -43,6 +46,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
   onEventClicked(event: CalendarEvent) {
     if (typeof event.id === 'string') {
       this.facade.loadTalk(event.id);
+      this.sidenav.open();
     }
   }
 

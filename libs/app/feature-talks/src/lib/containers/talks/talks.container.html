@@ -1,7 +1,7 @@
 <div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
   <app-main-toolbar
+    route="/devparana"
     [user]="auth.user$ | async"
-    (nav)="onNavigate($event)"
     (logout)="onLogout()"
   ></app-main-toolbar>
 
