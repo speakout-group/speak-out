@@ -1,0 +1,41 @@
+<ng-container *ngIf="talk$ | async as talk">
+  <mat-list>
+    <h2 mat-subheader>Palestra</h2>
+    <mat-list-item>
+      <mat-icon mat-list-icon>schedule</mat-icon>
+      <h3 mat-line>{{ talk.title }}</h3>
+      <p mat-line>
+        {{ talk.start | date: 'shortTime' }}
+        ~
+        {{ talk.end | date: 'shortTime' }}
+      </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <h2 mat-subheader>Palestrante</h2>
+    <mat-list-item>
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <h3 mat-line>{{ talk.name }}</h3>
+      <p mat-line>{{ talk.bio }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <h2 mat-subheader>Grupo</h2>
+    <mat-list-item>
+      <mat-icon mat-list-icon>group</mat-icon>
+      <h3 mat-line>{{ talk.group }}</h3>
+    </mat-list-item>
+  </mat-list>
+
+  <section class="p-16">
+    <h3 class="mat-h3 mat-hint">Descrição</h3>
+    <p>{{ talk.description }}</p>
+  </section>
+
+  <footer class="p-16 flex-row-between">
+    <button type="button" (click)="cancel.emit()" mat-raised-button>
+      Fechar
+    </button>
+    <a [routerLink]="talk.id" mat-raised-button color="primary">
+      Entrar na sala
+    </a>
+  </footer>
+</ng-container>

@@ -1,30 +1,48 @@
 import {
   AuthFacade,
-  SponsorFacade,
   ConfFacade,
+  TalkFacade,
   RoomFacade,
+  AwardFacade,
+  SponsorFacade,
   ScheduleFacade,
+  SubscribeFacade,
 } from './+state';
 import { AppConfig, APP_CONFIG } from './app-data-access.config';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { StorageData } from '@speak-out/shared-util-storage';
 import { AuthService } from './services';
 import {
+  TalkDataService,
+  AuthDataService,
+  AwardDataService,
+  ScheduleDataService,
+} from './infrastructure';
+import {
   SocialAuthService,
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
-import { ScheduleDataService } from './infrastructure';
+import {
+  TalksGuard
+} from './guards';
 
 @NgModule({
   providers: [
+    TalksGuard,
     AuthService,
     StorageData,
     AuthFacade,
+    TalkFacade,
     RoomFacade,
     ConfFacade,
+    AwardFacade,
     SponsorFacade,
     ScheduleFacade,
+    TalkDataService,
+    SubscribeFacade,
+    AuthDataService,
+    AwardDataService,
     ScheduleDataService,
     SocialAuthService,
   ],

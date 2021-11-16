@@ -5,13 +5,13 @@ export class RoomMessageDto {
   @IsString()
   @MaxLength(2000)
   @ApiProperty({
-    required: true
+    required: true,
   })
   message: string;
 
   @IsMongoId()
   @ApiProperty({
-    required: true
+    required: true,
   })
   roomId: string;
 }

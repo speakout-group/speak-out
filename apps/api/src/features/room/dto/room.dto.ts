@@ -22,5 +22,4 @@ export class RoomDto {
   @IsNotEmpty()
   @IsBoolean()
   isPublic: boolean;
-
 }

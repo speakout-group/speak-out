@@ -2,6 +2,41 @@
   background-color: rgba(6, 6, 6, 0.6);
 }
 
+.mat-toolbar {
+  a:link,
+  a:visited,
+  a:active,
+  a:hover {
+    transition: color 200ms ease-in-out, text-decoration 200ms ease-in-out;
+  }
+  
+  a:link,
+  a:visited,
+  a:active {
+    color: #212121;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }  
+}
+
+.mat-toolbar.mat-primary {
+  a:link,
+  a:visited,
+  a:active {
+    color: #fcfcfc;
+  }
+  a:hover {
+    color: #ccc;
+  }
+  a {
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
 body {
   speak-out-root {
     & > router-outlet + ng-component {
@@ -38,10 +73,6 @@ body {
       border-radius: 4px;
       overflow: hidden;
     }
-  }
-
-  .mat-menu-trigger.mat-button-base {
-    text-transform: capitalize;
   }
 
   .mat-button-base {

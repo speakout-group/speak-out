@@ -1,0 +1,21 @@
+<ng-container *ngIf="facade.talk$ | async as talk">
+  <!-- <app-main-toolbar color="accent" [user]="auth.user$ | async"></app-main-toolbar> -->
+
+  <section class="video-wrapper" *ngIf="talk.safeUrl">
+    <iframe
+      [title]="talk.title"
+      [src]="talk.safeUrl"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </section>
+
+  <mat-toolbar color="primary">
+    <span>Chat</span>
+
+    <span class="spacer"></span>
+
+    <h2>{{ talk.title }}</h2>
+  </mat-toolbar>
+</ng-container>

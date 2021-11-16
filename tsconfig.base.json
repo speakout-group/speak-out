@@ -17,7 +17,11 @@
     "paths": {
       "@speak-out/app-data-access": ["libs/app/data-access/src/index.ts"],
       "@speak-out/app-feature-auth": ["libs/app/feature-auth/src/index.ts"],
+      "@speak-out/app-feature-calendar": [
+        "libs/app/feature-calendar/src/index.ts"
+      ],
       "@speak-out/app-feature-conf": ["libs/app/feature-conf/src/index.ts"],
+      "@speak-out/app-feature-home": ["libs/app/feature-home/src/index.ts"],
       "@speak-out/app-feature-messages": [
         "libs/app/feature-messages/src/index.ts"
       ],
@@ -32,9 +36,12 @@
       "@speak-out/app-feature-sponsor": [
         "libs/app/feature-sponsor/src/index.ts"
       ],
+      "@speak-out/app-feature-stream": ["libs/app/feature-stream/src/index.ts"],
+      "@speak-out/app-feature-talks": ["libs/app/feature-talks/src/index.ts"],
       "@speak-out/app-feature-user": ["libs/app/feature-user/src/index.ts"],
-      "@speak-out/app-ui-layout": ["libs/app/ui-layout/src/index.ts"],
       "@speak-out/app-ui-dialogs": ["libs/app/ui-dialogs/src/index.ts"],
+      "@speak-out/app-ui-layout": ["libs/app/ui-layout/src/index.ts"],
+      "@speak-out/app-ui-talks": ["libs/app/ui-talks/src/index.ts"],
       "@speak-out/shared-ui-common": ["libs/shared/ui-common/src/index.ts"],
       "@speak-out/shared-ui-dialogs": ["libs/shared/ui-dialogs/src/index.ts"],
       "@speak-out/shared-util-storage": [

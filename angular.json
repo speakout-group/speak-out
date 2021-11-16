@@ -63,7 +63,7 @@
           }
         },
         "cd-staging": {
-          "executor": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "commands": [
@@ -75,7 +75,7 @@
           }
         },
         "cd-prod": {
-          "executor": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "commands": [
@@ -200,7 +200,7 @@
           }
         },
         "cd-staging": {
-          "executor": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "commands": [
@@ -212,7 +212,7 @@
           }
         },
         "cd-prod": {
-          "executor": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "commands": [
@@ -278,17 +278,17 @@
       },
       "tags": []
     },
-    "app-feature-conf": {
+    "app-feature-calendar": {
       "projectType": "library",
-      "root": "libs/app/feature-conf",
-      "sourceRoot": "libs/app/feature-conf/src",
-      "prefix": "conf",
+      "root": "libs/app/feature-calendar",
+      "sourceRoot": "libs/app/feature-calendar/src",
+      "prefix": "speak-out",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-conf"],
+          "outputs": ["coverage/libs/app/feature-calendar"],
           "options": {
-            "jestConfig": "libs/app/feature-conf/jest.config.js",
+            "jestConfig": "libs/app/feature-calendar/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -296,25 +296,25 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app/feature-conf/src/**/*.ts",
-              "libs/app/feature-conf/src/**/*.html"
+              "libs/app/feature-calendar/src/**/*.ts",
+              "libs/app/feature-calendar/src/**/*.html"
             ]
           }
         }
       },
       "tags": []
     },
-    "app-feature-messages": {
+    "app-feature-home": {
       "projectType": "library",
-      "root": "libs/app/feature-messages",
-      "sourceRoot": "libs/app/feature-messages/src",
-      "prefix": "shell",
+      "root": "libs/app/feature-home",
+      "sourceRoot": "libs/app/feature-home/src",
+      "prefix": "speak-out",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-messages"],
+          "outputs": ["coverage/libs/app/feature-home"],
           "options": {
-            "jestConfig": "libs/app/feature-messages/jest.config.js",
+            "jestConfig": "libs/app/feature-home/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -322,34 +322,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app/feature-messages/src/**/*.ts",
-              "libs/app/feature-messages/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "app-feature-notification": {
-      "projectType": "library",
-      "root": "libs/app/feature-notification",
-      "sourceRoot": "libs/app/feature-notification/src",
-      "prefix": "shell",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-notification"],
-          "options": {
-            "jestConfig": "libs/app/feature-notification/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/feature-notification/src/**/*.ts",
-              "libs/app/feature-notification/src/**/*.html"
+              "libs/app/feature-home/src/**/*.ts",
+              "libs/app/feature-home/src/**/*.html"
             ]
           }
         }
@@ -408,17 +382,17 @@
       },
       "tags": []
     },
-    "app-feature-speaker": {
+    "app-feature-talks": {
       "projectType": "library",
-      "root": "libs/app/feature-speaker",
-      "sourceRoot": "libs/app/feature-speaker/src",
-      "prefix": "speaker",
+      "root": "libs/app/feature-talks",
+      "sourceRoot": "libs/app/feature-talks/src",
+      "prefix": "speak-out",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-speaker"],
+          "outputs": ["coverage/libs/app/feature-talks"],
           "options": {
-            "jestConfig": "libs/app/feature-speaker/jest.config.js",
+            "jestConfig": "libs/app/feature-talks/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -426,34 +400,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app/feature-speaker/src/**/*.ts",
-              "libs/app/feature-speaker/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "app-feature-sponsor": {
-      "projectType": "library",
-      "root": "libs/app/feature-sponsor",
-      "sourceRoot": "libs/app/feature-sponsor/src",
-      "prefix": "sponsor",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-sponsor"],
-          "options": {
-            "jestConfig": "libs/app/feature-sponsor/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/feature-sponsor/src/**/*.ts",
-              "libs/app/feature-sponsor/src/**/*.html"
+              "libs/app/feature-talks/src/**/*.ts",
+              "libs/app/feature-talks/src/**/*.html"
             ]
           }
         }
@@ -480,48 +428,6 @@
             "lintFilePatterns": [
               "libs/app/feature-user/src/**/*.ts",
               "libs/app/feature-user/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "app-ui-dialogs": {
-      "projectType": "library",
-      "root": "libs/app/ui-dialogs",
-      "sourceRoot": "libs/app/ui-dialogs/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/app/ui-dialogs"],
-          "options": {
-            "project": "libs/app/ui-dialogs/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/app/ui-dialogs/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/app/ui-dialogs/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/ui-dialogs"],
-          "options": {
-            "jestConfig": "libs/app/ui-dialogs/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/ui-dialogs/src/**/*.ts",
-              "libs/app/ui-dialogs/src/**/*.html"
             ]
           }
         }
@@ -564,6 +470,32 @@
             "lintFilePatterns": [
               "libs/app/ui-layout/src/**/*.ts",
               "libs/app/ui-layout/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "app-ui-talks": {
+      "projectType": "library",
+      "root": "libs/app/ui-talks",
+      "sourceRoot": "libs/app/ui-talks/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/ui-talks"],
+          "options": {
+            "jestConfig": "libs/app/ui-talks/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/ui-talks/src/**/*.ts",
+              "libs/app/ui-talks/src/**/*.html"
             ]
           }
         }

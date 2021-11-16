@@ -16,13 +16,9 @@ import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.com
     MatMenuModule,
     MatButtonModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
-  declarations: [
-    MainToolbarComponent
-  ],
-  exports: [
-    MainToolbarComponent
-  ],
+  declarations: [MainToolbarComponent],
+  exports: [MainToolbarComponent],
 })
 export class AppUiLayoutModule {}

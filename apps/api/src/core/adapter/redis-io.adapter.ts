@@ -10,7 +10,7 @@ export class RedisIoAdapter extends CustomSocketIoAdapter {
   constructor(host: string, port: number, app: INestApplicationContext) {
     super(app);
 
-    const pubClient = createClient(host, {tls: {}});
+    const pubClient = createClient(host, { tls: {} });
     const subClient = pubClient.duplicate();
     this.redisAdapter = createAdapter({ pubClient, subClient });
   }

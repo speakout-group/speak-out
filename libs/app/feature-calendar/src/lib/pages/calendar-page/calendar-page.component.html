@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="flex-row-between">
+  <span>{{ viewDate | date }}</span>
+
+  <span class="spacer"></span>
+
+  <speak-out-calendar-nav
+    [view]="'day'"
+    [viewDate]="viewDate"
+    (viewDateChange)="onViewDateChange($event)"
+  >
+  </speak-out-calendar-nav>
+</mat-toolbar>
+
+<speak-out-calendar-day-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  (eventTimesChanged)="onEventTimesChanged($event)"
+  (eventClicked)="onEventClicked($event)"
+>
+</speak-out-calendar-day-view>

@@ -1,0 +1,55 @@
+@use 'libs/styles/mixins' as mixin;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  section {
+    gap: 10px;
+    display: flex;
+    margin-top: 20px;
+  }
+
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    figcaption {
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    img {
+      margin: 0 10px 0 0;
+      border: 2px solid #ccc;
+      padding: 4px;
+      border-radius: 10px;
+      display: inline-flex;
+      float: left;
+      shape-outside: ellipse();
+    }
+  }
+
+  @include mixin.media(mobile) {
+    section {
+      flex-direction: column;
+    }
+
+    figure {
+      img {
+        margin: 10px auto 0px;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    display: flex;
+    white-space: pre-line;
+    line-height: 160%;
+  }
+}

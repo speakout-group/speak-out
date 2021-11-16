@@ -7,6 +7,7 @@ import { SpeakersModule } from './speakers/speakers.module';
 import { RoomModule } from './room/room.module';
 import { ConfModule } from './conf/conf.module';
 import { UserModule } from './user/user.module';
+import { TalksModule } from './talks/talks.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
     NotificationModule,
     SponsorModule,
     SpeakersModule,
+    TalksModule,
   ],
   controllers: [],
   exports: [

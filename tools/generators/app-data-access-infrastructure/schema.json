@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "app-data-access-infrastructure",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Infrastructure name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    }
+  },
+  "required": ["name"]
+}

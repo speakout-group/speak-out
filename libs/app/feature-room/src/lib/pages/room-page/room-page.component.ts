@@ -10,10 +10,9 @@ import {
   User,
 } from '@speak-out/app-data-access';
 import { remove } from 'lodash';
-import { interval, of, Subject } from 'rxjs';
+import { interval, Subject } from 'rxjs';
 import {
   tap,
-  map,
   take,
   filter,
   mergeMap,

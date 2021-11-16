@@ -11,7 +11,7 @@ export class SubscribeEventDto {
 
   @ApiProperty({
     type: Boolean,
-    required: true
+    required: true,
   })
   @IsNotEmpty()
   @IsBoolean()

@@ -4,14 +4,12 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RedisIoAdapter } from './core/adapter/redis-io.adapter';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { environments } from './environments/environments';
+import { environment, environments } from './environments/environments';
 import { CustomSocketIoAdapter } from './core/adapter/custom-socket-io.adapter';
 
 const redis = environments.redis;
 
-async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-
+const setupSwagger = (app: NestExpressApplication) => {
   const config = new DocumentBuilder()
     .setTitle('Speak Out')
     .setDescription('The SpeakOut API description')
@@ -31,6 +29,14 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+};
+
+async function bootstrap() {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  if (environment === 'development') {
+    setupSwagger(app);
+  }
 
   app.enableCors();
   app.enableShutdownHooks();
@@ -45,9 +51,7 @@ async function bootstrap() {
   const port = environments.port;
   const logger = new Logger('SpeakOut');
 
-  await app.listen(port, () =>
-    logger.log(`Staging - Server listening on port ${port}`)
-  );
+  await app.listen(port, () => logger.log(`Server listening on port ${port}`));
 }
 
 bootstrap();

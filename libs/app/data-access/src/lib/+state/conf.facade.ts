@@ -20,9 +20,9 @@ export class ConfFacade extends BaseState<ConfState> {
   publicConfs$ = this.select((state) => state.publicConfs);
 
   memberConfs$ = this.select((state) => state.memberConfs);
-  
+
   userConfs$ = this.select((state) => state.userConfs);
-  
+
   conf$ = this.select((state) => state.conf);
 
   constructor(private service: ConfService) {
@@ -48,18 +48,21 @@ export class ConfFacade extends BaseState<ConfState> {
     conf.slug = slugify(conf.title);
     this.service.createConf(conf).subscribe((response) => {
       console.log(response);
-      
+
       // this.setState({ conf });
       this.setState({ loading: false });
     });
   }
-  
+
   updateConf(id: string, conf: Conf) {
     this.setState({ loading: true });
     conf.slug = slugify(conf.title);
-    return this.service.updateConf(id, conf).pipe(take(1)).subscribe(() => {
-      this.setState({ loading: false });
-    })
+    return this.service
+      .updateConf(id, conf)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.setState({ loading: false });
+      });
   }
 
   joinConf(id: string) {

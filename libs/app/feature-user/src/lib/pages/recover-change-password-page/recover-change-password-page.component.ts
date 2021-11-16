@@ -3,7 +3,7 @@ import { RecoverService } from '@speak-out/app-data-access';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, take, takeUntil } from 'rxjs/operators';
 import { FormBuilder } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({

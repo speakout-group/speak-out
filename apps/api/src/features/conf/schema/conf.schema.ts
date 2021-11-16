@@ -7,63 +7,55 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Conf extends Document {
-
-
   @ApiProperty({
-    type: String
+    type: String,
   })
   @Prop({
     required: true,
   })
   title: string;
-  
-
 
   @ApiProperty({
-    type: String
+    type: String,
   })
   @Prop()
   description: string;
 
-
-
   @ApiProperty({
     type: String,
-    required: true
+    required: true,
   })
   @Prop({
-    required: true
+    required: true,
   })
   slug: string;
 
-
-
   @ApiProperty({
-    type: [{
-      type: ObjectId,
-      ref: User.name
-    }]
+    type: [
+      {
+        type: ObjectId,
+        ref: User.name,
+      },
+    ],
   })
   @Prop({
-    type: [{
-      type: ObjectId,
-      ref: User.name
-    }]
+    type: [
+      {
+        type: ObjectId,
+        ref: User.name,
+      },
+    ],
   })
   members: User[];
 
-
-
   @ApiProperty({
-    type: ObjectId
+    type: ObjectId,
   })
   @Prop({
     type: ObjectId,
-    ref: User.name
+    ref: User.name,
   })
   owner: User;
-
-
 
   @ApiProperty({
     type: Date,
@@ -75,8 +67,6 @@ export class Conf extends Document {
   })
   start: Date;
 
-
-
   @ApiProperty({
     type: Date,
     required: true,
@@ -87,10 +77,8 @@ export class Conf extends Document {
   })
   end: Date;
 
-
-
   @ApiProperty({
-    type: Date
+    type: Date,
   })
   @Prop({
     type: Date,
@@ -98,9 +86,8 @@ export class Conf extends Document {
   })
   createdAt: Date;
 
-
   @ApiProperty({
-    type: Date
+    type: Date,
   })
   @Prop({
     type: Date,

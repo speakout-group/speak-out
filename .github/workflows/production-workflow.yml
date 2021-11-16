@@ -48,4 +48,3 @@ jobs:
           S3_BUCKET_STAGING: ${{ secrets.S3_BUCKET_STAGING }}
           DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
           DISTRIBUTION_ID_STAGING: ${{ secrets.DISTRIBUTION_ID_STAGING }}
-

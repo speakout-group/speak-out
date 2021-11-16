@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  // height: 100%;
+  position: relative;
+}
+.cal-week-view .cal-day-headers {
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  background: #fafafa;
+}
+.cal-week-view .cal-time-events {
+  // max-height: 300px;
+  flex: 1;
+  // max-height: calc(100% - 128px);
+  // max-height: calc(100vh - 202px);
+  overflow-y: auto;
+}
+.cal-day-columns {
+  height: 100%;
+}

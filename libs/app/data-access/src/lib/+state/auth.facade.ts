@@ -1,63 +1,78 @@
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
+import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
-import { BaseState } from './base.state';
+import { HttpState } from './http.state';
 import { Login } from '../types';
 
 export interface AuthState {
-  loading: boolean;
-  user: User | null;
-  redirect: string;
+  redirect: string | number | symbol;
+  user?: User | null;
 }
 
 @Injectable()
-export class AuthFacade extends BaseState<AuthState> {
-  loading$ = this.select((state) => state.loading);
-
+export class AuthFacade extends HttpState<AuthState> {
   redirect$ = this.select((state) => state.redirect);
 
   user$ = this.select((state) => state.user);
 
+  get accesssToken() {
+    return this.service.getAccessToken();
+  }
+
+  get isAuthenticated() {
+    return !!this.state.user;
+  }
+
   constructor(private service: AuthDataService) {
     super({
-      loading: false,
-      redirect: '/',
-      user: null,
+      redirect: '/'
     });
   }
 
   loadUser() {
-    this.setState({ loading: true });
-    this.service.getProfile().subscribe((user) => {
-      this.setState({ user });
-      this.setState({ loading: false });
-    });
+    this.service
+      .getProfile()
+      .subscribe((user) => {
+        // debugger
+        if (user) {
+          this.setState({ user });
+        }
+      });
   }
 
   login({ username, password }: Login) {
-    this.setState({ loading: true });
     this.service
       .login({ username, password })
       .pipe(switchMap((res) => this.handleLogin(res)))
       .subscribe((user) => {
-        const redirect = this.service.getLoginCallbackUrl();
-        const state = { user, redirect, loading: false };
-        this.setState(state);
+        if (user) {
+          const redirect = this.service.getLoginCallbackUrl();
+          this.service.setUserObject(user);
+          const state = { user, redirect };
+          this.setState(state);
+        }
       });
   }
 
   register(user: Partial<User>) {
-    this.setState({ loading: true });
-    return this.service.register(user).pipe(
-      tap(() => {
-        this.setState({ loading: false });
-      })
-    );
+    return this.intercept(this.service.register(user));
   }
 
   handleLogin(response: TokenResponse) {
     return this.service.handleTokens(response);
+  }
+
+  loginWithRefreshToken() {
+    return this.service.loginWithRefreshToken();
+  }
+
+  getRefreshToken() {
+    return this.service.getRefreshToken();
+  }
+
+  getUserObject() {
+    return this.service.getUserObject();
   }
 
   setRedirect(url: string) {

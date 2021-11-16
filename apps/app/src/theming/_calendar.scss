@@ -1,0 +1,42 @@
+@import '~angular-calendar/scss/angular-calendar.scss';
+
+.dark-theme {
+  // First define some global color variables for your app, these are just for the demo, they can be anything you like
+  $bg-active: #dadada;
+  $text-color: #d5d6d7;
+  $bg-dark-primary: #666666;
+  $bg-dark-secondary: #fff;
+  $border-color: rgba(0, 0, 0, 0.2);
+  $accent-color: #ff3434;
+
+  // Call the calendar mixin with a sass color map of your theme. Every property is optional.
+  // For a list of all variables and how they are used,
+  // see https://github.com/mattlewis92/angular-calendar/tree/master/projects/angular-calendar/src/variables.scss
+  @include cal-theme(
+    (
+           // bg-primary: $b
+      bg-secondary: $bg-dark-secondary,
+           // weekend-c
+           // bg-acti
+      border-color: $border-color,
+      gray: $bg-dark-secondary,
+      today-bg: $bg-dark-secondary,
+      event-color-primary: $bg-dark-primary,
+      event-color-secondary: $bg-dark-secondary,
+      current-time-marker-color: $accent-color
+    )
+  );
+
+  // How to override a non themable property, this was copied from chrome -> inspect element -> styles panel
+  .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.15;
+  }
+
+  .cal-event {
+    // background-color: #fff;
+  }
+
+  // // Everything else below is just themes the demo, it's probably not relevant to your app
+  // background-color: $bg-dark-primary;
+  // color: $text-color;
+}

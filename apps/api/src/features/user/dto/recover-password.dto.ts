@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class RecoverPasswordDto {
   @ApiProperty({
     type: String,
-    required: true
+    required: true,
   })
   @IsString()
   @IsEmail()

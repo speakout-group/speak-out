@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 30px;
+  }
+
+  .mat-card {
+    width: 100%;
+    overflow: hidden;
+    background-image: url(/assets/logo.svg);
+    background-position-x: 100px;
+    background-position-y: 358px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    &.subscribe-card {
+      padding: 0;
+    }
+  }
+
+  .mat-display-1 {
+    margin-bottom: 10px;
+  }
+  .mat-display-2 {
+    margin-bottom: 30px;
+  }
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-around;
+  }
+  .mat-action-row.complete {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}

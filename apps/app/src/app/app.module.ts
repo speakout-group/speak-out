@@ -1,5 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -7,10 +8,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
+import localeBrExtra from '@angular/common/locales/extra/br';
+import localeBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
+
 import {
-  AuthService,
   AppDataAccessModule,
   AuthTokenInterceptor,
+  AuthFacade,
 } from '@speak-out/app-data-access';
 
 import { AppComponent } from './app.component';
@@ -20,8 +28,8 @@ import { environment } from '../environments/environment';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     MatDialogModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppDataAccessModule.forRoot(environment),
     RouterModule.forRoot(
@@ -47,16 +55,13 @@ import { environment } from '../environments/environment';
     { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,
-      useFactory: (authService: AuthService) => async () => {
-        if (authService.getAccessToken()) {
-          try {
-            await authService.getProfile().toPromise();
-          } catch (err) {
-            console.log(err);
-          }
+      useFactory: (authFacade: AuthFacade) => async () => {
+        if (authFacade.isAuthenticated) {
+          authFacade.loadUser()
         }
+        // return authFacade.user$.toPromise()
       },
-      deps: [AuthService],
+      deps: [AuthFacade],
       multi: true,
     },
     {
@@ -64,6 +69,8 @@ import { environment } from '../environments/environment';
       useClass: AuthTokenInterceptor,
       multi: true,
     },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
 })

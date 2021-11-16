@@ -1,0 +1,42 @@
+<div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
+  <mat-toolbar color="accent" class="calendar-toolbar">
+    <a routerLink="/" class="brand-name">
+      <img src="assets/logo.svg" alt="Speak Out" />
+    </a>
+
+    <h1>Speak Out</h1>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="calendar-sidenav-container"
+    [style.marginTop.px]="mq.matches ? 56 : 0"
+  >
+    <mat-sidenav-content>
+      <mat-progress-bar
+        *ngIf="facade.loading$ | async"
+        mode="indeterminate"
+      ></mat-progress-bar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    <mat-sidenav
+      #snav
+      [mode]="mq.matches ? 'over' : 'side'"
+      [fixedInViewport]="mq.matches"
+      position="end"
+      fixedTopGap="56"
+    >
+      <speak-out-talk-form
+        #talk="talkForm"
+        (confirm)="onConfirm($event)"
+        (cancel)="snav.close()"
+      ></speak-out-talk-form>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

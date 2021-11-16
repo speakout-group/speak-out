@@ -2,9 +2,12 @@
 @use '~@angular/material' as mat;
 @use './theming/palette' as conf;
 
+@import '~angular-calendar/css/angular-calendar.css';
+
 @import './theming/app';
 @import './theming/custom';
 @import './theming/helpers';
+@import './theming/calendar';
 
 html,
 body {
@@ -14,7 +17,6 @@ body {
 body {
   margin: 0;
   font-family: 'Georama', sans-serif;
-  // background-color: #121212;
 }
 
 // @use '~@angular/material' as mat;

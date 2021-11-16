@@ -1,7 +1,9 @@
 # Add files here to ignore them from prettier formatting
 
+/tmp
 /dist
-/coverage
 /docker
+/coverage
+/documentation
 docker-compose.yml
 Dockerfile

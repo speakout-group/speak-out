@@ -10,13 +10,11 @@ export class SponsorDto {
   @IsString()
   name: string;
 
-
   @ApiProperty({
     type: String,
   })
   @IsString()
   description: string;
-
 
   @ApiProperty({
     type: String,
@@ -25,7 +23,6 @@ export class SponsorDto {
   @IsString()
   @IsNotEmpty()
   slug: string;
-  
 
   @ApiProperty({
     type: String,
@@ -34,8 +31,7 @@ export class SponsorDto {
   @IsString()
   @IsNotEmpty()
   color: string;
-  
-  
+
   @ApiProperty({
     type: String,
     required: false,
@@ -43,7 +39,6 @@ export class SponsorDto {
   @IsString()
   website: string;
 
-  
   @ApiProperty({
     type: String,
     required: false,

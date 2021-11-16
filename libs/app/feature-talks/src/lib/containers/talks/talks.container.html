@@ -1,0 +1,25 @@
+<div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
+  <app-main-toolbar
+    [user]="auth.user$ | async"
+    (nav)="onNavigate($event)"
+    (logout)="onLogout()"
+  ></app-main-toolbar>
+
+  <mat-sidenav-container class="calendar-sidenav-container">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    <mat-sidenav
+      #snav
+      [mode]="mq.matches ? 'over' : 'side'"
+      [fixedInViewport]="mq.matches"
+      position="end"
+      fixedTopGap="56"
+    >
+      <speak-out-talk-view
+        #talk="talkView"
+        (cancel)="snav.close()"
+      ></speak-out-talk-view>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
