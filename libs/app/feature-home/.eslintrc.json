@@ -9,6 +9,12 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Component", "Container", "Page"]
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
