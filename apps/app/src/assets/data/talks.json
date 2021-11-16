@@ -123,5 +123,23 @@
     "name": "Gisele Passuti e Kelly Garcia",
     "bio": "Kelly Garcia atua como Agile Master na AmbevTech e como co-organizadora dos meetups DevGirls e Maringá Agile e sua missão de vida é compartilhar conhecimento e ajudar outras pessoas principalmente minorias. É formada em Engenharia de Produção com ênfase em Software pela UEM e pós graduanda em Liderança, Inovação e Gestão 4.0. Além disso, é apaixonada por agilidade, melhoria contínua, natureza e harry potter. \n\nGisele é Analista de Teste Jr na DB1, estudante de ADS e como co-organizadora comitê DevGirls. Sua paixão está em aprender e compartilhar.",
     "group": "DevGirls"
+  },
+  {
+    "id": "15",
+    "title": "Programar é mais do que escrever código",
+    "description": "",
+    "name": "André Noel",
+    "photo": "assets/palestrantes/andre-noel.webp",
+    "bio": "Andre Noel é Mestre em Ciência da Computação (UEM). Professor universitário (Unicesumar e UEM). É programador e usuário Linux desde 2002, membro oficial da Comunidade Ubuntu. Trabalhou por diversos anos com programação, por isso aproveitou a experiência na área, juntando com o fato de que nunca foi levado muito a sério, e hoje se dedica ao ensino, ao humor e programa para si próprio. Profundo conhecedor de métodos de desenvolvimento alternativos (gambiarras) e totalmente viciado em café. É o criador do site Vida de Programador, responsável por manipular os vetores que se transformam em tirinhas. Aproveitando-se de sua inigualável beleza, começou a se dedicar também a fazer um videolog. É casado com Raquel, pai do Mateus, da Gabrielle, da Isabelle e da Sofia.",
+    "group": "DevParaná Umuarama"
+  },
+  {
+    "id": "16",
+    "title": "Cognitive Science em Power Systems",
+    "description": "O objetivo dessa palestra é apresentar as soluções baseadas em Machine Learning, Timezer e Sivee tendo Equipamentos Power como apoio.",
+    "name": "Marcio Bortolasci e Maykol Lopes",
+    "photo": "assets/palestrantes/marcio-maykol.webp",
+    "bio": "Marcio Bortolasci é coordenador da Área Cognitiva na Trade Technology, formado em Tecnologia em Processamento de Dados, Especialização em Engenharia do Software, com mais de 20 anos de experiência em desenvolvimento de soluções que fazem a diferença na vida das pessoas e nos seus negócios.\n\nMaykol Lopes é technical Executive Manager da Trade Technology. ﻿Possui vasta experiência em implementação e arquitetura de soluções em Projetos de grande porte. Possui conhecimento em todas as Brands disponíveis dentro da Trade Technology, IBM, Oracle, Cisco, Lenovo e demais tecnologias voltadas para Infraestrutura de TI.",
+    "group": "After Data"
   }
 ]
