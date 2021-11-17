@@ -6,7 +6,7 @@
     "end": "11/20/21 09:00:00",
     "conf": "devprconf2021",
     "link": "X",
-    "talk": "0"
+    "talk": "2"
   },
   {
 
@@ -15,7 +15,7 @@
     "end": "11/20/21 09:00:00",
     "conf": "devprconf2021",
     "link": "Y",
-    "talk": "0"
+    "talk": "2"
   },
   {
 
@@ -24,7 +24,7 @@
     "end": "11/20/21 09:00:00",
     "conf": "devprconf2021",
     "link": "Z",
-    "talk": "0"
+    "talk": "2"
   },
   {
     "label": "BEMUG",
@@ -114,7 +114,7 @@
     "end": "11/20/21 13:30:00",
     "conf": "devprconf2021",
     "link": "X",
-    "talk": "2"
+    "talk": "0"
   },
   {
     "label": "Front In Maringá",
