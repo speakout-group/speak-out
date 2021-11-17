@@ -92,6 +92,7 @@
   {
     "id": "11",
     "photo": "assets/palestrantes/luan-mileski.webp",
+    "bio": "Há mais de 9 anos trabalhando no ecossistema de desenvolvimento de software, atuando em papéis como helpdesk, analista de negócios, gerente de projetos, scrum master, líder de equipe e product owner. \nParticipei de vários projetos para os setores bancários, seguros, agropecuário, e-commerce e inovação. \nApaixonado por métodos ágeis desde 2013, certificado CSPO, SMSi, TKP, Management 3.0, Lean Inception e PBB, vive os valores e princípios do ágil no seu dia a dia profissional e pessoal. \nAdora fazer um baita churrasco e estar com amigos bebendo uma boa cerveja.",
     "title": "PO e Dev - Um relacionamento de amor e ódio. Como melhorá-lo sem precisar de terapia de casal.",
     "description": "Tá aí um dos relacionamentos mais complicados do meio de desenvolvimento de software não é ? Nesta palestra irei trazer algumas dicas, ferramentas e táticas para fortalecer esse relacionamento e ambos de fato sentirem-se parte de um mesmo time.",
     "name": "Luan Mileski",
