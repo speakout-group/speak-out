@@ -42,9 +42,7 @@ export class TalkFacade extends BaseState<TalkState> {
     this.setState({ loading: true });
     this.dataService
       .getTalks()
-      .pipe(
-        map((talks) => talks.map(this.mapper.mapTo))
-      )
+      .pipe(map((talks) => talks.map(this.mapper.mapTo)))
       .subscribe((talks) => {
         this.setState({ talks, loading: false });
       });
@@ -54,9 +52,7 @@ export class TalkFacade extends BaseState<TalkState> {
     this.setState({ loading: true });
     this.dataService
       .getTalk(id)
-      .pipe(
-        map((talk) => this.mapper.mapTo(talk))
-      )
+      .pipe(map((talk) => this.mapper.mapTo(talk)))
       .subscribe((response) => {
         const talk = this.getTalkWithSafeUrl(response);
 
@@ -92,7 +88,7 @@ export class TalkFacade extends BaseState<TalkState> {
         console.log(response);
 
         const talk = this.getTalkWithSafeUrl(response);
-        
+
         this.loadTalks();
         this.loadTalk(id);
 
@@ -123,16 +119,11 @@ export class TalkFacade extends BaseState<TalkState> {
     this.setState({ loading: true });
     this.dataService
       .updateTalk(id, talk)
-      .pipe(
-        take(1),
-        map((talk) => this.mapper.mapTo(talk))
-      )
-      .subscribe((response) => {
-        const talk = this.getTalkWithSafeUrl(response);
-
+      .pipe(take(1))
+      .subscribe(() => {
         this.loadTalks();
 
-        this.setState({ talk, loading: false });
+        this.setState({ loading: false });
       });
   }
 

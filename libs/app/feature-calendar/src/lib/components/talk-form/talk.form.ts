@@ -8,6 +8,8 @@ export type TalkFormValue = Pick<
   | 'description'
   | 'cover'
   | 'name'
+  | 'start'
+  | 'end'
   | 'photo'
   | 'bio'
   | 'group'
@@ -25,6 +27,8 @@ export class TalkForm extends FormGroup {
       description: new FormControl(talk?.description, validator),
       cover: new FormControl(talk?.cover, validator),
       name: new FormControl(talk?.name, validator),
+      start: new FormControl(talk?.start, validator),
+      end: new FormControl(talk?.end, validator),
       photo: new FormControl(talk?.photo, validator),
       bio: new FormControl(talk?.bio, validator),
       group: new FormControl(talk?.group, validator),
@@ -45,6 +49,8 @@ export class TalkForm extends FormGroup {
       cover: talk?.cover,
       name: talk?.name,
       photo: talk?.photo,
+      start: talk?.start,
+      end: talk?.end,
       bio: talk?.bio,
       group: talk?.group,
       stage: talk?.stage,

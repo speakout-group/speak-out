@@ -42,6 +42,8 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onConfirm(value: TalkFormValue) {
+    console.log(value);
+    
     if (value.id) {
       this.facade.updateTalk(value.id, value);
     }
