@@ -1,3 +1,5 @@
+import { User } from './user';
+
 interface CommonTalk {
   title: string;
   description: string;
@@ -8,6 +10,7 @@ interface CommonTalk {
   group: string;
   stage: string;
   ytid: string;
+  members: User[] | string[];
 }
 
 export interface RawTalk extends CommonTalk {

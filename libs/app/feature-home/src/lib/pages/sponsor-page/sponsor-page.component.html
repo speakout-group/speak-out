@@ -1,13 +1,84 @@
 <section class="flex-row-between flex-1">
   <mat-card *ngIf="facade.supporter$ | async as supporter" class="flex-1">
     <h2 mat-card-title>{{ supporter.name }}</h2>
-    <h2 mat-card-title>{{ supporter.website }}</h2>
+    <h2 mat-card-subtitle>
+      <a rel="noreferrer noopener" target="_blank" [href]="supporter.website">{{
+        supporter.website
+      }}</a>
+    </h2>
+
+    <h3 class="mat-display-1">
+      {{ supporter.description }}
+    </h3>
 
     <img mat-card-image [src]="supporter.logo" [alt]="supporter.logo" />
 
-    <p mat-card-content>
-      {{ supporter.description }}
-    </p>
+    <div class="flex-row-around">
+      <a
+        *ngIf="supporter.linkedin"
+        [href]="supporter.linkedin"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        <img
+          mat-card-sm-image
+          src="assets/icons/linkedin.svg"
+          alt="linkedin icon"
+        />
+      </a>
+
+      <a
+        *ngIf="supporter.instagram"
+        [href]="supporter.instagram"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        <img
+          mat-card-sm-image
+          src="assets/icons/instagram.svg"
+          alt="instagram icon"
+        />
+      </a>
+
+      <a
+        *ngIf="supporter.youtube"
+        [href]="supporter.youtube"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        <img
+          mat-card-sm-image
+          src="assets/icons/youtube.svg"
+          alt="youtube icon"
+        />
+      </a>
+
+      <a
+        *ngIf="supporter.facebook"
+        [href]="supporter.facebook"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        <img
+          mat-card-sm-image
+          src="assets/icons/facebook.svg"
+          alt="facebook icon"
+        />
+      </a>
+
+      <a
+        *ngIf="supporter.twitter"
+        [href]="supporter.twitter"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        <img
+          mat-card-sm-image
+          src="assets/icons/twitter.svg"
+          alt="twitter icon"
+        />
+      </a>
+    </div>
   </mat-card>
 
   <ng-container *ngIf="facade.embedUrl$ | async as embedUrl">

@@ -1,12 +1,16 @@
+import { Nulled, TalkWithSafeUrl } from '@speak-out/app-data-access';
 import {
-  ChangeDetectionStrategy,
+  Input,
+  Output,
   Component,
   EventEmitter,
-  Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
-import { TalkWithSafeUrl } from '@speak-out/app-data-access';
 import { Subject } from 'rxjs';
 
+interface User {
+  _id: string
+}
 @Component({
   exportAs: 'talkView',
   selector: 'speak-out-talk-view',
@@ -15,9 +19,13 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TalkViewComponent {
+  @Input() user: User | Nulled = null;
+
   @Output() cancel = new EventEmitter<void>();
 
   @Output() watch = new EventEmitter<TalkWithSafeUrl>();
+
+  @Output() unwatch = new EventEmitter<TalkWithSafeUrl>();
 
   private _talk = new Subject<TalkWithSafeUrl>();
   readonly talk$ = this._talk.asObservable();

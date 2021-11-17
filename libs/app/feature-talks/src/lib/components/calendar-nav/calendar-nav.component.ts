@@ -27,4 +27,19 @@ export class CalendarNavComponent {
     this.viewDate = today;
     this.viewDateChange.emit(today);
   }
+
+  onBob(date = new Date('11-18-2021')) {
+    this.viewDate = date;
+    this.viewDateChange.emit(date);
+  }
+  
+  onShow(date = new Date('11-19-2021')) {
+    this.viewDate = date;
+    this.viewDateChange.emit(date);
+  }
+
+  onConf(date = new Date('11-20-2021')) {
+    this.viewDate = date;
+    this.viewDateChange.emit(date);
+  }
 }

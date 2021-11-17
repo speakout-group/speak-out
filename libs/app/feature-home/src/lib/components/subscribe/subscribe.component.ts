@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ReadmeComponent } from '../readme/readme.component';
 import { SubscribeFacade } from '@speak-out/app-data-access';
+import { PixelService } from '@speak-out/shared-ui-common';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
@@ -16,13 +17,17 @@ import { Subject } from 'rxjs';
 export class SubscribeComponent implements OnInit, OnDestroy {
   destroy = new Subject<void>();
 
-  @ViewChild('terms') checkboxTerms!: MatCheckbox;
+  @ViewChild('terms') checkboxes!: MatCheckbox;
 
   form = new SubscribeForm();
 
   username: string | null = null;
 
-  constructor(readonly facade: SubscribeFacade, readonly dialog: MatDialog) {}
+  constructor(
+    readonly facade: SubscribeFacade,
+    readonly dialog: MatDialog,
+    private pixel: PixelService
+  ) {}
 
   ngOnInit() {
     this.facade.loadUser();
@@ -35,9 +40,14 @@ export class SubscribeComponent implements OnInit, OnDestroy {
       .afterClosed()
       .pipe(takeUntil(this.destroy))
       .subscribe((readed) => {
-        if (readed) this.checkboxTerms.focus();
+        if (readed) this.onConsent();
         else if (button) button.focus();
       });
+  }
+
+  onConsent(): void {
+    this.checkboxes.focus();
+    this.pixel.initialize();
   }
 
   onSubmit() {
@@ -46,7 +56,10 @@ export class SubscribeComponent implements OnInit, OnDestroy {
       this.facade
         .subscribe(this.form.value)
         .pipe(takeUntil(this.destroy))
-        .subscribe(() => this.form.reset({}));
+        .subscribe(() => {
+          this.form.reset({});
+          this.pixel.track('Lead');
+        });
     }
   }
 

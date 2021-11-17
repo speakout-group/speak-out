@@ -12,9 +12,11 @@ export interface UserLogged {
   styleUrls: ['./main-toolbar.component.scss'],
 })
 export class MainToolbarComponent {
-  @Input() image = '';
+  @Input() image = 'assets/logo.svg';
 
-  @Input() brand = '';
+  @Input() brand = 'Speak Out';
+  
+  @Input() route = '/';
 
   @Input() shown: Observable<boolean> = of(true);
   

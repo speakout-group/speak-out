@@ -1,6 +1,6 @@
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpState } from './http.state';
 import { Login } from '../types';
@@ -26,24 +26,21 @@ export class AuthFacade extends HttpState<AuthState> {
 
   constructor(private service: AuthDataService) {
     super({
-      redirect: '/'
+      redirect: '/',
     });
   }
 
   loadUser() {
-    this.service
-      .getProfile()
-      .subscribe((user) => {
-        // debugger
-        if (user) {
-          this.setState({ user });
-        }
-      });
+    this.service.getProfile().subscribe((user) => {
+      // debugger
+      if (user) {
+        this.setState({ user });
+      }
+    });
   }
 
   login({ username, password }: Login) {
-    this.service
-      .login({ username, password })
+    this.intercept(this.service.login({ username, password }))
       .pipe(switchMap((res) => this.handleLogin(res)))
       .subscribe((user) => {
         if (user) {

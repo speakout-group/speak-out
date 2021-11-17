@@ -5,6 +5,7 @@ import {
   RoomFacade,
   AwardFacade,
   SponsorFacade,
+  SidenavFacade,
   ScheduleFacade,
   SubscribeFacade,
 } from './+state';
@@ -38,6 +39,7 @@ import {
     ConfFacade,
     AwardFacade,
     SponsorFacade,
+    SidenavFacade,
     ScheduleFacade,
     TalkDataService,
     SubscribeFacade,

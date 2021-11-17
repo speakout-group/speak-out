@@ -1,6 +1,6 @@
 <mat-toolbar color="accent" [ngClass]="{ 'hide-toolbar': hidden }">
-  <a routerLink="/" class="brand-name">
-    <img src="assets/logo.svg" alt="Speak Out" />
+  <a [routerLink]="route" class="brand-name">
+    <img [src]="image" [alt]="brand" />
   </a>
 
   <h1>Speak Out</h1>
@@ -32,8 +32,8 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #loginMenu="matMenu" xPosition="before">
-      <!-- <a (click)="nav.emit(['auth'])" mat-menu-item>Login</a> -->
-      <a (click)="nav.emit(['auth', 'register'])" mat-menu-item>Participar</a>
+      <a (click)="nav.emit(['auth'])" mat-menu-item>Login</a>
+      <!-- <a (click)="nav.emit(['auth', 'register'])" mat-menu-item>Participar</a> -->
     </mat-menu>
   </ng-template>
 </mat-toolbar>

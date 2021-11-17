@@ -1,7 +1,7 @@
 <div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
   <app-main-toolbar
+    route="/devparana"
     [user]="auth.user$ | async"
-    (nav)="onNavigate($event)"
     (logout)="onLogout()"
   ></app-main-toolbar>
 
@@ -18,6 +18,9 @@
     >
       <speak-out-talk-view
         #talk="talkView"
+        (watch)="watchTalk($event)"
+        (unwatch)="unWatchTalk($event)"
+        [user]="auth.user$ | async"
         (cancel)="snav.close()"
       ></speak-out-talk-view>
     </mat-sidenav>
