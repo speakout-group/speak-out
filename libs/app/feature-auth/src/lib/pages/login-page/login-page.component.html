@@ -27,6 +27,10 @@
           />
         </mat-form-field>
 
+        <p>
+          {{ facade.error$ | async }}
+        </p>
+        
         <mat-card-actions>
           <a routerLink="/" mat-button mat-icon-button>
             <mat-icon>chevron_left</mat-icon>
@@ -39,6 +43,7 @@
           <button mat-button mat-raised-button color="primary">Login</button>
         </mat-card-actions>
       </form>
+      
     </mat-card-content>
     <mat-card-footer>
       <mat-progress-bar

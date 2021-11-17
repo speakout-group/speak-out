@@ -39,7 +39,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
           const event: CalendarEvent = { id, end, start, title };
 
           if (user && (members as string[]).includes(user._id)) {
-            event.color = { primary: '#212121', secondary: '#ffee1d' };
+            event.color = { primary: '#212121', secondary: '#ffEb3b' };
           }
 
           if (new Date() > start && new Date() < end) {
