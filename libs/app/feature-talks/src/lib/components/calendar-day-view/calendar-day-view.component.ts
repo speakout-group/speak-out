@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { CustomEventTitleFormatter } from './calendar-title-formatter';
 import { CalendarEventTitleFormatter } from 'angular-calendar';
+import { Nulled } from '@speak-out/app-data-access';
 import { CalendarEvent } from 'calendar-utils';
 import { Subject } from 'rxjs';
 
@@ -28,6 +29,8 @@ export class CalendarDayViewComponent {
   @Input() endHour = 20;
   @Input() events: CalendarEvent[] = [];
   @Input() refresh = new Subject<void>();
+  
+  @Input() userId: string | Nulled;
 
   @Output() eventClicked = new EventEmitter<CalendarEvent>();
 

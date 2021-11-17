@@ -2,9 +2,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { map, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
+import { getYoutubeEmbedUrl, getEntityWithSortedMembers } from '../utils';
 import { TalkMapper } from '../mappers/talk.mapper';
 import { TalkDataService } from '../infrastructure';
-import { getYoutubeEmbedUrl } from '../utils';
 import { BaseState } from './base.state';
 import { Talk } from '../interfaces';
 
@@ -14,7 +14,6 @@ export type TalkWithSafeUrl = {
 
 export interface TalkState {
   loading: boolean;
-  toolbar: boolean;
   talks: Talk[];
   talk?: TalkWithSafeUrl;
 }
@@ -29,15 +28,12 @@ export class TalkFacade extends BaseState<TalkState> {
 
   loading$ = this.select((state) => state.loading);
 
-  toolbar$ = this.select((state) => state.toolbar);
-
   constructor(
     private dataService: TalkDataService,
     private sanitizer: DomSanitizer
   ) {
     super({
       loading: false,
-      toolbar: false,
       talks: [],
     });
   }
@@ -47,7 +43,6 @@ export class TalkFacade extends BaseState<TalkState> {
     this.dataService
       .getTalks()
       .pipe(
-        take(1),
         map((talks) => talks.map(this.mapper.mapTo))
       )
       .subscribe((talks) => {
@@ -55,12 +50,73 @@ export class TalkFacade extends BaseState<TalkState> {
       });
   }
 
-  hideToolbar() {
-    this.setState({ toolbar: true });
+  loadTalk(id: string) {
+    this.setState({ loading: true });
+    this.dataService
+      .getTalk(id)
+      .pipe(
+        map((talk) => this.mapper.mapTo(talk))
+      )
+      .subscribe((response) => {
+        const talk = this.getTalkWithSafeUrl(response);
+
+        this.setState({ talk, loading: false });
+      });
   }
 
-  showToolbar() {
-    this.setState({ toolbar: false });
+  subscribeTalk(id: string) {
+    this.dataService.subscribeTalk(id);
+    this.dataService.onLeaveEvent().subscribe((user) => {
+      console.log('leave: ', user);
+
+      this.loadTalk(id);
+      this.loadTalks();
+    });
+    this.dataService.onJoinEvent().subscribe((user) => {
+      console.log('join: ', user);
+      this.loadTalks();
+      this.loadTalk(id);
+    });
+  }
+
+  joinTalk(id: string) {
+    this.setState({ loading: true });
+    this.dataService
+      .joinTalk(id)
+      .pipe(
+        take(1),
+        map((talk) => this.mapper.mapTo(talk)),
+        map(getEntityWithSortedMembers)
+      )
+      .subscribe((response) => {
+        console.log(response);
+
+        const talk = this.getTalkWithSafeUrl(response);
+        
+        this.loadTalks();
+        this.loadTalk(id);
+
+        this.setState({ talk, loading: false });
+      });
+  }
+
+  leaveTalk(id: string) {
+    this.setState({ loading: true });
+    this.dataService
+      .leaveTalk(id)
+      .pipe(
+        take(1),
+        map((talk) => this.mapper.mapTo(talk))
+      )
+      .subscribe((response) => {
+        console.log(response);
+
+        const talk = this.getTalkWithSafeUrl(response);
+
+        this.loadTalks();
+
+        this.setState({ talk, loading: false });
+      });
   }
 
   updateTalk(id: string, talk: Partial<Talk>) {
@@ -74,6 +130,8 @@ export class TalkFacade extends BaseState<TalkState> {
       .subscribe((response) => {
         const talk = this.getTalkWithSafeUrl(response);
 
+        this.loadTalks();
+
         this.setState({ talk, loading: false });
       });
   }
@@ -86,38 +144,6 @@ export class TalkFacade extends BaseState<TalkState> {
       .subscribe(() => {
         this.setState({ loading: false });
         this.loadTalks();
-      });
-  }
-
-  loadTalk(id: string) {
-    this.setState({ loading: true });
-    this.dataService
-      .getTalk(id)
-      .pipe(
-        take(1),
-        map((talk) => this.mapper.mapTo(talk))
-      )
-      .subscribe((response) => {
-        const talk = this.getTalkWithSafeUrl(response);
-
-        this.setState({ talk, loading: false });
-      });
-  }
-
-  joinTalk(id: string) {
-    this.setState({ loading: true });
-    this.dataService
-      .joinTalk(id)
-      .pipe(
-        take(1),
-        map((talk) => this.mapper.mapTo(talk))
-      )
-      .subscribe((response) => {
-        console.log(response);
-        
-        const talk = this.getTalkWithSafeUrl(response);
-
-        this.setState({ talk, loading: false });
       });
   }
 

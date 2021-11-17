@@ -1,9 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { SidenavFacade, TalkFacade } from '@speak-out/app-data-access';
+import {
+  AuthFacade,
+  TalkFacade,
+  SidenavFacade,
+} from '@speak-out/app-data-access';
 import { CalendarEvent } from 'calendar-utils';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
+import { zip, Subject } from 'rxjs';
 
 @Component({
   templateUrl: './talks-page.component.html',
@@ -20,23 +24,33 @@ export class TalksPageComponent implements OnInit, OnDestroy {
 
   constructor(
     readonly sidenav: SidenavFacade,
-    readonly facade: TalkFacade
+    readonly facade: TalkFacade,
+    readonly auth: AuthFacade
   ) {}
 
   ngOnInit(): void {
-    this.facade.talks$.pipe(takeUntil(this.destroy)).subscribe((talks) => {
-      this.events = talks.map(({ id, start, end, title }) => {
-        const event: CalendarEvent = { id, end, start, title };
+    zip(this.auth.user$, this.facade.talks$)
+      .pipe(
+        takeUntil(this.destroy),
+        filter(([user, talks]) => !!user && !!talks.length)
+      )
+      .subscribe(([user, talks]) => {
+        this.events = talks.map(({ id, start, end, title, members }) => {
+          const event: CalendarEvent = { id, end, start, title };
 
-        if (new Date() > start && new Date() < end) {
-          event.color = { primary: '#212121', secondary: '#f1f1f1' };
-        }
+          if (user && (members as string[]).includes(user._id)) {
+            event.color = { primary: '#212121', secondary: '#ffee1d' };
+          }
 
-        return event;
+          if (new Date() > start && new Date() < end) {
+            event.color = { primary: '#212121', secondary: '#41ff2a' };
+          }
+
+          return event;
+        });
+
+        this.refresh.next();
       });
-
-      this.refresh.next();
-    });
   }
 
   onViewDateChange(date: Date) {

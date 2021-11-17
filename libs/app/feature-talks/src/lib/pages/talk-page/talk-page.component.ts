@@ -12,13 +12,18 @@ export class TalkPageComponent implements OnInit {
     readonly facade: TalkFacade,
     readonly sidenav: SidenavFacade,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.auth.loadUser();
     this.sidenav.close();
     this.loadTalk(this.route.snapshot);
-    this.facade.talk$.subscribe(console.log);
+    this.facade.talk$.subscribe(talk => {
+      if (talk) {
+        this.facade.subscribeTalk(talk.id);
+        console.log('talk: ', talk)
+      }
+    });
   }
 
   loadTalk({ params }: ActivatedRouteSnapshot) {

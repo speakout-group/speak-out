@@ -10,6 +10,7 @@ import {
   TalkFacade,
   AuthFacade,
   SidenavFacade,
+  Talk,
 } from '@speak-out/app-data-access';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TalkViewComponent } from '../../components';
@@ -65,6 +66,17 @@ export class TalksContainer implements OnInit, AfterViewInit, OnDestroy {
     this.facade.talk$.pipe(takeUntil(this.destroy)).subscribe((talk) => {
       if (talk) this.talk.setValue(talk);
     });
+  }
+
+
+  watchTalk(talk: Talk) {
+    this.facade.joinTalk(talk.id);
+    this.auth.loadUser();
+  }
+  
+  unWatchTalk(talk: Talk) {
+    this.facade.leaveTalk(talk.id);
+    this.auth.loadUser();
   }
 
   onLogout() {

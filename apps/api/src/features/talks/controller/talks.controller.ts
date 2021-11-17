@@ -45,11 +45,13 @@ export class TalksController {
   @ApiBearerAuth('access-token')
   async update(
     @Param('id', ParseObjectIdPipe) id: string,
-    @Body() body: UpdateTalkDto
+    @Body() body: UpdateTalkDto,
+    @CurrentUser() user: User,
   ) {
     return this.talksService.update(
       await this.talksService.validateTalkById(id),
-      body
+      body,
+      user
     );
   }
 
@@ -70,16 +72,25 @@ export class TalksController {
     @Param('id', ParseObjectIdPipe) id: string,
     @CurrentUser() user: User
   ) {
+    console.log(id, user);
+    
     return this.talksService.leave(
       user,
       await this.talksService.validateTalkById(id)
     );
   }
 
-  @Delete(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth('access-token')
-  remove(@Param('id') id: string) {
-    return this.talksService.remove(id);
+  
+  @Get('member')
+  getTalksByMember(@CurrentUser() user: User) {
+    return this.talksService.getTalksByMember(user);
   }
+
+
+  // @Delete(':id')
+  // @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth('access-token')
+  // remove(@Param('id') id: string) {
+  //   return this.talksService.remove(id);
+  // }
 }

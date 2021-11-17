@@ -34,7 +34,7 @@ export class TalksGateway implements OnGatewayDisconnect<Socket> {
     this.talksService.unsubscribeSocket(socket);
   }
 
-  @SubscribeMessage('talks:subscribe')
+  @SubscribeMessage('talk:subscribe')
   async subscribe(
     @ConnectedSocket() client: Socket,
     @MessageBody() talkId: string

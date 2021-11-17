@@ -34,8 +34,25 @@
     <button type="button" (click)="cancel.emit()" mat-raised-button>
       Fechar
     </button>
-    <a [routerLink]="talk.id" mat-raised-button color="primary">
-      Entrar na sala
-    </a>
+
+    <div class="flex-row-between gap-16">
+        <ng-container *ngIf="talk.members | inMembers: user?._id; else watchBtnTmpl">
+          <button type="button" (click)="unwatch.emit(talk)" mat-stroked-button>
+            <mat-icon>event_busy</mat-icon>
+            <span>Remover da agenda</span>
+          </button>
+        </ng-container>
+        
+        <ng-template #watchBtnTmpl>
+          <button type="button" (click)="watch.emit(talk)" mat-stroked-button>
+            <mat-icon>event_available</mat-icon>
+            <span>Adicionar na agenda</span>
+          </button>
+        </ng-template>
+
+      <a [routerLink]="talk.id" mat-raised-button color="primary">
+        Entrar
+      </a>
+    </div>
   </footer>
 </ng-container>

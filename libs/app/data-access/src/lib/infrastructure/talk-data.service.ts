@@ -56,7 +56,6 @@ export class TalkDataService {
     return this.socket.fromEvent<User>('talk:join');
   }
 
-
   getTalkWithSortedMembers(talk: RawTalk) {
     talk.members = (talk.members ?? []).sort((a: any, b: any) =>
       a.online === b.online ? 0 : a.online ? -1 : b.online ? 1 : 0

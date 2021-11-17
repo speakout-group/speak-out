@@ -31,11 +31,24 @@ export class TalksService {
   }
 
   getTalkById(id: ObjectId | string) {
-    return this.talkModel.findById(id);
+    return this.talkModel.findById(id)
+      .populate('members', this.userService.unpopulatedFields);
   }
 
-  update(talk: Talk, data: UpdateQuery<Talk>) {
-    return this.talkModel.findByIdAndUpdate(talk._id, data);
+  getTalksByMember(user: User) {
+    return this.talkModel
+      .find({ members: { $in: user._id } });
+  }
+
+  async update(talk: Talk, body: UpdateQuery<Talk>, user: User) {
+    this.handleUpdateTalk(talk, body as Talk);
+
+    return this.talkModel
+      .findOneAndUpdate({ _id: talk._id, owner: user._id }, body);
+  }
+
+  handleUpdateTalk(talk: Talk, body: Partial<Talk>) {
+    this.sendMessage(talk, 'talk:update', Object.assign(talk, body));
   }
 
   updateTalk(talk: Talk, data: UpdateQuery<Talk>) {
@@ -125,6 +138,9 @@ export class TalksService {
   }
 
   async leave(user: User, talk: Talk) {
+    console.log(talk);
+    console.log(user);
+    
     remove(talk.members, (member) => member.id === user.id);
 
     this.handleLeaveTalk(user, talk);
