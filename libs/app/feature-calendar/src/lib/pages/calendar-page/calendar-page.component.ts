@@ -15,7 +15,7 @@ export class CalendarPageComponent implements OnInit, OnDestroy {
 
   refresh = new Subject<void>();
 
-  viewDate: Date = new Date('11-20-2021');
+  viewDate: Date = new Date('2021-11-20T00:00:00-03:00');
 
   events: CalendarEvent[] = [];
 
