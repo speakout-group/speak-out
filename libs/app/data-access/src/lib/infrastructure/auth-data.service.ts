@@ -104,6 +104,8 @@ export class AuthDataService extends BaseService {
   }
 
   logout() {
-    this.storage.clear();
+    this.storage.remove('refreshToken');
+    this.storage.remove('accessToken');
+    this.storage.remove('user');
   }
 }

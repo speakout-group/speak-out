@@ -25,6 +25,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.prepareRedirect(this.route);
+    console.log(this.route);
+    
 
     this.facade.user$.pipe(
       takeUntil(this.destroy),

@@ -1,17 +1,11 @@
 <section class="flex-row-between flex-1">
   <mat-card *ngIf="facade.supporter$ | async as supporter" class="flex-1">
     <h2 mat-card-title>{{ supporter.name }}</h2>
-    <h2 mat-card-subtitle>
-      <a rel="noreferrer noopener" target="_blank" [href]="supporter.website">{{
-        supporter.website
-      }}</a>
-    </h2>
+    <h2 mat-card-subtitle>{{ supporter.description }}</h2>
 
-    <h3 class="mat-display-1">
-      {{ supporter.description }}
-    </h3>
-
-    <img mat-card-image [src]="supporter.logo" [alt]="supporter.logo" />
+    <a rel="noreferrer noopener" target="_blank" [href]="supporter.website">
+      <img mat-card-image [src]="supporter.logo" [alt]="supporter.logo" />
+    </a>
 
     <div class="flex-row-around">
       <a

@@ -663,7 +663,7 @@ export class AuthService {
     const user &#x3D; await this.userService.getUser(username);
 
     if (!user) {
-      throw new UnauthorizedException(&#x27;User does not exist&#x27;);
+      throw new UnauthorizedException(&#x27;Usuário não existe&#x27;);
     }
 
     if (!(await user.validatePassword(password))) {

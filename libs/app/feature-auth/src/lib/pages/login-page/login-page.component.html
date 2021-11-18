@@ -27,11 +27,11 @@
           />
         </mat-form-field>
 
-        <p>
+        <mat-error>
           {{ facade.error$ | async }}
-        </p>
+        </mat-error>
         
-        <mat-card-actions>
+        <mat-card-actions class="mt-24">
           <a routerLink="/" mat-button mat-icon-button>
             <mat-icon>chevron_left</mat-icon>
           </a>

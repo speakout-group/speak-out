@@ -23,7 +23,7 @@ export class TalksService {
   ) {}
 
   findAll() {
-    return this.talkModel.find();
+    return this.talkModel.find().sort({ start: 'asc' });
   }
 
   remove(id: ObjectId | string) {

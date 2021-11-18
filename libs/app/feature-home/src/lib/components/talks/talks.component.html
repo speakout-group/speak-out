@@ -8,7 +8,7 @@
 
   <ng-container *ngIf="facade.talks$ | async as talks">
     <speak-out-talk
-      *ngFor="let talk of talks | onlyStages: ['01', '10', '11']"
+      *ngFor="let talk of talks"
       (openTalk)="open($event)"
       [talk]="talk"
     >
