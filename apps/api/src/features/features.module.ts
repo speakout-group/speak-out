@@ -7,25 +7,27 @@ import { SpeakersModule } from './speakers/speakers.module';
 import { RoomModule } from './room/room.module';
 import { ConfModule } from './conf/conf.module';
 import { UserModule } from './user/user.module';
+import { TalksModule } from './talks/talks.module';
 
 @Module({
   imports: [
     AuthModule,
     UserModule,
-    RoomModule,
-    ConfModule,
-    MessagesModule,
-    NotificationModule,
+    // RoomModule,
+    // ConfModule,
+    // MessagesModule,
+    // NotificationModule,
     SponsorModule,
-    SpeakersModule,
+    // SpeakersModule,
+    TalksModule,
   ],
   controllers: [],
   exports: [
     AuthModule,
     UserModule,
-    RoomModule,
-    MessagesModule,
-    NotificationModule,
+    // RoomModule,
+    // MessagesModule,
+    // NotificationModule,
   ],
 })
 export class FeaturesModule {}

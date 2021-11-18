@@ -1,0 +1,13 @@
+.cal-day-view {
+  flex: 1;
+  overflow-y: auto;
+}
+.cal-week-view .cal-time-events {
+  flex: 1;
+  max-height: calc(100%);
+  overflow-y: auto;
+}
+
+.cal-day-columns {
+  height: 100%;
+}

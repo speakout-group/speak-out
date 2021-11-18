@@ -1,0 +1,55 @@
+<ng-container *ngIf="facade.talk$ | async as talk">
+  <section
+    class="video-wrapper layer"
+    *ngIf="
+      talk.members | inMembers: (auth.user$ | async)?._id;
+      else talkCoverTmpl
+    "
+  >
+    <iframe
+      *ngIf="talk.safeUrl"
+      [title]="talk.title"
+      [src]="talk.safeUrl"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </section>
+  <ng-template #talkCoverTmpl>
+    <section
+      class="video-wrapper"
+      [ngStyle]="{ backgroundImage: 'url(' + talk.cover + ')' }"
+    >
+      <div>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="facade.joinTalk(talk.id)"
+        >
+          Assistir talk
+        </button>
+      </div>
+    </section>
+  </ng-template>
+
+  <mat-toolbar color="primary">
+    <span>
+      <ng-container [ngPlural]="talk.members.length">
+        <ng-template ngPluralCase="=0">aguardando membros</ng-template>
+        <ng-template ngPluralCase="=1">opa, tem gente assistindo</ng-template>
+        <ng-template ngPluralCase="other">
+          {{ talk.members.length }} membros estão por aqui
+        </ng-template>
+      </ng-container>
+    </span>
+
+    <span class="spacer"></span>
+
+    <h2>{{ talk.title }}</h2>
+    <a routerLink="/devparana" mat-button>
+      <mat-icon _ngcontent-ngm-c203="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">list</mat-icon>
+      Lista de Palestras
+    </a>
+  </mat-toolbar>
+</ng-container>

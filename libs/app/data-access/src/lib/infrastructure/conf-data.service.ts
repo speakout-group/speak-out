@@ -61,9 +61,7 @@ export class ConfDataService {
   }
 
   leaveConf(confId: string) {
-    return this.http.delete<Conf>(
-      `${this.config.api}/conf/leave/${confId}`
-    );
+    return this.http.delete<Conf>(`${this.config.api}/conf/leave/${confId}`);
   }
 
   subscribeConf(conf: Conf) {

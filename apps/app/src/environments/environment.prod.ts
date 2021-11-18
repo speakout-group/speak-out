@@ -4,7 +4,7 @@ export const environment = {
   socket: 'https://api.speakout.group',
   apps: {
     google:
-    '409454477116-ibv01n0c9q5enhumdb561jv7imgio10g.apps.googleusercontent.com',
+      '409454477116-ibv01n0c9q5enhumdb561jv7imgio10g.apps.googleusercontent.com',
   },
 };
 

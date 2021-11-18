@@ -36,7 +36,7 @@ export class SettingsPageComponent implements OnInit {
     private authService: AuthService,
     private confirmation: ConfirmationService
   ) {
-    this.facade.loadUser()
+    this.facade.loadUser();
   }
 
   ngOnInit() {

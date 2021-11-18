@@ -5,13 +5,13 @@ export class DeleteRoomMessageDto {
   @IsOptional()
   @IsMongoId()
   @ApiProperty({
-    required: false
+    required: false,
   })
   messageId?: string;
 
   @IsMongoId()
   @ApiProperty({
-    required: false
+    required: false,
   })
   roomId: string;
 }

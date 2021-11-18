@@ -1,5 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -14,12 +15,10 @@ import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localeBr, 'pt-BR', localeBrExtra);
 
-
-
 import {
-  AuthDataService,
   AppDataAccessModule,
   AuthTokenInterceptor,
+  AuthFacade,
 } from '@speak-out/app-data-access';
 
 import { environment, facebook } from '../environments/environment';
@@ -30,8 +29,8 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     MatDialogModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     PixelModule.forRoot(facebook),
     AppDataAccessModule.forRoot(environment),
@@ -58,16 +57,13 @@ import { AppComponent } from './app.component';
     { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,
-      useFactory: (authService: AuthDataService) => async () => {
-        if (authService.getAccessToken()) {
-          try {
-            await authService.getProfile().toPromise();
-          } catch (err) {
-            console.log(err);
-          }
+      useFactory: (authFacade: AuthFacade) => async () => {
+        if (authFacade.isAuthenticated) {
+          authFacade.loadUser()
         }
+        // return authFacade.user$.toPromise()
       },
-      deps: [AuthDataService],
+      deps: [AuthFacade],
       multi: true,
     },
     {
@@ -76,8 +72,8 @@ import { AppComponent } from './app.component';
       multi: true,
     },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

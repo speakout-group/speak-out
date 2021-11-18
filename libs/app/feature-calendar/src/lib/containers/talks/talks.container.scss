@@ -1,0 +1,37 @@
+:host {
+  .calendar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .calendar-is-mobile .calendar-toolbar {
+    position: fixed;
+    /* Certifique-se de que a barra de ferramentas
+      permanecerá no topo do conteúdo enquanto rola. */
+    z-index: 2;
+  }
+
+  h1.calendar-app-name {
+    margin-left: 8px;
+  }
+
+  .calendar-sidenav-container {
+    /* Quando o sidenav não está fixo, estique o recipiente
+      do sidenav para preencher o espaço disponível.
+      Isso faz com que `<mat-sidenav-content>` atue como
+      nosso elemento de rolagem para layouts de desktop. */
+    flex: 1;
+  }
+
+  .calendar-is-mobile .calendar-sidenav-container {
+    /* Quando o sidenav é corrigido, não restrinja a altura
+      do contêiner do sidenav. Isso permite que o `<body>`
+      seja nosso elemento de rolagem para layouts móveis. */
+    flex: 1 0 auto;
+  }
+}

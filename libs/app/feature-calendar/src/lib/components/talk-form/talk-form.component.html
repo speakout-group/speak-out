@@ -1,0 +1,88 @@
+<form [formGroup]="form" (ngSubmit)="confirm.emit(form.value)">
+  <mat-form-field>
+    <mat-label> Título da talk </mat-label>
+    <input type="text" matInput formControlName="title" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Descrição da talk </mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      formControlName="description"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+    ></textarea>
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Caminho da imagem de capa da talk </mat-label>
+    <input type="text" matInput formControlName="cover" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-form-field class="mt-24">
+    <mat-label> Nome do palestrante </mat-label>
+    <input type="text" matInput formControlName="name" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Biografia </mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      formControlName="bio"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+    ></textarea>
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Caminho da foto do palestrante </mat-label>
+    <input type="text" matInput formControlName="cover" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <section class="flex-row-between gap-12 mt-24">
+    <mat-form-field>
+      <mat-label> Grupo </mat-label>
+      <input type="text" matInput formControlName="group" />
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Stage </mat-label>
+      <mat-select formControlName="stage">
+        <mat-option value="01">Link 01</mat-option>
+        <mat-option value="10">Link 10</mat-option>
+        <mat-option value="11">Link 11</mat-option>
+        <mat-option value="talkshow">talkshow</mat-option>
+        <mat-option value="opening">opening</mat-option>
+      </mat-select>
+      <mat-error>Obrigatório</mat-error>
+    </mat-form-field>
+  </section>
+
+  <mat-form-field>
+    <mat-label> Id do Youtube </mat-label>
+    <input type="text" matInput formControlName="ytid" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-card-actions class="ml-12 flex-row-between">
+    <button
+      type="reset"
+      (click)="cancel.emit()"
+      mat-raised-button
+      color="primary"
+    >
+      Fechar
+    </button>
+    <button mat-raised-button color="primary">Salvar</button>
+  </mat-card-actions>
+</form>

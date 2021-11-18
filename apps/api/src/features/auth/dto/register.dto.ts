@@ -11,7 +11,7 @@ import {
 export class RegisterDto {
   @ApiProperty({
     type: String,
-    required: true
+    required: true,
   })
   @IsNotEmpty()
   @IsString()
@@ -19,21 +19,19 @@ export class RegisterDto {
     message: 'Usuário inválido',
   })
   username: string;
-  
 
   @ApiProperty({
     type: String,
     required: true,
     minLength: 6,
-    maxLength: 60
+    maxLength: 60,
   })
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
   @MaxLength(60)
   password: string;
-  
-  
+
   @ApiProperty({
     type: String,
     required: true,

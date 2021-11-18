@@ -44,7 +44,7 @@ export class AuthDataService extends BaseService {
 
   register(user: Partial<User>) {
     const url = `${this.config.api}/auth/register`;
-    const post = this.http.post<TokenResponse>(url, user)
+    const post = this.http.post<TokenResponse>(url, user);
     return this.handlingError(post);
   }
 
@@ -59,7 +59,7 @@ export class AuthDataService extends BaseService {
     );
   }
 
-  async setTokens({ refresh_token, access_token }: TokenResponse) {
+  setTokens({ refresh_token, access_token }: TokenResponse) {
     this.setRefreshToken(refresh_token);
 
     return this.setAccessToken(access_token);
@@ -75,7 +75,7 @@ export class AuthDataService extends BaseService {
     return this.storage.get('accessToken');
   }
 
-  async setAccessToken(token: string) {
+  setAccessToken(token: string) {
     this.storage.set('accessToken', token);
   }
 
@@ -87,6 +87,14 @@ export class AuthDataService extends BaseService {
     this.storage.set('refreshToken', token);
   }
 
+  setUserObject(user: User) {
+    this.storage.set('user', user);
+  }
+
+  getUserObject() {
+    return this.storage.get('user') as User;
+  }
+
   getLoginCallbackUrl() {
     return this.storage.get('loginCallbackUrl') ?? '/';
   }
@@ -96,6 +104,8 @@ export class AuthDataService extends BaseService {
   }
 
   logout() {
-    this.storage.clear();
+    this.storage.remove('refreshToken');
+    this.storage.remove('accessToken');
+    this.storage.remove('user');
   }
 }

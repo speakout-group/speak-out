@@ -5,7 +5,7 @@ import {
   animate,
   trigger,
   transition,
-} from '@angular/animations'
+} from '@angular/animations';
 
 export const mainTransition = trigger('mainTransition', [
   transition('* <=> *', [
@@ -38,4 +38,4 @@ export const mainTransition = trigger('mainTransition', [
       ),
     ]),
   ]),
-])
+]);

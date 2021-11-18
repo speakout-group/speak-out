@@ -1,0 +1,17 @@
+<mat-progress-bar
+  *ngIf="facade.loading$ | async"
+  mode="indeterminate"
+></mat-progress-bar>
+
+<section class="flex-row gap-24">
+  <speak-out-subscribe class="sign-up-card"></speak-out-subscribe>
+
+  <ng-container *ngIf="facade.talks$ | async as talks">
+    <speak-out-talk
+      *ngFor="let talk of talks"
+      (openTalk)="open($event)"
+      [talk]="talk"
+    >
+    </speak-out-talk>
+  </ng-container>
+</section>

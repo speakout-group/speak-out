@@ -2,22 +2,24 @@
   background-color: rgba(6, 6, 6, 0.6);
 }
 
-a:link,
-a:visited,
-a:active,
-a:hover {
-  transition: color 200ms ease-in-out, text-decoration 200ms ease-in-out;
-}
-
-a:link,
-a:visited,
-a:active {
-  color: #212121;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+.mat-toolbar {
+  a:link,
+  a:visited,
+  a:active,
+  a:hover {
+    transition: color 200ms ease-in-out, text-decoration 200ms ease-in-out;
+  }
+  
+  a:link,
+  a:visited,
+  a:active {
+    color: #212121;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }  
 }
 
 .mat-toolbar.mat-primary {
@@ -71,10 +73,6 @@ body {
       border-radius: 4px;
       overflow: hidden;
     }
-  }
-
-  .mat-menu-trigger.mat-button-base {
-    text-transform: capitalize;
   }
 
   .mat-button-base {

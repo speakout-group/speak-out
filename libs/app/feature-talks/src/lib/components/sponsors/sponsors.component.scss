@@ -1,0 +1,27 @@
+@use 'libs/styles/mixins' as mixin;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
+  
+  @include mixin.media(mobile) {
+    section {
+      flex-direction: column;
+    }
+  }
+  
+  section {
+    flex-wrap: wrap;
+    a {
+      img {
+        max-width: 140px;
+      }
+    }
+  }
+  figure {
+    margin: 0;
+  }
+}

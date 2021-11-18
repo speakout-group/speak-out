@@ -6,6 +6,7 @@ export interface Schedule {
   conf: string;
   start: string;
   end: string;
+  ytid?: string;
   link: string;
   talk: string;
 }

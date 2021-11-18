@@ -36,7 +36,7 @@ export class AuthService {
     const user = await this.userService.getUser(username);
 
     if (!user) {
-      throw new UnauthorizedException('User does not exist');
+      throw new UnauthorizedException('Usuário não existe');
     }
 
     if (!(await user.validatePassword(password))) {

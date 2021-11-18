@@ -19,9 +19,7 @@ export class UserService {
     'password',
     'sessionToken',
     'email',
-    'facebookId',
     'googleId',
-    'appleId',
   ];
 
   unpopulatedFields = '-' + this.blockedFields.join(' -');

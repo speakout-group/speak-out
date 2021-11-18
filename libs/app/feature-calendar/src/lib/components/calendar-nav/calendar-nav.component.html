@@ -1,0 +1,31 @@
+<button
+  type="button"
+  [view]="view"
+  mat-icon-button
+  matTooltip="Voltar"
+  mwlCalendarPreviousView
+  [(viewDate)]="viewDate"
+  (viewDateChange)="nav($event)"
+>
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<button
+  mat-icon-button
+  mwlCalendarToday
+  matTooltip="Hoje"
+  [(viewDate)]="viewDate"
+  (click)="onToday()"
+>
+  <mat-icon>event</mat-icon>
+</button>
+<button
+  type="button"
+  [view]="view"
+  mat-icon-button
+  matTooltip="Avançar"
+  mwlCalendarNextView
+  [(viewDate)]="viewDate"
+  (viewDateChange)="nav($event)"
+>
+  <mat-icon>arrow_forward</mat-icon>
+</button>

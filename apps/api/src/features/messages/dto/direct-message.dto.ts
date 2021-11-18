@@ -5,13 +5,13 @@ export class DirectMessageDto {
   @IsString()
   @MaxLength(2000)
   @ApiProperty({
-    required: false
+    required: false,
   })
   message: string;
 
   @IsMongoId()
   @ApiProperty({
-    required: true
+    required: true,
   })
   to: string;
 }

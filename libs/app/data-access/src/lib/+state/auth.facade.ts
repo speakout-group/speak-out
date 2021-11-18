@@ -1,13 +1,13 @@
 import { AuthDataService } from '../infrastructure';
 import { User, TokenResponse } from '../interfaces';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
 import { HttpState } from './http.state';
 import { Login } from '../types';
 
 export interface AuthState {
   redirect: string | number | symbol;
-  user: User | null;
+  user?: User | null;
 }
 
 @Injectable()
@@ -16,27 +16,39 @@ export class AuthFacade extends HttpState<AuthState> {
 
   user$ = this.select((state) => state.user);
 
+  get accesssToken() {
+    return this.service.getAccessToken();
+  }
+
+  get isAuthenticated() {
+    return !!this.state.user;
+  }
+
   constructor(private service: AuthDataService) {
     super({
       redirect: '/',
-      user: null,
     });
   }
 
   loadUser() {
-    this.intercept(this.service.getProfile()).subscribe((user) => {
-      this.setState({ user });
+    this.service.getProfile().subscribe((user) => {
+      // debugger
+      if (user) {
+        this.setState({ user });
+      }
     });
   }
 
   login({ username, password }: Login) {
-    this.service
-      .login({ username, password })
+    this.intercept(this.service.login({ username, password }))
       .pipe(switchMap((res) => this.handleLogin(res)))
       .subscribe((user) => {
-        const redirect = this.service.getLoginCallbackUrl();
-        const state = { user, redirect };
-        this.setState(state);
+        if (user) {
+          const redirect = this.service.getLoginCallbackUrl();
+          this.service.setUserObject(user);
+          const state = { user, redirect };
+          this.setState(state);
+        }
       });
   }
 
@@ -46,6 +58,18 @@ export class AuthFacade extends HttpState<AuthState> {
 
   handleLogin(response: TokenResponse) {
     return this.service.handleTokens(response);
+  }
+
+  loginWithRefreshToken() {
+    return this.service.loginWithRefreshToken();
+  }
+
+  getRefreshToken() {
+    return this.service.getRefreshToken();
+  }
+
+  getUserObject() {
+    return this.service.getUserObject();
   }
 
   setRedirect(url: string) {

@@ -1,0 +1,40 @@
+:host {
+  flex: 1;
+
+  background-color: #121212;
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    button {
+      transform: scale(2);
+    }
+
+    &.layer::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: ' ';
+    }
+  }
+  .video-wrapper > div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .video-wrapper > div,
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -26,7 +26,7 @@ export class SpeakerController {
     private userService: UserService,
     private confService: ConfService,
     private speakerService: SpeakerService
-  ) { }
+  ) {}
 
   @Get('conf-next-speaker/:confId')
   @ApiBearerAuth('access-token')

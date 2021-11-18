@@ -1,0 +1,64 @@
+<ng-container *ngIf="talk$ | async as talk">
+  <mat-list>
+    <h2 mat-subheader>Palestra</h2>
+    <mat-list-item>
+      <mat-icon mat-list-icon>schedule</mat-icon>
+      <h3 mat-line>{{ talk.title }}</h3>
+      <p mat-line>
+        {{ talk.start | date: 'shortTime' }}
+        ~
+        {{ talk.end | date: 'shortTime' }}
+      </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <h2 mat-subheader>Palestrante</h2>
+    <mat-list-item>
+      <img mat-list-avatar [src]="talk.photo" [alt]="talk.name" />
+      <h3 mat-line>{{ talk.name }}</h3>
+      <p mat-line>{{ talk.bio }}</p>
+    </mat-list-item>
+  </mat-list>
+
+  <section class="p-16">
+    <h3 class="mat-h3 mat-hint">Descrição</h3>
+    <p>{{ talk.description }}</p>
+  </section>
+
+  <mat-list>
+    <h2 mat-subheader>Grupo</h2>
+    <mat-list-item>
+      <mat-icon mat-list-icon>group</mat-icon>
+      <h3 mat-line>{{ talk.group }}</h3>
+    </mat-list-item>
+  </mat-list>
+
+  <footer class="p-16 flex-row-between">
+    <ng-container
+      *ngIf="talk.members | inMembers: user?._id; else watchBtnTmpl"
+    >
+      <button
+        type="button"
+        (click)="unwatch.emit(talk)"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>event_busy</mat-icon>
+        <span>Remover da agenda</span>
+      </button>
+    </ng-container>
+
+    <ng-template #watchBtnTmpl>
+      <button type="button" (click)="watch.emit(talk)" mat-stroked-button>
+        <mat-icon>event_available</mat-icon>
+        <span>Adicionar na agenda</span>
+      </button>
+    </ng-template>
+  </footer>
+  <footer class="p-16 flex-row-between">
+    <button type="button" (click)="cancel.emit()" mat-raised-button>
+      Fechar
+    </button>
+
+    <a [routerLink]="talk.id" mat-raised-button color="primary"> Entrar </a>
+  </footer>
+</ng-container>

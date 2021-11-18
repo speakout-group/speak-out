@@ -1,0 +1,28 @@
+<div class="calendar-container" [class.calendar-is-mobile]="mq.matches">
+  <app-main-toolbar
+    route="/devparana"
+    [user]="auth.user$ | async"
+    (logout)="onLogout()"
+  ></app-main-toolbar>
+
+  <mat-sidenav-container class="calendar-sidenav-container">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    <mat-sidenav
+      #snav
+      [mode]="mq.matches ? 'over' : 'side'"
+      [fixedInViewport]="mq.matches"
+      position="end"
+      fixedTopGap="56"
+    >
+      <speak-out-talk-view
+        #talk="talkView"
+        (watch)="watchTalk($event)"
+        (unwatch)="unWatchTalk($event)"
+        [user]="auth.user$ | async"
+        (cancel)="snav.close()"
+      ></speak-out-talk-view>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

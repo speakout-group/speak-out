@@ -7,7 +7,7 @@ export class FetchMessagesDto {
   @Type(() => Number)
   @IsNumber()
   @ApiProperty({
-    required: false
+    required: false,
   })
   limit = 30;
 
@@ -15,7 +15,7 @@ export class FetchMessagesDto {
   @Type(() => Date)
   @IsDate()
   @ApiProperty({
-    required: false
+    required: false,
   })
   before: Date;
 }

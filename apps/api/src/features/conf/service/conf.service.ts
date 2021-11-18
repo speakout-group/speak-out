@@ -19,10 +19,7 @@ import { Socket } from 'socket.io';
 
 @Injectable()
 export class ConfService {
-  private blockedFields: (keyof Conf)[] = [
-    'members',
-    'owner',
-  ];
+  private blockedFields: (keyof Conf)[] = ['members', 'owner'];
 
   unpopulatedFields = '-' + this.blockedFields.join(' -');
 
@@ -33,7 +30,7 @@ export class ConfService {
     private sponsorService: SponsorService,
     @Inject(forwardRef(() => MessageService))
     private messageService: MessageService
-  ) { }
+  ) {}
 
   async create(conf: ConfDto, user: User) {
     const object = await this.confModel.create({ ...conf, owner: user._id });

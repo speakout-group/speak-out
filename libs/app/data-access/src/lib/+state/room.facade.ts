@@ -26,7 +26,7 @@ export class RoomFacade extends BaseState<RoomState> {
       publicRooms: [],
       memberRooms: [],
       userRooms: [],
-      room: null
+      room: null,
     });
   }
 

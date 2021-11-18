@@ -1,0 +1,36 @@
+@use 'libs/styles/mixins' as mixin;
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  figure {
+    margin: 0;
+  }
+
+  section {
+    flex-flow: row wrap;
+  }
+
+  speak-out-talk,
+  speak-out-subscribe {
+    cursor: pointer;
+    min-width: calc(25% - 20px);
+    max-width: calc(25% - 20px);
+  }
+
+  @include mixin.media(mobile) {
+    section {
+      flex-direction: column;
+    }
+    speak-out-talk,
+    speak-out-subscribe {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+}
