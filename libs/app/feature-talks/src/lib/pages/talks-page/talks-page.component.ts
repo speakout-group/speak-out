@@ -18,7 +18,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
 
   refresh = new Subject<void>();
 
-  viewDate: Date = new Date('11-18-2021');
+  viewDate: Date = new Date('2021-11-18T00:00:00-03:00');
 
   events: CalendarEvent[] = [];
 
