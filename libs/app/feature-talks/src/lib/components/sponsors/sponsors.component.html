@@ -1,0 +1,11 @@
+<h1 class="mat-h1">Patrocinadores</h1>
+
+<section class="flex-row gap-36">
+  <a
+    class="flex-2"
+    *ngFor="let supporter of facade.supporters$ | async"
+    [routerLink]="['/home/patrocinador', supporter.id]"
+  >
+    <img mat-card-image [src]="supporter.logo" [alt]="supporter.name" />
+  </a>
+</section>

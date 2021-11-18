@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TalksContainer } from './containers';
 import { TalkPageComponent, TalksPageComponent } from './pages';
-import { CalendarDayViewComponent, CalendarNavComponent } from './components';
+import { CalendarDayViewComponent, CalendarNavComponent, SponsorsComponent } from './components';
 
 import { TalkViewComponent } from './components/talk-view/talk-view.component';
 import { TalkUsersComponent } from './components/talk-users/talk-users.component';
@@ -53,6 +53,7 @@ import { TalkUsersComponent } from './components/talk-users/talk-users.component
     TalksContainer,
     CalendarDayViewComponent,
     CalendarNavComponent,
+    SponsorsComponent,
     TalkPageComponent,
     TalksPageComponent,
     TalkViewComponent,
