@@ -232,5 +232,31 @@
     "group": "opening",
     "stage": "opening",
     "ytid": "QFjOxCq8ac4"
+  },
+  {
+    "title": "Expecting Professionalism (Tradução simultanea)",
+    "description": "Nesta talk, Uncle Bob nos transporta para uma realidade alternativa onde ele é seu novo CTO, e ele irá dizer o que ele espera de você. Durante a talk, perceba quão realista são as expectativas são para os clientes e usuários. Perceba também quão impossível elas aparentam para os programadores.",
+    "cover": "assets/palestrantes/cover/uncle-bob.webp",
+    "name": "Uncle Bob",
+    "photo": "assets/palestrantes/uncle-bob.webp",
+    "bio": "Robert Cecil Martin, também conhecido como \"Uncle Bob\" (Tio Bob em português), é uma grande personalidade da comunidade de desenvolvimento de software, métodos ágeis e software craftsmanship, atuando na área desde 1970. Atualmente é consultor internacional e autor de vários livros abordando o tema. \n\n Uncle Bob foi um dos 17 signatários originais do Agile Manifesto em 2001. \n\nÉ fundador da Object Mentor Inc, uma empresa de consultoria especializada em C++, Java, OOP, design patterns, UML, metodologias ágeis, e Extreme Programming. Atualmente faz parte da equipe 8th Light.",
+    "start": "11-18-2021 14:00:00",
+    "end": "11-18-2021 15:00:00",
+    "group": "opening",
+    "stage": "opening",
+    "ytid": "Dn4UhQWRqBw"
+  },
+  {
+    "title": "Painel: A solução é formar Devs?",
+    "description": "Painel com a presença de empresários das área discutindo o atual cenário do mercado de trabalho, e a necessidade ou não de formação de profissionais na área.",
+    "cover": "assets/palestrantes/cover/painel.webp",
+    "name": "Fabio Akita, Eduardo Bona",
+    "photo": "assets/palestrantes/painel.webp",
+    "bio": "Fabio Akita é co-fundador da OmniTrade e Codeminer 42. Desde 2008 também é co-organizador da Rubyconf Brasil junto com a Locaweb. Ativista de Ruby on Rails desde 2006, publicou o primeiro livro do assunto. Já realizou quase 100 palestras pelo Brasil e pelo mundo. Trabalha como programador desde o começo dos anos 90 e passou por todas as principais tecnologias do mercado nesse período. Publica artigos no blog akitaonrails.com desde 2006",
+    "start": "11-20-2021 13:30:00",
+    "end": "11-20-2021 14:30:00",
+    "group": "painel",
+    "stage": "01",
+    "ytid": "TsJLag3DzFY"
   }
 ]
