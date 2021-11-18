@@ -36,7 +36,6 @@ export class TalksPageComponent implements OnInit, OnDestroy {
       )
       .subscribe(([user, talks]) => {
         this.events = talks.map(({ id, start, end, title, members }) => {
-          console.log({ id, start, end, title, members })
           const event: CalendarEvent = { id, end: new Date(end), start: new Date(start), title };
 
           if (user && (members as string[]).includes(user._id)) {
