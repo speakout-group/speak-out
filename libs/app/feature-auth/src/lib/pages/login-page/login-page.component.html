@@ -30,20 +30,20 @@
         <mat-error>
           {{ facade.error$ | async }}
         </mat-error>
-        
+
         <mat-card-actions class="mt-24">
           <a routerLink="/" mat-button mat-icon-button>
             <mat-icon>chevron_left</mat-icon>
           </a>
-          <button type="button" mat-stroked-button (click)="loginWithGoogle()">
+          <!-- <button type="button" mat-stroked-button (click)="loginWithGoogle()">
             <mat-icon svgIcon="google"></mat-icon>
             <span>Usar o Google</span>
-          </button>
+          </button> -->
           <span class="spacer"></span>
           <button mat-button mat-raised-button color="primary">Login</button>
         </mat-card-actions>
       </form>
-      
+
     </mat-card-content>
     <mat-card-footer>
       <mat-progress-bar
