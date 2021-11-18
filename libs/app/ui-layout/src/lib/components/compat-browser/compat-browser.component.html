@@ -1,0 +1,17 @@
+<mat-list *ngIf="platform.FIREFOX">
+  <mat-list-item>
+    <img mat-list-avatar src="assets/logos/firefox.svg" alt="">
+    <h3 mat-line>Ops, navegador sem suporte</h3>
+    <p mat-line>Ainda não temos suporte ao Firefox</p>
+  </mat-list-item>
+  <mat-list-item>
+    <img mat-list-avatar src="assets/logos/chrome.svg" alt="">
+    <h3 mat-line>Pote tentar o outro?</h3>
+    <p mat-line>
+      Qual tal usar o Chrome?
+    </p>
+    <a href="https://www.google.pt/chrome/" rel="noreferrer noopener" target="_blank">
+      <mat-icon>link</mat-icon>
+    </a>
+  </mat-list-item>
+</mat-list>

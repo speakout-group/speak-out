@@ -1,13 +1,17 @@
 import { LoginPageComponent, RegisterPageComponent } from './pages';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppDataAccessModule } from '@speak-out/app-data-access';
+import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { SocialLoginModule } from 'angularx-social-login';
+import { PlatformModule } from '@angular/cdk/platform';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [LoginPageComponent, RegisterPageComponent],
   imports: [
+    PlatformModule,
+    AppUiLayoutModule,
     SocialLoginModule,
     AppDataAccessModule,
     SharedUiCommonModule,
@@ -30,4 +34,4 @@ import { NgModule } from '@angular/core';
   ],
   exports: [SocialLoginModule],
 })
-export class AppFeatureAuthModule {}
+export class AppFeatureAuthModule { }
