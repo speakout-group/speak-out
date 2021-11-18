@@ -135,13 +135,7 @@
     <mat-card-content>
       <h1 class="mat-display-1">{{ user.username }},</h1>
       <h2 class="mat-display-2">ingresso garantido!</h2>
-      <button
-        type="button"
-        mat-stroked-button
-        (click)="facade.clearSubscription()"
-      >
-        Fazer outra inscrição
-      </button>
+      <a routerLink="/devparana" mat-stroked-button>Acessar Evento</a>
     </mat-card-content>
   </mat-card>
 </ng-template>
