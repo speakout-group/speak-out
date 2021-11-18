@@ -36,7 +36,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
       )
       .subscribe(([user, talks]) => {
         this.events = talks.map(({ id, start, end, title, members }) => {
-          const event: CalendarEvent = { id, end: new Date(end), start: new Date(start), title };
+          const event: CalendarEvent = { id, end, start, title };
 
           if (user && (members as string[]).includes(user._id)) {
             event.color = { primary: '#212121', secondary: '#ffEb3b' };
