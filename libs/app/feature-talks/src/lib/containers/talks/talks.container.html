@@ -25,4 +25,16 @@
       ></speak-out-talk-view>
     </mat-sidenav>
   </mat-sidenav-container>
+
+  <mat-toolbar color="primary" class="flex-row-between">
+    <a routerLink="/" class="brand-name">
+      <img src="/assets/logo.svg" alt="Speak Out" />
+    </a>
+
+    <h1>Speak Out</h1>
+
+    <span class="spacer"></span>
+
+    <a [routerLink]="['patrocinadores']" mat-button> Patrocinadores </a>
+  </mat-toolbar>
 </div>
