@@ -3,6 +3,7 @@ import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppDataAccessModule, TalksGuard } from '@speak-out/app-data-access';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { AppUiTalksModule } from '@speak-out/app-ui-talks';
@@ -25,10 +26,11 @@ import { SponsorsPageComponent } from './pages/sponsors-page/sponsors-page.compo
     LayoutModule,
     MatSelectModule,
     MatSidenavModule,
-    MatGridListModule,
     AppUiTalksModule,
+    MatGridListModule,
     AppUiLayoutModule,
     AppDataAccessModule,
+    MatBottomSheetModule,
     SharedUiCommonModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
