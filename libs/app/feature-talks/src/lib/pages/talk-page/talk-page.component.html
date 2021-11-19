@@ -47,9 +47,31 @@
     <span class="spacer"></span>
 
     <h2>{{ talk.title }}</h2>
-    <a routerLink="/devparana" mat-button>
-      <mat-icon _ngcontent-ngm-c203="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">list</mat-icon>
-      Lista de Palestras
-    </a>
+
+    <button type="button" (click)="openBottomSheet()" mat-icon-button>
+      <mat-icon>list</mat-icon>
+    </button>
   </mat-toolbar>
 </ng-container>
+
+<ng-template #bottomSheetTmpl>
+  <mat-action-list>
+    <ng-container *ngFor="let item of facade.talks$ | async">
+      <button
+        mat-list-item
+        [disabled]="item.end | isPast"
+        (click)="loadTalkById(item.id, $event)"
+      >
+        <img matListAvatar [src]="item.photo" [alt]="item.name" />
+        <h3 mat-line>{{ item.title }}</h3>
+        <p mat-line>
+          <time class="mat-hint">
+            {{ item.start | date: 'shortTime' }}
+          </time>
+          {{ item.description }}
+        </p>
+      </button>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-action-list>
+</ng-template>

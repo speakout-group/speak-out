@@ -142,5 +142,14 @@
     "photo": "assets/palestrantes/marcio-maykol.webp",
     "bio": "Marcio Bortolasci é coordenador da Área Cognitiva na Trade Technology, formado em Tecnologia em Processamento de Dados, Especialização em Engenharia do Software, com mais de 20 anos de experiência em desenvolvimento de soluções que fazem a diferença na vida das pessoas e nos seus negócios.\n\nMaykol Lopes é technical Executive Manager da Trade Technology. ﻿Possui vasta experiência em implementação e arquitetura de soluções em Projetos de grande porte. Possui conhecimento em todas as Brands disponíveis dentro da Trade Technology, IBM, Oracle, Cisco, Lenovo e demais tecnologias voltadas para Infraestrutura de TI.",
     "group": "After Data"
+  },
+  {
+    "id": "17",
+    "title": "Painel: A solução é formar Devs?",
+    "description": "Painel com a presença de empresários das área discutindo o atual cenário do mercado de trabalho, e a necessidade ou não de formação de profissionais na área.",
+    "name": "Fabio Akita, Eduardo Bona",
+    "photo": "assets/palestrantes/painel.webp",
+    "bio": "",
+    "group": "devparana"
   }
 ]

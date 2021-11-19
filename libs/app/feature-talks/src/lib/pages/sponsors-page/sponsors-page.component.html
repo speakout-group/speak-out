@@ -1,0 +1,13 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile
+    *ngFor="let supporter of facade.supporters$ | async"
+    [colspan]="(isHandset$ | async) ? 2 : 1"
+    [rowspan]="(isHandset$ | async) ? 2 : 1"
+  >
+    <mat-card>
+      <a [routerLink]="['/home/patrocinador', supporter.id]">
+        <img mat-card-image [src]="supporter.logo" [alt]="supporter.name" />
+      </a>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

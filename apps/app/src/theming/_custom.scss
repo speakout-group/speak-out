@@ -132,6 +132,15 @@ body {
   }
 }
 
+.mat-toolbar > button,
+.mat-toolbar > span,
+.mat-toolbar > h2 {
+  // max-width: 50%;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
 .is-hand-port mat-toolbar > span.brand-name {
   max-width: 100px;
   overflow: hidden;
@@ -159,4 +168,8 @@ body {
 // }
 body .mat-expansion-panel-body {
   padding: 0 12px;
+}
+
+body .mat-bottom-sheet-container.p-0 {
+  padding: 0;
 }
