@@ -12,12 +12,18 @@
       flex-direction: column;
     }
   }
+
+  h1 {
+    line-height: 0;
+    margin: 0;
+    font-size: 14px;
+  }
   
   section {
     flex-wrap: wrap;
     a {
       img {
-        max-width: 140px;
+        max-width: 100px;
       }
     }
   }
