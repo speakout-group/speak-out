@@ -21,7 +21,6 @@ export class TalkPageComponent implements OnInit {
     this.facade.talk$.subscribe(talk => {
       if (talk) {
         this.facade.subscribeTalk(talk.id);
-        console.log('talk: ', talk)
       }
     });
   }

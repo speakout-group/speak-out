@@ -3,6 +3,7 @@ import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppDataAccessModule, TalksGuard } from '@speak-out/app-data-access';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { AppUiTalksModule } from '@speak-out/app-ui-talks';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,6 +17,7 @@ import { CalendarDayViewComponent, CalendarNavComponent, SponsorsComponent } fro
 
 import { TalkViewComponent } from './components/talk-view/talk-view.component';
 import { TalkUsersComponent } from './components/talk-users/talk-users.component';
+import { SponsorsPageComponent } from './pages/sponsors-page/sponsors-page.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { TalkUsersComponent } from './components/talk-users/talk-users.component
     LayoutModule,
     MatSelectModule,
     MatSidenavModule,
+    MatGridListModule,
     AppUiTalksModule,
     AppUiLayoutModule,
     AppDataAccessModule,
@@ -42,6 +45,10 @@ import { TalkUsersComponent } from './components/talk-users/talk-users.component
             component: TalksPageComponent,
           },
           {
+            path: 'patrocinadores',
+            component: SponsorsPageComponent,
+          },
+          {
             path: ':id',
             component: TalkPageComponent,
           },
@@ -58,6 +65,7 @@ import { TalkUsersComponent } from './components/talk-users/talk-users.component
     TalksPageComponent,
     TalkViewComponent,
     TalkUsersComponent,
+    SponsorsPageComponent,
   ],
 })
 export class AppFeatureTalksModule {}
