@@ -5,6 +5,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { CalendarView } from 'angular-calendar';
 
 @Component({
   selector: 'speak-out-calendar-nav',
@@ -14,7 +15,7 @@ import {
 export class CalendarNavComponent {
   @Output() viewDateChange = new EventEmitter<Date>();
 
-  @Input() view: 'month' | 'week' | 'day' = 'week';
+  @Input() view: CalendarView = CalendarView.Day;
 
   @Input() viewDate: Date = new Date();
 
