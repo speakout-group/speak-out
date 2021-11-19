@@ -110,5 +110,21 @@
     "twitter": "",
     "video": "https://www.youtube.com/watch?v=Gn510EQEzt0",
     "questions": []
+  },
+  {
+    "id": "8",
+    "name": "Turing",
+    "slug": "turing",
+    "logo": "assets/logos/turing.svg",
+    "description": "",
+    "embed": "",
+    "website": "https://turing.com",
+    "linkedin": "https://www.linkedin.com/company/turingcom",
+    "instagram": "https://www.instagram.com/turingcom",
+    "youtube": "https://www.youtube.com/channel/UCLfxdtB3H0JdnniBnd4DoNA",
+    "facebook": "https://www.facebook.com/turingcom",
+    "twitter": "https://twitter.com/turingcom",
+    "video": "https://www.youtube.com/watch?v=Gn510EQEzt0",
+    "questions": []
   }
 ]
