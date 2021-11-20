@@ -1,9 +1,7 @@
 <ng-container *ngIf="facade.sponsor$ | async as sponsor">
   <section class="flex-2">
-    <mat-card>
-      <!-- <app-youtube-video [url]="sponsor.videoUrl"></app-youtube-video> -->
+    <mat-card *ngIf="sponsor.videoUrl">
       <iframe
-        *ngIf="sponsor.videoUrl"
         [src]="sponsor.videoUrl | sanitizeUrl"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -11,9 +9,18 @@
       ></iframe>
     </mat-card>
 
-    <mat-card>
+    <mat-card *ngIf="sponsor.calendlyUrl">
+    <iframe        
+        [src]="sponsor.calendlyUrl | sanitizeUrl"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >
+      </iframe>
+    </mat-card>
+
+    <mat-card *ngIf="sponsor.formUrl">
       <iframe
-        *ngIf="sponsor.formUrl"
         [src]="sponsor.formUrl | sanitizeUrl"
         frameborder="0"
         marginheight="0"
@@ -21,7 +28,6 @@
       >
         Carregando
       </iframe>
-      <!-- <speak-out-google-form [url]="sponsor.formUrl"></speak-out-google-form> -->
     </mat-card>
   </section>
   <aside class="flex-1">
@@ -77,17 +83,6 @@
           <img src="assets/icons/twitter.svg" alt="twitter icon" />
         </a>
       </div>
-
-      <mat-divider></mat-divider>
-
-      <iframe
-        *ngIf="sponsor.calendlyUrl"
-        [src]="sponsor.calendlyUrl | sanitizeUrl"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-      >
-      </iframe>
     </mat-card>
   </aside>
 </ng-container>
