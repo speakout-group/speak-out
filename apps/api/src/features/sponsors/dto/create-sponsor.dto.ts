@@ -16,28 +16,14 @@ export class CreateSponsorDto {
   })
   @IsString()
   description: string;
-  
+
   @ApiProperty({
     type: String,
     required: true,
   })
   @IsString()
   logo: string;
-  
-  @ApiProperty({
-    type: String,
-    required: true,
-  })
-  @IsString()
-  slug: string;
-  
-  @ApiProperty({
-    type: String,
-    required: false,
-  })
-  @IsString()
-  color: string;
-  
+
   @ApiProperty({
     type: String,
     required: false,
@@ -45,7 +31,7 @@ export class CreateSponsorDto {
   @IsUrl()
   @IsOptional()
   website: string;
-  
+
   @ApiProperty({
     type: String,
     required: false,
@@ -53,7 +39,39 @@ export class CreateSponsorDto {
   @IsUrl()
   @IsOptional()
   youtube: string;
-  
+
+  @ApiProperty({
+    type: String,
+    required: false,
+  })
+  @IsUrl()
+  @IsOptional()
+  linkedin: string;
+
+  @ApiProperty({
+    type: String,
+    required: false,
+  })
+  @IsUrl()
+  @IsOptional()
+  instagram: string;
+
+  @ApiProperty({
+    type: String,
+    required: false,
+  })
+  @IsUrl()
+  @IsOptional()
+  facebook: string;
+
+  @ApiProperty({
+    type: String,
+    required: false,
+  })
+  @IsUrl()
+  @IsOptional()
+  twitter: string;
+
   @ApiProperty({
     type: String,
     required: false,
@@ -61,7 +79,7 @@ export class CreateSponsorDto {
   @IsUrl()
   @IsOptional()
   calendlyUrl: string;
-  
+
   @ApiProperty({
     type: String,
     required: false,
@@ -69,7 +87,7 @@ export class CreateSponsorDto {
   @IsUrl()
   @IsOptional()
   videoUrl: string;
-  
+
   @ApiProperty({
     type: String,
     required: false,

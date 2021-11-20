@@ -55,6 +55,17 @@ export class SponsorsController {
     );
   }
 
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  async delete(
+    @Param('id', ParseObjectIdPipe) id: string
+  ) {
+    return this.sponsorsService.delete(
+      await this.sponsorsService.validateSponsorById(id),
+    );
+  }
+
   @Post('join')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('access-token')
