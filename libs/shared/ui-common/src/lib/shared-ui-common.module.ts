@@ -10,6 +10,7 @@ import {
   MatFormFieldModule,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
+import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { VisibilityDirective } from './directives/visibility.directive';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -26,7 +27,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 
 @NgModule({
   imports: [
