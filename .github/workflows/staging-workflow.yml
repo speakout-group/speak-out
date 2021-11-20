@@ -41,7 +41,7 @@ jobs:
       - uses: mansagroup/nrwl-nx-action@v2
         with:
           targets: build,cd-staging
-          affected: 'true'
+          all: 'true'
           args: '--prod'
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
