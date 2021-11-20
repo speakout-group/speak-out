@@ -3,7 +3,6 @@ import { TalksGateway } from '../gateway/talks.gateway';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, UpdateQuery } from 'mongoose';
 import { getSocketClient } from '../../../shared/utils/get-socket-client';
-import { MessageService } from '../../messages/service/message.service';
 import { UserService } from '../../user/service/user.service';
 import { remove } from '../../../shared/utils/remove';
 import { Talk } from '../schema/talk.schema';

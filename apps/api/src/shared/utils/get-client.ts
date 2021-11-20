@@ -1,13 +1,13 @@
 import { ExecutionContext } from '@nestjs/common';
 import { Dictionary } from 'code-config';
-import { Room } from '../../features/room/schema/room.schema';
+import { Sponsor } from '../../features/sponsors/schema/sponsor.schema';
 import { Talk } from '../../features/talks/schema/talk.schema';
 import { User } from '../../features/user/schema/user.schema';
 
 export interface Client {
   headers: Dictionary<string>;
   user: User;
-  room?: Room;
+  sponsor?: Sponsor;
   talk?: Talk;
 }
 
