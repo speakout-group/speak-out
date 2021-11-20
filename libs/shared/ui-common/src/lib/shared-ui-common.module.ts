@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 
 @NgModule({
   imports: [
@@ -55,8 +56,9 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatToolbarModule,
     VisibilityDirective,
+    SanitizeUrlPipe,
   ],
-  declarations: [VisibilityDirective],
+  declarations: [VisibilityDirective, SanitizeUrlPipe],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

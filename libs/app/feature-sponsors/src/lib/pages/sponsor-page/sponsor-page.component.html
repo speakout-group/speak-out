@@ -1,15 +1,28 @@
 <ng-container *ngIf="facade.sponsor$ | async as sponsor">
   <section class="flex-2">
-    <ng-container *ngIf="sponsor.videoUrl">
-      <mat-card>
-        <app-youtube-video [url]="sponsor.videoUrl"></app-youtube-video>
-      </mat-card>
-    </ng-container>
-    <ng-container *ngIf="sponsor.formUrl">
-      <mat-card>
-        <speak-out-google-form [url]="sponsor.formUrl"></speak-out-google-form>
-      </mat-card>
-    </ng-container>
+    <mat-card>
+      <!-- <app-youtube-video [url]="sponsor.videoUrl"></app-youtube-video> -->
+      <iframe
+        *ngIf="sponsor.videoUrl"
+        [src]="sponsor.videoUrl | sanitizeUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </mat-card>
+
+    <mat-card>
+      <iframe
+        *ngIf="sponsor.formUrl"
+        [src]="sponsor.formUrl | sanitizeUrl"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >
+        Carregando
+      </iframe>
+      <!-- <speak-out-google-form [url]="sponsor.formUrl"></speak-out-google-form> -->
+    </mat-card>
   </section>
   <aside class="flex-1">
     <mat-card>
@@ -25,10 +38,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          <img
-            src="assets/icons/linkedin.svg"
-            alt="linkedin icon"
-          />
+          <img src="assets/icons/linkedin.svg" alt="linkedin icon" />
         </a>
 
         <a
@@ -37,10 +47,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          <img
-            src="assets/icons/instagram.svg"
-            alt="instagram icon"
-          />
+          <img src="assets/icons/instagram.svg" alt="instagram icon" />
         </a>
 
         <a
@@ -49,10 +56,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          <img
-            src="assets/icons/youtube.svg"
-            alt="youtube icon"
-          />
+          <img src="assets/icons/youtube.svg" alt="youtube icon" />
         </a>
 
         <a
@@ -61,10 +65,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          <img
-            src="assets/icons/facebook.svg"
-            alt="facebook icon"
-          />
+          <img src="assets/icons/facebook.svg" alt="facebook icon" />
         </a>
 
         <a
@@ -73,10 +74,7 @@
           rel="noreferrer noopener"
           target="_blank"
         >
-          <img
-            src="assets/icons/twitter.svg"
-            alt="twitter icon"
-          />
+          <img src="assets/icons/twitter.svg" alt="twitter icon" />
         </a>
       </div>
     </mat-card>

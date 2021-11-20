@@ -9,12 +9,13 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class YoutubeVideoComponent implements OnInit {
   @Input() url: string | null = null;
 
-  safeUrl!: SafeUrl;
+  safeUrl!: SafeUrl | null;
 
   constructor(private sanintizer: DomSanitizer) {}
 
   ngOnInit(): void {
     if (this.url) this.safeUrl = this.sanitize(this.url);
+    else this.safeUrl = null
   }
 
   sanitize(url: string) {
