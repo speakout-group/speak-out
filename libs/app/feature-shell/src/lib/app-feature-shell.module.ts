@@ -1,4 +1,4 @@
-import { AppDataAccessModule, AuthGuard, TalksGuard } from '@speak-out/app-data-access';
+import { AppDataAccessModule, TalksGuard } from '@speak-out/app-data-access';
 import { SharedUiCommonModule } from '@speak-out/shared-ui-common';
 import { AppUiLayoutModule } from '@speak-out/app-ui-layout';
 import { NotFoundPageComponent } from './pages';
@@ -8,9 +8,7 @@ import { MainContainer } from './containers';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [
-    MainContainer,
-  ],
+  declarations: [MainContainer],
   imports: [
     CommonModule,
     AppUiLayoutModule,
@@ -52,4 +50,4 @@ import { NgModule } from '@angular/core';
     ]),
   ],
 })
-export class AppFeatureShellModule {}
+export class AppFeatureShellModule { }

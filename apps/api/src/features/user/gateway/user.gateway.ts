@@ -12,8 +12,8 @@ import { Server, Socket } from 'socket.io';
 import { getSocketUser } from '../../../shared/utils/get-socket-user';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
-import { User } from '../schema/user.schema';
 import { UserService } from '../service/user.service';
+import { User } from '../schema/user.schema';
 
 @UseGuards(JwtAuthGuard)
 @WebSocketGateway()

@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
+import { MainToolbarComponent, YoutubeVideoComponent } from './components';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.com
     MatDividerModule,
     MatToolbarModule,
   ],
-  declarations: [MainToolbarComponent],
-  exports: [MainToolbarComponent],
+  declarations: [MainToolbarComponent, YoutubeVideoComponent],
+  exports: [MainToolbarComponent, YoutubeVideoComponent],
 })
 export class AppUiLayoutModule {}

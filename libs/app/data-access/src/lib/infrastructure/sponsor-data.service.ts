@@ -1,9 +1,8 @@
 import { AppConfig, APP_CONFIG } from '../app-data-access.config';
 import { SocketService } from '../services/socket.service';
-import { getEntityWithSortedMembers } from '../utils';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Sponsor, User } from '../interfaces';
+import { SponsorRaw, User } from '../interfaces';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -17,53 +16,38 @@ export class SponsorDataService {
     private config: AppConfig
   ) {}
 
-  getSponsor(sponsorId: string) {
-    return this.http
-      .get<Sponsor>(`${this.config.api}/sponsor/id/${sponsorId}`)
-      .pipe(map(getEntityWithSortedMembers));
+  getSponsor(id: string) {
+    return this.http.get<SponsorRaw>(`${this.config.api}/sponsors/${id}`);
   }
 
-  getPublicSponsors() {
-    return this.http.get<Sponsor[]>(`${this.config.api}/sponsor/public`);
-  }
-
-  getSponsorsByMember() {
-    return this.http.get<Sponsor[]>(`${this.config.api}/sponsor/member`);
-  }
-
-  getUserSponsors() {
-    return this.http.get<Sponsor[]>(`${this.config.api}/sponsor`);
-  }
   getSponsors() {
-    return this.http.get<Sponsor[]>(`${this.config.api}/sponsor`);
+    return this.http.get<SponsorRaw[]>(`${this.config.api}/sponsors`);
   }
 
-  createSponsor(sponsor: Partial<Sponsor>) {
-    return this.http.post<Sponsor>(`${this.config.api}/sponsor`, sponsor);
+  updateSponsor(id: string, updateSponsor: Partial<SponsorRaw>) {
+    return this.http.put<SponsorRaw>(`${this.config.api}/sponsors/${id}`, updateSponsor);
   }
 
-  deleteSponsor(sponsor: Sponsor) {
-    return this.http.delete(`${this.config.api}/sponsor/delete/${sponsor._id}`);
+  createSponsor(createSponsor: Omit<SponsorRaw, '_id'>) {
+    return this.http.post<SponsorRaw>(`${this.config.api}/sponsors`, createSponsor);
   }
 
-  updateSponsor(id: string, sponsor: Sponsor) {
-    return this.http.put<Sponsor>(`${this.config.api}/sponsor/${id}`, sponsor);
+  removeSponsor(id: string) {
+    return this.http.delete<SponsorRaw>(`${this.config.api}/sponsors/${id}`);
   }
 
   joinSponsor(sponsorId: string) {
     return this.http
-      .post<Sponsor>(`${this.config.api}/sponsor/join`, { sponsorId })
-      .pipe(map(getEntityWithSortedMembers));
+      .post<SponsorRaw>(`${this.config.api}/sponsors/join`, { sponsorId })
+      .pipe(map(this.getSponsorWithSortedMembers));
   }
 
   leaveSponsor(sponsorId: string) {
-    return this.http.delete<Sponsor>(
-      `${this.config.api}/sponsor/leave/${sponsorId}`
-    );
+    return this.http.delete<SponsorRaw>(`${this.config.api}/sponsors/leave/${sponsorId}`);
   }
 
-  subscribeSponsor(sponsor: Sponsor) {
-    return this.socket.emit('sponsor:subscribe', sponsor._id);
+  subscribeSponsor(sponsorId: string) {
+    this.socket.emit('sponsor:subscribe', sponsorId);
   }
 
   onLeaveEvent() {
@@ -74,13 +58,11 @@ export class SponsorDataService {
     return this.socket.fromEvent<User>('sponsor:join');
   }
 
-  onUpdateEvent() {
-    return this.socket
-      .fromEvent<Sponsor>('sponsor:update')
-      .pipe(map(getEntityWithSortedMembers));
-  }
+  getSponsorWithSortedMembers(sponsor: SponsorRaw) {
+    sponsor.members = (sponsor.members ?? []).sort((a: any, b: any) =>
+      a.online === b.online ? 0 : a.online ? -1 : b.online ? 1 : 0
+    );
 
-  onDeleteEvent() {
-    return this.socket.fromEvent<Sponsor>('sponsor:delete');
+    return sponsor;
   }
 }

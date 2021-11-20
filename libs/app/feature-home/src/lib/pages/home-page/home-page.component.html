@@ -1,5 +1,5 @@
 <figure>
-  <img src="assets/banners/uncle-bob-banner.webp" alt="Dev Paraná Conf 2021" />
+  <img src="assets/banners/devpr-banner.webp" alt="Dev Paraná Conf 2021" />
 </figure>
 
 <section class="mw-full m-20">
@@ -13,6 +13,8 @@
 <section class="mw-full m-20">
   <speak-out-sponsors></speak-out-sponsors>
 </section>
+
+<pre>{{ facade.sponsors$ | async | json }}</pre>
 
 <mat-toolbar color="primary">
   <span> Speak Out Group </span>
@@ -40,6 +42,6 @@
     </svg>
   </a>
   <br />
-  <a routerLink="/readme/termos">Termos de uso</a>
-  <a routerLink="/readme/privacidade">Políticas de privacidade</a>
+  <a routerLink="/home/readme/termos">Termos de uso</a>
+  <a routerLink="/home/readme/privacidade">Políticas de privacidade</a>
 </mat-toolbar>

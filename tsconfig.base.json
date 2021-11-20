@@ -42,6 +42,9 @@
       "@speak-out/app-ui-dialogs": ["libs/app/ui-dialogs/src/index.ts"],
       "@speak-out/app-ui-layout": ["libs/app/ui-layout/src/index.ts"],
       "@speak-out/app-ui-talks": ["libs/app/ui-talks/src/index.ts"],
+      "@speak-out/app-feature-sponsors": [
+        "libs/app/feature-sponsors/src/index.ts"
+      ],
       "@speak-out/shared-ui-common": ["libs/shared/ui-common/src/index.ts"],
       "@speak-out/shared-ui-dialogs": ["libs/shared/ui-dialogs/src/index.ts"],
       "@speak-out/shared-util-storage": [

@@ -98,6 +98,7 @@ body {
   }
 
   .mat-toolbar {
+    gap: 12px;
     min-height: 64px;
 
     .mat-button {
@@ -110,7 +111,7 @@ body {
       display: flex;
       width: 32px;
       height: 32px;
-      & + h1 {
+      h1 {
         margin-left: 12px;
       }
     }
@@ -130,6 +131,15 @@ body {
   .mat-list-base .mat-list-option {
     color: rgb(0 0 0);
   }
+}
+
+.mat-toolbar > button,
+.mat-toolbar > span,
+.mat-toolbar > h2 {
+  // max-width: 50%;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
 }
 
 .is-hand-port mat-toolbar > span.brand-name {
@@ -159,4 +169,8 @@ body {
 // }
 body .mat-expansion-panel-body {
   padding: 0 12px;
+}
+
+body .mat-bottom-sheet-container.p-0 {
+  padding: 0;
 }

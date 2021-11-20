@@ -1,14 +1,34 @@
 import { User } from './user';
 
 export interface Sponsor {
-  _id: string;
   name: string;
   description: string;
-  logo?: string;
-  slug: string;
-  color: string;
-  website: string;
-  youtube: string;
-  members: User[] | string[];
-  owner: User | string;
+  logo: string;
+  website?: string;
+  youtube?: string;
+  linkedin?: string;
+  instagram?: string;
+  facebook?: string;
+  twitter?: string;
+  calendlyUrl?: string;
+  videoUrl?: string;
+  formUrl?: string;
+  members: User[];
+}
+
+export interface SponsorRaw extends Sponsor {
+  _id: string;
+  calendlyUrl: string;
+  videoUrl: string;
+  formUrl: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// interface SafeUrl {}
+
+export interface SponsorVM extends Sponsor {
+  id: string;
+  calendlyUrl: string;
+  videoUrl: string;
+  formUrl: string;
 }

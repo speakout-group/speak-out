@@ -25,7 +25,7 @@ import { Subject } from 'rxjs';
 })
 export class CalendarDayViewComponent {
   @Input() viewDate: Date = new Date();
-  @Input() startHour = 8;
+  @Input() startHour = 9;
   @Input() endHour = 21;
   @Input() events: CalendarEvent[] = [];
   @Input() refresh = new Subject<void>();

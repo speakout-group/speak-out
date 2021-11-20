@@ -1,0 +1,88 @@
+<ng-container *ngIf="facade.sponsor$ | async as sponsor">
+  <section class="flex-2">
+    <mat-card *ngIf="sponsor.videoUrl">
+      <iframe
+        [src]="sponsor.videoUrl | sanitizeUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </mat-card>
+
+    <mat-card *ngIf="sponsor.calendlyUrl">
+    <iframe        
+        [src]="sponsor.calendlyUrl | sanitizeUrl"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >
+      </iframe>
+    </mat-card>
+
+    <mat-card *ngIf="sponsor.formUrl">
+      <iframe
+        [src]="sponsor.formUrl | sanitizeUrl"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >
+        Carregando
+      </iframe>
+    </mat-card>
+  </section>
+  <aside class="flex-1">
+    <mat-card>
+      <a rel="noreferrer noopener" target="_blank" [href]="sponsor.website">
+        <img mat-card-image [src]="sponsor.logo" [alt]="sponsor.logo" />
+      </a>
+      <h2 mat-card-title>{{ sponsor.name }}</h2>
+      <p mat-card-content>{{ sponsor.description }}</p>
+      <div class="flex-row-around">
+        <a
+          *ngIf="sponsor.linkedin"
+          [href]="sponsor.linkedin"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <img src="assets/icons/linkedin.svg" alt="linkedin icon" />
+        </a>
+
+        <a
+          *ngIf="sponsor.instagram"
+          [href]="sponsor.instagram"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <img src="assets/icons/instagram.svg" alt="instagram icon" />
+        </a>
+
+        <a
+          *ngIf="sponsor.youtube"
+          [href]="sponsor.youtube"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <img src="assets/icons/youtube.svg" alt="youtube icon" />
+        </a>
+
+        <a
+          *ngIf="sponsor.facebook"
+          [href]="sponsor.facebook"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <img src="assets/icons/facebook.svg" alt="facebook icon" />
+        </a>
+
+        <a
+          *ngIf="sponsor.twitter"
+          [href]="sponsor.twitter"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <img src="assets/icons/twitter.svg" alt="twitter icon" />
+        </a>
+      </div>
+    </mat-card>
+  </aside>
+</ng-container>

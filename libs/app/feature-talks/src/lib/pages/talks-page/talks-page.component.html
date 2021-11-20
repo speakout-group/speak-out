@@ -4,7 +4,6 @@
   <span class="spacer"></span>
 
   <speak-out-calendar-nav
-    [view]="'day'"
     [viewDate]="viewDate"
     (viewDateChange)="onViewDateChange($event)"
   >
@@ -12,13 +11,9 @@
 </mat-toolbar>
 
 <speak-out-calendar-day-view
-  [viewDate]="viewDate"
-  [events]="events"
-  [refresh]="refresh"
-  (eventClicked)="onEventClicked($event)"
+[viewDate]="viewDate"
+[events]="events"
+[refresh]="refresh"
+(eventClicked)="onEventClicked($event)"
 >
 </speak-out-calendar-day-view>
-
-<section class="mw-full m-20">
-  <speak-out-sponsors></speak-out-sponsors>
-</section>

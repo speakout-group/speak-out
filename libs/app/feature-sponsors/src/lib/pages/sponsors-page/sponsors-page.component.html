@@ -1,0 +1,13 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile
+    *ngFor="let sponsor of facade.sponsors$ | async"
+    [colspan]="(isHandset$ | async) ? 2 : 1"
+    [rowspan]="(isHandset$ | async) ? 2 : 1"
+  >
+    <mat-card>
+      <a [routerLink]="[sponsor.id]">
+        <img mat-card-image [src]="sponsor.logo" [alt]="sponsor.name" />
+      </a>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

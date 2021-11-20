@@ -10,6 +10,7 @@ import {
   MatFormFieldModule,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
+import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { VisibilityDirective } from './directives/visibility.directive';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -55,8 +56,9 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatToolbarModule,
     VisibilityDirective,
+    SanitizeUrlPipe,
   ],
-  declarations: [VisibilityDirective],
+  declarations: [VisibilityDirective, SanitizeUrlPipe],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
