@@ -46,6 +46,11 @@ export class SponsorsService {
       .findOneAndUpdate({ _id: sponsor._id, owner: user._id }, body);
   }
 
+  async delete(sponsor: Sponsor) {
+    return this.sponsorModel
+      .findByIdAndDelete(sponsor._id);
+  }
+
   handleUpdateSponsor(sponsor: Sponsor, body: Partial<Sponsor>) {
     this.sendMessage(sponsor, 'sponsor:update', Object.assign(sponsor, body));
   }

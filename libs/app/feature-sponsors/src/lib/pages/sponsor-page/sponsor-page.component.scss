@@ -1,0 +1,22 @@
+@use 'libs/styles/mixins' as mixin;
+
+:host {
+  flex: 1;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  background-color: #fbfcfd;
+  
+  @include mixin.media(mobile) {
+    flex-direction: column-reverse;
+  }
+
+  .mat-card {
+    flex: 1;
+    margin: 25px;
+  }
+
+  section .mat-card {
+    padding: 0;
+  }
+}

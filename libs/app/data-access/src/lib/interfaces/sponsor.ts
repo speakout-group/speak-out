@@ -4,12 +4,16 @@ export interface Sponsor {
   name: string;
   description: string;
   logo: string;
-  slug: string;
-  color: string;
-  website: string;
-  youtube: string;
-  members: User[] | string[];
-  owner: User | string;
+  website?: string;
+  youtube?: string;
+  linkedin?: string;
+  instagram?: string;
+  facebook?: string;
+  twitter?: string;
+  calendlyUrl?: string;
+  videoUrl?: string;
+  formUrl?: string;
+  members: User[];
 }
 
 export interface SponsorRaw extends Sponsor {
@@ -20,11 +24,11 @@ export interface SponsorRaw extends Sponsor {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface SafeUrl {}
+// interface SafeUrl {}
 
 export interface SponsorVM extends Sponsor {
   id: string;
-  calendlyUrl: SafeUrl;
-  videoUrl: SafeUrl;
-  formUrl: SafeUrl;
+  calendlyUrl: string;
+  videoUrl: string;
+  formUrl: string;
 }

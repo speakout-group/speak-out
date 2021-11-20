@@ -382,6 +382,32 @@
       },
       "tags": []
     },
+    "app-feature-sponsors": {
+      "projectType": "library",
+      "root": "libs/app/feature-sponsors",
+      "sourceRoot": "libs/app/feature-sponsors/src",
+      "prefix": "speak-out",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/app/feature-sponsors"],
+          "options": {
+            "jestConfig": "libs/app/feature-sponsors/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app/feature-sponsors/src/**/*.ts",
+              "libs/app/feature-sponsors/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "app-feature-talks": {
       "projectType": "library",
       "root": "libs/app/feature-talks",

@@ -48,7 +48,10 @@ import { SponsorsPageComponent } from './pages/sponsors-page/sponsors-page.compo
           },
           {
             path: 'patrocinadores',
-            component: SponsorsPageComponent,
+            loadChildren: () =>
+              import('@speak-out/app-feature-sponsors').then(
+                (module) => module.AppFeatureSponsorsModule
+              ),
           },
           {
             path: ':id',
@@ -56,6 +59,7 @@ import { SponsorsPageComponent } from './pages/sponsors-page/sponsors-page.compo
           },
         ],
       },
+      
     ]),
   ],
   declarations: [

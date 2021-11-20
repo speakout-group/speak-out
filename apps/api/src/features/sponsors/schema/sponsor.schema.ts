@@ -7,27 +7,76 @@ import { Document } from 'mongoose';
 @Schema()
 export class Sponsor extends Document {
   @Prop({
+    type: String,
     required: true,
   })
   name: string;
 
-  @Prop()
+  @Prop({
+    type: String,
+    required: false,
+  })
   description: string;
-
-  @Prop()
+  
+  @Prop({
+    type: String,
+    required: true,
+  })
   logo: string;
-
-  @Prop()
-  slug: string;
-
-  @Prop()
-  color: string;
-
-  @Prop()
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
   website: string;
-
-  @Prop()
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
   youtube: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  linkedin: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  instagram: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  facebook: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  twitter: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  calendlyUrl: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  videoUrl: string;
+  
+  @Prop({
+    type: String,
+    required: false,
+  })
+  formUrl: string;
 
   @Prop({
     type: [
@@ -38,19 +87,6 @@ export class Sponsor extends Document {
     ],
   })
   members: User[];
-
-  // @ApiProperty()
-  // @Prop({
-  //   type: ObjectId,
-  //   ref: Conf.name,
-  // })
-  // conf: Conf;
-
-  // @Prop({
-  //   type: ObjectId,
-  //   ref: User.name,
-  // })
-  // owner: User;
 }
 
 export const SponsorSchema = createSchemaForClassWithMethods(Sponsor);

@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { YoutubeIdPipe } from './pipes/youtube-id.pipe';
 
 @NgModule({
   imports: [
@@ -55,8 +56,9 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatToolbarModule,
     VisibilityDirective,
+    YoutubeIdPipe,
   ],
-  declarations: [VisibilityDirective],
+  declarations: [VisibilityDirective, YoutubeIdPipe],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
