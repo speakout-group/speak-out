@@ -1,118 +1,126 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { SponsorDataService } from '../infrastructure';
-import { Injectable } from '@angular/core';
+import { SponsorVM, SponsorRaw } from '../interfaces';
 import { BaseState } from './base.state';
-import { Sponsor } from '../interfaces';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 export interface SponsorState {
   loading: boolean;
-  publicSponsors: Sponsor[];
-  memberSponsors: Sponsor[];
-  userSponsors: Sponsor[];
-  sponsor: Sponsor | null;
+  sponsors: SponsorVM[];
+  sponsor: SponsorVM | null;
 }
 
 @Injectable()
 export class SponsorFacade extends BaseState<SponsorState> {
   loading$ = this.select((state) => state.loading);
 
-  publicSponsors$ = this.select((state) => state.publicSponsors);
-  memberSponsors$ = this.select((state) => state.memberSponsors);
-  userSponsors$ = this.select((state) => state.userSponsors);
+  sponsors$ = this.select((state) => state.sponsors);
   sponsor$ = this.select((state) => state.sponsor);
 
-  constructor(private service: SponsorDataService) {
+  constructor(
+    private service: SponsorDataService,
+    private sanitizer: DomSanitizer
+  ) {
     super({
       loading: false,
-      publicSponsors: [],
-      memberSponsors: [],
-      userSponsors: [],
+      sponsors: [],
       sponsor: null,
-    });
-  }
-
-  createSponsor(sponsor: Partial<Sponsor>) {
-    this.setState({ loading: true });
-    this.service.createSponsor(sponsor).subscribe((sponsor) => {
-      this.setState({
-        userSponsors: [...this.state.userSponsors, sponsor],
-      });
-      this.setState({ loading: false });
     });
   }
 
   loadUserSponsors() {
     this.setState({ loading: true });
-    this.service.getUserSponsors().subscribe((userSponsors) => {
-      this.setState({ userSponsors });
-      this.setState({ loading: false });
-    });
+    this.service
+      .getUserSponsors()
+      .pipe(map((sponsors) => sponsors.map(this.mapTo)))
+      .subscribe((sponsors) => {
+        this.setState({ sponsors });
+        this.setState({ loading: false });
+      });
   }
 
-  loadPublicSponsors() {
+  loadSponsors() {
     this.setState({ loading: true });
-    this.service.getPublicSponsors().subscribe((publicSponsors) => {
-      this.setState({ publicSponsors });
-      this.setState({ loading: false });
-    });
+    this.service
+      .getSponsors()
+      .pipe(map((sponsors) => sponsors.map(this.mapTo)))
+      .subscribe((sponsors) => {
+        this.setState({ sponsors });
+        this.setState({ loading: false });
+      });
   }
-
-  loadMemberSponsors() {
-    this.setState({ loading: true });
-    this.service.getSponsorsByMember().subscribe((memberSponsors) => {
-      this.setState({ memberSponsors });
-      this.setState({ loading: false });
-    });
-  }
-
-  // loadSponsors() {
-  //   this.setState({ loading: true });
-  //   this.service.getPublicSponsors().subscribe((sponsors) => {
-  //     this.setState({ sponsors });
-  //     this.setState({ loading: false });
-  //   });
-  // }
 
   loadSponsor(id: string) {
     this.setState({ loading: true });
-    this.service.getSponsor(id).subscribe((sponsor) => {
-      this.setState({ sponsor });
-      this.setState({ loading: false });
-    });
+    this.service
+      .getSponsor(id)
+      .pipe(map(this.mapTo))
+      .subscribe((sponsor) => {
+        this.setState({ sponsor });
+        this.setState({ loading: false });
+      });
   }
 
-  updateSponsor(id: string, sponsor: Sponsor) {
+  updateSponsor(id: string, sponsor: SponsorRaw) {
     this.setState({ loading: true });
-    this.service.updateSponsor(id, sponsor).subscribe((sponsor) => {
-      this.setState({ sponsor });
-      this.setState({ loading: false });
-    });
+    this.service
+      .updateSponsor(id, sponsor)
+      .pipe(map(this.mapTo))
+      .subscribe((sponsor) => {
+        this.setState({ sponsor });
+        this.setState({ loading: false });
+      });
   }
 
   deleteSponsor(id: string) {
     this.setState({ loading: true });
-    this.service.getSponsor(id).subscribe((sponsor) => {
-      this.setState({ sponsor });
-      this.setState({ loading: false });
-    });
+    this.service
+      .getSponsor(id)
+      .pipe(map(this.mapTo))
+      .subscribe((sponsor) => {
+        this.setState({ sponsor });
+        this.setState({ loading: false });
+      });
   }
 
   leaveSponsor(id: string) {
     this.setState({ loading: true });
-    this.service.leaveSponsor(id).subscribe((sponsor) => {
-      this.setState({ sponsor });
-      this.setState({ loading: false });
-    });
+    this.service
+      .leaveSponsor(id)
+      .pipe(map(this.mapTo))
+      .subscribe((sponsor) => {
+        this.setState({ sponsor });
+        this.setState({ loading: false });
+      });
   }
 
-  subscribeSponsor(sponsor: Sponsor) {
+  subscribeSponsor(sponsor: SponsorRaw) {
     this.service.subscribeSponsor(sponsor);
   }
 
   joinSponsor(sponsorId: string) {
     this.setState({ loading: true });
-    this.service.joinSponsor(sponsorId).subscribe((sponsor) => {
-      this.setState({ sponsor });
-      this.setState({ loading: false });
-    });
+    this.service
+      .joinSponsor(sponsorId)
+      .pipe(map(this.mapTo))
+      .subscribe((sponsor) => {
+        this.setState({ sponsor });
+        this.setState({ loading: false });
+      });
+  }
+
+  mapTo({ _id, calendlyUrl, formUrl, videoUrl, ...sponsor }: SponsorRaw) {
+    return {
+      ...sponsor,
+      id: _id,
+      calendlyUrl: this.sanitize(calendlyUrl),
+      videoUrl: this.sanitize(videoUrl),
+      formUrl: this.sanitize(formUrl),
+    };
+  }
+
+  private sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

@@ -1,9 +1,9 @@
 import {
-  forwardRef,
   Inject,
-  UseFilters,
-  UseGuards,
   UsePipes,
+  UseGuards,
+  UseFilters,
+  forwardRef,
   ValidationPipe,
 } from '@nestjs/common';
 import {
@@ -17,31 +17,31 @@ import {
 import { Server, Socket } from 'socket.io';
 import { ExceptionsFilter } from '../../../core/filter/exceptions.filter';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
-import { RoomService } from '../service/room.service';
+import { SponsorsService } from '../service/sponsors.service';
 
 @UsePipes(new ValidationPipe())
 @UseFilters(new ExceptionsFilter())
 @UseGuards(JwtAuthGuard)
 @WebSocketGateway()
-export class RoomGateway implements OnGatewayDisconnect<Socket> {
+export class SponsorsGateway implements OnGatewayDisconnect<Socket> {
   @WebSocketServer() server: Server;
 
   constructor(
-    @Inject(forwardRef(() => RoomService)) private roomService: RoomService
+    @Inject(forwardRef(() => SponsorsService)) private sponsorsService: SponsorsService
   ) {}
 
   handleDisconnect(socket: Socket) {
-    this.roomService.unsubscribeSocket(socket);
+    this.sponsorsService.unsubscribeSocket(socket);
   }
 
-  @SubscribeMessage('room:subscribe')
+  @SubscribeMessage('sponsor:subscribe')
   async subscribe(
     @ConnectedSocket() client: Socket,
-    @MessageBody() roomId: string
+    @MessageBody() sponsorId: string
   ) {
-    return this.roomService.subscribeSocket(
+    return this.sponsorsService.subscribeSocket(
       client,
-      await this.roomService.validateRoom(roomId)
+      await this.sponsorsService.validateSponsorById(sponsorId)
     );
   }
 }

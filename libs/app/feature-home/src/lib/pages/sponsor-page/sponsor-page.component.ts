@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { AwardFacade } from '@speak-out/app-data-access';
+import { AwardFacade, SponsorFacade } from '@speak-out/app-data-access';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SponsorPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
+    readonly sponsorFacade: SponsorFacade,
     readonly facade: AwardFacade,
     private router: Router
   ) {}
