@@ -27,10 +27,17 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { IsChromiumVersionDirective } from './directives/is-chromium-version.directive';
+import { CompatBrowserComponent } from './components/compat-browser/compat-browser.component';
+import { IsChromiumVersionPipe } from './pipes/is-chromium-version.pipe';
 
 @NgModule({
   imports: [
-    RouterModule
+    RouterModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule
   ],
   exports: [
     FormsModule,
@@ -57,8 +64,11 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     VisibilityDirective,
     SanitizeUrlPipe,
+    IsChromiumVersionDirective,
+    CompatBrowserComponent,
+    IsChromiumVersionPipe,
   ],
-  declarations: [VisibilityDirective, SanitizeUrlPipe],
+  declarations: [VisibilityDirective, SanitizeUrlPipe, IsChromiumVersionDirective, CompatBrowserComponent, IsChromiumVersionPipe],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

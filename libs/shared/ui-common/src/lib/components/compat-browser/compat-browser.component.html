@@ -1,0 +1,39 @@
+<mat-list>
+  <h3 mat-subheader>Ops, foi detectado um bug no seu navegador</h3>
+  <mat-list-item>
+    <img mat-list-avatar src="assets/icons/chrome.svg" alt="" />
+    <h3 mat-line>Chrome afetado</h3>
+    <p mat-line class="mat-hint">versão 96</p>
+    <a
+      mat-mini-fab
+      href="https://www.google.pt/chrome/"
+      rel="noreferrer noopener"
+      target="_blank"
+    >
+      <mat-icon>browser_updated</mat-icon>
+    </a>
+  </mat-list-item>
+  <mat-list-item>
+    <img mat-list-avatar src="assets/icons/brave.svg" alt="" />
+    <h3 mat-line>Brave afetado</h3>
+    <p mat-line class="mat-hint">versão 96</p>
+    <a
+      mat-mini-fab
+      href="https://brave.com/download/"
+      rel="noreferrer noopener"
+      target="_blank"
+    >
+      <mat-icon>browser_updated</mat-icon>
+    </a>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<p>
+  <span class="mat-hint mat-small">
+    Alternativa para <strong>Chrome</strong>, copie e cole na barra de endereços
+  </span>
+  <br />
+  <code> chrome://flags/#cross-origin-embedder-policy-credentialless </code>
+</p>
