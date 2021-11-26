@@ -330,32 +330,6 @@
       },
       "tags": []
     },
-    "app-feature-room": {
-      "projectType": "library",
-      "root": "libs/app/feature-room",
-      "sourceRoot": "libs/app/feature-room/src",
-      "prefix": "shell",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app/feature-room"],
-          "options": {
-            "jestConfig": "libs/app/feature-room/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app/feature-room/src/**/*.ts",
-              "libs/app/feature-room/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
     "app-feature-shell": {
       "projectType": "library",
       "root": "libs/app/feature-shell",
